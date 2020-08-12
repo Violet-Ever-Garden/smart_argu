@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="update entity.java.vm">
+      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/resources/mapper/FieldMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/test/java/GradeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/test/java/GradeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-configure/src/main/resources/mapper/StudentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/src/main/resources/service.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-generator/src/main/resources/service.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/entity.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-generator/target/classes/entity.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/service.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-generator/target/classes/service.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Enum" />
+        <option value="AnnotationType" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Maven\repository" />
+        <option name="mavenHome" value="D:/Maven/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\Maven\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectId" id="1fnhQAu4GjN6dM71Re9qyNYVh92" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hzau-sa-stater" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-configure\src\main\resources" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-configure\src\main\java" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-security\src\main\resources" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-security\src\main\java" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-generator\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\test2\src\main\resources" />
+    </key>
+  </component>
+  <component name="RestServicesNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="Found 8 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+        </path>
+        <path>
+          <item name="Found 8 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+          <item name="hzau-sa-test" type="c588b436:RestServiceStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="Found 8 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+          <item name="hzau-sa-msg" type="c588b436:RestServiceStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="Found 8 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+          <item name="hzau-sa-security" type="c588b436:RestServiceStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.GradeTest.insertGrade">
+    <configuration name="GeneratorService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GeneratorService" />
+      <module name="hzau-sa-generator" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GradeTest.insertGrade" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hzau-sa-backstage" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="GradeTest" />
+      <option name="METHOD_NAME" value="insertGrade" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="test" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="test" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="hzausastater" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.stater.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="hzau-sa-configure" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.configure.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackStageApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="hzau-sa-backstage" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.backstage.BackStageApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="mytest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.test.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestMain (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="hzau-sa-test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.test.TestMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="hzau-sa-test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.TestMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.GradeTest.insertGrade" />
+        <item itemvalue="Application.GeneratorService" />
+        <item itemvalue="Spring Boot.TestMain (1)" />
+        <item itemvalue="Spring Boot.TestMain" />
+        <item itemvalue="Spring Boot.Main (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="" />
+      <created>1596859745758</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596859745758</updated>
+      <workItem from="1596859748341" duration="28740000" />
+      <workItem from="1596891276574" duration="43423000" />
+    </task>
+    <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
+      <created>1596941078842</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596941078842</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update README">
+      <created>1596941521501</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1596941521501</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update log add mytest">
+      <created>1596947674172</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1596947674172</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update README">
+      <created>1596948107509</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1596948107509</updated>
+    </task>
+    <task id="LOCAL-00005" summary="swagger2 logController init">
+      <created>1596970791021</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1596970791021</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update README">
+      <created>1596971113956</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1596971113956</updated>
+    </task>
+    <task id="LOCAL-00007" summary="MybatisPlusConfig init">
+      <created>1596972499943</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1596972499943</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update README">
+      <created>1596972605582</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1596972605582</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update README">
+      <created>1596973987052</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1596973987052</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update entity.java.vm">
+      <created>1596979967112</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1596979967112</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="[CodeType,LogService,Result,ResultUtil] init" />
+    <MESSAGE value="update log add mytest" />
+    <MESSAGE value="swagger2 logController init" />
+    <MESSAGE value="MybatisPlusConfig init" />
+    <MESSAGE value="update README" />
+    <MESSAGE value="update entity.java.vm" />
+    <option name="LAST_COMMIT_MESSAGE" value="update entity.java.vm" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="291" y="-900" key="#Project_Structure" />
+    <state x="121" y="0" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state x="291" y="-900" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@140.-900.1600.900" />
+    <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser" />
+    <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser" />
+    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state x="371" y="107" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" />
+    <state x="371" y="107" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" />
+    <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state x="421" y="115" key="FileChooserDialogImpl" />
+    <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state width="1236" height="563" key="GridCell.Tab.0.bottom" />
+    <state width="1236" height="563" key="GridCell.Tab.0.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state width="1236" height="563" key="GridCell.Tab.0.center" />
+    <state width="1236" height="563" key="GridCell.Tab.0.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state width="1236" height="563" key="GridCell.Tab.0.left" />
+    <state width="1236" height="563" key="GridCell.Tab.0.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state width="1236" height="563" key="GridCell.Tab.0.right" />
+    <state width="1236" height="563" key="GridCell.Tab.0.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state width="1236" height="563" key="GridCell.Tab.1.bottom" />
+    <state width="1236" height="563" key="GridCell.Tab.1.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state width="1236" height="563" key="GridCell.Tab.1.center" />
+    <state width="1236" height="563" key="GridCell.Tab.1.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state width="1236" height="563" key="GridCell.Tab.1.left" />
+    <state width="1236" height="563" key="GridCell.Tab.1.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state width="1236" height="563" key="GridCell.Tab.1.right" />
+    <state width="1236" height="563" key="GridCell.Tab.1.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state x="142" y="5" key="SettingsEditor" />
+    <state x="142" y="5" key="SettingsEditor/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2" />
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state x="144" y="-851" width="1224" height="658" key="new project wizard" />
+    <state x="3" y="39" width="1224" height="658" key="new project wizard/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state x="144" y="-851" key="new project wizard/0.0.1280.720/140.-900.1600.900@140.-900.1600.900" />
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" />
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+  </component>
+</project>

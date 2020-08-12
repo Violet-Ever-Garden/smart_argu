@@ -1,0 +1,37 @@
+package ${package.Entity};
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+/**
+ * $!{table.comment} VO
+ * @author ${author}
+ * @date ${date}
+ */
+@Data
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
+@TableName("${table.name}")
+public class ${entity}VO {
+
+	private static final long serialVersionUID = 1L;
+
+## ----------  BEGIN 字段循环遍历  ----------
+#foreach($field in ${table.fields})
+
+	/**
+	 * ${field.comment}
+	 */
+	#if(${field.keyFlag})
+	@TableId(type=IdType.UUID)
+	#end
+	private ${field.propertyType} ${field.propertyName};
+
+#end
+## ----------  END 字段循环遍历  ----------
+}

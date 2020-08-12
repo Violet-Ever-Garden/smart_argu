@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    dynamic:
+      primary: lims
+      datasource:
+        lims:
+          type: com.zaxxer.hikari.HikariDataSource
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://101.200.215.126:3306/hzau?serverTimezone=UTC&useSSL=false
+          username: root
+          password: hk123456
+          hikari:
+            min-idle: 5
+            max-pool-size: 20
+            is-auto-commit: true
+            idle-timeout: 30000
+            pool-name: LisHikariCP
+            max-lifetime: 1800000
+            connection-timeout: 30000
+            connection-test-query: SELECT 1 FROM DUAL
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  global-config:
+    db-config:
+      id-type: uuid
+      table-underline: true
+      capital-mode: false
+  configuration:
+    map-underscore-to-camel-case: false
+    cache-enabled: false
+    jdbc-type-for-null: 'null'
