@@ -10,7 +10,7 @@ import ${package.Entity}.${entity}VO;
  * @author ${author}
  * @date ${date}
  */
-public interface ${table.serviceName} extends IService<${entity}Dao, ${entity}VO> {
+public interface ${table.serviceName}  {
 
 
 }
