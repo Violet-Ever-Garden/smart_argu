@@ -81,12 +81,11 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
     @Override
     public Result findField(String fieldName){
         QueryWrapper<FieldVO> queryWrapper=new QueryWrapper<>();
-        queryWrapper.select().like("fieldname",fieldName);
+        queryWrapper.like("fieldname",fieldName);
+
 
         List<FieldVO> fieldVOList=fieldDao.selectList(queryWrapper);
         return ResultUtil.success(fieldVOList);
     }
-
-
 
 }

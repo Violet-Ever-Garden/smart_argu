@@ -20,30 +20,32 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@TableName("field")
-@ApiModel("地块model")
-public class FieldVO {
+@TableName("measure")
+@ApiModel("措施modle")
+public class MeasureVO {
 
 	private static final long serialVersionUID = 1L;
 
 
-
-	@ApiModelProperty("地块id")
+	/**
+	 * 
+	 */
+	@ApiModelProperty("措施id")
 	@TableId(type=IdType.UUID)
-	private Integer fieldId;
+	private Integer measureId;
 
 
 	/**
 	 * 
 	 */
-	@ApiModelProperty("地块名字")
-	private String fieldName;
+	@ApiModelProperty("措施名字")
+	private String measureName;
 
 
 	/**
 	 * 
 	 */
-	@ApiModelProperty("地块创建时间")
+	@ApiModelProperty("措施的时间")
 	private LocalDateTime createTime;
 
 }

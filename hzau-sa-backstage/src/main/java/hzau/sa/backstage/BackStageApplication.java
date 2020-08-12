@@ -4,7 +4,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@MapperScan("hzau.sa.backstage.*")
+@MapperScan("hzau.sa.backstage.dao")
 @SpringBootApplication
 public class BackStageApplication {
     public static void main(String[] args) {

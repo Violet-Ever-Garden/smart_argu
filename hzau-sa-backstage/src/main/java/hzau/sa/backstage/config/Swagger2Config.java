@@ -1,5 +1,6 @@
 package hzau.sa.backstage.config;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +21,8 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("hzau.sa.backstage.controller"))
-                .paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("hzau.sa.backstage"))
+                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .build();
     }
 

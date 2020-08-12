@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import javax.validation.Valid;
 
+import hzau.sa.backstage.entity.FieldVO;
 import hzau.sa.msg.entity.Result;
-import hzau.sa.msg.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hzau.sa.backstage.entity.FieldVO;
-import hzau.sa.backstage.service.FieldService;
+import hzau.sa.backstage.entity.MeasureVO;
+import hzau.sa.backstage.service.MeasureService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -35,48 +35,43 @@ import io.swagger.annotations.ApiImplicitParam;
  * @date 2020-08-12
  */
 @RestController
-@RequestMapping("sys/field")
+@RequestMapping("sys/measure")
 @Api(value = "-API", tags = { "相关接口" })
-public class FieldController{
+public class MeasureController{
 
     @Autowired
-    private FieldService fieldService;
+    private MeasureService measureService;
 
-    /**
-     * 分页列表
-     */
-    @ApiOperation("分页查询地块")
+    @ApiOperation("分页查询措施")
     @ApiImplicitParam(name = "current", value = "请求的页数", paramType = "query", dataType = "int")
     @GetMapping("/page")
     public Result page(int current) {
-        return fieldService.page(current);
+        return measureService.page(current);
     }
 
-    @ApiOperation("增加地块")
-    @ApiImplicitParam(name = "field",value = "增加的地块",dataType = "FieldVO")
-    @GetMapping("/addField")
-    public Result addField(FieldVO field){
-        return fieldService.addField(field);
+    @ApiOperation("增加措施")
+    @ApiImplicitParam(name = "measure",value = "增加的措施",dataType = "MeasureVO")
+    @GetMapping("/addMeasure")
+    public Result addMeasure(MeasureVO measureVO){return measureService.addMeasure(measureVO);}
+
+    @ApiOperation("删除措施")
+    @ApiImplicitParam(name = "measureId",value = "删除措施的id",dataType = "String")
+    @GetMapping("/deleteMeasure")
+    public Result deleteMeasure(String measureId){
+        return measureService.deleteMeasure(measureId);
     }
 
-    @ApiOperation("删除地块")
-    @ApiImplicitParam(name = "fieldId",value = "删除地块的id",dataType = "String")
-    @GetMapping("/deleteField")
-    public Result deleteField(String fieldId){
-        return fieldService.deleteField(fieldId);
+    @ApiOperation("更新措施")
+    @ApiImplicitParam(name = "measure",value = "更新措施",dataType = "MeasureVO")
+    @GetMapping("/updateMeasure")
+    public Result updateMeasure(MeasureVO measure){
+        return measureService.updateMesure(measure);
     }
 
-    @ApiOperation("更新地块")
-    @ApiImplicitParam(name = "field",value = "更新地块",dataType = "FieldVO")
-    @GetMapping("/updateField")
-    public Result updateField(FieldVO field){
-        return fieldService.updateField(field);
-    }
-
-    @ApiOperation("查找地块")
-    @ApiImplicitParam(name = "fieldName",value = "查找地块的名字",dataType = "String")
-    @GetMapping("/findField")
-    public Result findField(String fieldName){
-        return fieldService.findField(fieldName);
+    @ApiOperation("查找措施")
+    @ApiImplicitParam(name = "measureName",value = "查找措施的名字",dataType = "String")
+    @GetMapping("/findMeasure")
+    public Result findMeasure(String measureName){
+        return measureService.findMeasure(measureName);
     }
 }

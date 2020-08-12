@@ -20,30 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/config/MybatisPlusConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/config/Swagger2Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/FieldController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/dao/FieldDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/entity/FieldVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/FieldService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/FieldServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/MeasureController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/dao/MeasureDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/entity/MeasureVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/MeasureService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/MeasureServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/resources/mapper/MeasureMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-Smart-Agriculture.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/BackStageApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/BackStageApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/META-INF/hzau-sa-backstage.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/META-INF/hzau-sa-backstage.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/config/Swagger2Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/config/Swagger2Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/FieldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/FieldController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/entity/FieldVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/entity/FieldVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/FieldServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/FieldServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/BackStageApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/BackStageApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/GradeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/GradeTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/src/main/java/GeneratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-generator/src/main/java/GeneratorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/META-INF/hzau-sa-generator.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/service.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-generator/target/classes/service.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/config/Swagger2Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/config/Swagger2Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/FieldController.class" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/FieldController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/FieldVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/FieldVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/FieldServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/FieldServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,7 +304,7 @@
       <updated>1596859745758</updated>
       <workItem from="1596859748341" duration="28740000" />
       <workItem from="1596891276574" duration="43423000" />
-      <workItem from="1597216555433" duration="8559000" />
+      <workItem from="1597216555433" duration="14295000" />
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>
@@ -439,46 +432,46 @@
     </state>
     <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
     <state x="421" y="115" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597216775334" />
-    <state width="1024" height="240" key="GridCell.Tab.0.bottom" timestamp="1597225363342">
+    <state width="1024" height="240" key="GridCell.Tab.0.bottom" timestamp="1597233333926">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1236" height="563" key="GridCell.Tab.0.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
-    <state width="1024" height="240" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597225363342" />
-    <state width="1024" height="240" key="GridCell.Tab.0.center" timestamp="1597225363342">
+    <state width="1024" height="240" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597233333926" />
+    <state width="1024" height="240" key="GridCell.Tab.0.center" timestamp="1597233333926">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1236" height="563" key="GridCell.Tab.0.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
-    <state width="1024" height="240" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597225363342" />
-    <state width="1024" height="240" key="GridCell.Tab.0.left" timestamp="1597225363342">
+    <state width="1024" height="240" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597233333926" />
+    <state width="1024" height="240" key="GridCell.Tab.0.left" timestamp="1597233333926">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1236" height="563" key="GridCell.Tab.0.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
-    <state width="1024" height="240" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597225363342" />
-    <state width="1024" height="240" key="GridCell.Tab.0.right" timestamp="1597225363342">
+    <state width="1024" height="240" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597233333926" />
+    <state width="1024" height="240" key="GridCell.Tab.0.right" timestamp="1597233333926">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1236" height="563" key="GridCell.Tab.0.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
-    <state width="1024" height="240" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597225363342" />
-    <state width="1024" height="240" key="GridCell.Tab.1.bottom" timestamp="1597225363342">
+    <state width="1024" height="240" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597233333926" />
+    <state width="1024" height="240" key="GridCell.Tab.1.bottom" timestamp="1597233333926">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1236" height="563" key="GridCell.Tab.1.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
-    <state width="1024" height="240" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597225363342" />
-    <state width="1024" height="240" key="GridCell.Tab.1.center" timestamp="1597225363342">
+    <state width="1024" height="240" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597233333926" />
+    <state width="1024" height="240" key="GridCell.Tab.1.center" timestamp="1597233333926">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1236" height="563" key="GridCell.Tab.1.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
-    <state width="1024" height="240" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597225363342" />
-    <state width="1024" height="240" key="GridCell.Tab.1.left" timestamp="1597225363342">
+    <state width="1024" height="240" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597233333926" />
+    <state width="1024" height="240" key="GridCell.Tab.1.left" timestamp="1597233333926">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1236" height="563" key="GridCell.Tab.1.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
-    <state width="1024" height="240" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597225363342" />
-    <state width="1024" height="240" key="GridCell.Tab.1.right" timestamp="1597225363342">
+    <state width="1024" height="240" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597233333926" />
+    <state width="1024" height="240" key="GridCell.Tab.1.right" timestamp="1597233333926">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1236" height="563" key="GridCell.Tab.1.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
-    <state width="1024" height="240" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597225363342" />
+    <state width="1024" height="240" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597233333926" />
     <state x="299" y="67" key="Maven.ArtifactSearchDialog" timestamp="1597218563085">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

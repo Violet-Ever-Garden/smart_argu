@@ -1,0 +1,84 @@
+package hzau.sa.backstage.service.impl;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hzau.sa.backstage.entity.MeasureVO;
+import hzau.sa.backstage.dao.MeasureDao;
+import hzau.sa.backstage.entity.MeasureVO;
+import hzau.sa.backstage.service.MeasureService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import hzau.sa.msg.entity.Result;
+import hzau.sa.msg.util.ResultUtil;
+import org.apache.ibatis.session.defaults.DefaultSqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
+
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author wuyihu
+ * @since 2020-08-12
+ */
+@Service
+public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> implements MeasureService {
+
+    private static final int size=10;
+
+    @Autowired
+    private MeasureDao measureDao;
+
+    @Override
+    public Result addMeasure(MeasureVO measureVO){
+        if (measureDao.insert(measureVO)!=0){
+            return ResultUtil.success();
+        }
+        return ResultUtil.error("插入失败");
+    }
+
+    @Override
+    public Result deleteMeasure(String measureId) {
+        if (measureDao.deleteById(measureId)!=0){
+            return ResultUtil.success();
+        }
+        return ResultUtil.error("删除失败");
+    }
+
+    @Override
+    public Result updateMesure(MeasureVO measureVO){
+        if (measureDao.updateById(measureVO)!=0){
+            return ResultUtil.success();
+        }
+        return ResultUtil.error("更新失败");
+
+    }
+
+    @Override
+    public Result findMeasure(String measureName){
+        QueryWrapper<MeasureVO> queryWrapper=new QueryWrapper<>();
+        queryWrapper.like("mesureName",measureName);
+
+        List<MeasureVO> measureVOList=measureDao.selectList(queryWrapper);
+        return ResultUtil.success(measureVOList);
+    }
+
+    @Override
+    public Result page(int current){
+        Page<MeasureVO> page=new Page<>(size,current);
+        QueryWrapper<MeasureVO> queryWrapper=new QueryWrapper<>();
+
+        IPage<MeasureVO> iPage= measureDao.selectPage(page, queryWrapper);
+
+        HashMap<String,Object> hashMap=new HashMap<>();
+        hashMap.put("totalPages",iPage.getPages());
+        hashMap.put("totalRecordNums",iPage.getTotal());
+        hashMap.put("Records",iPage.getRecords());
+
+        return ResultUtil.success(hashMap);
+    }
+}
