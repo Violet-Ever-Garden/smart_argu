@@ -13,7 +13,6 @@
     <modules>
         <module>hzau-sa-generator</module>
         <module>hzau-sa-msg</module>
-        <module>hzau-sa-test</module>
         <module>hzau-sa-security</module>
         <module>hzau-sa-configure</module>
         <module>hzau-sa-backstage</module>
