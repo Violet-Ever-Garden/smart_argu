@@ -16,6 +16,7 @@
         <module>hzau-sa-security</module>
         <module>hzau-sa-backstage</module>
         <module>hzau-sa-stater</module>
+        <module>hzau-sa-trainingReport</module>
     </modules>
 
     <!-- 统一管理jar包版本 -->

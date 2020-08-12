@@ -8,16 +8,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hzau-sa-generator" />
-        <module name="hzau-sa-test" />
         <module name="test2" />
         <module name="hzau-sa-security" />
         <module name="hzausastater" />
         <module name="hzau-sa-msg" />
+        <module name="hzausatrainingReport" />
         <module name="hzau-sa-configure" />
         <module name="hzau-sa-backstage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="hzau-sa-configure" target="1.8" />
+      <module name="hzau-sa-test" target="1.8" />
       <module name="mytest" target="1.8" />
       <module name="test" target="1.8" />
       <module name="test2" target="1.8" />

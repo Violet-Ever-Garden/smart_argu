@@ -20,16 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="update entity.java.vm">
-      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/resources/mapper/FieldMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/FieldController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/test/java/GradeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/test/java/GradeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-configure/src/main/resources/mapper/StudentMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/src/main/resources/service.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-generator/src/main/resources/service.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/entity.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-generator/target/classes/entity.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/service.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-generator/target/classes/service.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
