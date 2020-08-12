@@ -13,7 +13,6 @@
         <module name="hzausastater" />
         <module name="hzau-sa-msg" />
         <module name="hzausatrainingReport" />
-        <module name="hzau-sa-configure" />
         <module name="hzau-sa-backstage" />
       </profile>
     </annotationProcessing>
