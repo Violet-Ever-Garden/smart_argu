@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 /**
@@ -41,13 +42,14 @@ public class CropServiceImpl extends ServiceImpl<CropDao, CropVO> implements Cro
         if(null!=cropE){
             return ResultUtil.error("该作物已存在");
         }else {
+            cropVO.setCreateTime(LocalDateTime.now());
             int insert = cropDao.insert(cropVO);
             if (0==insert){
                 return ResultUtil.databaseError();
             }else{
                 HashMap hashMap = new HashMap<String,Object>();
                 hashMap.put("cropName",cropVO.getCropName());
-                cropVO = (CropVO) cropDao.selectByMap(hashMap);
+                cropVO = (CropVO) cropDao.selectOne(queryWrapper);
                 //添加属性参数
                 CropParameterVO porperties = new CropParameterVO();
                 porperties.setCropId(cropVO.getCropId());
