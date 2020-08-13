@@ -36,7 +36,7 @@ import io.swagger.annotations.ApiImplicitParam;
  */
 @RestController
 @RequestMapping("sys/field")
-@Api(value = "-API", tags = { "相关接口" })
+@Api(value = "地块管理-API", tags = { "地块管理相关接口" })
 public class FieldController{
 
     @Autowired
@@ -46,10 +46,10 @@ public class FieldController{
      * 分页列表
      */
     @ApiOperation("分页查询地块")
-    @ApiImplicitParam(name = "current", value = "请求的页数", paramType = "query", dataType = "int")
+    @ApiImplicitParam(name = "current", value = "请求的页数", paramType = "query", dataType = "String")
     @GetMapping("/page")
-    public Result page(@RequestParam(value = "pageNo",required = true) int pageNo) {
-        return fieldService.page(pageNo);
+    public Result page(@RequestParam(value = "pageNo",required = true) String pageNo) {
+        return fieldService.page(Integer.parseInt(pageNo));
     }
 
     @ApiOperation("增加地块")

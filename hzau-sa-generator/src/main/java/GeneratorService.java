@@ -29,11 +29,7 @@ public class GeneratorService {
     private static final String PACKAGE_PREFIX = "hzau-sa-";
     private static final String CODE_LOCATION = "\\src\\main\\java";
     private static final String XML_LOCATION = "\\src\\main\\resources\\mapper";
-<<<<<<< HEAD
     private static final String AUTHOR = "lvhao";
-=======
-    private static final String AUTHOR = "wuyihu";
->>>>>>> origin/wuyihu-dev
 
     /**
      * 数据库配置
