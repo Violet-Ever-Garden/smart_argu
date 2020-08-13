@@ -24,49 +24,52 @@ import org.springframework.stereotype.Repository;
 @ApiModel("老师model")
 public class TeacherVO {
 
-	private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 1L;
 
 
-	/**
-	 * 
-	 */
-	@ApiModelProperty("id")
-	@TableId(type=IdType.AUTO)
-	private String teacherId;
+        /**
+         *
+         */
+        @ApiModelProperty("id")
+        @TableId(type=IdType.AUTO)
+        private String teacherId;
 
 
-	/**
-	 * 
-	 */
-	@ApiModelProperty("密码")
-	private String password;
+        /**
+         *
+         */
+        @ApiModelProperty("密码")
+        private String password;
 
 
-	/**
-	 * 
-	 */
-	@ApiModelProperty("手机号")
-	private String phoneNumber;
+
+        /**
+         *
+         */
+        @ApiModelProperty("手机号")
+        private String phoneNumber;
 
 
-	/**
-	 * 
-	 */
-	@ApiModelProperty("姓名")
-	private String teacherName;
+
+        /**
+         *
+         */
+        @ApiModelProperty("姓名")
+        private String teacherName;
 
 
-	/**
-	 * 
-	 */
-	@ApiModelProperty("监控权限")
-	private Integer isOperatemonitor;
+        /**
+         *
+         */
+        @ApiModelProperty("监控权限")
+        private Integer isOperatemonitor;
 
 
-	/**
-	 * 
-	 */
-	@ApiModelProperty("类型，是否为管理员")
-	private String type;
+
+        /**
+         *
+         */
+        @ApiModelProperty("类型，是否为管理员")
+        private String type;
 
 }

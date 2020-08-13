@@ -31,7 +31,7 @@ public class MeasureVO {
 	 * 
 	 */
 	@ApiModelProperty("措施id")
-	@TableId(type=IdType.UUID)
+	@TableId(type=IdType.AUTO)
 	private Integer measureId;
 
 

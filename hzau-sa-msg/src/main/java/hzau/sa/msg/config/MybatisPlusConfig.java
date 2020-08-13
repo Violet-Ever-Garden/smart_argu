@@ -34,4 +34,9 @@ public class MybatisPlusConfig {
         return new OptimisticLockerInterceptor();
     }
 
+
+//    @Bean
+//    public MyMetaObjectHandler myMetaObjectHandler() {
+//        return new MyMetaObjectHandler();
+//    }
 }

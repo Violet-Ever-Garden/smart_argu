@@ -29,7 +29,7 @@ public class FieldVO {
 
 
 	@ApiModelProperty("地块id")
-	@TableId(type=IdType.UUID)
+	@TableId(type=IdType.AUTO)
 	private Integer fieldId;
 
 

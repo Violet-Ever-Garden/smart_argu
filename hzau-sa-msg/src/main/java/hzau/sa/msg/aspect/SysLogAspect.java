@@ -1,5 +1,6 @@
 package hzau.sa.msg.aspect;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.alibaba.fastjson.JSON;
 import hzau.sa.msg.exception.DataBaseException;
@@ -9,6 +10,7 @@ import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.enums.CodeType;
 import hzau.sa.msg.enums.LogType;
 import hzau.sa.msg.service.LogService;
+import hzau.sa.msg.util.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -87,7 +89,12 @@ public class SysLogAspect {
             logVO.setUserAgent(request.getHeader("user-agent"));
 
             // 用户名
-            logVO.setUsername("test");
+            String username = JwtUtils.currentUser();
+            if(StrUtil.isNotBlank(username)){
+                logVO.setUsername(JwtUtils.currentUser());
+            }else{
+                logVO.setUsername("未知用户");
+            }
             // 执行方法前输出日志
             // 判断是否是方法之后输出日志，不是就输出参数日志
             if (!LogType.RESULT.equals(sysLog.value())) {
