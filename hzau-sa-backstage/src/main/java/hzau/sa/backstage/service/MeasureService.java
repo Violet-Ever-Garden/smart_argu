@@ -15,6 +15,6 @@ public interface MeasureService  {
     public Result addMeasure(MeasureVO measureVO);
     public Result deleteMeasure(String measureId);
     public Result updateMesure(MeasureVO measureVO);
-    public Result findMeasure(String measureName);
-    public Result page(int current);
+    public Result findMeasure(String measureName,int pageNo);
+    public Result page(int pageNo);
 }

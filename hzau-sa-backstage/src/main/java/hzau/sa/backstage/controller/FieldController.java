@@ -48,8 +48,8 @@ public class FieldController{
     @ApiOperation("分页查询地块")
     @ApiImplicitParam(name = "current", value = "请求的页数", paramType = "query", dataType = "int")
     @GetMapping("/page")
-    public Result page(int current) {
-        return fieldService.page(current);
+    public Result page(@RequestParam(value = "pageNo",required = true) int pageNo) {
+        return fieldService.page(pageNo);
     }
 
     @ApiOperation("增加地块")
@@ -76,7 +76,7 @@ public class FieldController{
     @ApiOperation("查找地块")
     @ApiImplicitParam(name = "fieldName",value = "查找地块的名字",dataType = "String")
     @GetMapping("/findField")
-    public Result findField(String fieldName){
-        return fieldService.findField(fieldName);
+    public Result findField(@RequestParam(value = "fieldName",required = true) String fieldName,@RequestParam(value = "pageNo",required = true) int pageNo){
+        return fieldService.findField(fieldName,pageNo);
     }
 }

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 /**
- *  VO
+ *  地块实体类
  * @author wuyihu
  * @date 2020-08-12
  */

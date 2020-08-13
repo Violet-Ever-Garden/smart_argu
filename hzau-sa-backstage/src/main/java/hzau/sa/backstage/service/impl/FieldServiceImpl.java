@@ -39,9 +39,16 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
 
     private static final int size=10;
 
+    /**
+     * 分页显示所有地块
+     * @param pageNo 要显示的页数
+     * @return
+     */
+
     @Override
-    public Result page(int current){
-        Page<FieldVO> page=new Page<>(current,size);
+    public Result page(int pageNo){
+        Page<FieldVO> page=new Page<>(pageNo,size);
+
         QueryWrapper<FieldVO> queryWrapper = new QueryWrapper<FieldVO>();
 
         IPage<FieldVO> iPage=fieldDao.selectPage(page,queryWrapper);
@@ -54,6 +61,12 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
         return ResultUtil.success(hashMap);
     }
 
+    /**
+     * 添加地块
+     * @param fieldVO 要添加的地块
+     * @return
+     */
+
     @Override
     public Result addField(FieldVO fieldVO){
         if (fieldDao.insert(fieldVO)!=0){
@@ -62,6 +75,12 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
         return ResultUtil.error("插入失败");
     }
 
+
+    /**
+     * 删除地块
+     * @param fieldId 删除地块id
+     * @return
+     */
     @Override
     public Result deleteField(String fieldId){
         if (fieldDao.deleteById(fieldId)!=0){
@@ -69,6 +88,13 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
         }
         return ResultUtil.error("删除失败");
     }
+
+
+    /**
+     * 更新地块
+     * @param fieldVO 要更新的地块
+     * @return
+     */
 
     @Override
     public Result updateField(FieldVO fieldVO){
@@ -78,14 +104,26 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
         return ResultUtil.error("更新失败");
     }
 
+    /**
+     * 通过名字模糊查找地块
+     * @param fieldName 查找地块名
+     * @param pageNo 分页的页数
+     * @return
+     */
     @Override
-    public Result findField(String fieldName){
+    public Result findField(String fieldName,int pageNo){
+        Page<FieldVO> page=new Page<>(pageNo,size);
+
         QueryWrapper<FieldVO> queryWrapper=new QueryWrapper<>();
         queryWrapper.like("fieldname",fieldName);
 
+        IPage<FieldVO> iPage = fieldDao.selectPage(page, queryWrapper);
 
-        List<FieldVO> fieldVOList=fieldDao.selectList(queryWrapper);
-        return ResultUtil.success(fieldVOList);
+        HashMap<String,Object> hashMap=new HashMap<>();
+        hashMap.put("totalPages",iPage.getPages());
+        hashMap.put("totalRecordNums",iPage.getTotal());
+        hashMap.put("Records",iPage.getRecords());
+
+        return ResultUtil.success(hashMap);
     }
-
 }

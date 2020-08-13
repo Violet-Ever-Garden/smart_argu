@@ -12,9 +12,9 @@ import hzau.sa.backstage.entity.FieldVO;
  * @date 2020-08-12
  */
 public interface FieldService  {
-    public Result page(int current);
+    public Result page(int pageNo);
     public Result addField(FieldVO fieldVO);
     public Result deleteField(String fieldId);
     public Result updateField(FieldVO fieldVO);
-    public Result findField(String fieldName);
+    public Result findField(String fieldName,int pageNo);
 }
