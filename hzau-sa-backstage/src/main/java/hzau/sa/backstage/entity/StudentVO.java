@@ -33,7 +33,7 @@ public class StudentVO {
 	 */
 	@ApiModelProperty("学号")
 	@ExcelProperty(value = "学号",index = 0)
-	@TableId(type=IdType.UUID)
+	@TableId(type=IdType.AUTO)
 	private String studentId;
 
 

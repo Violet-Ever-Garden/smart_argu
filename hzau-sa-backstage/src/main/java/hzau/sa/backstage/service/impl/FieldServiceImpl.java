@@ -17,10 +17,7 @@ import hzau.sa.msg.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 
 /**
@@ -82,11 +79,24 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
      * @return
      */
     @Override
-    public Result deleteField(String fieldId){
+    public Result deleteField(Integer fieldId){
         if (fieldDao.deleteById(fieldId)!=0){
             return ResultUtil.success();
         }
         return ResultUtil.error("删除失败");
+    }
+
+    /**
+     * 批量删除地块
+     * @param fieldIds 批量删除的ids
+     * @return
+     */
+    @Override
+    public Result deleteFields(Integer[] fieldIds){
+        if (fieldDao.deleteBatchIds(Arrays.asList(fieldIds))!=0){
+            return ResultUtil.success();
+        }
+        return ResultUtil.error("批量删除失败");
     }
 
 

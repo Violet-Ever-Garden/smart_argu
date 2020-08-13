@@ -14,6 +14,7 @@ import org.apache.ibatis.session.defaults.DefaultSqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,12 +54,27 @@ public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> imple
      */
 
     @Override
-    public Result deleteMeasure(String measureId) {
+    public Result deleteMeasure(Integer measureId) {
         if (measureDao.deleteById(measureId)!=0){
             return ResultUtil.success();
         }
         return ResultUtil.error("删除失败");
     }
+
+    /**
+     * 批量删除措施
+     * @param measureIds 批量删除措施id
+     * @return
+     */
+
+    @Override
+    public Result deleteMeasures(Integer[] measureIds){
+        if (measureDao.deleteBatchIds(Arrays.asList(measureIds))!=0){
+            return ResultUtil.success();
+        }
+        return ResultUtil.error("批量删除失败");
+    }
+
 
 
     /**
@@ -100,6 +116,11 @@ public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> imple
 
     }
 
+    /**
+     * 分页显示
+     * @param pageNo 要显示的页数
+     * @return
+     */
     @Override
     public Result page(int pageNo){
         Page<MeasureVO> page=new Page<>(size,pageNo);

@@ -1,6 +1,7 @@
 package hzau.sa.backstage.service;
 
 import hzau.sa.msg.entity.Result;
+import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import hzau.sa.backstage.dao.FieldDao;
@@ -14,7 +15,8 @@ import hzau.sa.backstage.entity.FieldVO;
 public interface FieldService  {
     public Result page(int pageNo);
     public Result addField(FieldVO fieldVO);
-    public Result deleteField(String fieldId);
+    public Result deleteField(Integer fieldId);
     public Result updateField(FieldVO fieldVO);
     public Result findField(String fieldName,int pageNo);
+    public Result deleteFields(Integer[] fieldIds);
 }

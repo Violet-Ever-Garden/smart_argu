@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -75,7 +76,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      * 按年级分页
      */
     @Override
-    public Result pageByGrade(String gradeId, int pageNo){
+    public Result pageByGrade(int gradeId, int pageNo){
         Page<StudentVO> page = new Page<StudentVO>(pageNo,size);
 
         QueryWrapper<StudentVO> wrapper = new QueryWrapper<>();
@@ -108,7 +109,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
 
     @Override
-    public Result pageByClasses(String classId, int pageNo){
+    public Result pageByClasses(int classId, int pageNo){
         Page<StudentVO> page = new Page<StudentVO>(pageNo,size);
 
         QueryWrapper<StudentVO> wrapper = new QueryWrapper<>();
@@ -169,6 +170,18 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     }
 
     /**
+     * 批量删除学生
+     */
+    @Override
+    public Result deleteStudents(String[] studentIds){
+        if (studentDao.deleteBatchIds(Arrays.asList(studentIds))!=0){
+            return ResultUtil.success();
+        }
+        return ResultUtil.error("批量删除失败");
+    }
+
+
+    /**
      * 更新学生
      */
     @Override
@@ -184,7 +197,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
     @Override
     public Result addStudentByTemplate(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
-        return  ResultUtil.success();
+        return ResultUtil.success();
     }
 
     /**

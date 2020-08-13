@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * student 服务实现类
+ * student 服务实现接口
  * @author wuyihu
  * @date 2020-08-13
  */
@@ -29,7 +29,7 @@ public interface StudentService  {
     /**
      * 按年级分页
      */
-    public Result pageByGrade(String gradeId,int pageNo);
+    public Result pageByGrade(int gradeId,int pageNo);
 
     /**
      * 返回所有班级
@@ -40,7 +40,7 @@ public interface StudentService  {
      * 按班级分页
      */
 
-    public Result pageByClasses(String classId,int pageNo);
+    public Result pageByClasses(int classId,int pageNo);
 
     /**
      * 按名字查找分页
@@ -63,6 +63,11 @@ public interface StudentService  {
      * 删除学生
      */
     public Result deleteStudent(String studentId);
+
+    /**
+     * 批量删除学生
+     */
+    public Result deleteStudents(String[] studentIds);
 
     /**
      * 更新学生
