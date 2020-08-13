@@ -6,8 +6,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import hzau.sa.backstage.service.impl.CropPropertyServiceImpl;
+import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
+import hzau.sa.msg.enums.LogType;
 import hzau.sa.msg.util.ResultUtil;
 import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +50,7 @@ public class CropPropertyController extends BaseController {
     @Autowired
     private CropPropertyServiceImpl cropPropertyService;
 
+    @SysLog(prefix = "新增属性", value = LogType.ALL)
     @ApiOperation(value = "新增属性", notes = "新增属性")
     @ApiImplicitParam(name = "cropPropertyVO", value = "属性实体", paramType = "body", dataType = "CropPropertyVO")
     @PostMapping("/add")
@@ -60,6 +63,7 @@ public class CropPropertyController extends BaseController {
         }
     }
 
+    @SysLog(prefix = "删除属性", value = LogType.ALL)
     @Transactional(rollbackFor = Exception.class)
     @ApiOperation(value = "删除属性", notes = "属性参数")
     @ApiImplicitParam(name = "cropPropertyId", value = "属性id", paramType = "path", dataType = "String")
@@ -75,6 +79,7 @@ public class CropPropertyController extends BaseController {
     }
 
 
+    @SysLog(prefix = "批量删除属性", value = LogType.ALL)
     @ApiOperation(value = "批量删除属性", notes = "批量删除属性")
     @ApiImplicitParam(name = "ids", value = "属性id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
@@ -87,6 +92,7 @@ public class CropPropertyController extends BaseController {
             return ResultUtil.success();
         }
     }
+
 
     @Transactional(rollbackFor = Exception.class)
     @ApiOperation(value = "获取作物属性", notes = "获取作物属性")

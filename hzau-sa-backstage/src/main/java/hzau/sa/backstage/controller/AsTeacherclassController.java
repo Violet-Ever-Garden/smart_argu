@@ -8,8 +8,10 @@ import cn.hutool.core.convert.Convert;
 import hzau.sa.backstage.entity.ClassGradeModel;
 import hzau.sa.backstage.entity.TeacherClassModel;
 import hzau.sa.backstage.service.impl.AsTeacherclassServiceImpl;
+import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
+import hzau.sa.msg.enums.LogType;
 import hzau.sa.msg.util.ResultUtil;
 import io.swagger.annotations.ApiImplicitParams;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +53,7 @@ public class AsTeacherclassController extends BaseController {
     @Autowired
     private AsTeacherclassServiceImpl asTeacherclassService;
 
+    @SysLog(prefix = "新增班师关系",value = LogType.ALL)
     @ApiOperation(value = "新增班师关系", notes = "新增班师关系")
     @ApiImplicitParam(name = "asTeacherclassVO", value = "班师关系实体", paramType = "body", allowMultiple = true,dataType = "AsTeacherclassVO")
     @PostMapping("/add")
@@ -63,6 +66,7 @@ public class AsTeacherclassController extends BaseController {
         }
     }
 
+    @SysLog(prefix = "删除班师关系",value = LogType.ALL)
     @Transactional(rollbackFor = Exception.class)
     @ApiOperation(value = "删除班师关系", notes = "删除班师关系")
     @ApiImplicitParam(name = "cropPropertyId", value = "关系id", paramType = "path", dataType = "String")
@@ -77,7 +81,7 @@ public class AsTeacherclassController extends BaseController {
         }
     }
 
-
+    @SysLog(prefix = "批量删除班师关系",value = LogType.ALL)
     @ApiOperation(value = "批量删除班师关系", notes = "批量删除班师关系")
     @ApiImplicitParam(name = "ids", value = "班师关系id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
