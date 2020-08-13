@@ -9,15 +9,15 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- * ClassVO
+ * AsClassmonitorVO
  * @author lvhao
  * @date 2020-08-12
  */
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@TableName("class")
-public class ClassVO {
+@TableName("as_classmonitor")
+public class AsClassmonitorVO {
 
 	private static final long serialVersionUID = 1L;
 
@@ -26,18 +26,18 @@ public class ClassVO {
 	 * 自增主键
 	 */
 	@TableId(type=IdType.AUTO)
+	private Integer asClassmonitorId;
+
+
+	/**
+	 * 班级外键
+	 */
 	private Integer classId;
 
 
 	/**
-	 * 班级名称
+	 * 监视器外键
 	 */
-	private String className;
-
-
-	/**
-	 * 年级
-	 */
-	private Integer gradeId;
+	private Integer monitorId;
 
 }

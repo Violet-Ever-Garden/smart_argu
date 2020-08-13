@@ -9,53 +9,35 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- *  VO
- * @author haokai
- * @date 2020-08-11
+ * AsClassfieldVO
+ * @author lvhao
+ * @date 2020-08-12
  */
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@TableName("teacher")
-public class TeacherVO {
+@TableName("as_classfield")
+public class AsClassfieldVO {
 
 	private static final long serialVersionUID = 1L;
 
 
 	/**
-	 * 
+	 * 自增主键
 	 */
-	@TableId(type=IdType.UUID)
-	private String teacherId;
+	@TableId(type=IdType.AUTO)
+	private Integer asClassfieldId;
 
 
 	/**
-	 * 
+	 * 班级外键
 	 */
-	private String password;
+	private Integer classId;
 
 
 	/**
-	 * 
+	 * 地块外键
 	 */
-	private String phoneNumber;
-
-
-	/**
-	 * 
-	 */
-	private String teacherName;
-
-
-	/**
-	 * 
-	 */
-	private Integer isOperatemonitor;
-
-
-	/**
-	 * 
-	 */
-	private String type;
+	private Integer fieldId;
 
 }

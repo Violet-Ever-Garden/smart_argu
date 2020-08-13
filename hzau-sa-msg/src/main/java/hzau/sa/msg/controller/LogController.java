@@ -43,6 +43,8 @@ public class LogController extends BaseController{
      */
     @ApiOperation("分页查询日志")
     @ApiImplicitParams({
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String"),
             @ApiImplicitParam(name = "username", value = "用户名", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "time", value = "执行时长", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "retCode", value = "返回码", paramType = "query", dataType = "String") })
