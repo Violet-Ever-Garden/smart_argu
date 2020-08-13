@@ -80,7 +80,7 @@ public class CropGrowthPeriodController extends BaseController {
 
     @SysLog(prefix = "批量删除生育期", value = LogType.ALL)
     @ApiOperation(value = "批量删除生育期", notes = "批量删除生育期")
-    @ApiImplicitParam(name = "ids", value = "生育期id数组", paramType = "query", allowMultiple = true,dataType = "String")
+    @ApiImplicitParam(name = "ids[]", value = "生育期id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
     public Result deleteList(@RequestParam(value = "ids[]") String[] ids){

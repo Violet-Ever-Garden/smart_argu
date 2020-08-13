@@ -93,7 +93,7 @@ public class CropParameterController extends BaseController {
 
     @SysLog(prefix = "批量删除参数", value = LogType.ALL)
     @ApiOperation(value = "批量删除参数", notes = "批量删除参数")
-    @ApiImplicitParam(name = "ids", value = "参数id数组", paramType = "query", allowMultiple = true,dataType = "String")
+    @ApiImplicitParam(name = "ids[]", value = "参数id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
     public Result deleteList(@RequestParam(value = "ids[]") String[] ids){

@@ -52,7 +52,7 @@ public class CropController extends BaseController {
 
     @SysLog(prefix = "批量删除作物", value = LogType.ALL)
     @ApiOperation(value = "批量删除作物", notes = "批量删除作物")
-    @ApiImplicitParam(name = "ids", value = "作物id数组", paramType = "query", allowMultiple = true, dataType = "String")
+    @ApiImplicitParam(name = "ids[]", value = "作物id数组", paramType = "query", allowMultiple = true, dataType = "String")
     @PostMapping("/deleteList")
     public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
         //log.info("ids.length = "+ids.length);

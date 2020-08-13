@@ -83,7 +83,7 @@ public class AsTeacherclassController extends BaseController {
 
     @SysLog(prefix = "批量删除班师关系",value = LogType.ALL)
     @ApiOperation(value = "批量删除班师关系", notes = "批量删除班师关系")
-    @ApiImplicitParam(name = "ids", value = "班师关系id数组", paramType = "query", allowMultiple = true,dataType = "String")
+    @ApiImplicitParam(name = "ids[]", value = "班师关系id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
     public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
