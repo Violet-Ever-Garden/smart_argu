@@ -42,18 +42,18 @@ public class CropController extends BaseController {
 
     @SysLog(prefix = "删除作物", value = LogType.ALL)
     @ApiOperation(value = "删除作物", notes = "删除作物")
-    @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "path", dataType = "int")
+    @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "path", dataType = "String")
     @PostMapping("/delete/{cropId}")
-    public Result delete(@PathVariable("cropId")int cropId){
-       return cropService.delete(cropId);
+    public Result delete(@PathVariable("cropId")String cropId){
+       return cropService.delete(Integer.parseInt(cropId));
     }
 
 
     @SysLog(prefix = "批量删除作物", value = LogType.ALL)
     @ApiOperation(value = "批量删除作物", notes = "批量删除作物")
-    @ApiImplicitParam(name = "ids", value = "作物id数组", paramType = "query", allowMultiple = true, dataType = "Integer")
+    @ApiImplicitParam(name = "ids", value = "作物id数组", paramType = "query", allowMultiple = true, dataType = "String")
     @PostMapping("/deleteList")
-    public Result deleteList(@RequestParam(value = "ids[]") Integer[] ids){
+    public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
         //log.info("ids.length = "+ids.length);
         //log.info(String.valueOf(ids[0]));
         //ArrayList<Integer> arrayList = new ArrayList<>();

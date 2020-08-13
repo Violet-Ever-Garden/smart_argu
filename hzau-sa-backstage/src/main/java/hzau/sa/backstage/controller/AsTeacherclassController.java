@@ -65,9 +65,9 @@ public class AsTeacherclassController extends BaseController {
 
     @Transactional(rollbackFor = Exception.class)
     @ApiOperation(value = "删除班师关系", notes = "删除班师关系")
-    @ApiImplicitParam(name = "cropPropertyId", value = "关系id", paramType = "path", dataType = "int")
+    @ApiImplicitParam(name = "cropPropertyId", value = "关系id", paramType = "path", dataType = "String")
     @PostMapping("/delete/{asTeacherclassId}")
-    public Result delete(@PathVariable("asTeacherclassId") int asTeacherclassId){
+    public Result delete(@PathVariable("asTeacherclassId") String asTeacherclassId){
         log.info(String.valueOf(asTeacherclassId));
         boolean b = asTeacherclassService.removeById(asTeacherclassId);
         if(false == b){
@@ -79,10 +79,10 @@ public class AsTeacherclassController extends BaseController {
 
 
     @ApiOperation(value = "批量删除班师关系", notes = "批量删除班师关系")
-    @ApiImplicitParam(name = "ids", value = "班师关系id数组", paramType = "query", allowMultiple = true,dataType = "Integer")
+    @ApiImplicitParam(name = "ids", value = "班师关系id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
-    public Result deleteList(@RequestParam(value = "ids[]") Integer[] ids){
+    public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
         boolean b = asTeacherclassService.removeByIds(Arrays.asList(ids));
         if(false==b){
             return ResultUtil.databaseError();
