@@ -5,8 +5,6 @@
     <file url="file://$PROJECT_DIR$/hzau-sa-backstage" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hzau-sa-backstage/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hzau-sa-backstage/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/hzau-sa-configure" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/hzau-sa-configure/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hzau-sa-generator" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hzau-sa-generator/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hzau-sa-generator/src/main/resources" charset="UTF-8" />
@@ -17,9 +15,9 @@
     <file url="file://$PROJECT_DIR$/hzau-sa-security/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hzau-sa-security/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hzau-sa-stater" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/hzau-sa-test" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/hzau-sa-test/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/hzau-sa-test/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hzau-sa-stater/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/hzau-sa-trainingReport" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hzau-sa-trainingReport/src/main/resources" charset="UTF-8" />
   </component>
 </project>

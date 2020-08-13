@@ -19,27 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -48,6 +32,7 @@
         <option value="AnnotationType" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -86,8 +71,10 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/hzau-sa-stater" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hzau-sa-backstage/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -101,15 +88,23 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="hzau.sa.backstage.dao" />
+      <recent name="hzau.sa.backstage.service" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-msg\src\main\resources" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\test2\src\main\resources" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-backstage\src\main\resources" />
       <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-configure\src\main\resources" />
       <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-configure\src\main\java" />
       <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-security\src\main\resources" />
       <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-security\src\main\java" />
-      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-generator\src\main\resources" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\test2\src\main\resources" />
     </key>
   </component>
   <component name="RestServicesNavigator">
@@ -134,19 +129,7 @@
       <select />
     </treeState>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="JUnit.GradeTest.insertGrade">
+  <component name="RunManager" selected="JUnit.GradeDaoTest.selectGradeIdByName">
     <configuration name="GeneratorService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GeneratorService" />
       <module name="hzau-sa-generator" />
@@ -154,17 +137,55 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GradeTest.insertGrade" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AsClassfieldDaoTest.queryFieldIdByName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hzau-sa-backstage" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="GradeTest" />
-      <option name="METHOD_NAME" value="insertGrade" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.backstage.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hzau.sa.backstage.dao" />
+      <option name="MAIN_CLASS_NAME" value="hzau.sa.backstage.dao.AsClassfieldDaoTest" />
+      <option name="METHOD_NAME" value="queryFieldIdByName" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+    <configuration name="ClassServiceTest.findAllClass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hzau-sa-backstage" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.backstage.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hzau.sa.backstage.service" />
+      <option name="MAIN_CLASS_NAME" value="hzau.sa.backstage.service.ClassServiceTest" />
+      <option name="METHOD_NAME" value="findAllClass" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GradeDaoTest.selectGradeIdByName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hzau-sa-backstage" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.backstage.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hzau.sa.backstage.dao" />
+      <option name="MAIN_CLASS_NAME" value="hzau.sa.backstage.dao.GradeDaoTest" />
+      <option name="METHOD_NAME" value="selectGradeIdByName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
       <module name="test" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
@@ -177,7 +198,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <module name="test" />
       <option name="filePath" />
       <option name="vmParameters" />
@@ -218,6 +239,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Application (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="hzau-sa-stater" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.stater.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.stater.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="hzau-sa-configure" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.configure.Application" />
@@ -232,52 +266,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="mytest" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hzau.sa.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.test.Main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestMain (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="hzau-sa-test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hzau.sa.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.test.TestMain" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="hzau-sa-test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hzau.sa.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.TestMain" />
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="hzau-sa-mytest" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.mytest.Main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GradeTest.insertGrade" />
+        <item itemvalue="JUnit.GradeDaoTest.selectGradeIdByName" />
+        <item itemvalue="JUnit.AsClassfieldDaoTest.queryFieldIdByName" />
         <item itemvalue="Application.GeneratorService" />
-        <item itemvalue="Spring Boot.TestMain (1)" />
-        <item itemvalue="Spring Boot.TestMain" />
-        <item itemvalue="Spring Boot.Main (1)" />
+        <item itemvalue="Spring Boot.Application (2)" />
+        <item itemvalue="JUnit.ClassServiceTest.findAllClass" />
       </list>
     </recent_temporary>
   </component>
@@ -371,7 +373,21 @@
       <option name="project" value="LOCAL" />
       <updated>1597203072023</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="grade class manage init">
+      <created>1597303036784</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1597303036785</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update README">
+      <created>1597303659307</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1597303659307</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,13 +398,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -396,49 +411,92 @@
     <MESSAGE value="update log add mytest" />
     <MESSAGE value="swagger2 logController init" />
     <MESSAGE value="MybatisPlusConfig init" />
-    <MESSAGE value="update README" />
     <MESSAGE value="update entity.java.vm" />
     <MESSAGE value="新增实训管理模块" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增实训管理模块" />
+    <MESSAGE value="grade class manage init" />
+    <MESSAGE value="update README" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="291" y="-900" key="#Project_Structure" />
-    <state x="121" y="0" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state x="291" y="-900" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@140.-900.1600.900" />
-    <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser" />
-    <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser" />
-    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state x="371" y="107" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" />
-    <state x="371" y="107" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" />
-    <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state x="421" y="115" key="FileChooserDialogImpl" />
-    <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state width="1236" height="563" key="GridCell.Tab.0.bottom" />
-    <state width="1236" height="563" key="GridCell.Tab.0.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state width="1236" height="563" key="GridCell.Tab.0.center" />
-    <state width="1236" height="563" key="GridCell.Tab.0.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state width="1236" height="563" key="GridCell.Tab.0.left" />
-    <state width="1236" height="563" key="GridCell.Tab.0.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state width="1236" height="563" key="GridCell.Tab.0.right" />
-    <state width="1236" height="563" key="GridCell.Tab.0.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state width="1236" height="563" key="GridCell.Tab.1.bottom" />
-    <state width="1236" height="563" key="GridCell.Tab.1.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state width="1236" height="563" key="GridCell.Tab.1.center" />
-    <state width="1236" height="563" key="GridCell.Tab.1.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state width="1236" height="563" key="GridCell.Tab.1.left" />
-    <state width="1236" height="563" key="GridCell.Tab.1.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state width="1236" height="563" key="GridCell.Tab.1.right" />
-    <state width="1236" height="563" key="GridCell.Tab.1.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state x="142" y="5" key="SettingsEditor" />
-    <state x="142" y="5" key="SettingsEditor/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state x="233" y="94" key="Vcs.Push.Dialog.v2" />
-    <state x="233" y="94" key="Vcs.Push.Dialog.v2/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state x="144" y="-851" width="1224" height="658" key="new project wizard" />
-    <state x="3" y="39" width="1224" height="658" key="new project wizard/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
-    <state x="144" y="-851" key="new project wizard/0.0.1280.720/140.-900.1600.900@140.-900.1600.900" />
-    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" />
-    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720/140.-900.1600.900@0.0.1280.720" />
+    <state x="407" y="0" key="#Auto_Import" timestamp="1597226926374">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="407" y="0" key="#Auto_Import/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597226926374" />
+    <state x="277" y="0" width="741" height="720" key="#Main" timestamp="1597233941341">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="277" y="0" width="741" height="720" key="#Main/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597233941341" />
+    <state x="121" y="0" key="#Project_Structure" timestamp="1597233100712">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="121" y="0" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597233100712" />
+    <state x="291" y="-900" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@140.-900.1600.900" timestamp="1597204832322" />
+    <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597204832322" />
+    <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597204832322" />
+    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser" timestamp="1597295021831">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597295021831" />
+    <state x="371" y="107" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597226262943">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="371" y="107" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597226262943" />
+    <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1597204832322" />
+    <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597204832322" />
+    <state x="421" y="115" key="FileChooserDialogImpl" timestamp="1597245117570">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597245117570" />
+    <state width="1236" height="562" key="GridCell.Tab.0.bottom" timestamp="1597306071999">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="562" key="GridCell.Tab.0.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597306071999" />
+    <state width="1236" height="562" key="GridCell.Tab.0.center" timestamp="1597306071999">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="562" key="GridCell.Tab.0.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597306071999" />
+    <state width="1236" height="562" key="GridCell.Tab.0.left" timestamp="1597306071999">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="562" key="GridCell.Tab.0.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597306071999" />
+    <state width="1236" height="562" key="GridCell.Tab.0.right" timestamp="1597306071999">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="562" key="GridCell.Tab.0.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597306071999" />
+    <state width="1236" height="562" key="GridCell.Tab.1.bottom" timestamp="1597306071999">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="562" key="GridCell.Tab.1.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597306071999" />
+    <state width="1236" height="562" key="GridCell.Tab.1.center" timestamp="1597306071999">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="562" key="GridCell.Tab.1.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597306071999" />
+    <state width="1236" height="562" key="GridCell.Tab.1.left" timestamp="1597306071999">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="562" key="GridCell.Tab.1.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597306071999" />
+    <state width="1236" height="562" key="GridCell.Tab.1.right" timestamp="1597306071999">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="562" key="GridCell.Tab.1.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597306071999" />
+    <state x="142" y="5" key="SettingsEditor" timestamp="1597204832322" />
+    <state x="142" y="5" key="SettingsEditor/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597204832322" />
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2" timestamp="1597303672081">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597303672081" />
+    <state x="412" y="180" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1597260457470">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="412" y="180" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597260457470" />
+    <state x="3" y="39" width="1224" height="658" key="new project wizard" timestamp="1597231219557">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="3" y="39" width="1224" height="658" key="new project wizard/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597231219557" />
+    <state x="144" y="-851" key="new project wizard/0.0.1280.720/140.-900.1600.900@140.-900.1600.900" timestamp="1597204832322" />
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1597290947403">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597290947403" />
   </component>
 </project>

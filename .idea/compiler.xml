@@ -13,11 +13,14 @@
         <module name="hzausastater" />
         <module name="hzau-sa-msg" />
         <module name="hzausatrainingReport" />
+        <module name="hzau-sa-stater" />
+        <module name="hzau-sa-trainingReport" />
         <module name="hzau-sa-backstage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="hzau-sa-configure" target="1.8" />
+      <module name="hzau-sa-mytest" target="1.8" />
       <module name="hzau-sa-test" target="1.8" />
       <module name="mytest" target="1.8" />
       <module name="test" target="1.8" />
