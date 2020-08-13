@@ -48,7 +48,9 @@ public class CropParameterController extends BaseController {
     @ApiOperation(value = "分页模糊查参数", notes = "分页模糊查参数")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "query", dataType = "String")
+            @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
     })
     @GetMapping("/page")
     public Result page(String keyword,String cropId){
@@ -91,7 +93,7 @@ public class CropParameterController extends BaseController {
 
     @SysLog(prefix = "批量删除参数", value = LogType.ALL)
     @ApiOperation(value = "批量删除参数", notes = "批量删除参数")
-    @ApiImplicitParam(name = "ids", value = "参数id数组", paramType = "query", allowMultiple = true,dataType = "String")
+    @ApiImplicitParam(name = "ids[]", value = "参数id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
     public Result deleteList(@RequestParam(value = "ids[]") String[] ids){

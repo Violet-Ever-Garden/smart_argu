@@ -2,7 +2,7 @@
 <configuration>
 
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
-    <property name="log.path" value="C:\\Users\\LvHao\\Desktop\\物联网项目\\logs" />
+    <property name="log.path" value="E:\\project_git\\hzau_new\\log" />
 
     <!--输出到控制台 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">

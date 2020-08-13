@@ -5,9 +5,12 @@ import java.util.List;
 import javax.validation.Valid;
 
 import hzau.sa.backstage.service.impl.CropGrowthPeriodServiceImpl;
+import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
+import hzau.sa.msg.enums.LogType;
 import hzau.sa.msg.util.ResultUtil;
+import io.swagger.annotations.ApiImplicitParams;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,6 +50,7 @@ public class CropGrowthPeriodController extends BaseController {
     @Autowired
     private CropGrowthPeriodServiceImpl cropGrowthPeriodService;
 
+    @SysLog(prefix = "新增生育期", value = LogType.ALL)
     @ApiOperation(value = "新增生育期", notes = "新增生育期")
     @ApiImplicitParam(name = "CropGrowthPeriodVO", value = "作物生育期实体", paramType = "body", dataType = "CropGrowthPeriodVO")
     @PostMapping("/add")
@@ -59,6 +63,7 @@ public class CropGrowthPeriodController extends BaseController {
         }
     }
 
+    @SysLog(prefix = "删除生育期", value = LogType.ALL)
     @Transactional(rollbackFor = Exception.class)
     @ApiOperation(value = "删除生育期", notes = "删除生育期")
     @ApiImplicitParam(name = "cropGrowthPeriodId", value = "生育期id", paramType = "path", dataType = "String")
@@ -73,9 +78,9 @@ public class CropGrowthPeriodController extends BaseController {
         }
     }
 
-
+    @SysLog(prefix = "批量删除生育期", value = LogType.ALL)
     @ApiOperation(value = "批量删除生育期", notes = "批量删除生育期")
-    @ApiImplicitParam(name = "ids", value = "生育期id数组", paramType = "query", allowMultiple = true,dataType = "String")
+    @ApiImplicitParam(name = "ids[]", value = "生育期id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
     public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
