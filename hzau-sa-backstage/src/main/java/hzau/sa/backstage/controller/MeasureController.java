@@ -71,7 +71,7 @@ public class MeasureController{
     @ApiOperation("查找措施")
     @ApiImplicitParam(name = "measureName",value = "查找措施的名字",dataType = "String")
     @GetMapping("/findMeasure")
-    public Result findMeasure(String measureName){
-        return measureService.findMeasure(measureName);
+    public Result findMeasure(String measureName,int pageNo){
+        return measureService.findMeasure(measureName,pageNo);
     }
 }
