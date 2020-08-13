@@ -1,15 +1,13 @@
 package hzau.sa.backstage.controller;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import javax.validation.Valid;
 
-import hzau.sa.backstage.service.impl.CropPropertyServiceImpl;
+import hzau.sa.backstage.service.impl.CropGrowthPeriodServiceImpl;
 import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.util.ResultUtil;
-import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hzau.sa.backstage.entity.CropPropertyVO;
+import hzau.sa.backstage.entity.CropGrowthPeriodVO;
+import hzau.sa.backstage.service.CropGrowthPeriodService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -41,18 +40,18 @@ import io.swagger.annotations.ApiImplicitParam;
  */
 @Slf4j
 @RestController
-@RequestMapping("/cropProperty")
-@Api(value = "-API", tags = { "作物属性接口" })
-public class CropPropertyController extends BaseController {
+@RequestMapping("/cropGrowthPeriod")
+@Api(value = "-API", tags = { "作物生育期接口" })
+public class CropGrowthPeriodController extends BaseController {
 
     @Autowired
-    private CropPropertyServiceImpl cropPropertyService;
+    private CropGrowthPeriodServiceImpl cropGrowthPeriodService;
 
-    @ApiOperation(value = "新增属性", notes = "新增属性")
-    @ApiImplicitParam(name = "cropPropertyVO", value = "属性实体", paramType = "body", dataType = "CropPropertyVO")
+    @ApiOperation(value = "新增生育期", notes = "新增生育期")
+    @ApiImplicitParam(name = "CropGrowthPeriodVO", value = "作物生育期实体", paramType = "body", dataType = "CropGrowthPeriodVO")
     @PostMapping("/add")
-    public Result add(@RequestBody CropPropertyVO cropPropertyVO) {
-        boolean save = cropPropertyService.save(cropPropertyVO);
+    public Result add(@RequestBody CropGrowthPeriodVO CropGrowthPeriodVO) {
+        boolean save = cropGrowthPeriodService.save(CropGrowthPeriodVO);
         if (false == save) {
             return ResultUtil.databaseError();
         } else {
@@ -61,12 +60,12 @@ public class CropPropertyController extends BaseController {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    @ApiOperation(value = "删除属性", notes = "属性参数")
-    @ApiImplicitParam(name = "cropPropertyId", value = "属性id", paramType = "path", dataType = "int")
-    @PostMapping("/delete/{cropPropertyId}")
-    public Result delete(@PathVariable("cropPropertyId") int cropPropertyId){
-        log.info(String.valueOf(cropPropertyId));
-        boolean b = cropPropertyService.removeById(cropPropertyId);
+    @ApiOperation(value = "删除生育期", notes = "删除生育期")
+    @ApiImplicitParam(name = "cropGrowthPeriodId", value = "生育期id", paramType = "path", dataType = "int")
+    @PostMapping("/delete/{cropGrowthPeriodId}")
+    public Result delete(@PathVariable("cropGrowthPeriodId") int cropGrowthPeriodId){
+        log.info(String.valueOf(cropGrowthPeriodId));
+        boolean b = cropGrowthPeriodService.removeById(cropGrowthPeriodId);
         if(false == b){
             return ResultUtil.databaseError(b);
         }else {
@@ -75,12 +74,12 @@ public class CropPropertyController extends BaseController {
     }
 
 
-    @ApiOperation(value = "批量删除属性", notes = "批量删除属性")
-    @ApiImplicitParam(name = "ids", value = "属性id数组", paramType = "query", allowMultiple = true,dataType = "Integer")
+    @ApiOperation(value = "批量删除生育期", notes = "批量删除生育期")
+    @ApiImplicitParam(name = "ids", value = "生育期id数组", paramType = "query", allowMultiple = true,dataType = "Integer")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
     public Result deleteList(@RequestParam(value = "ids[]") Integer[] ids){
-        boolean b = cropPropertyService.removeByIds(Arrays.asList(ids));
+        boolean b = cropGrowthPeriodService.removeByIds(Arrays.asList(ids));
         if(false==b){
             return ResultUtil.databaseError();
         }else{
@@ -89,15 +88,14 @@ public class CropPropertyController extends BaseController {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    @ApiOperation(value = "获取作物属性", notes = "获取作物属性")
+    @ApiOperation(value = "获取作物生育期", notes = "获取作物生育期")
     @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "path", dataType = "Integer")
     @GetMapping("/list/{cropId}")
     public Result list(@PathVariable("cropId")Integer cropId){
-        QueryWrapper<CropPropertyVO> queryWrapper = new QueryWrapper();
+        QueryWrapper<CropGrowthPeriodVO> queryWrapper = new QueryWrapper();
         queryWrapper.eq("cropId",cropId);
-        return ResultUtil.success(cropPropertyService.list(queryWrapper));
+        return ResultUtil.success(cropGrowthPeriodService.list(queryWrapper));
     }
-
 
     //TODO.....
 }

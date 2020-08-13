@@ -61,6 +61,7 @@ public class CropParameterController extends BaseController {
     }
 
     @SysLog(prefix = "新增参数", value = LogType.ALL)
+    @Transactional(rollbackFor = Exception.class)
     @ApiOperation(value = "新增参数", notes = "新增参数")
     @ApiImplicitParam(name = "cropParameterVO", value = "参数实体", paramType = "body", dataType = "CropParameterVO")
     @PostMapping("/add")
@@ -73,6 +74,7 @@ public class CropParameterController extends BaseController {
         }
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @SysLog(prefix = "删除参数", value = LogType.ALL)
     @ApiOperation(value = "删除参数", notes = "删除参数")
     @ApiImplicitParam(name = "cropParameterId", value = "参数id", paramType = "path", dataType = "int")
