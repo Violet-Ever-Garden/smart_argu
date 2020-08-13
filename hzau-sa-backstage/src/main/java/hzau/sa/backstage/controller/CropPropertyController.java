@@ -62,9 +62,9 @@ public class CropPropertyController extends BaseController {
 
     @Transactional(rollbackFor = Exception.class)
     @ApiOperation(value = "删除属性", notes = "属性参数")
-    @ApiImplicitParam(name = "cropPropertyId", value = "属性id", paramType = "path", dataType = "int")
+    @ApiImplicitParam(name = "cropPropertyId", value = "属性id", paramType = "path", dataType = "String")
     @PostMapping("/delete/{cropPropertyId}")
-    public Result delete(@PathVariable("cropPropertyId") int cropPropertyId){
+    public Result delete(@PathVariable("cropPropertyId") String cropPropertyId){
         log.info(String.valueOf(cropPropertyId));
         boolean b = cropPropertyService.removeById(cropPropertyId);
         if(false == b){
@@ -76,10 +76,10 @@ public class CropPropertyController extends BaseController {
 
 
     @ApiOperation(value = "批量删除属性", notes = "批量删除属性")
-    @ApiImplicitParam(name = "ids", value = "属性id数组", paramType = "query", allowMultiple = true,dataType = "Integer")
+    @ApiImplicitParam(name = "ids", value = "属性id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
-    public Result deleteList(@RequestParam(value = "ids[]") Integer[] ids){
+    public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
         boolean b = cropPropertyService.removeByIds(Arrays.asList(ids));
         if(false==b){
             return ResultUtil.databaseError();
@@ -90,9 +90,9 @@ public class CropPropertyController extends BaseController {
 
     @Transactional(rollbackFor = Exception.class)
     @ApiOperation(value = "获取作物属性", notes = "获取作物属性")
-    @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "path", dataType = "Integer")
+    @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "path", dataType = "String")
     @GetMapping("/list/{cropId}")
-    public Result list(@PathVariable("cropId")Integer cropId){
+    public Result list(@PathVariable("cropId")String cropId){
         QueryWrapper<CropPropertyVO> queryWrapper = new QueryWrapper();
         queryWrapper.eq("cropId",cropId);
         return ResultUtil.success(cropPropertyService.list(queryWrapper));

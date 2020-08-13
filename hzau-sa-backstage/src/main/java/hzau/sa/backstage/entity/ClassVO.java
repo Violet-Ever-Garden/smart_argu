@@ -9,9 +9,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- *  VO
- * @author haokai
- * @date 2020-08-11
+ * ClassVO
+ * @author lvhao
+ * @date 2020-08-12
  */
 @Data
 @NoArgsConstructor
@@ -23,20 +23,20 @@ public class ClassVO {
 
 
 	/**
-	 * 
+	 * 自增主键
 	 */
 	@TableId(type=IdType.AUTO)
 	private Integer classId;
 
 
 	/**
-	 * 
+	 * 班级名称
 	 */
 	private String className;
 
 
 	/**
-	 * 
+	 * 年级
 	 */
 	private Integer gradeId;
 

@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 /**
- *  VO
- * @author haokai
- * @date 2020-08-11
+ * GradeVO
+ * @author lvhao
+ * @date 2020-08-12
  */
 @Data
 @NoArgsConstructor
@@ -25,20 +25,20 @@ public class GradeVO {
 
 
 	/**
-	 * 
+	 * 自增主键
 	 */
 	@TableId(type=IdType.AUTO)
-	private int gradeId;
+	private Integer gradeId;
 
 
 	/**
-	 * 
+	 * 名称
 	 */
 	private String gradeName;
 
 
 	/**
-	 * 
+	 * 创建时间
 	 */
 	private LocalDateTime operateTime;
 

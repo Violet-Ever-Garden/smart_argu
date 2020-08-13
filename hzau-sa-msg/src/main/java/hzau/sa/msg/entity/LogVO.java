@@ -1,6 +1,7 @@
 package hzau.sa.msg.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -21,7 +22,7 @@ public class LogVO implements Serializable {
     /**
      * 主键id
      */
-    @TableId(type= IdType.UUID)
+    @TableId(value = "log_id",type= IdType.UUID)
     private String logId;
     /**
      * 用户名
@@ -50,20 +51,24 @@ public class LogVO implements Serializable {
     /**
      * 创建时间
      */
+    @TableField(value = "create_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
 
     /**
      * 返回码
      */
+    @TableField(value = "ret_code")
     private String retCode;
     /**
      * 返回信息
      */
+    @TableField(value = "ret_msg")
     private String retMsg;
     /**
      * 用户客户端信息
      */
+    @TableField(value = "user_agent")
     private String userAgent;
 
 }

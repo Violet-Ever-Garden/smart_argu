@@ -35,8 +35,8 @@ public class MybatisPlusConfig {
     }
 
 
-    @Bean
-    public MyMetaObjectHandler myMetaObjectHandler() {
-        return new MyMetaObjectHandler();
-    }
+//    @Bean
+//    public MyMetaObjectHandler myMetaObjectHandler() {
+//        return new MyMetaObjectHandler();
+//    }
 }

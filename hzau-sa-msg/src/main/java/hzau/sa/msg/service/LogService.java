@@ -23,12 +23,10 @@ public class LogService extends BaseService<LogDao, LogVO> {
     private LogDao logDao;
 
     @Async
-    @Transactional(rollbackFor = Exception.class)
     public void saveLog(final LogVO logVO) {
         try{
             logDao.insert(logVO);
         }catch (Exception e){
-            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.error(e.toString());
         }
     }

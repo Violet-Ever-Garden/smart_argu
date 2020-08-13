@@ -48,15 +48,15 @@ public class CropParameterController extends BaseController {
     @ApiOperation(value = "分页模糊查参数", notes = "分页模糊查参数")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "query", dataType = "int")
+            @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "query", dataType = "String")
     })
     @GetMapping("/page")
-    public Result page(String keyword,int cropId){
+    public Result page(String keyword,String cropId){
         //String keyword = Convert.toStr(param.get("keyword"),"");
         //int cropId = Convert.toInt(param.get("cropId"));
         keyword = Convert.toStr(keyword,"");
         Page<CropParameterModel> page = getPage();
-        List<CropParameterModel> cropParameterModels = cropParameterService.selectCropParameterListPage(page, cropId, keyword);
+        List<CropParameterModel> cropParameterModels = cropParameterService.selectCropParameterListPage(page, Integer.parseInt(cropId), keyword);
         return ResultUtil.success(cropParameterModels);
     }
 
@@ -77,9 +77,9 @@ public class CropParameterController extends BaseController {
     @Transactional(rollbackFor = Exception.class)
     @SysLog(prefix = "删除参数", value = LogType.ALL)
     @ApiOperation(value = "删除参数", notes = "删除参数")
-    @ApiImplicitParam(name = "cropParameterId", value = "参数id", paramType = "path", dataType = "int")
+    @ApiImplicitParam(name = "cropParameterId", value = "参数id", paramType = "path", dataType = "String")
     @PostMapping("/delete/{cropParameterId}")
-    public Result delete(@PathVariable("cropParameterId") int cropParameterId){
+    public Result delete(@PathVariable("cropParameterId") String cropParameterId){
         log.info(String.valueOf(cropParameterId));
         boolean b = cropParameterService.removeById(cropParameterId);
         if(false == b){
@@ -91,10 +91,10 @@ public class CropParameterController extends BaseController {
 
     @SysLog(prefix = "批量删除参数", value = LogType.ALL)
     @ApiOperation(value = "批量删除参数", notes = "批量删除参数")
-    @ApiImplicitParam(name = "ids", value = "参数id数组", paramType = "query", allowMultiple = true,dataType = "Integer")
+    @ApiImplicitParam(name = "ids", value = "参数id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
-    public Result deleteList(@RequestParam(value = "ids[]") Integer[] ids){
+    public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
         boolean b = cropParameterService.removeByIds(Arrays.asList(ids));
         if(false==b){
             return ResultUtil.databaseError();

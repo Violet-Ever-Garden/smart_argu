@@ -6,9 +6,6 @@ import hzau.sa.backstage.entity.CropParameterModel;
 import hzau.sa.backstage.entity.CropParameterVO;
 import hzau.sa.backstage.service.CropParameterService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import hzau.sa.msg.util.ResultUtil;
-import javafx.scene.control.Pagination;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

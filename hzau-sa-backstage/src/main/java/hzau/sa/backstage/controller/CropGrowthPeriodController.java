@@ -61,9 +61,9 @@ public class CropGrowthPeriodController extends BaseController {
 
     @Transactional(rollbackFor = Exception.class)
     @ApiOperation(value = "删除生育期", notes = "删除生育期")
-    @ApiImplicitParam(name = "cropGrowthPeriodId", value = "生育期id", paramType = "path", dataType = "int")
+    @ApiImplicitParam(name = "cropGrowthPeriodId", value = "生育期id", paramType = "path", dataType = "String")
     @PostMapping("/delete/{cropGrowthPeriodId}")
-    public Result delete(@PathVariable("cropGrowthPeriodId") int cropGrowthPeriodId){
+    public Result delete(@PathVariable("cropGrowthPeriodId") String cropGrowthPeriodId){
         log.info(String.valueOf(cropGrowthPeriodId));
         boolean b = cropGrowthPeriodService.removeById(cropGrowthPeriodId);
         if(false == b){
@@ -75,10 +75,10 @@ public class CropGrowthPeriodController extends BaseController {
 
 
     @ApiOperation(value = "批量删除生育期", notes = "批量删除生育期")
-    @ApiImplicitParam(name = "ids", value = "生育期id数组", paramType = "query", allowMultiple = true,dataType = "Integer")
+    @ApiImplicitParam(name = "ids", value = "生育期id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
-    public Result deleteList(@RequestParam(value = "ids[]") Integer[] ids){
+    public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
         boolean b = cropGrowthPeriodService.removeByIds(Arrays.asList(ids));
         if(false==b){
             return ResultUtil.databaseError();
@@ -89,9 +89,9 @@ public class CropGrowthPeriodController extends BaseController {
 
     @Transactional(rollbackFor = Exception.class)
     @ApiOperation(value = "获取作物生育期", notes = "获取作物生育期")
-    @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "path", dataType = "Integer")
+    @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "path", dataType = "String")
     @GetMapping("/list/{cropId}")
-    public Result list(@PathVariable("cropId")Integer cropId){
+    public Result list(@PathVariable("cropId")String cropId){
         QueryWrapper<CropGrowthPeriodVO> queryWrapper = new QueryWrapper();
         queryWrapper.eq("cropId",cropId);
         return ResultUtil.success(cropGrowthPeriodService.list(queryWrapper));
