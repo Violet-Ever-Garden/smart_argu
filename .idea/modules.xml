@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/hzau-sa-configure/hzau-sa-configure.iml" filepath="$PROJECT_DIR$/hzau-sa-configure/hzau-sa-configure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzau-Smart-Agriculture.iml" filepath="$PROJECT_DIR$/hzau-Smart-Agriculture.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzau-sa-backstage/hzau-sa-backstage.iml" filepath="$PROJECT_DIR$/hzau-sa-backstage/hzau-sa-backstage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzau-sa-generator/hzau-sa-generator.iml" filepath="$PROJECT_DIR$/hzau-sa-generator/hzau-sa-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzau-sa-msg/hzau-sa-msg.iml" filepath="$PROJECT_DIR$/hzau-sa-msg/hzau-sa-msg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzau-sa-security/hzau-sa-security.iml" filepath="$PROJECT_DIR$/hzau-sa-security/hzau-sa-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzau-sa-stater/hzau-sa-stater.iml" filepath="$PROJECT_DIR$/hzau-sa-stater/hzau-sa-stater.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzau-sa-trainingReport/hzau-sa-trainingReport.iml" filepath="$PROJECT_DIR$/hzau-sa-trainingReport/hzau-sa-trainingReport.iml" />
     </modules>
   </component>
 </project>
