@@ -30,4 +30,4 @@ mybatis-plus:
     map-underscore-to-camel-case: false
     cache-enabled: false
     jdbc-type-for-null: 'null'
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
