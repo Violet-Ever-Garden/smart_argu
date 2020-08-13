@@ -79,9 +79,9 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="localRepository" value="D:\Maven\repository" />
-        <option name="mavenHome" value="D:/Maven/apache-maven-3.6.3" />
-        <option name="userSettingsFile" value="D:\Maven\apache-maven-3.6.3\conf\settings.xml" />
+        <option name="localRepository" value="F:\maven_repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../apache-maven-3.6.3-bin/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="F:\apache-maven-3.6.3-bin\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -110,7 +110,11 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/hzau-sa-backstage/src/main/resources" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+>>>>>>> origin/wuyihu-dev
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -165,7 +169,18 @@
       <select />
     </treeState>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Spring Boot.BackStageApplication">
+=======
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.GeneratorService">
+>>>>>>> origin/wuyihu-dev
     <configuration name="GeneratorService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GeneratorService" />
       <module name="hzau-sa-generator" />
@@ -189,6 +204,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="ClassServiceTest.findAllClass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hzau-sa-backstage" />
       <extension name="coverage">
@@ -221,6 +237,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+=======
+>>>>>>> origin/wuyihu-dev
     <configuration default="true" type="JetRunConfigurationType">
       <module name="test" />
       <option name="VM_PARAMETERS" />
@@ -311,11 +329,19 @@
     </configuration>
     <recent_temporary>
       <list>
+<<<<<<< HEAD
         <item itemvalue="JUnit.GradeDaoTest.selectGradeIdByName" />
         <item itemvalue="JUnit.AsClassfieldDaoTest.queryFieldIdByName" />
         <item itemvalue="Application.GeneratorService" />
         <item itemvalue="Spring Boot.Application (2)" />
         <item itemvalue="JUnit.ClassServiceTest.findAllClass" />
+=======
+        <item itemvalue="Application.GeneratorService" />
+        <item itemvalue="JUnit.GradeTest.insertGrade" />
+        <item itemvalue="Spring Boot.TestMain (1)" />
+        <item itemvalue="Spring Boot.TestMain" />
+        <item itemvalue="Spring Boot.Main (1)" />
+>>>>>>> origin/wuyihu-dev
       </list>
     </recent_temporary>
   </component>
@@ -331,7 +357,16 @@
       <updated>1596859745758</updated>
       <workItem from="1596859748341" duration="28740000" />
       <workItem from="1596891276574" duration="43423000" />
+<<<<<<< HEAD
       <workItem from="1597310199432" duration="300000" />
+=======
+      <workItem from="1597216555433" duration="14822000" />
+      <workItem from="1597240000570" duration="153000" />
+      <workItem from="1597280372963" duration="11930000" />
+      <workItem from="1597304152748" duration="2520000" />
+      <workItem from="1597306997500" duration="250000" />
+      <workItem from="1597307592533" duration="65000" />
+>>>>>>> origin/wuyihu-dev
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>
@@ -455,6 +490,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="update README" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
     <state x="407" y="0" key="#Auto_Import" timestamp="1597226926374">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -535,5 +571,88 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597290947403" />
+=======
+    <state x="291" y="-900" key="#Project_Structure" timestamp="1597216564616" />
+    <state x="121" y="0" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state x="291" y="-900" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@140.-900.1600.900" timestamp="1597216564616" />
+    <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597216564616" />
+    <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser" timestamp="1597306654655">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1597306654655" />
+    <state x="371" y="107" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597216564616" />
+    <state x="371" y="107" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1597216564616" />
+    <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state x="421" y="115" key="FileChooserDialogImpl" timestamp="1597216775334">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state x="421" y="115" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597216775334" />
+    <state width="1493" height="82" key="GridCell.Tab.0.bottom" timestamp="1597303795599">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1236" height="563" key="GridCell.Tab.0.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state width="1493" height="82" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597303795599" />
+    <state width="1493" height="82" key="GridCell.Tab.0.center" timestamp="1597303795599">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1236" height="563" key="GridCell.Tab.0.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state width="1493" height="82" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597303795599" />
+    <state width="1493" height="82" key="GridCell.Tab.0.left" timestamp="1597303795599">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1236" height="563" key="GridCell.Tab.0.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state width="1493" height="82" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597303795599" />
+    <state width="1493" height="82" key="GridCell.Tab.0.right" timestamp="1597303795599">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1236" height="563" key="GridCell.Tab.0.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state width="1493" height="82" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597303795599" />
+    <state width="1024" height="240" key="GridCell.Tab.1.bottom" timestamp="1597233876592">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1236" height="563" key="GridCell.Tab.1.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state width="1024" height="240" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597233876592" />
+    <state width="1024" height="240" key="GridCell.Tab.1.center" timestamp="1597233876592">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1236" height="563" key="GridCell.Tab.1.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state width="1024" height="240" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597233876592" />
+    <state width="1024" height="240" key="GridCell.Tab.1.left" timestamp="1597233876592">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1236" height="563" key="GridCell.Tab.1.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state width="1024" height="240" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597233876592" />
+    <state width="1024" height="240" key="GridCell.Tab.1.right" timestamp="1597233876592">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1236" height="563" key="GridCell.Tab.1.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state width="1024" height="240" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597233876592" />
+    <state x="299" y="67" key="Maven.ArtifactSearchDialog" timestamp="1597218563085">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="299" y="67" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1597218563085" />
+    <state x="142" y="5" key="SettingsEditor" timestamp="1597216591526">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="142" y="5" key="SettingsEditor/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state x="142" y="5" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597216591526" />
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2" timestamp="1597216564616" />
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state x="177" y="78" width="1224" height="658" key="new project wizard" timestamp="1597240126336">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="3" y="39" width="1224" height="658" key="new project wizard/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state x="144" y="-851" key="new project wizard/0.0.1280.720/140.-900.1600.900@140.-900.1600.900" timestamp="1597216564616" />
+    <state x="177" y="78" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1597240126336" />
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1597303013829">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597216564616" />
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597303013829" />
+>>>>>>> origin/wuyihu-dev
   </component>
 </project>
