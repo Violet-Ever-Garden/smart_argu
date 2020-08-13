@@ -95,7 +95,9 @@ public class AsTeacherclassController extends BaseController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "teacherId", value = "老师id", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "keyword", value = "班级名称关键字", paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "gradeName", value = "年级名称", paramType = "query", dataType = "String")
+            @ApiImplicitParam(name = "gradeName", value = "年级名称", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
     })
     @GetMapping("/listByTeacherId")
     public Result listByTeacherId(String teacherId,String keyword,String gradeName){
@@ -110,7 +112,9 @@ public class AsTeacherclassController extends BaseController {
     @ApiOperation(value = "分页查询无老师班级", notes = "查询无老师班级")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "班级名称关键字", paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "gradeName", value = "年级名称", paramType = "query", dataType = "String")
+            @ApiImplicitParam(name = "gradeName", value = "年级名称", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
     })
     @GetMapping("/listClassWithoutTeacher")
     public Result listClassWithoutTeacher(String keyword,String gradeName){

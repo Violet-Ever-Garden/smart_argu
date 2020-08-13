@@ -12,6 +12,7 @@ import hzau.sa.msg.enums.LogType;
 import hzau.sa.msg.util.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +69,12 @@ public class CropController extends BaseController {
 
 
     @ApiOperation(value = "条件分页查询", notes = "条件分页查询")
-    @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String"),
+
+    })
     @GetMapping("/page")
     public Result page(String keyword){
         keyword = Convert.toStr(keyword,"");

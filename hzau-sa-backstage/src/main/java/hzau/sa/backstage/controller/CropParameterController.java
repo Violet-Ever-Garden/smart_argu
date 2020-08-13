@@ -48,7 +48,9 @@ public class CropParameterController extends BaseController {
     @ApiOperation(value = "分页模糊查参数", notes = "分页模糊查参数")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "query", dataType = "String")
+            @ApiImplicitParam(name = "cropId", value = "作物id", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
     })
     @GetMapping("/page")
     public Result page(String keyword,String cropId){
