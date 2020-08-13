@@ -57,7 +57,7 @@ public interface StudentService  {
     /**
      * 从模板中添加学生
      */
-    public Result addStudentByTemplate(MultipartFile multipartFile, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse);
+    public Result addStudentByTemplate(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse);
 
     /**
      * 删除学生
@@ -72,6 +72,6 @@ public interface StudentService  {
     /**
      * 模板下载
      */
-    public Result downloadTemplate(MultipartFile multipartFile, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse);
+    public Result downloadTemplate(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse);
 
 }

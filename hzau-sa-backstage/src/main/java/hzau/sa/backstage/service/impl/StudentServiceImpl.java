@@ -14,9 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 
@@ -61,7 +64,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
     @Override
     public Result getAllGrades(){
-        QueryWrapper<StudentVO> wrapper = new QueryWrapper<StudentVO>;
+        QueryWrapper<StudentVO> wrapper = new QueryWrapper<StudentVO>();
         wrapper.select("gradeId");
 
         List<StudentVO> students= studentDao.selectList(wrapper);
@@ -93,7 +96,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
     @Override
     public Result gerAllClasses(){
-        QueryWrapper<StudentVO> wrapper = new QueryWrapper<StudentVO>;
+        QueryWrapper<StudentVO> wrapper = new QueryWrapper<StudentVO>();
         wrapper.select("classId");
 
         List<StudentVO> students= studentDao.selectList(wrapper);
@@ -154,7 +157,6 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     }
 
 
-
     /**
      * 删除学生
      */
@@ -181,14 +183,42 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      * 从模板中添加学生
      */
     @Override
-    public Result addStudentByTemplate(MultipartFile multipartFile, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
-
+    public Result addStudentByTemplate(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        return  ResultUtil.success();
     }
 
     /**
      * 模板下载
      */
-    public Result downloadTemplate(MultipartFile multipartFile, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+    @Override
+    public Result downloadTemplate(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        //获取真实路径
+        String realPath=httpServletRequest.getServletContext().getRealPath("templates/test.xlsx");
+        //获取文件名
+        String fileName=realPath.substring(realPath.lastIndexOf("\\")+1);
+        //获取文件流
+        try {
+            FileInputStream fileInputStream = new FileInputStream(new File(realPath));
+            //让浏览器支持下载
+            httpServletResponse.setHeader("Content-Disposition", "attachment;"+ URLEncoder.encode(fileName,"utf-8"));
+            //获取输出流
+            ServletOutputStream outputStream = httpServletResponse.getOutputStream();
 
+            int length=0;
+            byte[] bytes=new byte[1024];
+            while ((length=fileInputStream.read(bytes))!=-1){
+                outputStream.write(bytes,0,length);
+            }
+
+            fileInputStream.close();
+            outputStream.close();
+            return ResultUtil.success();
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return ResultUtil.error("下载失败");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResultUtil.error("下载失败");
+        }
     }
 }
