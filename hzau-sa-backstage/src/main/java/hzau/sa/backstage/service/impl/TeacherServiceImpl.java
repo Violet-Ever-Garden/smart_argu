@@ -7,6 +7,7 @@ import hzau.sa.backstage.entity.StudentVO;
 import hzau.sa.backstage.entity.TeacherVO;
 import hzau.sa.backstage.dao.TeacherDao;
 import hzau.sa.backstage.entity.TeacherVO;
+import hzau.sa.backstage.entity.TeacherWrapper;
 import hzau.sa.backstage.service.TeacherService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import hzau.sa.msg.entity.Result;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * <p>
@@ -78,21 +80,34 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
      * 增加老师
      */
     @Override
-    public Result addTeacher(TeacherVO teacherVO) {
-        QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("teacherId",teacherVO.getTeacherId()).or().eq("phoneNumber",teacherVO.getPhoneNumber());
+    public Result addTeacher(TeacherWrapper teacherWrapper) {
+        //解包装得到老师对象
+        TeacherVO teacherVO=new TeacherVO(teacherWrapper);
 
-        TeacherVO teacher = teacherDao.selectOne(queryWrapper);
-        if (teacher!=null){
-            return ResultUtil.paramError("该老师id或电话号码已经存在");
+        //判断该老师对象是否存在(id和手机号)
+        QueryWrapper<TeacherVO> teacherQueryWrapper = new QueryWrapper<>();
+        teacherQueryWrapper.eq("teacherId",teacherVO.getTeacherId())
+                .or()
+                .eq("phoneNumber",teacherVO.getPhoneNumber());
+
+        List<TeacherVO> teachers = teacherDao.selectList(teacherQueryWrapper);
+
+        //如果存在则失败
+        if (!teachers.isEmpty()){
+            return ResultUtil.paramError("已存在该老师id或手机号码");
         }
 
+        //判断type是否为admin或teacher
+        if (!(teacherVO.getType().equals("admin") || teacherVO.getType().equals("teacher"))){
+            return ResultUtil.error("type不合法");
+        }
 
-
+        //不存在就插入
         if (teacherDao.insert(teacherVO)==0){
             return ResultUtil.databaseError();
         }
-        return ResultUtil.success();
+        return ResultUtil.success("默认密码为123456");
+
     }
 
     /**
@@ -133,14 +148,42 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
      * 更新老师
      */
     @Override
-    public Result updateTeacher(TeacherVO teacherVO) {
-        QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("teacherId",teacherVO.getTeacherId());
+    public Result updateTeacher(TeacherWrapper teacherWrapper) {
+        //首先得到该老师
+        QueryWrapper<TeacherVO> teacherQueryWrapper = new QueryWrapper<>();
+        teacherQueryWrapper.eq("teacherId",teacherWrapper.getTeacherId());
 
+        TeacherVO teacher = teacherDao.selectOne(teacherQueryWrapper);
 
-        if (teacherDao.update(teacherVO,queryWrapper)!=0){
-            return ResultUtil.success();
+        //判断是否存在该老师
+        if (teacher==null){
+            return ResultUtil.error("老师id不对");
         }
-        return ResultUtil.error("更新失败");
+
+        //将teacherWrapper解包装，得到更新后的老师
+        TeacherVO teacherW=new TeacherVO(teacherWrapper);
+        teacherW.setPassword(teacher.getPassword());
+
+        
+        //得到更新后老师的id和phoneNumber，与数据库比较
+        QueryWrapper<TeacherVO> teacherQueryWrapper1 = new QueryWrapper<>();
+        teacherQueryWrapper1.eq("phoneNumber",teacherW.getPhoneNumber());
+
+        TeacherVO teacher2 = teacherDao.selectOne(teacherQueryWrapper1);
+        if (teacher2!=null){
+            return ResultUtil.paramError("该手机号码已经存在");
+        }
+
+        //判断type是否合法
+        if (!(teacherW.getType().equals("admin") || teacherW.getType().equals("teacher"))){
+            return ResultUtil.error("type不合法");
+        }
+
+
+        //插入
+        if (teacherDao.update(teacherW,teacherQueryWrapper)==0){
+            return ResultUtil.databaseError();
+        }
+        return ResultUtil.success();
     }
 }

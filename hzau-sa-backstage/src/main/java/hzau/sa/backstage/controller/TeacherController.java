@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import javax.validation.Valid;
 
+import hzau.sa.backstage.entity.TeacherWrapper;
 import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.entity.Result;
 import io.swagger.annotations.ApiImplicitParams;
@@ -68,16 +69,22 @@ public class TeacherController{
     public Result pageByName(String name,int pageNo){
         return teacherService.pageByName(name, pageNo);
     }
+
+
+
     /**
      * 增加老师
      */
     @SysLog(prefix = "增加老师")
     @ApiOperation("增加老师")
-    @ApiImplicitParam(name = "teacher",value = "要插入的老师",paramType = "body",dataType = "TeacherVO")
+    @ApiImplicitParam(name = "teacherWrapper",value = "要插入的老师包装",paramType = "body",dataType = "TeacherWrapper")
     @PostMapping("/addTeacher")
-    public Result addTeacher(@RequestBody TeacherVO teacher){
-        return teacherService.addTeacher(teacher);
+    public Result addTeacher(@RequestBody TeacherWrapper teacherWrapper){
+        return teacherService.addTeacher(teacherWrapper);
     }
+
+
+
     /**
      * 删除老师
      */
@@ -92,6 +99,8 @@ public class TeacherController{
     /**
      * 批量删除老师
      */
+
+
     @SysLog(prefix = "批量删除老师")
     @ApiOperation("批量删除老师")
     @ApiImplicitParam(name = "teacherIds",value = "批量删除老师的id",paramType = "query",allowMultiple = true,dataType = "String")
@@ -99,14 +108,16 @@ public class TeacherController{
     public Result deleteTeacher(String[] teacherIds){
         return teacherService.deleteTeachers(teacherIds);
     }
+
+
     /**
      * 更新老师
      */
     @SysLog(prefix = "更新老师")
     @ApiOperation("更新老师")
-    @ApiImplicitParam(name = "teacher",value = "更新的老师",paramType = "body",dataType = "TeacherVO")
+    @ApiImplicitParam(name = "teacherWrapper",value = "更新的老师",paramType = "body",dataType = "TeacherWrapper")
     @PostMapping("/updateTeacher")
-    public Result updateTeacher(@RequestBody TeacherVO teacher){
-        return teacherService.updateTeacher(teacher);
+    public Result updateTeacher(@RequestBody TeacherWrapper teacherWrapper){
+        return teacherService.updateTeacher(teacherWrapper);
     }
 }

@@ -24,44 +24,30 @@ import org.springframework.stereotype.Repository;
 public class TeacherVO {
 
         private static final long serialVersionUID = 1L;
+        private static final String DEFAULT_PASSWORD="123456";
 
-
-        /**
-         *
-         */
         private String teacherId;
 
-
-        /**
-         *
-         */
         private String password;
-
-
-        /**
-         *
-         */
 
         private String phoneNumber;
 
-
-
-        /**
-         *
-         */
         private String teacherName;
 
-
-        /**
-         *
-         */
         private Integer isOperatemonitor;
 
-
-
-        /**
-         *
-         */
         private String type;
 
+        public TeacherVO(TeacherWrapper teacherWrapper){
+                if (teacherWrapper.getIsOperatemonitor().equals("否")){
+                        this.isOperatemonitor=0;
+                }else {
+                        this.isOperatemonitor=1;
+                }
+                this.password=TeacherVO.DEFAULT_PASSWORD;
+                this.phoneNumber=teacherWrapper.getPhoneNumber();
+                this.teacherId=teacherWrapper.getTeacherId();
+                this.type=teacherWrapper.getType();
+                this.teacherName=teacherWrapper.getTeacherName();
+        }
 }

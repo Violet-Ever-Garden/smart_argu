@@ -1,6 +1,7 @@
 package hzau.sa.backstage.service;
 
 import com.baomidou.mybatisplus.extension.api.R;
+import hzau.sa.backstage.entity.TeacherWrapper;
 import hzau.sa.msg.entity.Result;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public interface TeacherService  {
     /**
      * 增加老师
      */
-    public Result addTeacher(TeacherVO teacherVO);
+    public Result addTeacher(TeacherWrapper teacherWrapper);
     /**
      * 删除老师
      */
@@ -37,6 +38,6 @@ public interface TeacherService  {
     /**
      * 更新老师
      */
-    public Result updateTeacher(TeacherVO teacherVO);
+    public Result updateTeacher(TeacherWrapper teacherWrapper);
 
 }

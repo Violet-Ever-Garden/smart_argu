@@ -1,31 +1,18 @@
 package hzau.sa.backstage.controller;
 
-import java.util.Arrays;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
-import com.baomidou.mybatisplus.extension.api.R;
+import hzau.sa.backstage.entity.StudentWrapper;
 import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.entity.Result;
 import io.swagger.annotations.ApiImplicitParams;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import hzau.sa.backstage.entity.StudentVO;
 import hzau.sa.backstage.service.StudentService;
@@ -61,15 +48,6 @@ public class StudentController{
     }
 
 
-    /**
-     * 返回所有年级
-     */
-    @SysLog(prefix = "返回所有年级")
-    @ApiOperation("返回所有年级")
-    @PostMapping("/getAllGrades")
-    public Result getAllGrades(){
-        return studentService.getAllGrades();
-    }
 
     /**
      * 按年级分页
@@ -82,19 +60,10 @@ public class StudentController{
     }
     )
     @PostMapping("/pageByGrade")
-    public Result pageByGrade(int gradeId,int pageNo){
-        return studentService.pageByGrade(gradeId,pageNo);
+    public Result pageByGrade(String gradeName,int pageNo){
+        return studentService.pageByGrade(gradeName,pageNo);
     }
 
-    /**
-     * 返回所有班级
-     */
-    @SysLog(prefix = "返回所有班级")
-    @ApiOperation("返回所有班级")
-    @PostMapping("/getAllClasses")
-    public Result getAllClasses(){
-        return studentService.gerAllClasses();
-    }
 
     /**
      * 按班级分页
@@ -108,8 +77,8 @@ public class StudentController{
     }
     )
     @PostMapping("/pageByClass")
-    public Result pageByClass(int classId,int pageNo){
-        return studentService.pageByClasses(classId,pageNo);
+    public Result pageByClass(String className,int pageNo){
+        return studentService.pageByClasses(className,pageNo);
     }
 
     /**
@@ -132,9 +101,9 @@ public class StudentController{
      */
     @SysLog(prefix = "添加学生")
     @ApiOperation("添加学生")
-    @ApiImplicitParam(name = "student",value = "要添加的学生",paramType ="body",dataType = "StudentVO")
+    @ApiImplicitParam(name = "student",value = "要添加的学生",paramType ="body",dataType = "StudentWrapper")
     @PostMapping("/addStudent")
-    public Result addStudent(@RequestBody StudentVO student){
+    public Result addStudent(@RequestBody StudentWrapper student){
         return studentService.addStudent(student);
     }
 
@@ -177,10 +146,10 @@ public class StudentController{
      */
     @SysLog(prefix = "更新学生")
     @ApiOperation("更新学生")
-    @ApiImplicitParam(name = "student",value = "要更新的学生",dataType = "StudentVO")
+    @ApiImplicitParam(name = "student",value = "要更新的学生",dataType = "StudentWrapper")
     @PostMapping("/updateStudent")
-    public Result updateStudent(@RequestBody StudentVO studentVO){
-        return studentService.updateStudent(studentVO);
+    public Result updateStudent(@RequestBody StudentWrapper student){
+        return studentService.updateStudent(student);
     }
 
     /**

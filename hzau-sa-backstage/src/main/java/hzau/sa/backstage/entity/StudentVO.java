@@ -4,8 +4,6 @@ import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.baomidou.mybatisplus.annotation.*;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -24,6 +22,8 @@ public class StudentVO {
 	@ExcelIgnore
 	private static final long serialVersionUID = 1L;
 
+	@ExcelIgnore
+	private static final String DEFAULT_PASSWORD="123456";
 
 	/**
 	 * 
@@ -77,8 +77,29 @@ public class StudentVO {
 	/**
 	 * 
 	 */
-	@TableField(fill = FieldFill.INSERT)
 	@ExcelIgnore
 	private Integer isOperatewfm;
 
+	public StudentVO(StudentWrapper studentWrapper){
+		this.studentName= studentWrapper.getStudentName();
+
+		if (studentWrapper.getIsOperatemonitor().equals("否")){
+			this.setIsOperatemonitor(0);
+		}else {
+			this.setIsOperatemonitor(1);
+		}
+
+		if (studentWrapper.getIsOperatewfm().equals("否")){
+			this.setIsOperatewfm(0);
+		}else {
+			this.setIsOperatewfm(1);
+		}
+
+		this.phoneNumber= studentWrapper.getPhoneNumber();
+		this.studentId= studentWrapper.getStudentId();
+		this.studentId=studentWrapper.getStudentId();
+		this.classId=0;
+		this.setPassword(StudentVO.DEFAULT_PASSWORD);
+		this.gradeId=0;
+	}
 }
