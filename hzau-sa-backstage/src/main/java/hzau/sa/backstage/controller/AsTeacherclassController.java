@@ -8,8 +8,10 @@ import cn.hutool.core.convert.Convert;
 import hzau.sa.backstage.entity.ClassGradeModel;
 import hzau.sa.backstage.entity.TeacherClassModel;
 import hzau.sa.backstage.service.impl.AsTeacherclassServiceImpl;
+import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
+import hzau.sa.msg.enums.LogType;
 import hzau.sa.msg.util.ResultUtil;
 import io.swagger.annotations.ApiImplicitParams;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +53,7 @@ public class AsTeacherclassController extends BaseController {
     @Autowired
     private AsTeacherclassServiceImpl asTeacherclassService;
 
+    @SysLog(prefix = "新增班师关系",value = LogType.ALL)
     @ApiOperation(value = "新增班师关系", notes = "新增班师关系")
     @ApiImplicitParam(name = "asTeacherclassVO", value = "班师关系实体", paramType = "body", allowMultiple = true,dataType = "AsTeacherclassVO")
     @PostMapping("/add")
@@ -63,6 +66,7 @@ public class AsTeacherclassController extends BaseController {
         }
     }
 
+    @SysLog(prefix = "删除班师关系",value = LogType.ALL)
     @Transactional(rollbackFor = Exception.class)
     @ApiOperation(value = "删除班师关系", notes = "删除班师关系")
     @ApiImplicitParam(name = "cropPropertyId", value = "关系id", paramType = "path", dataType = "String")
@@ -77,9 +81,9 @@ public class AsTeacherclassController extends BaseController {
         }
     }
 
-
+    @SysLog(prefix = "批量删除班师关系",value = LogType.ALL)
     @ApiOperation(value = "批量删除班师关系", notes = "批量删除班师关系")
-    @ApiImplicitParam(name = "ids", value = "班师关系id数组", paramType = "query", allowMultiple = true,dataType = "String")
+    @ApiImplicitParam(name = "ids[]", value = "班师关系id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
     public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
@@ -95,7 +99,9 @@ public class AsTeacherclassController extends BaseController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "teacherId", value = "老师id", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "keyword", value = "班级名称关键字", paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "gradeName", value = "年级名称", paramType = "query", dataType = "String")
+            @ApiImplicitParam(name = "gradeName", value = "年级名称", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
     })
     @GetMapping("/listByTeacherId")
     public Result listByTeacherId(String teacherId,String keyword,String gradeName){
@@ -110,7 +116,9 @@ public class AsTeacherclassController extends BaseController {
     @ApiOperation(value = "分页查询无老师班级", notes = "查询无老师班级")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "班级名称关键字", paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "gradeName", value = "年级名称", paramType = "query", dataType = "String")
+            @ApiImplicitParam(name = "gradeName", value = "年级名称", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
     })
     @GetMapping("/listClassWithoutTeacher")
     public Result listClassWithoutTeacher(String keyword,String gradeName){

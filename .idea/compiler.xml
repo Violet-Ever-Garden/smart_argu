@@ -8,12 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hzau-sa-generator" />
-        <module name="test2" />
-        <module name="hzau-sa-security" />
-        <module name="hzausastater" />
-        <module name="hzau-sa-msg" />
-        <module name="hzausatrainingReport" />
         <module name="hzau-sa-stater" />
+        <module name="hzau-sa-security" />
+        <module name="hzau-sa-msg" />
         <module name="hzau-sa-trainingReport" />
         <module name="hzau-sa-backstage" />
       </profile>
