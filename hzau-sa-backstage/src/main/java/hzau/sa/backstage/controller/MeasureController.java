@@ -48,10 +48,10 @@ public class MeasureController{
 
     @SysLog(prefix = "分页查询措施")
     @ApiOperation("分页查询措施")
-    @ApiImplicitParam(name = "pageNo", value = "请求的页数", paramType = "query", dataType = "int")
+    @ApiImplicitParam(name = "pageNo", value = "请求的页数", paramType = "query", dataType = "String")
     @PostMapping("/page")
-    public Result page(int pageNo) {
-        return measureService.page(pageNo);
+    public Result page(String pageNo) {
+        return measureService.page(Integer.parseInt(pageNo));
     }
 
 
@@ -63,10 +63,10 @@ public class MeasureController{
 
     @SysLog(prefix = "删除措施")
     @ApiOperation("删除措施")
-    @ApiImplicitParam(name = "measureId",value = "删除措施的id",paramType = "query",dataType = "Integer")
+    @ApiImplicitParam(name = "measureId",value = "删除措施的id",paramType = "query",dataType = "String")
     @PostMapping("/deleteMeasure")
-    public Result deleteMeasure(Integer measureId){
-        return measureService.deleteMeasure(measureId);
+    public Result deleteMeasure(String measureId){
+        return measureService.deleteMeasure(Integer.valueOf(measureId));
     }
 
     @SysLog(prefix = "批量删除措施")
@@ -87,10 +87,10 @@ public class MeasureController{
     @ApiOperation("查找措施")
     @ApiImplicitParams({
     @ApiImplicitParam(name = "measureName",value = "查找措施的名字",paramType = "query",dataType = "String"),
-    @ApiImplicitParam(name = "pageNo",value = "即将显示的页数",paramType = "query",dataType = "int")
+    @ApiImplicitParam(name = "pageNo",value = "即将显示的页数",paramType = "query",dataType = "String")
     })
     @PostMapping("/findMeasure")
-    public Result findMeasure(String measureName,int pageNo){
-        return measureService.findMeasure(measureName,pageNo);
+    public Result findMeasure(String measureName,String pageNo){
+        return measureService.findMeasure(measureName, Integer.parseInt(pageNo));
     }
 }

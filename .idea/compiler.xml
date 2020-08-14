@@ -8,16 +8,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hzau-sa-generator" />
-        <module name="hzau-sa-stater" />
         <module name="hzau-sa-fileTest" />
         <module name="hzau-sa-security" />
         <module name="hzau-sa-msg" />
+        <module name="hzau-sa-stater" />
         <module name="hzau-sa-trainingReport" />
         <module name="hzau-sa-backstage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-<<<<<<< HEAD
       <module name="hzau-sa-backstage" target="1.8" />
       <module name="hzau-sa-fileTest" target="1.8" />
       <module name="hzau-sa-generator" target="1.8" />
@@ -26,13 +25,6 @@
       <module name="hzau-sa-stater" target="1.8" />
       <module name="hzau-sa-trainingReport" target="1.8" />
       <module name="hzau-Smart-Agriculture" target="1.8" />
-=======
-      <module name="hzau-sa-configure" target="1.8" />
-      <module name="hzau-sa-test" target="1.8" />
-      <module name="mytest" target="1.8" />
-      <module name="test" target="1.8" />
-      <module name="test2" target="1.8" />
->>>>>>> origin/wuyihu-dev
     </bytecodeTargetLevel>
   </component>
 </project>
