@@ -50,7 +50,7 @@ public class TeacherController{
      */
     @SysLog(prefix = "分页显示老师")
     @ApiOperation("分页显示老师")
-    @ApiImplicitParam(name = "pageNo",value = "要显示的页数",dataType = "int")
+    @ApiImplicitParam(name = "pageNo",value = "要显示的页数",paramType = "query",dataType = "int")
     @PostMapping("/page")
     public Result page(int pageNo){
         return teacherService.page(pageNo);
@@ -58,11 +58,11 @@ public class TeacherController{
     /**
      * 按名字分页老师
      */
-    @SysLog(prefix = "分页显示老师")
-    @ApiOperation("分页显示老师")
+    @SysLog(prefix = "按名字分页老师")
+    @ApiOperation("按名字分页老师")
     @ApiImplicitParams({
-    @ApiImplicitParam(name = "name",value = "老师的名字",dataType = "String"),
-    @ApiImplicitParam(name="pageNo",value = "要显示的页数",dataType = "int")
+    @ApiImplicitParam(name = "name",value = "老师的名字",paramType = "query",dataType = "String"),
+    @ApiImplicitParam(name="pageNo",value = "要显示的页数",paramType = "query",dataType = "int")
     })
     @PostMapping("/pageByName")
     public Result pageByName(String name,int pageNo){
@@ -73,9 +73,9 @@ public class TeacherController{
      */
     @SysLog(prefix = "增加老师")
     @ApiOperation("增加老师")
-    @ApiImplicitParam(name = "teacher",value = "要插入的老师",dataType = "TeacherVO")
+    @ApiImplicitParam(name = "teacher",value = "要插入的老师",paramType = "body",dataType = "TeacherVO")
     @PostMapping("/addTeacher")
-    public Result addTeacher(TeacherVO teacher){
+    public Result addTeacher(@RequestBody TeacherVO teacher){
         return teacherService.addTeacher(teacher);
     }
     /**
@@ -84,17 +84,17 @@ public class TeacherController{
 
     @SysLog(prefix = "删除老师")
     @ApiOperation("删除老师")
-    @ApiImplicitParam(name = "teacherId",value = "删除老师的id",dataType = "String")
+    @ApiImplicitParam(name = "teacherId",value = "删除老师的id",paramType = "query",dataType = "String")
     @PostMapping("/deleteTeacher")
-    public Result deleteTeacher(String techerId){
-        return teacherService.deleteTeacher(techerId);
+    public Result deleteTeacher(String teacherId){
+        return teacherService.deleteTeacher(teacherId);
     }
     /**
      * 批量删除老师
      */
     @SysLog(prefix = "批量删除老师")
     @ApiOperation("批量删除老师")
-    @ApiImplicitParam(name = "teacherIds",value = "批量删除老师的id",allowMultiple = true,dataType = "String")
+    @ApiImplicitParam(name = "teacherIds",value = "批量删除老师的id",paramType = "query",allowMultiple = true,dataType = "String")
     @PostMapping("/deleteTeachers")
     public Result deleteTeacher(String[] teacherIds){
         return teacherService.deleteTeachers(teacherIds);
@@ -104,9 +104,9 @@ public class TeacherController{
      */
     @SysLog(prefix = "更新老师")
     @ApiOperation("更新老师")
-    @ApiImplicitParam(name = "teacher",value = "更新的老师",dataType = "TeacherVO")
+    @ApiImplicitParam(name = "teacher",value = "更新的老师",paramType = "body",dataType = "TeacherVO")
     @PostMapping("/updateTeacher")
-    public Result updateTeacher(TeacherVO teacher){
+    public Result updateTeacher(@RequestBody TeacherVO teacher){
         return teacherService.updateTeacher(teacher);
     }
 }

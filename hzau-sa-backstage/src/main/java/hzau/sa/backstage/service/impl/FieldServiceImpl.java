@@ -3,6 +3,7 @@ package hzau.sa.backstage.service.impl;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.additional.query.impl.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.service.additional.query.impl.QueryChainWrapper;
@@ -13,10 +14,13 @@ import hzau.sa.backstage.entity.FieldVO;
 import hzau.sa.backstage.service.FieldService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import hzau.sa.msg.entity.Result;
+import hzau.sa.msg.enums.CodeType;
 import hzau.sa.msg.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.function.Function;
 
@@ -65,11 +69,26 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
      */
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Result addField(FieldVO fieldVO){
-        if (fieldDao.insert(fieldVO)!=0){
-            return ResultUtil.success();
+        if (fieldVO.getFieldName()==null){
+            return ResultUtil.error("请输入地块名");
         }
-        return ResultUtil.error("插入失败");
+
+        QueryWrapper<FieldVO> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("fieldName",fieldVO.getFieldName());
+
+        FieldVO field = fieldDao.selectOne(queryWrapper);
+        if (field!=null){
+            return ResultUtil.error("地块名已存在，请重新输入");
+        }else {
+            fieldVO.setCreateTime(LocalDateTime.now());
+        }
+
+        if (fieldDao.insert(fieldVO)==0){
+            return ResultUtil.error("新增地块失败");
+        }
+        return ResultUtil.success("地块增加成功");
     }
 
 
@@ -80,10 +99,20 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
      */
     @Override
     public Result deleteField(Integer fieldId){
+        QueryWrapper<FieldVO> queryWrapper = new QueryWrapper<FieldVO>();
+        queryWrapper.eq("fieldId",fieldId);
+
+        FieldVO field = fieldDao.selectOne(queryWrapper);
+
+        if (field==null){
+            return ResultUtil.paramError("该地块id不存在");
+        }
+
         if (fieldDao.deleteById(fieldId)!=0){
             return ResultUtil.success();
         }
-        return ResultUtil.error("删除失败");
+        return ResultUtil.databaseError();
+
     }
 
     /**

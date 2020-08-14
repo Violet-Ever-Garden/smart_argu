@@ -1,8 +1,6 @@
 package hzau.sa.backstage.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,14 +19,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @TableName("field")
-@ApiModel("地块model")
 public class FieldVO {
 
 	private static final long serialVersionUID = 1L;
 
 
 
-	@ApiModelProperty("地块id")
 	@TableId(type=IdType.AUTO)
 	private Integer fieldId;
 
@@ -36,14 +32,13 @@ public class FieldVO {
 	/**
 	 * 
 	 */
-	@ApiModelProperty("地块名字")
 	private String fieldName;
 
 
 	/**
 	 * 
 	 */
-	@ApiModelProperty("地块创建时间")
+	@TableField(fill = FieldFill.INSERT)
 	private LocalDateTime createTime;
 
 }

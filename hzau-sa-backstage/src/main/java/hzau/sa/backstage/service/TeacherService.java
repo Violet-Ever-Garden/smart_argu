@@ -29,7 +29,7 @@ public interface TeacherService  {
     /**
      * 删除老师
      */
-    public Result deleteTeacher(String techerId);
+    public Result deleteTeacher(String teacherId);
     /**
      * 批量删除老师
      */

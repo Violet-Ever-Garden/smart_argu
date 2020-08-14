@@ -54,7 +54,7 @@ public class StudentController{
      */
     @SysLog(prefix = "分页列表")
     @ApiOperation("分页列表")
-    @ApiImplicitParam(name = "pageNo",value = "即将显示的页数",dataType = "int")
+    @ApiImplicitParam(name = "pageNo",value = "即将显示的页数",paramType = "query",dataType = "int")
     @PostMapping("/page")
     public Result page(int pageNo){
         return studentService.page(pageNo);
@@ -132,15 +132,21 @@ public class StudentController{
      */
     @SysLog(prefix = "添加学生")
     @ApiOperation("添加学生")
-    @ApiImplicitParam(name = "student",value = "要添加的学生",dataType = "StudentVO")
+    @ApiImplicitParam(name = "student",value = "要添加的学生",paramType ="body",dataType = "StudentVO")
     @PostMapping("/addStudent")
-    public Result addStudent(StudentVO student){
+    public Result addStudent(@RequestBody StudentVO student){
         return studentService.addStudent(student);
     }
 
     /**
      * 从模板中添加学生
      */
+    @SysLog(prefix = "从模板中添加学生")
+    @ApiOperation("从模板中添加学生")
+    @PostMapping("/addByFile")
+    public Result addByFile(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        return studentService.addStudentByTemplate(httpServletRequest,httpServletResponse);
+    }
 
 
     /**
@@ -173,7 +179,7 @@ public class StudentController{
     @ApiOperation("更新学生")
     @ApiImplicitParam(name = "student",value = "要更新的学生",dataType = "StudentVO")
     @PostMapping("/updateStudent")
-    public Result updateStudent(StudentVO studentVO){
+    public Result updateStudent(@RequestBody StudentVO studentVO){
         return studentService.updateStudent(studentVO);
     }
 

@@ -1,5 +1,6 @@
 package hzau.sa.backstage.service.impl;
 
+import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -8,8 +9,13 @@ import hzau.sa.backstage.dao.StudentDao;
 import hzau.sa.backstage.entity.StudentVO;
 import hzau.sa.backstage.service.StudentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import hzau.sa.backstage.util.ExcelUtil;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.util.ResultUtil;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -151,10 +157,19 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
     @Override
     public Result addStudent(StudentVO studentVO){
-        if (studentDao.insert(studentVO)!=0){
-            return ResultUtil.success();
+        QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("phoneNumber",studentVO.getPhoneNumber());
+
+        StudentVO student = studentDao.selectOne(queryWrapper);
+
+        if (student!=null){
+            return ResultUtil.paramError("手机号码已存在");
         }
-        return ResultUtil.error("增加学生失败");
+
+        if (studentDao.insert(studentVO)==0){
+            return ResultUtil.databaseError();
+        }
+        return ResultUtil.success();
     }
 
 
@@ -163,10 +178,18 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
     @Override
     public Result deleteStudent(String studentId){
-        if (studentDao.deleteById(studentId)!=0){
-            return ResultUtil.success();
+        QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("studentId",studentId);
+
+        StudentVO studentVO = studentDao.selectOne(queryWrapper);
+        if (studentVO==null){
+            return ResultUtil.paramError("不存在改学生id");
         }
-        return ResultUtil.error("删除学生失败");
+
+        if (studentDao.delete(queryWrapper)==0){
+            return ResultUtil.databaseError();
+        }
+        return ResultUtil.success();
     }
 
     /**
@@ -174,10 +197,13 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
     @Override
     public Result deleteStudents(String[] studentIds){
-        if (studentDao.deleteBatchIds(Arrays.asList(studentIds))!=0){
-            return ResultUtil.success();
+        QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.in("studentId",Arrays.asList(studentIds));
+
+        if (studentDao.delete(queryWrapper)==0){
+            return ResultUtil.error("批量删除失败");
         }
-        return ResultUtil.error("批量删除失败");
+        return ResultUtil.success();
     }
 
 
@@ -186,10 +212,13 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
     @Override
     public Result updateStudent(StudentVO studentVO){
-        if (studentDao.updateById(studentVO)!=0){
-            return ResultUtil.success();
+        QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("studentId",studentVO.getStudentId());
+
+        if (studentDao.update(studentVO,queryWrapper)==0){
+            return ResultUtil.error("更新失败");
         }
-        return ResultUtil.error("更新失败");
+        return ResultUtil.success();
 
     }
     /**
@@ -197,6 +226,20 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
     @Override
     public Result addStudentByTemplate(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        try {
+            DiskFileItemFactory factory=new DiskFileItemFactory();
+            ServletFileUpload upload = new ServletFileUpload(factory);
+            List<FileItem> fileItems = upload.parseRequest(httpServletRequest);
+
+            for (FileItem item:fileItems){
+                    if (!item.isFormField()){
+                        InputStream inputStream = item.getInputStream();
+                        ExcelUtil.autoWrite(inputStream);
+                    }
+            }
+        } catch (FileUploadException | IOException e) {
+            e.printStackTrace();
+        }
         return ResultUtil.success();
     }
 

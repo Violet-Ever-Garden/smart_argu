@@ -1,5 +1,6 @@
 package hzau.sa.msg.util;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.enums.CodeType;
 
@@ -74,6 +75,13 @@ public class ResultUtil {
      */
     public static Result paramError(){
         return new Result(CodeType.PARAM_ERROR.getCode(),CodeType.PARAM_ERROR.getMsg());
+    }
+
+    /**
+     * 具体参数错误
+     */
+    public static Result paramError(String msg){
+        return new Result(CodeType.PARAM_ERROR.getCode(),CodeType.PARAM_ERROR.getMsg(),msg);
     }
 
     /**

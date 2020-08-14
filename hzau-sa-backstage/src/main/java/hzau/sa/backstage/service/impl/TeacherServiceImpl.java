@@ -79,21 +79,40 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
      */
     @Override
     public Result addTeacher(TeacherVO teacherVO) {
-        if (teacherDao.insert(teacherVO)!=0){
-            return ResultUtil.success();
+        QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("teacherId",teacherVO.getTeacherId()).or().eq("phoneNumber",teacherVO.getPhoneNumber());
+
+        TeacherVO teacher = teacherDao.selectOne(queryWrapper);
+        if (teacher!=null){
+            return ResultUtil.paramError("该老师id或电话号码已经存在");
         }
-        return ResultUtil.error("增加失败");
+
+
+
+        if (teacherDao.insert(teacherVO)==0){
+            return ResultUtil.databaseError();
+        }
+        return ResultUtil.success();
     }
 
     /**
      * 删除老师
      */
     @Override
-    public Result deleteTeacher(String techerId) {
-        if (teacherDao.deleteById(techerId)!=0){
-            return ResultUtil.success();
+    public Result deleteTeacher(String teacherId) {
+        QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("teacherId",teacherId);
+
+        TeacherVO teacher = teacherDao.selectOne(queryWrapper);
+
+        if (teacher==null){
+            return ResultUtil.paramError("想要删除的老师的id不存在");
         }
-        return ResultUtil.error("删除失败");
+
+        if (teacherDao.delete(queryWrapper)==0){
+            return ResultUtil.databaseError();
+        }
+        return ResultUtil.success();
     }
 
     /**
@@ -101,7 +120,10 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
      */
     @Override
     public Result deleteTeachers(String[] teacherIds) {
-        if (teacherDao.deleteBatchIds(Arrays.asList(teacherIds))!=0){
+        QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.in("teacherId",Arrays.asList(teacherIds));
+
+        if (teacherDao.delete(queryWrapper)!=0){
             return ResultUtil.success();
         }
         return ResultUtil.error("批量删除失败");
@@ -112,7 +134,11 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
      */
     @Override
     public Result updateTeacher(TeacherVO teacherVO) {
-        if (teacherDao.updateById(teacherVO)!=0){
+        QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("teacherId",teacherVO.getTeacherId());
+
+
+        if (teacherDao.update(teacherVO,queryWrapper)!=0){
             return ResultUtil.success();
         }
         return ResultUtil.error("更新失败");

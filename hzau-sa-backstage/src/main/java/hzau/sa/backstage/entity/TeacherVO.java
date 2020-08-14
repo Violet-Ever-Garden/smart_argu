@@ -21,7 +21,6 @@ import org.springframework.stereotype.Repository;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @TableName("teacher")
-@ApiModel("老师model")
 public class TeacherVO {
 
         private static final long serialVersionUID = 1L;
@@ -30,23 +29,19 @@ public class TeacherVO {
         /**
          *
          */
-        @ApiModelProperty("id")
-        @TableId(type=IdType.AUTO)
         private String teacherId;
 
 
         /**
          *
          */
-        @ApiModelProperty("密码")
         private String password;
-
 
 
         /**
          *
          */
-        @ApiModelProperty("手机号")
+
         private String phoneNumber;
 
 
@@ -54,14 +49,12 @@ public class TeacherVO {
         /**
          *
          */
-        @ApiModelProperty("姓名")
         private String teacherName;
 
 
         /**
          *
          */
-        @ApiModelProperty("监控权限")
         private Integer isOperatemonitor;
 
 
@@ -69,7 +62,6 @@ public class TeacherVO {
         /**
          *
          */
-        @ApiModelProperty("类型，是否为管理员")
         private String type;
 
 }
