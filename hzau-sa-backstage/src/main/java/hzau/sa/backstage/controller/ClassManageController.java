@@ -64,7 +64,7 @@ public class ClassManageController extends BaseController {
 
         QueryWrapper<ClassVO> queryWrapper = new QueryWrapper<>();
         if(StrUtil.isNotBlank(name)){
-            queryWrapper.like("className",name);
+            queryWrapper.lambda().like(ClassVO::getClassName,name);
         }
         if(StrUtil.isNotBlank(grade)){
             try{
@@ -76,6 +76,16 @@ public class ClassManageController extends BaseController {
         }
 
         return ResultUtil.success(classService.findClass(page,queryWrapper));
+    }
+
+    /**
+     * 所有存在班级查询
+     * @return
+     */
+    @ApiOperation("所有存在班级查询")
+    @GetMapping("/allClass")
+    public Result<Object> queryAllClass(){
+        return ResultUtil.success(classService.queryAllClass());
     }
 
     /**

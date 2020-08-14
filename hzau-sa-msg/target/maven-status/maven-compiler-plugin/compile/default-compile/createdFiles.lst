@@ -1,7 +1,0 @@
-hzau\sa\msg\annotation\SysLog.class
-hzau\sa\msg\entity\LogVO.class
-hzau\sa\msg\service\LogService.class
-hzau\sa\msg\service\BaseService.class
-hzau\sa\msg\dao\LogDao.class
-hzau\sa\msg\aspect\SysLogAspect.class
-hzau\sa\msg\enums\LogType.class

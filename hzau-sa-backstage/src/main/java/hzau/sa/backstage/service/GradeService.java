@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import hzau.sa.backstage.dao.GradeDao;
 import hzau.sa.backstage.entity.GradeVO;
 
+import java.util.List;
+
 /**
  * grade 服务实现类
  * @author lvhao
@@ -13,5 +15,9 @@ import hzau.sa.backstage.entity.GradeVO;
  */
 public interface GradeService  extends IService<GradeVO> {
 
-
+    /**
+     * 查询所有已存在的班级
+     * @return
+     */
+    List<String> queryAllGrade();
 }

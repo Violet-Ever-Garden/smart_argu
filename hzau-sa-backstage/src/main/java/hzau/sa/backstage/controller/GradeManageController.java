@@ -58,7 +58,7 @@ public class GradeManageController extends BaseController {
 
         QueryWrapper<GradeVO> queryWrapper = new QueryWrapper<>();
         if(StrUtil.isNotBlank(name)){
-            queryWrapper.like("gradeName",name);
+            queryWrapper.lambda().like(GradeVO::getGradeName,name);
         }
 
         IPage pageInfo = gradeService.page(page,queryWrapper);
@@ -68,6 +68,12 @@ public class GradeManageController extends BaseController {
         result.put("rows",pageInfo.getRecords());
 
         return ResultUtil.success(result);
+    }
+
+    @ApiOperation("所有存在年级查询")
+    @GetMapping("/allGrade")
+    public Result<Object> queryAllGrade(){
+        return ResultUtil.success(gradeService.queryAllGrade());
     }
 
     /**

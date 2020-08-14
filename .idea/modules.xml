@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/hzau-Smart-Agriculture.iml" filepath="$PROJECT_DIR$/hzau-Smart-Agriculture.iml" />
       <module fileurl="file://$PROJECT_DIR$/hzau-sa-backstage/hzau-sa-backstage.iml" filepath="$PROJECT_DIR$/hzau-sa-backstage/hzau-sa-backstage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzau-sa-fileTest/hzau-sa-fileTest.iml" filepath="$PROJECT_DIR$/hzau-sa-fileTest/hzau-sa-fileTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/hzau-sa-generator/hzau-sa-generator.iml" filepath="$PROJECT_DIR$/hzau-sa-generator/hzau-sa-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/hzau-sa-msg/hzau-sa-msg.iml" filepath="$PROJECT_DIR$/hzau-sa-msg/hzau-sa-msg.iml" />
       <module fileurl="file://$PROJECT_DIR$/hzau-sa-security/hzau-sa-security.iml" filepath="$PROJECT_DIR$/hzau-sa-security/hzau-sa-security.iml" />

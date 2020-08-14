@@ -17,6 +17,7 @@
         <module>hzau-sa-backstage</module>
         <module>hzau-sa-stater</module>
         <module>hzau-sa-trainingReport</module>
+        <module>hzau-sa-fileTest</module>
     </modules>
 
     <!-- 统一管理jar包版本 -->
@@ -144,20 +145,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                    <addResources>true</addResources>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 
 </project>

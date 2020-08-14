@@ -195,4 +195,17 @@ public class ClassServiceImpl extends ServiceImpl<ClassDao, ClassVO> implements 
         }
         return classManage;
     }
+
+    @Override
+    public List<String> queryAllClass() {
+
+        List<String> allClass = new ArrayList<>();
+
+        List<ClassVO> listClass = classDao.selectList(null);
+        for(ClassVO classVO : listClass){
+            allClass.add(classVO.getClassName());
+        }
+
+        return allClass;
+    }
 }
