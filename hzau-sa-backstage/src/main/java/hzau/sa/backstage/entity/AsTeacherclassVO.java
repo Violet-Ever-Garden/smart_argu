@@ -4,9 +4,13 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 /**
  *  VO
@@ -25,6 +29,7 @@ public class AsTeacherclassVO {
 	/**
 	 * 
 	 */
+
 	@TableId(type=IdType.AUTO)
 	private Integer asTeacherclassId;
 
@@ -32,18 +37,20 @@ public class AsTeacherclassVO {
 	/**
 	 * 
 	 */
+
 	private Integer classId;
 
 
 	/**
 	 * 
 	 */
+
 	private String teacherId;
 
 
 	/**
 	 * 
 	 */
-	private Integer gradeId;
 
+	private Integer gradeId;
 }

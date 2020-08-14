@@ -12,9 +12,10 @@ import hzau.sa.backstage.entity.MeasureVO;
  * @date 2020-08-12
  */
 public interface MeasureService  {
-    public Result addMeasure(MeasureVO measureVO);
-    public Result deleteMeasure(String measureId);
-    public Result updateMesure(MeasureVO measureVO);
+    public Result addMeasure(MeasureVO measure);
+    public Result deleteMeasure(Integer measureId);
+    public Result deleteMeasures(Integer[] measureIds);
+    public Result updateMesure(MeasureVO measure);
     public Result findMeasure(String measureName,int pageNo);
     public Result page(int pageNo);
 }

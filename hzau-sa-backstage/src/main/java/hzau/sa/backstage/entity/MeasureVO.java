@@ -1,8 +1,6 @@
 package hzau.sa.backstage.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,7 +19,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @TableName("measure")
-@ApiModel("措施modle")
 public class MeasureVO {
 
 	private static final long serialVersionUID = 1L;
@@ -30,22 +27,20 @@ public class MeasureVO {
 	/**
 	 * 
 	 */
-	@ApiModelProperty("措施id")
-	@TableId(type=IdType.UUID)
+	@TableId(type=IdType.AUTO)
 	private Integer measureId;
 
 
 	/**
 	 * 
 	 */
-	@ApiModelProperty("措施名字")
 	private String measureName;
 
 
 	/**
 	 * 
 	 */
-	@ApiModelProperty("措施的时间")
+	@TableField(fill = FieldFill.INSERT)
 	private LocalDateTime createTime;
 
 }

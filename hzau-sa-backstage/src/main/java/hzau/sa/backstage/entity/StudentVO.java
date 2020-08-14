@@ -2,12 +2,8 @@ package hzau.sa.backstage.entity;
 
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -21,26 +17,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @TableName("student")
-@ApiModel("学生model")
 public class StudentVO {
 
 	@ExcelIgnore
 	private static final long serialVersionUID = 1L;
 
+	@ExcelIgnore
+	private static final String DEFAULT_PASSWORD="123456";
 
 	/**
 	 * 
 	 */
-	@ApiModelProperty("学号")
 	@ExcelProperty(value = "学号",index = 0)
-	@TableId(type=IdType.UUID)
 	private String studentId;
 
 
 	/**
 	 * 
 	 */
-	@ApiModelProperty("密码")
 	@ExcelIgnore
 	private String password;
 
@@ -48,7 +42,6 @@ public class StudentVO {
 	/**
 	 * 
 	 */
-	@ApiModelProperty("手机号")
 	@ExcelProperty(value = "手机号",index = 4)
 	private String phoneNumber;
 
@@ -56,7 +49,6 @@ public class StudentVO {
 	/**
 	 * 
 	 */
-	@ApiModelProperty("姓名")
 	@ExcelProperty(value = "姓名",index = 1)
 	private String studentName;
 
@@ -64,7 +56,6 @@ public class StudentVO {
 	/**
 	 * 
 	 */
-	@ApiModelProperty("年级")
 	@ExcelProperty(value = "年级",index = 2)
 	private Integer gradeId;
 
@@ -72,7 +63,6 @@ public class StudentVO {
 	/**
 	 * 
 	 */
-	@ApiModelProperty("班级")
 	@ExcelProperty(value = "班级",index = 3)
 	private Integer classId;
 
@@ -80,7 +70,6 @@ public class StudentVO {
 	/**
 	 * 
 	 */
-	@ApiModelProperty("监控权限")
 	@ExcelIgnore
 	private Integer isOperatemonitor;
 
@@ -88,8 +77,29 @@ public class StudentVO {
 	/**
 	 * 
 	 */
-	@ApiModelProperty("水肥机权限")
 	@ExcelIgnore
 	private Integer isOperatewfm;
 
+	public StudentVO(StudentWrapper studentWrapper){
+		this.studentName= studentWrapper.getStudentName();
+
+		if (studentWrapper.getIsOperatemonitor().equals("否")){
+			this.setIsOperatemonitor(0);
+		}else {
+			this.setIsOperatemonitor(1);
+		}
+
+		if (studentWrapper.getIsOperatewfm().equals("否")){
+			this.setIsOperatewfm(0);
+		}else {
+			this.setIsOperatewfm(1);
+		}
+
+		this.phoneNumber= studentWrapper.getPhoneNumber();
+		this.studentId= studentWrapper.getStudentId();
+		this.studentId=studentWrapper.getStudentId();
+		this.classId=0;
+		this.setPassword(StudentVO.DEFAULT_PASSWORD);
+		this.gradeId=0;
+	}
 }

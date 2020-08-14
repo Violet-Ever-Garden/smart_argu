@@ -36,8 +36,10 @@ public class CropServiceImpl extends ServiceImpl<CropDao, CropVO> implements Cro
 
         HashMap<String, Object> query = new HashMap<>();
         query.put("cropName",cropVO.getCropName());
+
         QueryWrapper<CropVO> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("cropName",cropVO.getCropName());
+
         CropVO cropE =cropDao.selectOne(queryWrapper);
         if(null!=cropE){
             return ResultUtil.error("该作物已存在");

@@ -14,6 +14,8 @@ import org.apache.ibatis.session.defaults.DefaultSqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -35,12 +37,13 @@ public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> imple
 
     /**
      * 增加措施
-     * @param measureVO 要增加的措施
+     * @param measure 要增加的措施
      * @return
      */
     @Override
-    public Result addMeasure(MeasureVO measureVO){
-        if (measureDao.insert(measureVO)!=0){
+    public Result addMeasure(MeasureVO measure){
+        measure.setCreateTime(LocalDateTime.now());
+        if (measureDao.insert(measure)!=0){
             return ResultUtil.success();
         }
         return ResultUtil.error("插入失败");
@@ -53,22 +56,46 @@ public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> imple
      */
 
     @Override
-    public Result deleteMeasure(String measureId) {
-        if (measureDao.deleteById(measureId)!=0){
+    public Result deleteMeasure(Integer measureId) {
+        QueryWrapper<MeasureVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("measureId",measureId);
+
+        MeasureVO measure = measureDao.selectOne(queryWrapper);
+
+        if (measure==null){
+           return ResultUtil.paramError("想要删除的措施id不存在");
+        }
+
+        if (measureDao.deleteById(measureId)==0){
+            return ResultUtil.databaseError();
+        }
+        return ResultUtil.success();
+    }
+
+    /**
+     * 批量删除措施
+     * @param measureIds 批量删除措施id
+     * @return
+     */
+
+    @Override
+    public Result deleteMeasures(Integer[] measureIds){
+        if (measureDao.deleteBatchIds(Arrays.asList(measureIds))!=0){
             return ResultUtil.success();
         }
-        return ResultUtil.error("删除失败");
+        return ResultUtil.error("批量删除失败");
     }
+
 
 
     /**
      * 更新措施
-     * @param measureVO 更新的措施
+     * @param measure 更新的措施
      * @return
      */
     @Override
-    public Result updateMesure(MeasureVO measureVO){
-        if (measureDao.updateById(measureVO)!=0){
+    public Result updateMesure(MeasureVO measure){
+        if (measureDao.updateById(measure)!=0){
             return ResultUtil.success();
         }
         return ResultUtil.error("更新失败");
@@ -87,7 +114,7 @@ public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> imple
         Page<MeasureVO> page = new Page<MeasureVO>(pageNo,size);
 
         QueryWrapper<MeasureVO> queryWrapper=new QueryWrapper<>();
-        queryWrapper.like("mesureName",measureName);
+        queryWrapper.like("measureName",measureName);
 
         IPage<MeasureVO> iPage= measureDao.selectPage(page, queryWrapper);
 
@@ -100,17 +127,22 @@ public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> imple
 
     }
 
+    /**
+     * 分页显示
+     * @param pageNo 要显示的页数
+     * @return
+     */
     @Override
     public Result page(int pageNo){
-        Page<MeasureVO> page=new Page<>(size,pageNo);
+        Page<MeasureVO> page=new Page<>(pageNo,size);
         QueryWrapper<MeasureVO> queryWrapper=new QueryWrapper<>();
 
         IPage<MeasureVO> iPage= measureDao.selectPage(page, queryWrapper);
 
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put("totalPages",iPage.getPages());
-        hashMap.put("totalRecordNums",iPage.getTotal());
         hashMap.put("Records",iPage.getRecords());
+        hashMap.put("totalRecordNums",iPage.getTotal());
 
         return ResultUtil.success(hashMap);
     }
