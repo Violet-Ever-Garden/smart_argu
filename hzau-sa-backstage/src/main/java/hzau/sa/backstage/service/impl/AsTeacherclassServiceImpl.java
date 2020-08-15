@@ -27,16 +27,17 @@ public class AsTeacherclassServiceImpl extends ServiceImpl<AsTeacherclassDao, As
     @Autowired
     AsTeacherclassDao asTeacherclassDao;
 
+    @Override
     public List<TeacherClassModel> listByTeacherId(Page<TeacherClassModel> page, String teacherId,String keyword,String gradeName) {
         List<TeacherClassModel> list = asTeacherclassDao.listByTeacherId(page,teacherId,"%"+keyword+"%",gradeName);
         return list;
     }
-
+    @Override
     public List<ClassGradeModel> listClassWithoutTeacher(String keyword,String gradeName) {
         List<ClassGradeModel> list = asTeacherclassDao.listClassWithoutTeacher("%"+keyword+"%",gradeName);
         return list;
     }
-
+    @Override
     public boolean saveList(List<AsTeacherclassVO> asTeacherclassVOs) {
         return saveBatch(asTeacherclassVOs);
     }

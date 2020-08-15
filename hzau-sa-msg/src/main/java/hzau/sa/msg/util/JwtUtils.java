@@ -16,6 +16,7 @@ import java.util.Date;
 @Slf4j
 public class JwtUtils {
     public static final String CLAIM_USER_NAME = "userName";
+    public static final String CLAIM_REAL_NAME = "realName";
     private static final String SECRET = "hzau_smart_agriculture";
 
     /**
@@ -64,11 +65,11 @@ public class JwtUtils {
      * @param 用户信息...
      * @return 加密的token
      */
-    public static String sign(String userName) {
+    public static String sign(String userName,String realName) {
         Date expiresDate = new Date(System.currentTimeMillis() + EXPIRE_TIME);
         Algorithm algorithm = Algorithm.HMAC256(SECRET);
         // 附带user信息
-        return JWT.create().withClaim(CLAIM_USER_NAME, userName).withExpiresAt(expiresDate)
+        return JWT.create().withClaim(CLAIM_USER_NAME, userName).withClaim(CLAIM_REAL_NAME,realName).withExpiresAt(expiresDate)
                 .sign(algorithm);
     }
 

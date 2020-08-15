@@ -3,6 +3,7 @@ package hzau.sa.security.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import hzau.sa.msg.entity.BaseVO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @TableName("student")
-public class StudentVO {
+public class StudentVO extends BaseVO {
 
 	private static final long serialVersionUID = 1L;
 
