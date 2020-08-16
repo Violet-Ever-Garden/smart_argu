@@ -4,8 +4,8 @@ import hzau.sa.msg.util.JwtUtils;
 import hzau.sa.msg.common.RoleConstant;
 import hzau.sa.msg.util.RedisUtil;
 import hzau.sa.msg.util.ShiroKit;
-import hzau.sa.security.dao.StudentDao;
-import hzau.sa.security.dao.TeacherDao;
+import hzau.sa.security.dao.LoginStudentDao;
+import hzau.sa.security.dao.LoginTeacherDao;
 import hzau.sa.security.entity.StudentVO;
 import hzau.sa.security.entity.TeacherVO;
 import lombok.extern.slf4j.Slf4j;
@@ -23,9 +23,9 @@ import java.util.HashMap;
 public class LoginService {
 
     @Autowired
-    StudentDao studentDao;
+    LoginStudentDao studentDao;
     @Autowired
-    TeacherDao teacherDao;
+    LoginTeacherDao teacherDao;
     /**
      * 用户登录验证
      *

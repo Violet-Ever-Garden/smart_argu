@@ -60,6 +60,7 @@ public class JwtFilter extends AuthenticatingFilter {
 		// 获取请求token，如果token不存在，直接返回401
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		String token = getRequestToken(httpServletRequest);
+		log.info("token:  "+token);
 		if (StrUtil.isBlank(token)) {
 			log.warn("Empty Token, invalid request[{}].",httpServletRequest.getRequestURI());
 			HttpServletResponse httpResponse = (HttpServletResponse) response;

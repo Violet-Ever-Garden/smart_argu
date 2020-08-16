@@ -10,6 +10,6 @@ import hzau.sa.security.entity.TeacherVO;
  * @date 2020-08-10
  */
 @Mapper
-public interface TeacherDao extends BaseMapper<TeacherVO> {
+public interface LoginTeacherDao extends BaseMapper<TeacherVO> {
 
 }
