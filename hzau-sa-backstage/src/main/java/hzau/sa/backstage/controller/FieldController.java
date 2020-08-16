@@ -53,10 +53,10 @@ public class FieldController extends BaseController {
      */
     @SysLog(prefix = "分页查询地块",value = LogType.ALL)
     @ApiOperation("分页查询地块")
-    @ApiImplicitParam(name = "pageNo", value = "请求的页数", paramType = "query", dataType = "int")
+    @ApiImplicitParam(name = "pageNo", value = "请求的页数", paramType = "query", dataType = "String")
     @PostMapping("/page")
-    public Result page(@RequestParam(value = "pageNo",required = true) int pageNo) {
-        return fieldService.page(pageNo);
+    public Result page(@RequestParam(value = "pageNo",required = true) String pageNo) {
+        return fieldService.page(Integer.parseInt(pageNo));
     }
 
 
@@ -72,10 +72,10 @@ public class FieldController extends BaseController {
 
     @SysLog(prefix = "删除地块",value = LogType.ALL)
     @ApiOperation("删除地块")
-    @ApiImplicitParam(name = "fieldId",value = "删除地块的id",paramType = "query",dataType = "Integer")
+    @ApiImplicitParam(name = "fieldId",value = "删除地块的id",paramType = "query",dataType = "String")
     @PostMapping("/deleteField")
-    public Result deleteField(Integer fieldId){
-        return fieldService.deleteField(fieldId);
+    public Result deleteField(String fieldId){
+        return fieldService.deleteField(Integer.valueOf(fieldId));
     }
 
 
@@ -99,10 +99,10 @@ public class FieldController extends BaseController {
     @ApiOperation("查找地块")
     @ApiImplicitParams({
     @ApiImplicitParam(name = "fieldName",value = "查找地块的名字",paramType = "query",dataType = "String"),
-    @ApiImplicitParam(name="pageNo",value = "要显示的页面",dataType = "int")
+    @ApiImplicitParam(name="pageNo",value = "要显示的页面",dataType = "String")
     })
     @PostMapping("/findField")
-    public Result findField(@RequestParam(value = "fieldName",required = true) String fieldName,@RequestParam(value = "pageNo",required = true) int pageNo){
-        return fieldService.findField(fieldName,pageNo);
+    public Result findField(@RequestParam(value = "fieldName",required = true) String fieldName,@RequestParam(value = "pageNo",required = true) String pageNo){
+        return fieldService.findField(fieldName, Integer.parseInt(pageNo));
     }
 }

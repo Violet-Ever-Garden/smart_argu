@@ -41,10 +41,10 @@ public class StudentController{
      */
     @SysLog(prefix = "分页列表")
     @ApiOperation("分页列表")
-    @ApiImplicitParam(name = "pageNo",value = "即将显示的页数",paramType = "query",dataType = "int")
+    @ApiImplicitParam(name = "pageNo",value = "即将显示的页数",paramType = "query",dataType = "String")
     @PostMapping("/page")
-    public Result page(int pageNo){
-        return studentService.page(pageNo);
+    public Result page(String pageNo){
+        return studentService.page(Integer.parseInt(pageNo));
     }
 
 
@@ -55,13 +55,15 @@ public class StudentController{
     @SysLog(prefix = "按年级分页")
     @ApiOperation("按年级分页")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "gradeId", value = "年级的id", dataType = "int"),
-            @ApiImplicitParam(name = "pageNo", value = "即将显示的页数", dataType = "int")
+            @ApiImplicitParam(name = "gradeName", value = "年级的名字", dataType = "String"),
+            @ApiImplicitParam(name = "pageNo", value = "即将显示的页数", dataType = "String")
     }
+
+
     )
     @PostMapping("/pageByGrade")
-    public Result pageByGrade(String gradeName,int pageNo){
-        return studentService.pageByGrade(gradeName,pageNo);
+    public Result pageByGrade(String gradeName,String pageNo){
+        return studentService.pageByGrade(gradeName, Integer.parseInt(pageNo));
     }
 
 
@@ -72,13 +74,13 @@ public class StudentController{
     @SysLog(prefix = "按班级分页")
     @ApiOperation("按班级分页")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "classId", value = "班级的id", dataType = "int"),
-            @ApiImplicitParam(name = "pageNo", value = "即将显示的页数", dataType = "int")
+            @ApiImplicitParam(name = "className", value = "班级的名字", dataType = "String"),
+            @ApiImplicitParam(name = "pageNo", value = "即将显示的页数", dataType = "String")
     }
     )
     @PostMapping("/pageByClass")
-    public Result pageByClass(String className,int pageNo){
-        return studentService.pageByClasses(className,pageNo);
+    public Result pageByClass(String className,String pageNo){
+        return studentService.pageByClasses(className, Integer.parseInt(pageNo));
     }
 
     /**
@@ -88,12 +90,12 @@ public class StudentController{
     @ApiOperation("按名字分页")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "name", value = "名字", dataType = "String"),
-            @ApiImplicitParam(name = "pageNo", value = "即将显示的页数", dataType = "int")
+            @ApiImplicitParam(name = "pageNo", value = "即将显示的页数", dataType = "String")
     }
     )
     @PostMapping("/pageByName")
-    public Result pageByName(String name,int pageNo){
-        return studentService.pageByName(name,pageNo);
+    public Result pageByName(String name,String pageNo){
+        return studentService.pageByName(name, Integer.parseInt(pageNo));
     }
 
     /**
@@ -107,15 +109,6 @@ public class StudentController{
         return studentService.addStudent(student);
     }
 
-    /**
-     * 从模板中添加学生
-     */
-    @SysLog(prefix = "从模板中添加学生")
-    @ApiOperation("从模板中添加学生")
-    @PostMapping("/addByFile")
-    public Result addByFile(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
-        return studentService.addStudentByTemplate(httpServletRequest,httpServletResponse);
-    }
 
 
     /**
@@ -160,5 +153,15 @@ public class StudentController{
     @PostMapping("/download")
     public Result downloadTemplates(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
         return studentService.downloadTemplate(httpServletRequest,httpServletResponse);
+    }
+
+    /**
+     * 从模板中添加学生
+     */
+    @SysLog(prefix = "从模板中添加学生")
+    @ApiOperation("从模板中添加学生")
+    @PostMapping("/addByFile")
+    public Result addByFile(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        return studentService.addStudentByTemplate(httpServletRequest,httpServletResponse);
     }
 }

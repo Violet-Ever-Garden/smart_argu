@@ -51,10 +51,10 @@ public class TeacherController{
      */
     @SysLog(prefix = "分页显示老师")
     @ApiOperation("分页显示老师")
-    @ApiImplicitParam(name = "pageNo",value = "要显示的页数",paramType = "query",dataType = "int")
+    @ApiImplicitParam(name = "pageNo",value = "要显示的页数",paramType = "query",dataType = "String")
     @PostMapping("/page")
-    public Result page(int pageNo){
-        return teacherService.page(pageNo);
+    public Result page(String pageNo){
+        return teacherService.page(Integer.parseInt(pageNo));
     }
     /**
      * 按名字分页老师
@@ -63,11 +63,11 @@ public class TeacherController{
     @ApiOperation("按名字分页老师")
     @ApiImplicitParams({
     @ApiImplicitParam(name = "name",value = "老师的名字",paramType = "query",dataType = "String"),
-    @ApiImplicitParam(name="pageNo",value = "要显示的页数",paramType = "query",dataType = "int")
+    @ApiImplicitParam(name="pageNo",value = "要显示的页数",paramType = "query",dataType = "String")
     })
     @PostMapping("/pageByName")
-    public Result pageByName(String name,int pageNo){
-        return teacherService.pageByName(name, pageNo);
+    public Result pageByName(String name,String pageNo){
+        return teacherService.pageByName(name, Integer.parseInt(pageNo));
     }
 
 
@@ -96,6 +96,8 @@ public class TeacherController{
     public Result deleteTeacher(String teacherId){
         return teacherService.deleteTeacher(teacherId);
     }
+
+
     /**
      * 批量删除老师
      */

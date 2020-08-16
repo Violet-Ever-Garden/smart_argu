@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @TableName("field")
-public class FieldVO {
+public class FieldVO{
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,5 +40,6 @@ public class FieldVO {
 	 */
 	@TableField(fill = FieldFill.INSERT)
 	private LocalDateTime createTime;
+
 
 }

@@ -2,7 +2,6 @@ package hzau.sa.backstage.service;
 
 import hzau.sa.backstage.entity.StudentWrapper;
 import hzau.sa.msg.entity.Result;
-import hzau.sa.backstage.entity.StudentVO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
