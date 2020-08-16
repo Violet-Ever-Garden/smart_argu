@@ -269,7 +269,7 @@
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -330,7 +330,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application (2)">
+  <component name="RunManager" selected="Spring Boot.BackStageApplication">
     <configuration name="GeneratorService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GeneratorService" />
       <module name="hzau-sa-generator" />
@@ -349,22 +349,6 @@
       <option name="PACKAGE_NAME" value="hzau.sa.backstage.dao" />
       <option name="MAIN_CLASS_NAME" value="hzau.sa.backstage.dao.AsClassfieldDaoTest" />
       <option name="METHOD_NAME" value="queryFieldIdByName" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ClassServiceTest.findAllClass" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="hzau-sa-backstage" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hzau.sa.backstage.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="hzau.sa.backstage.service" />
-      <option name="MAIN_CLASS_NAME" value="hzau.sa.backstage.service.ClassServiceTest" />
-      <option name="METHOD_NAME" value="findAllClass" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -474,13 +458,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="hzau-sa-fileTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.file.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.file.TestMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.TestMain" />
         <item itemvalue="JUnit.GradeDaoTest.selectGradeIdByName" />
         <item itemvalue="JUnit.AsClassfieldDaoTest.queryFieldIdByName" />
         <item itemvalue="Application.GeneratorService" />
         <item itemvalue="Spring Boot.Application (2)" />
-        <item itemvalue="JUnit.ClassServiceTest.findAllClass" />
       </list>
     </recent_temporary>
   </component>
@@ -506,6 +503,7 @@
       <updated>1596859745758</updated>
       <workItem from="1596859748341" duration="28740000" />
       <workItem from="1596891276574" duration="43423000" />
+      <workItem from="1597578342440" duration="8258000" />
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>

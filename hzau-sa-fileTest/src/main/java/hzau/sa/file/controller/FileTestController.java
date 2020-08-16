@@ -1,7 +1,7 @@
 package hzau.sa.file.controller;
 
-import hzau.sa.file.enums.FileEnum;
-import hzau.sa.file.util.FileUtil;
+import hzau.sa.msg.enums.FileEnum;
+import hzau.sa.msg.util.FileUtil;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.util.ResultUtil;
 import io.swagger.annotations.Api;
@@ -9,11 +9,8 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.File;
 
 /**
  * @author LvHao
@@ -34,6 +31,16 @@ public class FileTestController {
     public Result<Object> fileTest(@ApiParam(name = "files",value = "文件") MultipartFile files){
         try{
             return ResultUtil.success(FileUtil.uploadFile(FileEnum.REPORT,"测试",files));
+        }catch (Exception e){
+            return ResultUtil.error(e.toString());
+        }
+    }
+
+    @ApiOperation("上传多个文件")
+    @PostMapping("/files")
+    public Result<Object> filesTest(@ApiParam(name = "files",value = "文件") MultipartFile[] files){
+        try{
+            return ResultUtil.success(FileUtil.uploadFiles(FileEnum.REPORT,"测试",files));
         }catch (Exception e){
             return ResultUtil.error(e.toString());
         }
