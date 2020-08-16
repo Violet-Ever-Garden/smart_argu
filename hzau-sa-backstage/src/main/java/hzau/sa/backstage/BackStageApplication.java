@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"hzau.sa.*"})
 @MapperScan(basePackages = {"hzau.sa.*.dao"})
+@ComponentScan("hzau.sa.*")
+@MapperScan("hzau.sa.*")
 @SpringBootApplication
 public class BackStageApplication {
     public static void main(String[] args) {

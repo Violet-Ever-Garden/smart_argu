@@ -24,7 +24,8 @@ public class BackStageSwagger extends Swagger2Config {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("hzau.sa.backstage"))
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
-                .build();
+                .build().securitySchemes(securitySchemes())
+                .securityContexts(securityContexts());
     }
 
 }
