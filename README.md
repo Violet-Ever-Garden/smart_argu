@@ -72,6 +72,36 @@
 
 ---
 
+### FileUtil类的使用
+
+- 目前定义了几种方法：
+  - `uploadFile`: 上传单个文件 可以在swagger测试
+    - 参数`FileEnum fileEnum`：要上传文件到什么目录 上级目录
+    - 参数`String fileMsg`：对上传文件的说明  下一级目录
+    - 参数`MultipartFile multipartFile`：要上传的文件
+    - 返回值`String`：已经上传文件的绝对路径
+  - - `uploadFiles`:上传多个文件  swagger测试不了 postman可以正常测试
+    - 参数`FileEnum fileEnum`：要上传文件到什么目录 上级目录
+    - 参数`String fileMsg`：对上传文件的说明  下一级目录
+    - 参数`MultipartFile[] multipartFiles`：要上传的文件列表
+    - 返回值`List<String>`：已经上传文件的绝对路径的列表
+  - `deleteFile`：删除文件
+    - 参数`String filePath`：要删除文件的路径
+    - 返回值`boolean`：是否删除
+  - `changeFile`：修改文件
+    - 参数`String filePath`：需要修改文件的路径
+    - 参数`MultipartFile multipartFile`：新的文件
+    - 返回值`String`：修改过后文件的绝对路径
+  - `getFileUrl`：获取文件的网络映射路由
+    - 参数`String filePath`：文件路径
+    - 返回值`String`：返回给前端的文件访问路径
+  
+- 注意：
+  - 传文件要使用formData的格式上传
+  - 返回给前端的是文件的访问路由 而不是文件路径
+  - 要提前做好文件的网络路径映射工作
+  - shiro给文件访问是否需要开权限
+  - 拦截器是否会起作用等等
 
 
 
