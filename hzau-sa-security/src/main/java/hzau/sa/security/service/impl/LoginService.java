@@ -1,11 +1,9 @@
 package hzau.sa.security.service.impl;
 
-import cn.hutool.db.nosql.redis.RedisDS;
-import hzau.sa.msg.common.Constant;
 import hzau.sa.msg.util.JwtUtils;
 import hzau.sa.msg.common.RoleConstant;
 import hzau.sa.msg.util.RedisUtil;
-import hzau.sa.security.Shiro.ShiroKit;
+import hzau.sa.msg.util.ShiroKit;
 import hzau.sa.security.dao.StudentDao;
 import hzau.sa.security.dao.TeacherDao;
 import hzau.sa.security.entity.StudentVO;
@@ -13,7 +11,6 @@ import hzau.sa.security.entity.TeacherVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import redis.clients.jedis.Jedis;
 
 import java.util.HashMap;
 

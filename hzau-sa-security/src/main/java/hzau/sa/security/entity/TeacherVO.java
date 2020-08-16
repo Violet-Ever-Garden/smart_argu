@@ -1,13 +1,13 @@
 package hzau.sa.security.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
 
 import hzau.sa.msg.entity.BaseVO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 /**
  *  VO
@@ -26,7 +26,7 @@ public class TeacherVO extends BaseVO {
 	/**
 	 * 
 	 */
-	@TableId(type=IdType.UUID)
+	@TableId
 	private String teacherId;
 
 
@@ -59,4 +59,12 @@ public class TeacherVO extends BaseVO {
 	 */
 	private String type;
 
+	/**
+	 *
+	 */
+	private  String picturePath;
+
+	/**
+	 * 创建人
+	 */
 }

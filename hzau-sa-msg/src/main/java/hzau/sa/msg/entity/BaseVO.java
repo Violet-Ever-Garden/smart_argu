@@ -9,6 +9,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -45,15 +46,15 @@ public class BaseVO implements Serializable {
 	 * 创建时间
 	 */
 	@TableField(fill = FieldFill.INSERT)
-	private Date createTime;
+	private LocalDateTime createTime;
 	/**
 	 * 修改人
 	 */
-	@TableField(fill = FieldFill.UPDATE)
+	@TableField(fill = FieldFill.INSERT_UPDATE)
 	private String lastModifiedUser;
 	/**
 	 * 修改时间
 	 */
-	@TableField(fill = FieldFill.UPDATE)
-	private Date lastModifiedTime;
+	@TableField(fill = FieldFill.INSERT_UPDATE)
+	private LocalDateTime lastModifiedTime;
 }

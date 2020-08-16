@@ -25,7 +25,7 @@ public class StudentVO extends BaseVO {
 	/**
 	 * 
 	 */
-	@TableId(type=IdType.UUID)
+	@TableId
 	private String studentId;
 
 
