@@ -24,6 +24,7 @@ public class CropParameterServiceImpl extends ServiceImpl<CropParameterDao, Crop
     @Autowired
     CropParameterDao cropParameterDao;
 
+    @Override
     public List<CropParameterModel> selectCropParameterListPage(Page<CropParameterModel> page , int cropId, String keyword){
         List<CropParameterModel> cropParameterModels = cropParameterDao.selectCropParameterListPage(page , cropId,"%"+keyword+"%");
         return cropParameterModels;

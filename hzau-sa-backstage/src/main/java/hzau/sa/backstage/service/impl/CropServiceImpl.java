@@ -31,14 +31,12 @@ public class CropServiceImpl extends ServiceImpl<CropDao, CropVO> implements Cro
     @Autowired
     CropParameterDao cropParameterDao;
 
+    @Override
     @Transactional(rollbackFor = Exception.class)
     public Result insert(CropVO cropVO) {
 
-        HashMap<String, Object> query = new HashMap<>();
-        query.put("cropName",cropVO.getCropName());
-
         QueryWrapper<CropVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("cropName",cropVO.getCropName());
+        queryWrapper.lambda().eq(CropVO::getCropName,cropVO.getCropName());
 
         CropVO cropE =cropDao.selectOne(queryWrapper);
         if(null!=cropE){
@@ -49,9 +47,7 @@ public class CropServiceImpl extends ServiceImpl<CropDao, CropVO> implements Cro
             if (0==insert){
                 return ResultUtil.databaseError();
             }else{
-                HashMap hashMap = new HashMap<String,Object>();
-                hashMap.put("cropName",cropVO.getCropName());
-                cropVO = (CropVO) cropDao.selectOne(queryWrapper);
+                cropVO =  cropDao.selectOne(queryWrapper);
                 //添加属性参数
                 CropParameterVO porperties = new CropParameterVO();
                 porperties.setCropId(cropVO.getCropId());
@@ -77,14 +73,14 @@ public class CropServiceImpl extends ServiceImpl<CropDao, CropVO> implements Cro
                 process.setParameterName("处理");
                 cropParameterDao.insert(process);
 
-
                 return ResultUtil.success("成功增加");
             }
         }
     }
 
 
-
+    @Override
+    @Transactional(rollbackFor = Exception.class)
     public Result delete(int cropId) {
         boolean b = removeById(cropId);
         if(true==b){

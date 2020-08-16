@@ -57,4 +57,10 @@ public interface ClassService extends IService<ClassVO>{
      * @return
      */
     ClassManage insertClassMessage(ClassManage classManage);
+
+    /**
+     * 查询所有存在的班级
+     * @return
+     */
+    List<String> queryAllClass();
 }
