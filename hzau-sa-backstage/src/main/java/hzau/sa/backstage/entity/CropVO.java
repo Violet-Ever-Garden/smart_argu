@@ -36,9 +36,6 @@ public class CropVO extends BaseVO {
 	private String cropName;
 
 
-	/**
-	 * 
-	 */
-	private String picturePath;
+
 
 }

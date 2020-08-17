@@ -59,12 +59,5 @@ public class TeacherVO extends BaseVO {
 	 */
 	private String type;
 
-	/**
-	 *
-	 */
-	private  String picturePath;
 
-	/**
-	 * 创建人
-	 */
 }
