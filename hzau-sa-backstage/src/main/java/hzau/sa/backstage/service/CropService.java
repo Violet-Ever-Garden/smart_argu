@@ -1,5 +1,6 @@
 package hzau.sa.backstage.service;
 
+import hzau.sa.backstage.entity.CropDTO;
 import hzau.sa.msg.entity.Result;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -16,10 +17,10 @@ public interface CropService  {
 
     /**
      * 新增作物
-     * @param cropVO
+     * @param cropDTO
      * @return
      */
-    public Result insert(CropVO cropVO);
+    public Result insert(CropDTO cropDTO);
 
 
     /**

@@ -3,6 +3,7 @@ package hzau.sa.backstage.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import hzau.sa.backstage.dao.CropDao;
 import hzau.sa.backstage.dao.CropParameterDao;
+import hzau.sa.backstage.entity.CropDTO;
 import hzau.sa.backstage.entity.CropParameterVO;
 import hzau.sa.backstage.entity.CropVO;
 import hzau.sa.backstage.service.CropService;
@@ -33,8 +34,9 @@ public class CropServiceImpl extends ServiceImpl<CropDao, CropVO> implements Cro
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Result insert(CropVO cropVO) {
-
+    public Result insert(CropDTO cropDTO) {
+        CropVO cropVO = new CropVO();
+        cropVO.setCropName(cropDTO.getCropName());
         QueryWrapper<CropVO> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(CropVO::getCropName,cropVO.getCropName());
 
@@ -42,11 +44,12 @@ public class CropServiceImpl extends ServiceImpl<CropDao, CropVO> implements Cro
         if(null!=cropE){
             return ResultUtil.error("该作物已存在");
         }else {
-            cropVO.setCreateTime(LocalDateTime.now());
             int insert = cropDao.insert(cropVO);
             if (0==insert){
                 return ResultUtil.databaseError();
             }else{
+                //图片插入
+
                 cropVO =  cropDao.selectOne(queryWrapper);
                 //添加属性参数
                 CropParameterVO porperties = new CropParameterVO();

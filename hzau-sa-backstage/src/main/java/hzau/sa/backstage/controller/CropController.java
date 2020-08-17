@@ -3,6 +3,7 @@ package hzau.sa.backstage.controller;
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hzau.sa.backstage.entity.CropDTO;
 import hzau.sa.backstage.entity.CropVO;
 import hzau.sa.backstage.service.impl.CropServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
@@ -34,10 +35,10 @@ public class CropController extends BaseController {
 
     @SysLog(prefix = "新增作物", value = LogType.ALL)
     @ApiOperation(value = "新增作物", notes = "新增作物")
-    @ApiImplicitParam(name = "cropVO", value = "作物实体", paramType = "body", dataType = "CropVO")
+    @ApiImplicitParam(name = "cropDTO", value = "作物实体", paramType = "body", dataType = "CropDTO")
     @PostMapping("/save")
-    public Result save(@RequestBody CropVO cropVO){
-        return cropService.insert(cropVO);
+    public Result save(@RequestBody CropDTO cropDTO){
+        return cropService.insert(cropDTO);
     }
 
 
