@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *  学生实体类
@@ -27,8 +28,6 @@ public class StudentWrapper {
     @ExcelProperty(value = "学号",index = 0)
     private String studentId;
 
-    @ExcelProperty(value = "手机号",index = 4)
-    private String phoneNumber;
 
     @ExcelProperty(value = "姓名",index = 1)
     private String studentName;
@@ -39,11 +38,18 @@ public class StudentWrapper {
     @ExcelProperty(value = "班级",index = 3)
     private String className;
 
+    @ExcelProperty(value = "手机号",index = 4)
+    private String phoneNumber;
+
     @ExcelProperty(value = "是否操纵监控",index =5)
-    @ColumnWidth(20)
     private String isOperatemonitor;
 
     @ExcelProperty(value = "是否操纵水肥机",index = 6)
-    @ColumnWidth(20)
     private String isOperatewfm;
+
+    @ExcelIgnore
+    private String password;
+
+    @ExcelIgnore
+    private MultipartFile multipartFile;
 }

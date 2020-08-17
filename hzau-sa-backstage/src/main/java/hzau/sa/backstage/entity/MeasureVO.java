@@ -2,6 +2,7 @@ package hzau.sa.backstage.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 
+import hzau.sa.msg.entity.BaseVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,28 +20,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @TableName("measure")
-public class MeasureVO {
+public class MeasureVO extends BaseVO {
 
 	private static final long serialVersionUID = 1L;
 
-
-	/**
-	 * 
-	 */
 	@TableId(type=IdType.AUTO)
 	private Integer measureId;
 
-
-	/**
-	 * 
-	 */
 	private String measureName;
 
-
-	/**
-	 * 
-	 */
-	@TableField(fill = FieldFill.INSERT)
-	private LocalDateTime createTime;
-
+	public MeasureVO(MeasureWrapper measureWrapper){
+		this.measureId=measureWrapper.getMeasureId();
+		this.measureName=measureWrapper.getMeasureName();
+	}
 }

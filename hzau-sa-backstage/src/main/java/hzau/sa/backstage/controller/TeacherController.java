@@ -4,9 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 import javax.validation.Valid;
 
+import cn.hutool.core.convert.Convert;
+import hzau.sa.backstage.entity.MeasureVO;
 import hzau.sa.backstage.entity.TeacherWrapper;
+import hzau.sa.backstage.service.impl.TeacherServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
+import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
+import hzau.sa.msg.util.ResultUtil;
 import io.swagger.annotations.ApiImplicitParams;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,37 +44,32 @@ import io.swagger.annotations.ApiImplicitParam;
  */
 @Slf4j
 @RestController
-@RequestMapping("sys/teacher")
+@RequestMapping("/teacher")
 @Api(value = "-API", tags = { "老师接口" })
-public class TeacherController{
+public class TeacherController extends BaseController {
 
     @Autowired
-    private TeacherService teacherService;
+    private TeacherServiceImpl teacherService;
 
-    /**
-     * 分页显示老师
-     */
-    @SysLog(prefix = "分页显示老师")
-    @ApiOperation("分页显示老师")
-    @ApiImplicitParam(name = "pageNo",value = "要显示的页数",paramType = "query",dataType = "String")
-    @PostMapping("/page")
-    public Result page(String pageNo){
-        return teacherService.page(Integer.parseInt(pageNo));
-    }
-    /**
-     * 按名字分页老师
-     */
-    @SysLog(prefix = "按名字分页老师")
-    @ApiOperation("按名字分页老师")
+
+    @ApiOperation(value = "按名字分页模糊查询", notes = "按名字分页模糊查询")
     @ApiImplicitParams({
-    @ApiImplicitParam(name = "name",value = "老师的名字",paramType = "query",dataType = "String"),
-    @ApiImplicitParam(name="pageNo",value = "要显示的页数",paramType = "query",dataType = "String")
-    })
-    @PostMapping("/pageByName")
-    public Result pageByName(String name,String pageNo){
-        return teacherService.pageByName(name, Integer.parseInt(pageNo));
-    }
+            @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String"),
 
+    })
+    @GetMapping("/page")
+    public Result page(String keyword){
+        keyword = Convert.toStr(keyword,"");
+        Page<TeacherVO> page = getPage();
+        log.info(keyword);
+        log.info(page.toString());
+        QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<TeacherVO>();
+        queryWrapper.like("teacherName",keyword)
+                .orderByAsc("createTime");
+        return ResultUtil.success(teacherService.page(page,queryWrapper));
+    }
 
 
     /**
@@ -83,12 +83,9 @@ public class TeacherController{
         return teacherService.addTeacher(teacherWrapper);
     }
 
-
-
     /**
      * 删除老师
      */
-
     @SysLog(prefix = "删除老师")
     @ApiOperation("删除老师")
     @ApiImplicitParam(name = "teacherId",value = "删除老师的id",paramType = "query",dataType = "String")
@@ -101,8 +98,6 @@ public class TeacherController{
     /**
      * 批量删除老师
      */
-
-
     @SysLog(prefix = "批量删除老师")
     @ApiOperation("批量删除老师")
     @ApiImplicitParam(name = "teacherIds",value = "批量删除老师的id",paramType = "query",allowMultiple = true,dataType = "String")

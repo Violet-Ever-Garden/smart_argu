@@ -54,15 +54,16 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     private static final int size=10;
     /**
      * 添加学生
+     * 这里也需要修改，在file表里面增加一个默认图片的record
      */
     @Override
     public Result addStudent(StudentWrapper studentWrapper){
 
         //判断学生是否已经存在（id和手机号）
         QueryWrapper<StudentVO> studentQueryWrapper = new QueryWrapper<>();
-        studentQueryWrapper.eq("studentId",studentWrapper.getStudentId())
+        studentQueryWrapper.lambda().eq(StudentVO::getStudentId,studentWrapper.getStudentId())
                 .or()
-                .eq("phoneNumber",studentWrapper.getPhoneNumber());
+                .eq(StudentVO::getPhoneNumber,studentWrapper.getPhoneNumber());
 
         List<StudentVO> students = studentDao.selectList(studentQueryWrapper);
         if (!students.isEmpty()){
@@ -71,36 +72,40 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
 
         //获得班级表中对应的记录
         QueryWrapper<ClassVO> classWrapper= new QueryWrapper<>();
-        classWrapper.eq("className", studentWrapper.getClassName());
+        classWrapper.lambda().select(ClassVO::getClassId).eq(ClassVO::getClassName, studentWrapper.getClassName());
         ClassVO classVO = classDao.selectOne(classWrapper);
 
         //获得年级表中对应的记录
         QueryWrapper<GradeVO> gradeWrapper=new QueryWrapper<>();
-        gradeWrapper.eq("gradeName", studentWrapper.getGradeName());
+        gradeWrapper.lambda().select(GradeVO::getGradeId).eq(GradeVO::getGradeName, studentWrapper.getGradeName());
         GradeVO gradeVO = gradeDao.selectOne(gradeWrapper);
 
         //解包装得到对应学生实体
         StudentVO studentVO = new StudentVO(studentWrapper);
         studentVO.setClassId(classVO.getClassId());
         studentVO.setGradeId(gradeVO.getGradeId());
+        studentVO.setCreateUser(studentVO.getCurrentUserName());
+        studentVO.setLastModifiedUser(studentVO.getCurrentUserName());
 
-        //进行插入
+        //学生进行插入
         if (studentDao.insert(studentVO)==0){
             return ResultUtil.databaseError();
         }
 
+        //插入默认图片
         return ResultUtil.success();
     }
 
     /**
      * 更新学生
+     * 这里更新的话对头像更新要弄一下，判断一下是否更新图片
      */
     @Override
     public Result updateStudent(StudentWrapper studentWrapper){
 
         //判断该学生是否存在
         QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("studentId",studentWrapper.getStudentId());
+        queryWrapper.lambda().eq(StudentVO::getStudentId,studentWrapper.getStudentId());
         StudentVO student = studentDao.selectOne(queryWrapper);
         if (student==null){
             return ResultUtil.paramError("不存在该学生");
@@ -108,7 +113,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
 
         //判断电话号码是否重复
         QueryWrapper<StudentVO> queryWrapper1=new QueryWrapper<>();
-        queryWrapper1.eq("phoneNumber",studentWrapper.getPhoneNumber());
+        queryWrapper1.lambda().eq(StudentVO::getPhoneNumber,studentWrapper.getPhoneNumber());
         StudentVO student1 = studentDao.selectOne(queryWrapper1);
         if (student1!=null){
             return ResultUtil.paramError("电话号码已存在");
@@ -116,23 +121,26 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
 
         //获得班级表中对应的记录
         QueryWrapper<ClassVO> classWrapper= new QueryWrapper<>();
-        classWrapper.eq("className", studentWrapper.getClassName());
+        classWrapper.lambda().eq(ClassVO::getClassName, studentWrapper.getClassName());
         ClassVO classVO = classDao.selectOne(classWrapper);
 
         //获得年级表中对应的记录
         QueryWrapper<GradeVO> gradeWrapper=new QueryWrapper<>();
-        gradeWrapper.eq("gradeName", studentWrapper.getGradeName());
+        gradeWrapper.lambda().eq(GradeVO::getGradeName, studentWrapper.getGradeName());
         GradeVO gradeVO = gradeDao.selectOne(gradeWrapper);
 
         //解包装得到对应学生实体
         StudentVO studentVO = new StudentVO(studentWrapper);
         studentVO.setClassId(classVO.getClassId());
         studentVO.setGradeId(gradeVO.getGradeId());
+        studentVO.setLastModifiedUser(studentVO.getCurrentUserName());
 
-        //更新
+        //学生更新
         if (studentDao.update(studentVO,queryWrapper)==0){
             return ResultUtil.error("更新失败");
         }
+
+        //插入默认图片
         return ResultUtil.success();
 
     }
@@ -143,7 +151,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     @Override
     public Result deleteStudent(String studentId){
         QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("studentId",studentId);
+        queryWrapper.lambda().eq(StudentVO::getStudentId,studentId);
 
         StudentVO studentVO = studentDao.selectOne(queryWrapper);
         if (studentVO==null){
@@ -163,7 +171,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     @Override
     public Result deleteStudents(String[] studentIds){
         QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.in("studentId",Arrays.asList(studentIds));
+        queryWrapper.lambda().in(StudentVO::getStudentId,Arrays.asList(studentIds));
 
         if (studentDao.delete(queryWrapper)==0){
             return ResultUtil.error("批量删除失败");
@@ -171,99 +179,10 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
         return ResultUtil.success();
     }
 
-    /**
-     * 分页列表
-     */
-    @Override
-    public Result page(int pageNo){
-        Page<StudentVO> page = new Page<StudentVO>(pageNo,size);
-
-        QueryWrapper<StudentVO> wrapper = new QueryWrapper<>();
-
-        IPage<StudentVO> iPage = studentDao.selectPage(page, wrapper);
-
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("totalPages",iPage.getPages());
-        hashMap.put("totalRecordNums",iPage.getTotal());
-        hashMap.put("Records",iPage.getRecords());
-
-        return ResultUtil.success(hashMap);
-
-    }
-
-    /**
-     * 按名字查找分页
-     */
-    @Override
-    public Result pageByName(String name, int pageNo){
-        Page<StudentVO> page = new Page<StudentVO>(pageNo,size);
-
-        QueryWrapper<StudentVO> wrapper = new QueryWrapper<>();
-        wrapper.like("studentName",name);
-
-        IPage<StudentVO> iPage = studentDao.selectPage(page, wrapper);
-
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("totalPages",iPage.getPages());
-        hashMap.put("totalRecordNums",iPage.getTotal());
-        hashMap.put("Records",iPage.getRecords());
-
-        return ResultUtil.success(hashMap);
-    }
-
-    /**
-     * 按年级分页
-     */
-    @Override
-    public Result pageByGrade(String gradeName, int pageNo){
-        //获得grade的对象
-        QueryWrapper<GradeVO> gradeQueryWrapper = new QueryWrapper<>();
-        gradeQueryWrapper.eq("gradeName",gradeName);
-        GradeVO grade = gradeDao.selectOne(gradeQueryWrapper);
-
-        //获得对应的student对象
-        QueryWrapper<StudentVO> studentQueryWrapper = new QueryWrapper<>();
-        studentQueryWrapper.eq("gradeId",grade.getGradeId());
-        Page<StudentVO> page = new Page<>(pageNo,size);
-
-        IPage<StudentVO> iPage=studentDao.selectPage(page,studentQueryWrapper);
-
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("totalPages",iPage.getPages());
-        hashMap.put("totalRecordNums",iPage.getTotal());
-        hashMap.put("Records",iPage.getRecords());
-
-        return ResultUtil.success(hashMap);
-    }
-
-    /**
-     * 按班级分页
-     */
-    @Override
-    public Result pageByClasses(String className, int pageNo){
-        //获取对应的class对象
-        QueryWrapper<ClassVO> classQueryWrapper = new QueryWrapper<>();
-        classQueryWrapper.eq("className",className);
-        ClassVO classVO = classDao.selectOne(classQueryWrapper);
-
-        //获取对应的student
-        QueryWrapper<StudentVO> studentQueryWrapper = new QueryWrapper<>();
-        studentQueryWrapper.eq("classId",classVO.getClassId());
-        Page<StudentVO> page=new Page<>(pageNo,size);
-        IPage<StudentVO> iPage=studentDao.selectPage(page,studentQueryWrapper);
-
-        //返回
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("totalPages",iPage.getPages());
-        hashMap.put("totalRecordNums",iPage.getTotal());
-        hashMap.put("Records",iPage.getRecords());
-
-        return ResultUtil.success(hashMap);
-    }
-
 
     /**
      * 从模板中添加学生
+     * 图片还要设置一个默认的图片位置
      */
     @Override
     public Result addStudentByTemplate(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){

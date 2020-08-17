@@ -1,5 +1,6 @@
 package hzau.sa.backstage.service;
 
+import hzau.sa.backstage.entity.MeasureWrapper;
 import hzau.sa.msg.entity.Result;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -12,10 +13,8 @@ import hzau.sa.backstage.entity.MeasureVO;
  * @date 2020-08-12
  */
 public interface MeasureService  {
-    public Result addMeasure(MeasureVO measure);
+    public Result addMeasure(MeasureWrapper measureWrapper);
     public Result deleteMeasure(Integer measureId);
     public Result deleteMeasures(Integer[] measureIds);
-    public Result updateMesure(MeasureVO measure);
-    public Result findMeasure(String measureName,int pageNo);
-    public Result page(int pageNo);
+    public Result updateMesure(MeasureWrapper measureWrapper);
 }

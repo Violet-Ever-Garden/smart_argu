@@ -3,18 +3,22 @@ package hzau.sa.backstage.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hzau.sa.backstage.entity.StudentWrapper;
+import cn.hutool.core.convert.Convert;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hzau.sa.backstage.dao.ClassDao;
+import hzau.sa.backstage.dao.GradeDao;
+import hzau.sa.backstage.entity.*;
+import hzau.sa.backstage.service.impl.StudentServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
+import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
+import hzau.sa.msg.util.ResultUtil;
 import io.swagger.annotations.ApiImplicitParams;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import hzau.sa.backstage.entity.StudentVO;
 import hzau.sa.backstage.service.StudentService;
 
 import io.swagger.annotations.Api;
@@ -29,74 +33,105 @@ import io.swagger.annotations.ApiImplicitParam;
  */
 @Slf4j
 @RestController
-@RequestMapping("sys/student")
+@RequestMapping("/student")
 @Api(value = "-API", tags = { "学生接口" })
-public class StudentController{
+public class StudentController extends BaseController {
 
     @Autowired
-    private StudentService studentService;
+    private StudentServiceImpl studentService;
+
+    @Autowired
+    private ClassDao classDao;
+
+    @Autowired
+    private GradeDao gradeDao;
 
     /**
-     * 分页列表
+     * 按名字分页模糊查询
+     * @param keyword
+     * @return
      */
-    @SysLog(prefix = "分页列表")
-    @ApiOperation("分页列表")
-    @ApiImplicitParam(name = "pageNo",value = "即将显示的页数",paramType = "query",dataType = "String")
-    @PostMapping("/page")
-    public Result page(String pageNo){
-        return studentService.page(Integer.parseInt(pageNo));
-    }
-
-
-
-    /**
-     * 按年级分页
-     */
-    @SysLog(prefix = "按年级分页")
-    @ApiOperation("按年级分页")
+    @ApiOperation(value = "按名字分页模糊查询", notes = "按名字分页模糊查询")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "gradeName", value = "年级的名字", dataType = "String"),
-            @ApiImplicitParam(name = "pageNo", value = "即将显示的页数", dataType = "String")
+            @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
+
+    })
+    @GetMapping("/pageByName")
+    public Result pageByName(String keyword){
+        keyword = Convert.toStr(keyword,"");
+        Page<StudentVO> page = getPage();
+        log.info(keyword);
+        log.info(page.toString());
+        QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<StudentVO>();
+
+        queryWrapper.like("studentName",keyword)
+                .orderByAsc("createTime");
+        return ResultUtil.success(studentService.page(page,queryWrapper));
     }
 
+    /**
+     * 按年级分页查询
+     */
+    @ApiOperation(value = "按年级分页查询", notes = "按年级分页查询")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "gradeName",value = "年级名",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
 
-    )
-    @PostMapping("/pageByGrade")
-    public Result pageByGrade(String gradeName,String pageNo){
-        return studentService.pageByGrade(gradeName, Integer.parseInt(pageNo));
+    })
+    @GetMapping("/pageByGrade")
+    public Result pageByGrade(String keyword,String gradeName){
+        keyword = Convert.toStr(keyword,"");
+        Page<StudentVO> page = getPage();
+        log.info(keyword);
+        log.info(page.toString());
+        QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<StudentVO>();
+
+        QueryWrapper<GradeVO> gradeVOQueryWrapper=new QueryWrapper<>();
+        gradeVOQueryWrapper.eq("gradeName",gradeName);
+
+
+        queryWrapper.eq("gradeId",gradeDao.selectOne(gradeVOQueryWrapper).getGradeId())
+                .orderByAsc("createTime");
+        return ResultUtil.success(studentService.page(page,queryWrapper));
     }
 
 
     /**
-     * 按班级分页
+     * 按班级分页查询
+     * @param keyword
+     * @param className
+     * @return
      */
-
-    @SysLog(prefix = "按班级分页")
-    @ApiOperation("按班级分页")
+    @ApiOperation(value = "按班级分页查询", notes = "按班级分页查询")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "className", value = "班级的名字", dataType = "String"),
-            @ApiImplicitParam(name = "pageNo", value = "即将显示的页数", dataType = "String")
-    }
-    )
-    @PostMapping("/pageByClass")
-    public Result pageByClass(String className,String pageNo){
-        return studentService.pageByClasses(className, Integer.parseInt(pageNo));
+            @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "className",value = "班级名",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
+
+    })
+    @GetMapping("/pageByClass")
+    public Result pageByClass(String keyword,String className){
+        keyword = Convert.toStr(keyword,"");
+        Page<StudentVO> page = getPage();
+        log.info(keyword);
+        log.info(page.toString());
+        QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<StudentVO>();
+
+        QueryWrapper<ClassVO> classVOQueryWrapper=new QueryWrapper<>();
+        classVOQueryWrapper.eq("className",className);
+
+
+        queryWrapper.eq("classId",classDao.selectOne(classVOQueryWrapper).getClassId())
+                .orderByAsc("createTime");
+        return ResultUtil.success(studentService.page(page,queryWrapper));
     }
 
-    /**
-     * 按名字查找分页
-     */
-    @SysLog(prefix = "按名字分页")
-    @ApiOperation("按名字分页")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "name", value = "名字", dataType = "String"),
-            @ApiImplicitParam(name = "pageNo", value = "即将显示的页数", dataType = "String")
-    }
-    )
-    @PostMapping("/pageByName")
-    public Result pageByName(String name,String pageNo){
-        return studentService.pageByName(name, Integer.parseInt(pageNo));
-    }
+
 
     /**
      * 添加学生
