@@ -55,10 +55,6 @@ public class CropController extends BaseController {
     @ApiImplicitParam(name = "ids[]", value = "作物id数组", paramType = "query", allowMultiple = true, dataType = "String")
     @PostMapping("/deleteList")
     public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
-        //log.info("ids.length = "+ids.length);
-        //log.info(String.valueOf(ids[0]));
-        //ArrayList<Integer> arrayList = new ArrayList<>();
-        // arrayList.add(ids[0]);
         boolean b = cropService.removeByIds(Arrays.asList(ids));
         if(false==b){
             return ResultUtil.databaseError();
@@ -82,14 +78,14 @@ public class CropController extends BaseController {
         log.info(keyword);
         log.info(page.toString());
         QueryWrapper<CropVO> queryWrapper = new QueryWrapper<CropVO>();
-        queryWrapper.like("cropName",keyword)
-                .orderByAsc("createTime");
+        queryWrapper.lambda().like(CropVO::getCropName,keyword)
+                .orderByDesc(CropVO::getCreateTime);
         return ResultUtil.success(cropService.page(page,queryWrapper));
     }
 
     @SysLog(prefix = "更新作物", value = LogType.ALL)
     @ApiOperation(value = "更新作物", notes = "更新作物")
-    @ApiImplicitParam(name = "条件分页查询", value = "关键字", paramType = "query", dataType = "String")
+    @ApiImplicitParam(name = "cropVO", value = "关键字", paramType = "query", dataType = "CropVO")
     @PostMapping("/update")
     public Result update(@RequestBody CropVO cropVO){
         boolean b = cropService.updateById(cropVO);

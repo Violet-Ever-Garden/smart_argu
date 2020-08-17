@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import javax.validation.Valid;
 
+import hzau.sa.backstage.entity.CropVO;
 import hzau.sa.backstage.service.impl.CropGrowthPeriodServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.controller.BaseController;
@@ -52,10 +53,10 @@ public class CropGrowthPeriodController extends BaseController {
 
     @SysLog(prefix = "新增生育期", value = LogType.ALL)
     @ApiOperation(value = "新增生育期", notes = "新增生育期")
-    @ApiImplicitParam(name = "CropGrowthPeriodVO", value = "作物生育期实体", paramType = "body", dataType = "CropGrowthPeriodVO")
+    @ApiImplicitParam(name = "cropGrowthPeriodVO", value = "作物生育期实体", paramType = "body", dataType = "CropGrowthPeriodVO")
     @PostMapping("/add")
-    public Result add(@RequestBody CropGrowthPeriodVO CropGrowthPeriodVO) {
-        boolean save = cropGrowthPeriodService.save(CropGrowthPeriodVO);
+    public Result add(@RequestBody CropGrowthPeriodVO cropGrowthPeriodVO) {
+        boolean save = cropGrowthPeriodService.save(cropGrowthPeriodVO);
         if (false == save) {
             return ResultUtil.databaseError();
         } else {
@@ -98,9 +99,22 @@ public class CropGrowthPeriodController extends BaseController {
     @GetMapping("/list/{cropId}")
     public Result list(@PathVariable("cropId")String cropId){
         QueryWrapper<CropGrowthPeriodVO> queryWrapper = new QueryWrapper();
-        queryWrapper.eq("cropId",cropId);
+        queryWrapper.lambda().eq(CropGrowthPeriodVO::getCropId,cropId);
         return ResultUtil.success(cropGrowthPeriodService.list(queryWrapper));
     }
 
-    //TODO.....
+
+    @SysLog(prefix = "更新生育期", value = LogType.ALL)
+    @ApiOperation(value = "更新生育期", notes = "更新生育期")
+    @ApiImplicitParam(name = "cropGrowthPeriodVO", value = "作物生长期实体类", paramType = "query", dataType = "CropGrowthPeriodVO")
+    @PostMapping("/update")
+    public Result update(@RequestBody CropGrowthPeriodVO cropGrowthPeriodVO){
+        boolean b = cropGrowthPeriodService.updateById(cropGrowthPeriodVO);
+        if(false == b){
+            return ResultUtil.databaseError();
+        }else {
+            return ResultUtil.success();
+        }
+    }
+
 }

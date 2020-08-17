@@ -9,6 +9,7 @@ import javax.websocket.server.PathParam;
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hzau.sa.backstage.entity.CropGrowthPeriodVO;
 import hzau.sa.backstage.entity.CropParameterModel;
 import hzau.sa.backstage.entity.CropParameterVO;
 import hzau.sa.backstage.service.impl.CropParameterServiceImpl;
@@ -54,8 +55,6 @@ public class CropParameterController extends BaseController {
     })
     @GetMapping("/page")
     public Result page(String keyword,String cropId){
-        //String keyword = Convert.toStr(param.get("keyword"),"");
-        //int cropId = Convert.toInt(param.get("cropId"));
         keyword = Convert.toStr(keyword,"");
         Page<CropParameterModel> page = getPage();
         List<CropParameterModel> cropParameterModels = cropParameterService.selectCropParameterListPage(page, Integer.parseInt(cropId), keyword);
@@ -101,6 +100,18 @@ public class CropParameterController extends BaseController {
         if(false==b){
             return ResultUtil.databaseError();
         }else{
+            return ResultUtil.success();
+        }
+    }
+    @SysLog(prefix = "更新参数", value = LogType.ALL)
+    @ApiOperation(value = "更新参数", notes = "更新参数")
+    @ApiImplicitParam(name = "cropParameterVO", value = "作物参数实体类", paramType = "query", dataType = "CropParameterVO")
+    @PostMapping("/update")
+    public Result update(@RequestBody CropParameterVO cropParameterVO){
+        boolean b = cropParameterService.updateById(cropParameterVO);
+        if(false == b){
+            return ResultUtil.databaseError();
+        }else {
             return ResultUtil.success();
         }
     }
