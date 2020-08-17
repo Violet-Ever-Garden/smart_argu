@@ -37,7 +37,8 @@ public abstract class Swagger2Config {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("hzau.sa.msg"))
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
-                .build();
+                .build().securitySchemes(securitySchemes())
+                .securityContexts(securityContexts());
     }
 
     /**
