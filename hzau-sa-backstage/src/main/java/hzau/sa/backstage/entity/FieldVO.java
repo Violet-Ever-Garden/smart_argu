@@ -2,6 +2,7 @@ package hzau.sa.backstage.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 
+import hzau.sa.msg.entity.BaseVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,7 +20,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @TableName("field")
-public class FieldVO {
+public class FieldVO extends BaseVO{
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,18 +28,15 @@ public class FieldVO {
 
 	@TableId(type=IdType.AUTO)
 	private Integer fieldId;
-
-
-	/**
-	 * 
-	 */
 	private String fieldName;
-
-
 	/**
-	 * 
+	 *区域，这是个外键
 	 */
-	@TableField(fill = FieldFill.INSERT)
-	private LocalDateTime createTime;
+	private Integer regionId;
 
+	public FieldVO(FieldWrapper fieldWrapper){
+		this.fieldId=fieldWrapper.getFieldId();
+		this.fieldName=fieldWrapper.getFieldName();
+		this.regionId=fieldWrapper.getRegionId();
+	}
 }

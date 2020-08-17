@@ -11,6 +11,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *  VO
@@ -36,5 +37,9 @@ public class TeacherWrapper {
     private String isOperatemonitor;
 
     private String type;
+
+    private String password;
+
+    private MultipartFile multipartFile;
 
 }

@@ -6,6 +6,8 @@ import com.alibaba.excel.read.builder.ExcelReaderBuilder;
 import com.alibaba.excel.read.builder.ExcelReaderSheetBuilder;
 import hzau.sa.backstage.entity.StudentVO;
 import hzau.sa.backstage.listener.StudentListener;
+import hzau.sa.msg.entity.Result;
+import hzau.sa.msg.util.ResultUtil;
 
 import java.io.InputStream;
 
@@ -17,7 +19,6 @@ import java.io.InputStream;
 public class ExcelUtil {
     public static void autoWrite(InputStream inputStream){
         ExcelReaderBuilder workBook = EasyExcel.read(inputStream, StudentVO.class, new StudentListener());
-        ExcelReaderSheetBuilder sheet = workBook.sheet();
-        sheet.doRead();
+        workBook.ignoreEmptyRow(true).doReadAll();
     }
 }

@@ -4,9 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 import javax.validation.Valid;
 
+import cn.hutool.core.convert.Convert;
 import hzau.sa.backstage.entity.FieldVO;
+import hzau.sa.backstage.entity.MeasureWrapper;
+import hzau.sa.backstage.service.impl.MeasureServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
+import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
+import hzau.sa.msg.util.ResultUtil;
 import io.swagger.annotations.ApiImplicitParams;
 import lombok.extern.slf4j.Slf4j;
 import hzau.sa.backstage.entity.MeasureVO;
@@ -39,27 +44,18 @@ import io.swagger.annotations.ApiImplicitParam;
  */
 @Slf4j
 @RestController
-@RequestMapping("/sys/measure")
+@RequestMapping("/measure")
 @Api(value = "-API", tags = { "措施接口" })
-public class MeasureController{
+public class MeasureController extends BaseController {
 
     @Autowired
-    private MeasureService measureService;
-
-    @SysLog(prefix = "分页查询措施")
-    @ApiOperation("分页查询措施")
-    @ApiImplicitParam(name = "pageNo", value = "请求的页数", paramType = "query", dataType = "String")
-    @PostMapping("/page")
-    public Result page(String pageNo) {
-        return measureService.page(Integer.parseInt(pageNo));
-    }
-
+    private MeasureServiceImpl measureService;
 
     @SysLog(prefix = "增加措施")
     @ApiOperation("增加措施")
-    @ApiImplicitParam(name = "measure",value = "增加的措施",paramType = "body",dataType = "MeasureVO")
+    @ApiImplicitParam(name = "measure",value = "增加的措施",paramType = "body",dataType = "MeasureWrapper")
     @PostMapping("/addMeasure")
-    public Result addMeasure(@RequestBody MeasureVO measure){return measureService.addMeasure(measure);}
+    public Result addMeasure(@RequestBody MeasureWrapper measure){return measureService.addMeasure(measure);}
 
     @SysLog(prefix = "删除措施")
     @ApiOperation("删除措施")
@@ -77,20 +73,28 @@ public class MeasureController{
 
     @SysLog(prefix = "更新措施")
     @ApiOperation("更新措施")
-    @ApiImplicitParam(name = "measure",value = "更新措施",paramType = "body",dataType = "MeasureVO")
+    @ApiImplicitParam(name = "measure",value = "更新措施",paramType = "body",dataType = "MeasureWrapper")
     @PostMapping("/updateMeasure")
-    public Result updateMeasure(@RequestBody MeasureVO measure){
+    public Result updateMeasure(@RequestBody MeasureWrapper measure){
         return measureService.updateMesure(measure);
     }
 
-    @SysLog(prefix = "查找措施")
-    @ApiOperation("查找措施")
+    @ApiOperation(value = "按名字分页模糊查询", notes = "按名字分页模糊查询")
     @ApiImplicitParams({
-    @ApiImplicitParam(name = "measureName",value = "查找措施的名字",paramType = "query",dataType = "String"),
-    @ApiImplicitParam(name = "pageNo",value = "即将显示的页数",paramType = "query",dataType = "String")
+            @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String"),
+
     })
-    @PostMapping("/findMeasure")
-    public Result findMeasure(String measureName,String pageNo){
-        return measureService.findMeasure(measureName, Integer.parseInt(pageNo));
+    @GetMapping("/page")
+    public Result page(String keyword){
+        keyword = Convert.toStr(keyword,"");
+        Page<MeasureVO> page = getPage();
+        log.info(keyword);
+        log.info(page.toString());
+        QueryWrapper<MeasureVO> queryWrapper = new QueryWrapper<MeasureVO>();
+        queryWrapper.like("measureName",keyword)
+                .orderByAsc("createTime");
+        return ResultUtil.success(measureService.page(page,queryWrapper));
     }
 }

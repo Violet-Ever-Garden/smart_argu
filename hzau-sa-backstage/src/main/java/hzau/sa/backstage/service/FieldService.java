@@ -1,5 +1,6 @@
 package hzau.sa.backstage.service;
 
+import hzau.sa.backstage.entity.FieldWrapper;
 import hzau.sa.msg.entity.Result;
 import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.stereotype.Service;
@@ -13,10 +14,8 @@ import hzau.sa.backstage.entity.FieldVO;
  * @date 2020-08-12
  */
 public interface FieldService  {
-    public Result page(int pageNo);
-    public Result addField(FieldVO fieldVO);
+    public Result addField(FieldWrapper fieldWrapper);
     public Result deleteField(Integer fieldId);
-    public Result updateField(FieldVO fieldVO);
-    public Result findField(String fieldName,int pageNo);
+    public Result updateField(FieldWrapper fieldWrapper);
     public Result deleteFields(Integer[] fieldIds);
 }
