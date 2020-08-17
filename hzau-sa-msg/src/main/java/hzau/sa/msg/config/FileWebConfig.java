@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 public class FileWebConfig extends WebMvcConfigurationSupport {
 
     @Value("${file.map}")
-    private String FILE_MAP;
+    private String fileMap;
 
     @Value("${file.upload.path}")
     private String path;
@@ -22,7 +22,7 @@ public class FileWebConfig extends WebMvcConfigurationSupport {
 
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler(FILE_MAP)
+        registry.addResourceHandler(fileMap)
                 .addResourceLocations("file:" + path);
 
         registry.addResourceHandler("swagger-ui.html")
