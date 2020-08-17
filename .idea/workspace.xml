@@ -19,183 +19,207 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="修正security和作物的一些小问题">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/META-INF/hzau-sa-backstage.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/common/RoleConstant.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/config/MyMetaObjectHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/entity/BaseVO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/util/RedisUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/util/ShiroKit.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/application-mongo.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/TrainingReportApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/config/TrainingReportSwagger.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/controller/DataReportController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/dao/DataReportDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/dao/DataReportRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/entity/CropData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/entity/DataReport.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/entity/DataReportVO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/service/DataReportService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/service/impl/DataReportServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__cglib_cglib_3_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cglib_cglib_3_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__cn_hutool_hutool_all_5_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cn_hutool_hutool_all_5_1_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_easyexcel_2_1_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_easyexcel_2_1_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_59.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_59.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_auth0_java_jwt_3_8_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_auth0_java_jwt_3_8_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_dynamic_datasource_spring_boot_starter_2_5_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_dynamic_datasource_spring_boot_starter_2_5_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_3_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_3_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_annotation_3_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_annotation_3_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_boot_starter_3_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_boot_starter_3_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_core_3_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_core_3_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_extension_3_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_extension_3_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_10_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_10_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_10_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_10_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_10_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_10_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_10_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_10_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_10_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_10_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_10_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_10_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_2_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_2_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_04.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_04.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_16.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_16.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_lettuce_lettuce_core_5_2_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_lettuce_lettuce_core_5_2_1_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_buffer_4_1_43_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_buffer_4_1_43_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_4_1_43_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_4_1_43_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_common_4_1_43_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_common_4_1_43_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_1_43_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_1_43_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_resolver_4_1_43_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_resolver_4_1_43_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_4_1_43_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_4_1_43_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_projectreactor_reactor_core_3_3_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_projectreactor_reactor_core_3_3_1_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_2_9_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_2_9_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_2_9_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_9_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_9_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_9_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_9_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_20.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_20.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_20.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_20.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_17.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_10_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_10_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_7_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_7_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_12_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_12_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_12_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_12_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_17.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_17.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_17.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_cache_1_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_cache_1_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_core_1_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_core_1_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_ogdl_1_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_ogdl_1_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_cipher_1_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_cipher_1_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_core_1_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_core_1_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_hash_1_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_hash_1_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_event_1_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_event_1_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_lang_1_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_lang_1_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_spring_1_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_spring_1_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_web_1_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_web_1_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_29.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_29.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_29.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_29.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_29.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_29.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_6_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_6_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_13_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_13_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ehcache_ehcache_3_8_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ehcache_ehcache_3_8_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_18_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_18_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_5_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_5_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_5_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_5_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_5_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_5_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_2_0_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_2_0_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_3_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_3_1_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_3_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_3_1_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_5_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_2_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_2_0_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_4_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_4_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_12.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_reactivestreams_reactive_streams_1_0_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_reactivestreams_reactive_streams_1_0_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_29.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_29.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_29.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_29.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_redis_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_redis_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_2_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_2_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_keyvalue_2_2_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_keyvalue_2_2_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_redis_2_2_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_redis_2_2_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_2_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_2_2_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_6_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_6_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_25.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_3_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_3_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" afterDir="false" />
+    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="合并wuyihu分支解决冲突">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/hzau-sa-backstage.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/hzau-sa-backstage.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/BackStageApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/config/BackStageSwagger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/AsTeacherclassController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/ClassManageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/CropController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/CropGrowthPeriodController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/CropParameterController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/CropPropertyController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/FieldController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/GradeManageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/MeasureController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/StudentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/TeacherController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/AsClassfieldDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/AsClassmonitorDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/AsTeacherclassDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/ClassDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/CropDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/CropGrowthPeriodDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/CropParameterDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/CropPropertyDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/FieldDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/GradeDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/MeasureDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/StudentDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/TeacherDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/AsClassfieldVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/AsClassmonitorVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/AsTeacherclassVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/ClassGradeModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/ClassManage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/ClassVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/CropGrowthPeriodVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/CropParameterModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/CropParameterVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/CropPropertyVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/CropVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/FieldVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/GradeVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/MeasureVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/StudentVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/StudentWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/TeacherClassModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/TeacherVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/TeacherWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/listener/StudentListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/AsTeacherclassService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/ClassService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/CropGrowthPeriodService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/CropParameterService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/CropPropertyService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/CropService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/FieldService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/GradeService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/MeasureService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/StudentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/TeacherService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/AsTeacherclassServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/ClassServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/CropGrowthPeriodServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/CropParameterServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/CropPropertyServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/CropServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/FieldServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/GradeServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/MeasureServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/StudentServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/TeacherServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/util/ExcelUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/AsClassfieldMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/AsClassmonitorMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/AsTeacherclassMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/ClassMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/CropGrowthPeriodMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/CropMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/CropParameterMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/CropPropertyMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/GradeMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/MeasureMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/StudentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/TeacherMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/templates/test.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/hzau-sa-backstage-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/hzau-sa-backstage-1.0-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/CropTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/META-INF/hzau-sa-backstage.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/hzau/sa/backstage/dao/AsClassfieldDaoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/hzau/sa/backstage/dao/AsClassmonitorDaoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/hzau/sa/backstage/dao/GradeDaoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/hzau/sa/backstage/service/ClassServiceTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/hzau-sa-fileTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-fileTest/hzau-sa-fileTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/classes/hzau/sa/file/TestMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/classes/hzau/sa/file/config/BackStageSwagger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/classes/hzau/sa/file/config/WebConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/classes/hzau/sa/file/controller/FileTestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/classes/hzau/sa/file/enums/FileEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/classes/hzau/sa/file/util/FileUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/hzau-sa-fileTest-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/controller.java.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/dao.java.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/dao.xml.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/entity.java.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/service.java.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/hzau-sa-generator-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/hzau-sa-msg.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/hzau-sa-msg.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/config/redis.setting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/annotation/SysLog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/aspect/SysLogAspect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/common/Constant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/common/PageConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/common/RoleConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/config/MyMetaObjectHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/config/MybatisPlusConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/config/Swagger2Config.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/controller/BaseController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/controller/LogController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/dao/LogDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/entity/BaseVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/entity/LogVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/entity/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/enums/CodeType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/enums/FileEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/enums/LogType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/exception/DataBaseException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/service/BaseService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/service/LogService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/util/FileUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/util/JwtUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/util/RedisUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/util/ResultUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/util/ShiroKit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/logback-spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/hzau-sa-msg-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/hzau-sa-security/hzau-sa-security.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-security/hzau-sa-security.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/config/redis.setting" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/target/classes/config/redis.setting" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/mapper/StudentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/mapper/DataReportMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/Shiro/JwtFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/Shiro/JwtRealm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/Shiro/JwtToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/Shiro/ShiroConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/Shiro/ShiroKit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/controller/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/controller/StudentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/controller/TeacherController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/dao/LoginStudentDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/dao/LoginTeacherDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/dao/StudentDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/dao/TeacherDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/entity/LoginVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/entity/StudentVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/entity/TeacherVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/service/impl/LoginService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/service/impl/StudentServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/service/impl/TeacherServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/hzau/sa/security/swagger/UserSwaggerConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/mapper/StudentMapper.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/mapper/TeacherMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-stater/hzau-sa-stater.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-stater/hzau-sa-stater.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/hzau-sa-security-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-stater/target/classes/hzau/sa/stater/Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-stater/target/hzau-sa-stater-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-stater/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-stater/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-stater/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/hzau-sa-trainingReport.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/hzau-sa-trainingReport.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/application-mongo.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/TrainingReportApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/config/TrainingReportSwagger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/controller/DataReportController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/dao/DataReportDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/dao/DataReportRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/entity/CropData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/entity/DataReport.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/entity/DataReportVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/service/DataReportService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/hzau/sa/trainingReport/service/impl/DataReportServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/classes/mapper/DataReportMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/hzau-sa-trainingReport-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -205,6 +229,20 @@
     <option name="groupingKeys">
       <option value="directory" />
     </option>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="hzau-Smart-Agriculture" />
@@ -227,10 +265,15 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="localRepository" value="D:\Maven\repository" />
+        <option name="localRepository" value="E:\apache-maven-3.6.2\localRepository" />
         <option name="mavenHome" value="D:/Maven/apache-maven-3.6.3" />
-        <option name="userSettingsFile" value="D:\Maven\apache-maven-3.6.3\conf\settings.xml" />
+        <option name="userSettingsFile" value="C:\Users\Hasee\.m2\settings.xml" />
       </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
     </option>
   </component>
   <component name="MavenRunner">
@@ -258,7 +301,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/hzau-sa-backstage/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -276,19 +319,25 @@
       <recent name="hzau.sa.backstage.dao" />
       <recent name="hzau.sa.backstage.service" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-backstage\src\main\resources" />
-      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-configure\src\main\resources" />
-      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-configure\src\main\java" />
-      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-security\src\main\resources" />
-      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-security\src\main\java" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-msg\src\main\resources" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\test2\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="hzau.sa.trainingReport.service" />
+      <recent name="hzau.sa.trainingReport.service.impl" />
+      <recent name="hzau.sa.trainingReport.entity" />
+      <recent name="hzau.sa.trainingReport.dao" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-msg\src\main\resources" />
-      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\test2\src\main\resources" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\project_git\hzau\hzau_smart\hzau-sa-trainingReport\src\main\java\hzau\sa\trainingReport" />
+      <recent name="E:\project_git\hzau\hzau_smart\hzau-sa-trainingReport\src\main\java" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-backstage\src\main\resources" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-configure\src\main\resources" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-configure\src\main\java" />
     </key>
   </component>
   <component name="RestServicesNavigator">
@@ -424,19 +473,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Application (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="hzau-sa-stater" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hzau.sa.stater.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.stater.Application" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="hzau-sa-configure" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.configure.Application" />
@@ -471,21 +507,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TrainingReportApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="hzau-sa-trainingReport" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.trainingReport.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.trainingReport.TrainingReportApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.TrainingReportApplication" />
         <item itemvalue="Spring Boot.TestMain" />
         <item itemvalue="JUnit.GradeDaoTest.selectGradeIdByName" />
         <item itemvalue="JUnit.AsClassfieldDaoTest.queryFieldIdByName" />
         <item itemvalue="Application.GeneratorService" />
-        <item itemvalue="Spring Boot.Application (2)" />
       </list>
     </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
       <serviceView>
+        <option name="contentProportion" value="0.13046448" />
         <treeState>
-          <expand />
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3a869904" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3a869904" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@71ec5083" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
           <select />
         </treeState>
       </serviceView>
@@ -504,6 +564,7 @@
       <workItem from="1596859748341" duration="28740000" />
       <workItem from="1596891276574" duration="43423000" />
       <workItem from="1597578342440" duration="8258000" />
+      <workItem from="1597596047658" duration="34235000" />
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>
@@ -603,11 +664,39 @@
       <option name="project" value="LOCAL" />
       <updated>1597591023828</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="修正security和作物的一些小问题">
+      <created>1597670863926</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1597670863926</updated>
+    </task>
+    <task id="LOCAL-00016" summary="修正security和作物的一些小问题">
+      <created>1597679460058</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1597679460058</updated>
+    </task>
+    <task id="LOCAL-00017" summary="合并wuyihu分支解决冲突">
+      <created>1597679984865</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1597679984865</updated>
+    </task>
+    <task id="LOCAL-00018" summary="保存本地修改">
+      <created>1597683822570</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1597683822570</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -663,7 +752,10 @@
     <MESSAGE value="grade class manage init" />
     <MESSAGE value="update README" />
     <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="修正security和作物的一些小问题" />
+    <MESSAGE value="合并wuyihu分支解决冲突" />
+    <MESSAGE value="保存本地修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="保存本地修改" />
   </component>
   <component name="WindowStateProjectService">
     <state x="407" y="0" key="#Auto_Import" />
