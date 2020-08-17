@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sun.xml.fastinfoset.tools.FI_DOM_Or_XML_DOM_SAX_SAXEvent;
 import hzau.sa.backstage.dao.ClassDao;
 import hzau.sa.backstage.dao.GradeDao;
+import hzau.sa.backstage.dao.TeacherDao;
 import hzau.sa.backstage.entity.*;
 import hzau.sa.backstage.dao.StudentDao;
 import hzau.sa.backstage.entity.StudentVO;
@@ -51,6 +52,9 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     @Autowired
     private GradeDao gradeDao;
 
+    @Autowired
+    private TeacherDao teacherDao;
+
     private static final int size=10;
     /**
      * 添加学生
@@ -68,6 +72,14 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
         List<StudentVO> students = studentDao.selectList(studentQueryWrapper);
         if (!students.isEmpty()){
             return ResultUtil.error("学生id或者号码已经存在");
+        }
+
+        //判断是否在老师表里面存在
+        QueryWrapper<TeacherVO> teacherVOQueryWrapper=new QueryWrapper<>();
+        teacherVOQueryWrapper.lambda().eq(TeacherVO::getTeacherId,studentWrapper.getStudentId());
+        TeacherVO teacherVO = teacherDao.selectOne(teacherVOQueryWrapper);
+        if (teacherVO!=null){
+            return ResultUtil.error("与老师id重复");
         }
 
         //获得班级表中对应的记录

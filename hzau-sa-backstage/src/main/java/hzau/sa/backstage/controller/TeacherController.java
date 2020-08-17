@@ -35,6 +35,7 @@ import hzau.sa.backstage.service.TeacherService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiImplicitParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
