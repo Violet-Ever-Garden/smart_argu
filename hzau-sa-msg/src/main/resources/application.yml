@@ -22,6 +22,11 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size: 1000MB
+  data:
+    mongodb:
+      host: 101.200.215.126
+      port: 27017
+      database: hzau
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml

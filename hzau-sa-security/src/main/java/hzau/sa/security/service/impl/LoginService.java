@@ -1,17 +1,16 @@
 package hzau.sa.security.service.impl;
 
-import cn.hutool.db.nosql.redis.RedisDS;
-import hzau.sa.msg.common.Constant;
 import hzau.sa.msg.util.JwtUtils;
-import hzau.sa.security.Shiro.ShiroKit;
-import hzau.sa.security.dao.StudentDao;
-import hzau.sa.security.dao.TeacherDao;
+import hzau.sa.msg.common.RoleConstant;
+import hzau.sa.msg.util.RedisUtil;
+import hzau.sa.msg.util.ShiroKit;
+import hzau.sa.security.dao.LoginStudentDao;
+import hzau.sa.security.dao.LoginTeacherDao;
 import hzau.sa.security.entity.StudentVO;
 import hzau.sa.security.entity.TeacherVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import redis.clients.jedis.Jedis;
 
 import java.util.HashMap;
 
@@ -24,9 +23,9 @@ import java.util.HashMap;
 public class LoginService {
 
     @Autowired
-    StudentDao studentDao;
+    LoginStudentDao studentDao;
     @Autowired
-    TeacherDao teacherDao;
+    LoginTeacherDao teacherDao;
     /**
      * 用户登录验证
      *
@@ -34,11 +33,10 @@ public class LoginService {
      * @param password
      * @return UserVO
      */
-    public HashMap<String,String> login(String username, String password) {
+    public HashMap<String, Object> login(String username, String password) {
 
         StudentVO studentVO = studentDao.selectById(username);
         TeacherVO teacherVO = teacherDao.selectById(username);
-        HashMap result = new HashMap();
         if (null != studentVO) {
 
             String enpw = ShiroKit.md5(password);
@@ -46,14 +44,9 @@ public class LoginService {
                 return null;
             }
             log.info("student: "+studentVO.toString());
-            String token = JwtUtils.sign(username);
-            Jedis jedis = RedisDS.create().getJedis();
-            jedis.setex(username, Constant.EXPIRE_TIME_SECOND, token);
-            jedis.setex(username + "role", Constant.EXPIRE_TIME_SECOND, "student");//设置角色
-            jedis.close();
-            result.put("token",token);
-            result.put("role","student");
-            return result;
+            String token = JwtUtils.sign(username,studentVO.getStudentName());
+            RedisUtil.set(username,token,RoleConstant.STUDENT);
+            return loginResult(token,RoleConstant.STUDENT,studentVO);
         }else if (null != teacherVO){
             String enpw = ShiroKit.md5(password);
             log.info(enpw);
@@ -61,19 +54,14 @@ public class LoginService {
             if (!enpw.equals(teacherVO.getPassword())) {
                 return null;
             }
-            String token = JwtUtils.sign(username);
-            Jedis jedis = RedisDS.create().getJedis();
-            jedis.setex(username, Constant.EXPIRE_TIME_SECOND, token);
-            if("admin".equals(teacherVO.getType())) {
-                jedis.setex(username + "role", Constant.EXPIRE_TIME_SECOND, "admin");
-                result.put("role","admin");
+            String token = JwtUtils.sign(username,teacherVO.getTeacherName());
+            if(RoleConstant.ADMIN.equals(teacherVO.getType())) {
+                RedisUtil.set(username,token,RoleConstant.ADMIN);
+                return loginResult(token,RoleConstant.ADMIN,teacherVO);
             }else {
-                jedis.setex(username + "role", Constant.EXPIRE_TIME_SECOND, "teacher");
-                result.put("role","teacher");
+                RedisUtil.set(username,token,RoleConstant.TEACHER);
+                return loginResult(token,RoleConstant.TEACHER,teacherVO);
             }
-
-            result.put("token",token);
-            return result;
         }
         return null;
     }
@@ -81,9 +69,14 @@ public class LoginService {
 
     public void logout(String username){
         String token = JwtUtils.sign(JwtUtils.currentUser(), 0L);
-        Jedis jedis = RedisDS.create().getJedis();
-        jedis.del(username);
-        jedis.del(username+"role");
-        jedis.close();
+        RedisUtil.del(username);
+    }
+
+    public HashMap<String,Object> loginResult(String token,String role,Object user){
+        HashMap result = new HashMap();
+        result.put(RoleConstant.TOKEN,token);
+        result.put(RoleConstant.ROLE,role);
+        result.put("UserInfo",user);
+        return result;
     }
 }

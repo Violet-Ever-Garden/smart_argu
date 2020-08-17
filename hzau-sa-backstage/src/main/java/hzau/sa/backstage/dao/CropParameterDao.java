@@ -18,8 +18,5 @@ import java.util.List;
 @Mapper
 public interface CropParameterDao extends BaseMapper<CropParameterVO> {
 
-    @Select("select cropParameterId,cropName,parameterName,sortNumber,crop.cropId " +
-            "from cropParameter  left join crop  on cropParameter.cropId = crop.cropId " +
-            "where crop.cropId = #{cropId} and cropParameter.parameterName like #{keyword} ")
     public List<CropParameterModel> selectCropParameterListPage(Page<CropParameterModel> page , @Param("cropId") int cropId , @Param("keyword") String  keyword);
 }

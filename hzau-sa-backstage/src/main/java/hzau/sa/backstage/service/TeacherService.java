@@ -15,29 +15,8 @@ import hzau.sa.backstage.entity.TeacherVO;
  * @date 2020-08-13
  */
 public interface TeacherService  {
-    /**
-     * 分页显示老师
-     */
-    public Result page(int pageNo);
-    /**
-     * 按名字分页老师
-     */
-    public Result pageByName(String name,int pageNo);
-    /**
-     * 增加老师
-     */
     public Result addTeacher(TeacherWrapper teacherWrapper);
-    /**
-     * 删除老师
-     */
     public Result deleteTeacher(String teacherId);
-    /**
-     * 批量删除老师
-     */
     public Result deleteTeachers(String[] teacherIds);
-    /**
-     * 更新老师
-     */
     public Result updateTeacher(TeacherWrapper teacherWrapper);
-
 }

@@ -17,6 +17,6 @@ public interface Constant {
 	/**
 	 *
 	 */
-	//int EXPIRE_TIME_SECOND = 8*60*60;
-	int EXPIRE_TIME_SECOND = 300;
+	int EXPIRE_TIME_SECOND = 8*60*60;
+	//int EXPIRE_TIME_SECOND = 300;
 }

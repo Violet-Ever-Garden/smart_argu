@@ -4,6 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 import javax.validation.Valid;
 
+import cn.hutool.core.convert.Convert;
+import hzau.sa.backstage.entity.CropVO;
+import hzau.sa.backstage.entity.FieldWrapper;
+import hzau.sa.backstage.service.impl.FieldServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
@@ -41,31 +45,18 @@ import io.swagger.annotations.ApiImplicitParam;
  */
 @Slf4j
 @RestController
-@RequestMapping("/sys/field")
+@RequestMapping("/field")
 @Api(value = "-API", tags = { "地块接口" })
 public class FieldController extends BaseController {
 
     @Autowired
-    private FieldService fieldService;
-
-    /**
-     * 分页列表
-     */
-    @SysLog(prefix = "分页查询地块",value = LogType.ALL)
-    @ApiOperation("分页查询地块")
-    @ApiImplicitParam(name = "pageNo", value = "请求的页数", paramType = "query", dataType = "String")
-    @PostMapping("/page")
-    public Result page(@RequestParam(value = "pageNo",required = true) String pageNo) {
-        return fieldService.page(Integer.parseInt(pageNo));
-    }
-
-
+    private FieldServiceImpl fieldService;
 
     @SysLog(prefix = "增加地块",value = LogType.ALL)
     @ApiOperation("增加地块")
-    @ApiImplicitParam(name = "field",value = "增加的地块",paramType ="body",dataType = "FieldVO")
+    @ApiImplicitParam(name = "field",value = "增加的地块",paramType ="body",dataType = "FieldWrapper")
     @PostMapping("/addField")
-    public Result addField(@RequestBody FieldVO field){
+    public Result addField(@RequestBody FieldWrapper field){
         return fieldService.addField(field);
     }
 
@@ -88,21 +79,34 @@ public class FieldController extends BaseController {
 
     @SysLog(prefix = "更新地块",value = LogType.ALL)
     @ApiOperation("更新地块")
-    @ApiImplicitParam(name = "field",value = "更新地块",paramType = "body",dataType = "FieldVO")
+    @ApiImplicitParam(name = "field",value = "更新地块",paramType = "body",dataType = "FieldWrapper")
     @PostMapping("/updateField")
-    public Result updateField(@RequestBody FieldVO field){
+    public Result updateField(@RequestBody FieldWrapper field){
         return fieldService.updateField(field);
     }
 
 
-    @SysLog(prefix = "查找地块",value = LogType.ALL)
-    @ApiOperation("查找地块")
+    /**
+     * 这个地方需要修改一下返回的不能是regionId，但是返回的要按照具体的需求，这个还不是很明确
+     * @param keyword
+     * @return
+     */
+    @ApiOperation(value = "按名字分页模糊查询", notes = "按名字分页模糊查询")
     @ApiImplicitParams({
-    @ApiImplicitParam(name = "fieldName",value = "查找地块的名字",paramType = "query",dataType = "String"),
-    @ApiImplicitParam(name="pageNo",value = "要显示的页面",dataType = "String")
+            @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String"),
+
     })
-    @PostMapping("/findField")
-    public Result findField(@RequestParam(value = "fieldName",required = true) String fieldName,@RequestParam(value = "pageNo",required = true) String pageNo){
-        return fieldService.findField(fieldName, Integer.parseInt(pageNo));
+    @GetMapping("/page")
+    public Result page(String keyword){
+        keyword = Convert.toStr(keyword,"");
+        Page<FieldVO> page = getPage();
+        log.info(keyword);
+        log.info(page.toString());
+        QueryWrapper<FieldVO> queryWrapper = new QueryWrapper<FieldVO>();
+        queryWrapper.like("fieldName",keyword)
+                .orderByAsc("createTime");
+        return ResultUtil.success(fieldService.page(page,queryWrapper));
     }
 }

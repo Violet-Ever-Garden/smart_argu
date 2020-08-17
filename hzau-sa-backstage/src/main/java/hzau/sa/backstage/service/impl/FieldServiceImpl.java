@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.extension.service.additional.update.impl.LambdaU
 import com.baomidou.mybatisplus.extension.service.additional.update.impl.UpdateChainWrapper;
 import hzau.sa.backstage.dao.FieldDao;
 import hzau.sa.backstage.entity.FieldVO;
+import hzau.sa.backstage.entity.FieldWrapper;
 import hzau.sa.backstage.service.FieldService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import hzau.sa.msg.entity.Result;
@@ -38,51 +39,29 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
     @Autowired
     private FieldDao fieldDao;
 
-    private static final int size=10;
-
-    /**
-     * 分页显示所有地块
-     * @param pageNo 要显示的页数
-     * @return
-     */
-
-    @Override
-    public Result page(int pageNo){
-        Page<FieldVO> page=new Page<>(pageNo,size);
-
-        QueryWrapper<FieldVO> queryWrapper = new QueryWrapper<FieldVO>();
-
-        IPage<FieldVO> iPage=fieldDao.selectPage(page,queryWrapper);
-
-        HashMap<String,Object> hashMap=new HashMap<>();
-        hashMap.put("totalPages",iPage.getPages());
-        hashMap.put("totalRecordNums",iPage.getTotal());
-        hashMap.put("Records",iPage.getRecords());
-
-        return ResultUtil.success(hashMap);
-    }
-
     /**
      * 添加地块
-     * @param fieldVO 要添加的地块
+     * @param fieldWrapper 要添加的地块
      * @return
      */
-
     @Override
-    @Transactional(rollbackFor = Exception.class)
-    public Result addField(FieldVO fieldVO){
-        if (fieldVO.getFieldName()==null){
+    public Result addField(FieldWrapper fieldWrapper){
+        //解包装
+        FieldVO fieldVO = new FieldVO(fieldWrapper);
+
+        if (fieldWrapper.getFieldName()==null){
             return ResultUtil.error("请输入地块名");
         }
 
         QueryWrapper<FieldVO> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("fieldName",fieldVO.getFieldName());
+        queryWrapper.lambda().eq(FieldVO::getFieldName,fieldWrapper.getFieldName());
 
         FieldVO field = fieldDao.selectOne(queryWrapper);
         if (field!=null){
             return ResultUtil.error("地块名已存在，请重新输入");
         }else {
-            fieldVO.setCreateTime(LocalDateTime.now());
+            fieldVO.setCreateUser(fieldVO.getCurrentUserName());
+            fieldVO.setLastModifiedUser(fieldVO.getCurrentUserName());
         }
 
         if (fieldDao.insert(fieldVO)==0){
@@ -100,7 +79,7 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
     @Override
     public Result deleteField(Integer fieldId){
         QueryWrapper<FieldVO> queryWrapper = new QueryWrapper<FieldVO>();
-        queryWrapper.eq("fieldId",fieldId);
+        queryWrapper.lambda().eq(FieldVO::getFieldId,fieldId);
 
         FieldVO field = fieldDao.selectOne(queryWrapper);
 
@@ -108,12 +87,12 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
             return ResultUtil.paramError("该地块id不存在");
         }
 
-        if (fieldDao.deleteById(fieldId)!=0){
-            return ResultUtil.success();
+        if (fieldDao.deleteById(fieldId)==0){
+            return ResultUtil.databaseError();
         }
-        return ResultUtil.databaseError();
-
+        return ResultUtil.success();
     }
+
 
     /**
      * 批量删除地块
@@ -131,38 +110,22 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
 
     /**
      * 更新地块
-     * @param fieldVO 要更新的地块
+     * @param fieldWrapper 要更新的地块
      * @return
      */
-
     @Override
-    public Result updateField(FieldVO fieldVO){
-        if (fieldDao.updateById(fieldVO)!=0){
-            return ResultUtil.success();
-        }
+    public Result updateField(FieldWrapper fieldWrapper){
+        FieldVO fieldVO = new FieldVO(fieldWrapper);
+        fieldVO.setLastModifiedUser(fieldVO.getCurrentUserName());
+
+//        QueryWrapper<FieldVO> queryWrapper=new QueryWrapper<>();
+//        queryWrapper.eq("fieldId",fieldWrapper.getFieldId());
+//        fieldVO.setCreateUser(fieldDao.selectOne(queryWrapper).getCreateUser());
+
+        if (fieldDao.updateById(fieldVO)==0){
         return ResultUtil.error("更新失败");
+        }
+        return ResultUtil.success();
     }
 
-    /**
-     * 通过名字模糊查找地块
-     * @param fieldName 查找地块名
-     * @param pageNo 分页的页数
-     * @return
-     */
-    @Override
-    public Result findField(String fieldName,int pageNo){
-        Page<FieldVO> page=new Page<>(pageNo,size);
-
-        QueryWrapper<FieldVO> queryWrapper=new QueryWrapper<>();
-        queryWrapper.like("fieldname",fieldName);
-
-        IPage<FieldVO> iPage = fieldDao.selectPage(page, queryWrapper);
-
-        HashMap<String,Object> hashMap=new HashMap<>();
-        hashMap.put("totalPages",iPage.getPages());
-        hashMap.put("totalRecordNums",iPage.getTotal());
-        hashMap.put("Records",iPage.getRecords());
-
-        return ResultUtil.success(hashMap);
-    }
 }

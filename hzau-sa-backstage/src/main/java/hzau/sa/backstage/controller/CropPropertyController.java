@@ -100,10 +100,21 @@ public class CropPropertyController extends BaseController {
     @GetMapping("/list/{cropId}")
     public Result list(@PathVariable("cropId")String cropId){
         QueryWrapper<CropPropertyVO> queryWrapper = new QueryWrapper();
-        queryWrapper.eq("cropId",cropId);
+        queryWrapper.lambda().eq(CropPropertyVO::getCropId,cropId);
         return ResultUtil.success(cropPropertyService.list(queryWrapper));
     }
 
 
-    //TODO.....
+    @SysLog(prefix = "更新属性", value = LogType.ALL)
+    @ApiOperation(value = "更新属性", notes = "更新属性")
+    @ApiImplicitParam(name = "cropPropertyVO", value = "作物属性实体类", paramType = "query", dataType = "CropPropertyVO")
+    @PostMapping("/update")
+    public Result update(@RequestBody CropPropertyVO cropPropertyVO){
+        boolean b = cropPropertyService.updateById(cropPropertyVO);
+        if(false == b){
+            return ResultUtil.databaseError();
+        }else {
+            return ResultUtil.success();
+        }
+    }
 }

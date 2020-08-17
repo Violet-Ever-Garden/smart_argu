@@ -3,6 +3,7 @@ package hzau.sa.security.controller;
 import cn.hutool.core.util.StrUtil;
 
 
+import hzau.sa.msg.config.MyMetaObjectHandler;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.exception.DataBaseException;
 import hzau.sa.msg.util.ResultUtil;
@@ -42,7 +43,7 @@ public class LoginController {
         if(StrUtil.isBlank(username) || StrUtil.isBlank(password)) {
             return ResultUtil.error("用户名或密码不能为空");
         }
-        HashMap<String, String> result = loginService.login(username, password);
+        HashMap<String, Object> result = loginService.login(username, password);
         if(result == null) {
             return new DataBaseException().insertError("登陆失败，账号或密码不正确");
         }

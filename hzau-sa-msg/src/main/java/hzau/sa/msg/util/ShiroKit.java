@@ -1,4 +1,4 @@
-package hzau.sa.security.Shiro;
+package hzau.sa.msg.util;
 
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.crypto.hash.SimpleHash;

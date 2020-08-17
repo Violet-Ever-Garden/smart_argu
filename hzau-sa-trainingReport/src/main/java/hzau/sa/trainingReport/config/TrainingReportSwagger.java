@@ -1,0 +1,23 @@
+package hzau.sa.trainingReport.config;
+
+import hzau.sa.msg.config.Swagger2Config;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+@Configuration
+public class TrainingReportSwagger extends Swagger2Config {
+    @Bean
+    public Docket TrainingReportDocket(){
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("HZAU-Smart-Agriculture 平台设置接口")
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("hzau.sa.trainingReport"))
+                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+                .build().securitySchemes(securitySchemes())
+                .securityContexts(securityContexts());
+    }
+}
