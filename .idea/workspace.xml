@@ -19,133 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/BackStageApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/config/BackStageSwagger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/AsTeacherclassController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/ClassManageController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/CropController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/CropGrowthPeriodController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/CropParameterController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/CropPropertyController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/FieldController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/GradeManageController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/MeasureController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/StudentController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/controller/TeacherController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/AsClassfieldDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/AsClassmonitorDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/AsTeacherclassDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/ClassDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/CropDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/CropGrowthPeriodDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/CropParameterDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/CropPropertyDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/FieldDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/GradeDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/MeasureDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/StudentDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/dao/TeacherDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/AsClassfieldVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/AsClassmonitorVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/AsTeacherclassVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/ClassGradeModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/ClassManage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/ClassVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/CropGrowthPeriodVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/CropParameterModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/CropParameterVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/CropPropertyVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/CropVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/FieldVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/GradeVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/MeasureVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/StudentVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/StudentWrapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/TeacherClassModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/TeacherVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/entity/TeacherWrapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/listener/StudentListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/AsTeacherclassService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/ClassService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/CropGrowthPeriodService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/CropParameterService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/CropPropertyService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/CropService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/FieldService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/GradeService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/MeasureService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/StudentService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/TeacherService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/AsTeacherclassServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/ClassServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/CropGrowthPeriodServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/CropParameterServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/CropPropertyServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/CropServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/FieldServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/GradeServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/MeasureServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/StudentServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/service/impl/TeacherServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/hzau/sa/backstage/util/ExcelUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/AsClassfieldMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/AsClassmonitorMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/AsTeacherclassMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/ClassMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/CropGrowthPeriodMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/CropMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/CropParameterMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/CropPropertyMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/GradeMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/MeasureMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/StudentMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/mapper/TeacherMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/classes/templates/test.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/CropTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/hzau/sa/backstage/dao/AsClassfieldDaoTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/hzau/sa/backstage/dao/AsClassmonitorDaoTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/hzau/sa/backstage/dao/GradeDaoTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/target/test-classes/hzau/sa/backstage/service/ClassServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/src/main/java/hzau/sa/file/controller/FileTestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-fileTest/src/main/java/hzau/sa/file/controller/FileTestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/src/main/java/hzau/sa/file/enums/FileEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/enums/FileEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/src/main/java/hzau/sa/file/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/util/FileUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/classes/hzau/sa/file/TestMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/classes/hzau/sa/file/config/BackStageSwagger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/classes/hzau/sa/file/config/WebConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/classes/hzau/sa/file/controller/FileTestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/classes/hzau/sa/file/enums/FileEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-fileTest/target/classes/hzau/sa/file/util/FileUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-generator/target/classes/GeneratorService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/META-INF/hzau-sa-msg.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/annotation/SysLog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/aspect/SysLogAspect.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/common/Constant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/common/PageConstant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/config/MybatisPlusConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/config/Swagger2Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/controller/BaseController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/controller/LogController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/dao/LogDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/entity/LogVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/entity/Result.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/enums/CodeType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/enums/LogType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/exception/DataBaseException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/service/BaseService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/service/LogService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/util/JwtUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/hzau/sa/msg/util/ResultUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/classes/logback-spring.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/maven-status/maven-compiler-plugin/compile/default-cli/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/target/maven-status/maven-compiler-plugin/compile/default-cli/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/config/redis.setting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/mapper/StudentMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-security/target/classes/mapper/TeacherMapper.xml" beforeDir="false" />
-    </list>
+    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -205,7 +79,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/hzau-sa-backstage/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CH-HCNetSDKV6.1.4.42_build20200527_win64/Demo示例/4- Java 开发示例/1-ClientDemo/ClientDemo-NetBeansPro" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -430,7 +304,7 @@
       <updated>1596859745758</updated>
       <workItem from="1596859748341" duration="28740000" />
       <workItem from="1596891276574" duration="43423000" />
-      <workItem from="1597578342440" duration="8258000" />
+      <workItem from="1597578342440" duration="12016000" />
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>
@@ -579,10 +453,10 @@
     <state x="371" y="107" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597226262943" />
     <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1597204832322" />
     <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597204832322" />
-    <state x="421" y="115" key="FileChooserDialogImpl" timestamp="1597245117570">
+    <state x="421" y="115" key="FileChooserDialogImpl" timestamp="1597677629994">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597245117570" />
+    <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597677629994" />
     <state width="1188" height="512" key="GridCell.Tab.0.bottom" timestamp="1597581334010">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
