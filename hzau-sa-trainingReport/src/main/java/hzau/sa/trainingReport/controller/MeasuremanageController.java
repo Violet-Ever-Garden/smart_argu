@@ -37,11 +37,11 @@ public class MeasuremanageController {
     @SysLog(prefix = "新增措施信息",value = LogType.ALL)
     @ApiOperation("新增措施信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "studentId",value = "学号",paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "crop",value = "作物名称",paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "measure",value = "措施名称",paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "measureContent",value = "措施内容",paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "createTime",value = "创建时间",paramType = "query",dataType = "String")
+            @ApiImplicitParam(name = "studentId",value = "学号",required = true,paramType = "form",dataType = "String"),
+            @ApiImplicitParam(name = "crop",value = "作物名称",required = true,paramType = "form",dataType = "String"),
+            @ApiImplicitParam(name = "measure",value = "措施名称",required = true,paramType = "form",dataType = "String"),
+            @ApiImplicitParam(name = "measureContent",value = "措施内容",required = true,paramType = "form",dataType = "String"),
+            @ApiImplicitParam(name = "createTime",value = "创建时间",required = true,paramType = "form",dataType = "String")
     })
     @PostMapping("/insert")
     @Transactional(rollbackFor = Exception.class)
