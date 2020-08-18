@@ -19,5 +19,5 @@ public enum FileEnum {
 
     AVATAR,
 
-    ACTIVITY;
+    MEASURE;
 }

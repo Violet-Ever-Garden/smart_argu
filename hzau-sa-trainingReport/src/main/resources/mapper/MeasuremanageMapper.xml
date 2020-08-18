@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hzau.sa.trainingReport.dao.MeasuremanageDao">
+
+    <select id="queryMeasureIdByMeasureName" resultType="java.lang.Integer">
+        SELECT measureId FROM measure
+        WHERE measureName = #{measureName}
+    </select>
+    <select id="queryCropIdByCropName" resultType="java.lang.Integer">
+        SELECT cropId FROM crop
+        WHERE cropName = #{cropName}
+    </select>
+    <select id="queryMeasureNameById" resultType="java.lang.String">
+        SELECT measureName FROM measure
+        WHERE measureId = #{measureId}
+    </select>
+</mapper>

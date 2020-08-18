@@ -72,6 +72,7 @@ public class SysLogAspect {
             // 请求的参数
             Object object = Arrays.stream(point.getArgs())
                     .filter(t -> !(t instanceof ServletRequest) && !(t instanceof ServletResponse) && !(t instanceof MultipartFile)
+                            && !(t instanceof MultipartFile[])
                             && !(t instanceof HttpSession) && !(t instanceof Model) && !(t instanceof BindingResult))
                     .collect(Collectors.toList());
             String params = JSON.toJSONString(object);
