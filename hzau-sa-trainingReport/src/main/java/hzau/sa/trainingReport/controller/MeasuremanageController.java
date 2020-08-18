@@ -132,7 +132,7 @@ public class MeasuremanageController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "measureManageId",value = "需要删除措施ID",required = true,paramType = "path",dataType = "String")
     })
-    @PutMapping("/update/{measureManageId}")
+    @DeleteMapping("/update/{measureManageId}")
     @Transactional(rollbackFor = Exception.class)
     public Result<Object> deleteMeasure(@PathVariable("measureManageId") String measureManageId){
         Object savePoint = null;
