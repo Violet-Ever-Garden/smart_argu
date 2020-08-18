@@ -19,21 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="add FileWebConfig">
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/controller/MeasuremanageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/dao/MeasuremanageDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/MeasureManageRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/MeasureManageResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/MeasuremanageVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/MeasuremanageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/impl/MeasuremanageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/resources/mapper/MeasuremanageMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/aspect/SysLogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/aspect/SysLogAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/enums/FileEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/enums/FileEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-security/src/main/java/hzau/sa/security/Shiro/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-security/src/main/java/hzau/sa/security/Shiro/ShiroConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/config/TrainingReportSwagger.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/config/TrainingReportSwagger.java" afterDir="false" />
-    </list>
+    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="add FileWebConfig" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,6 +92,9 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -300,10 +289,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.TrainingReportApplication" />
+        <item itemvalue="Spring Boot.Application (2)" />
         <item itemvalue="Application.GeneratorService" />
         <item itemvalue="JUnit.GradeDaoTest.selectGradeIdByName" />
         <item itemvalue="JUnit.AsClassfieldDaoTest.queryFieldIdByName" />
-        <item itemvalue="Spring Boot.Application (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -319,6 +308,8 @@
       <updated>1596859745758</updated>
       <workItem from="1596859748341" duration="28740000" />
       <workItem from="1596891276574" duration="43423000" />
+      <workItem from="1597748685203" duration="6891000" />
+      <workItem from="1597756644019" duration="3259000" />
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>
@@ -439,7 +430,56 @@
       <option name="project" value="LOCAL" />
       <updated>1597684570567</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="add MeasuremanageController">
+      <created>1597743095697</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1597743095697</updated>
+    </task>
+    <task id="LOCAL-00019" summary="init">
+      <created>1597745522672</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1597745522672</updated>
+    </task>
+    <task id="LOCAL-00020" summary="delete unknown file">
+      <created>1597746037980</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1597746037980</updated>
+    </task>
+    <task id="LOCAL-00021" summary="update MeasuremanageController">
+      <created>1597746932144</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1597746932144</updated>
+    </task>
+    <task id="LOCAL-00022" summary="update MeasuremanageController">
+      <created>1597748785130</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1597748785130</updated>
+    </task>
+    <task id="LOCAL-00023" summary="add delete measureManage">
+      <created>1597757755464</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1597757755464</updated>
+    </task>
+    <task id="LOCAL-00024" summary="add delete measureManage">
+      <created>1597762820781</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1597762820781</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,7 +510,12 @@
     <MESSAGE value="add FileVO" />
     <MESSAGE value="update .gitignore" />
     <MESSAGE value="add FileWebConfig" />
-    <option name="LAST_COMMIT_MESSAGE" value="add FileWebConfig" />
+    <MESSAGE value="add MeasuremanageController" />
+    <MESSAGE value="init" />
+    <MESSAGE value="delete unknown file" />
+    <MESSAGE value="update MeasuremanageController" />
+    <MESSAGE value="add delete measureManage" />
+    <option name="LAST_COMMIT_MESSAGE" value="add delete measureManage" />
   </component>
   <component name="WindowStateProjectService">
     <state x="407" y="0" key="#Auto_Import" timestamp="1597226926374">
@@ -481,17 +526,17 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="277" y="0" width="741" height="720" key="#Main/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597233941341" />
-    <state x="121" y="0" key="#Project_Structure" timestamp="1597233100712">
+    <state x="121" y="0" key="#Project_Structure" timestamp="1597748907292">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="121" y="0" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597233100712" />
+    <state x="121" y="0" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597748907292" />
     <state x="291" y="-900" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@140.-900.1600.900" timestamp="1597204832322" />
     <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597204832322" />
     <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597204832322" />
-    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser" timestamp="1597688421656">
+    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser" timestamp="1597756903545">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597688421656" />
+    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597756903545" />
     <state x="120" y="284" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1597680838950">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -510,46 +555,62 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597718928707" />
-    <state width="1188" height="512" key="GridCell.Tab.0.bottom" timestamp="1597733392557">
+    <state width="1188" height="512" key="GridCell.Tab.0.bottom" timestamp="1597759078402">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1188" height="512" key="GridCell.Tab.0.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392557" />
-    <state width="1188" height="512" key="GridCell.Tab.0.center" timestamp="1597733392557">
+    <state width="1188" height="512" key="GridCell.Tab.0.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597759078402" />
+    <state width="1188" height="512" key="GridCell.Tab.0.center" timestamp="1597759078402">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1188" height="512" key="GridCell.Tab.0.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392557" />
-    <state width="1188" height="512" key="GridCell.Tab.0.left" timestamp="1597733392557">
+    <state width="1188" height="512" key="GridCell.Tab.0.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597759078402" />
+    <state width="1188" height="512" key="GridCell.Tab.0.left" timestamp="1597759078402">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1188" height="512" key="GridCell.Tab.0.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392557" />
-    <state width="1188" height="512" key="GridCell.Tab.0.right" timestamp="1597733392557">
+    <state width="1188" height="512" key="GridCell.Tab.0.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597759078402" />
+    <state width="1188" height="512" key="GridCell.Tab.0.right" timestamp="1597759078402">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1188" height="512" key="GridCell.Tab.0.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392557" />
-    <state width="1188" height="512" key="GridCell.Tab.1.bottom" timestamp="1597733392558">
+    <state width="1188" height="512" key="GridCell.Tab.0.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597759078402" />
+    <state width="1188" height="512" key="GridCell.Tab.1.bottom" timestamp="1597759078402">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1188" height="512" key="GridCell.Tab.1.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392558" />
-    <state width="1188" height="512" key="GridCell.Tab.1.center" timestamp="1597733392558">
+    <state width="1188" height="512" key="GridCell.Tab.1.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597759078402" />
+    <state width="1188" height="512" key="GridCell.Tab.1.center" timestamp="1597759078402">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1188" height="512" key="GridCell.Tab.1.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392558" />
-    <state width="1188" height="512" key="GridCell.Tab.1.left" timestamp="1597733392558">
+    <state width="1188" height="512" key="GridCell.Tab.1.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597759078402" />
+    <state width="1188" height="512" key="GridCell.Tab.1.left" timestamp="1597759078402">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1188" height="512" key="GridCell.Tab.1.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392558" />
-    <state width="1188" height="512" key="GridCell.Tab.1.right" timestamp="1597733392558">
+    <state width="1188" height="512" key="GridCell.Tab.1.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597759078402" />
+    <state width="1188" height="512" key="GridCell.Tab.1.right" timestamp="1597759078402">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1188" height="512" key="GridCell.Tab.1.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392558" />
+    <state width="1188" height="512" key="GridCell.Tab.1.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597759078402" />
+    <state width="1188" height="512" key="GridCell.Tab.2.bottom" timestamp="1597753288877">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1188" height="512" key="GridCell.Tab.2.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597753288877" />
+    <state width="1188" height="512" key="GridCell.Tab.2.center" timestamp="1597753288877">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1188" height="512" key="GridCell.Tab.2.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597753288877" />
+    <state width="1188" height="512" key="GridCell.Tab.2.left" timestamp="1597753288876">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1188" height="512" key="GridCell.Tab.2.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597753288876" />
+    <state width="1188" height="512" key="GridCell.Tab.2.right" timestamp="1597753288877">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1188" height="512" key="GridCell.Tab.2.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597753288877" />
     <state x="142" y="5" key="SettingsEditor" timestamp="1597325870483">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="142" y="5" key="SettingsEditor/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597325870483" />
-    <state x="233" y="94" key="Vcs.Push.Dialog.v2" timestamp="1597684622012">
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2" timestamp="1597762834508">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="233" y="94" key="Vcs.Push.Dialog.v2/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597684622012" />
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597762834508" />
     <state x="412" y="180" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1597260457470">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
