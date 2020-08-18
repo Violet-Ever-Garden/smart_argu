@@ -1,6 +1,5 @@
 package hzau.sa.trainingReport.controller;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.enums.LogType;
