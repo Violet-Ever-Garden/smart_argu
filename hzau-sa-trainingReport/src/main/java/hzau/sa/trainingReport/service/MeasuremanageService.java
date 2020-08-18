@@ -40,4 +40,6 @@ public interface MeasuremanageService  extends IService<MeasuremanageVO> {
      * @throws IOException
      */
     public boolean updateMeasure(MeasureManageRequest measureManageRequest,Integer measureManageId,String[] ids) throws IOException;
+
+    public boolean deleteMeasure(Integer measureManageId);
 }

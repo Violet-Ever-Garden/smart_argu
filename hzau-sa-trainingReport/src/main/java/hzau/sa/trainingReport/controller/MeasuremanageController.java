@@ -33,8 +33,8 @@ public class MeasuremanageController {
     @Resource
     private MeasuremanageService measuremanageService;
 
-    @SysLog(prefix = "新增措施信息",value = LogType.ALL)
-    @ApiOperation("新增措施信息")
+    @SysLog(prefix = "新增学生措施信息",value = LogType.ALL)
+    @ApiOperation("新增学生措施信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "studentId",value = "学号",required = true,paramType = "form",dataType = "String"),
             @ApiImplicitParam(name = "crop",value = "作物名称",required = true,paramType = "form",dataType = "String"),
@@ -89,8 +89,8 @@ public class MeasuremanageController {
         return ResultUtil.success(measureManageResponseList);
     }
 
-    @SysLog(prefix = "修改措施信息",value = LogType.ALL)
-    @ApiOperation("修改措施信息")
+    @SysLog(prefix = "修改学生措施信息",value = LogType.ALL)
+    @ApiOperation("修改学生措施信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "measureManageId",value = "措施ID",required = true,paramType = "form",dataType = "String"),
             @ApiImplicitParam(name = "measure",value = "措施名称",required = true,paramType = "form",dataType = "String"),
@@ -124,6 +124,28 @@ public class MeasuremanageController {
             return ResultUtil.databaseError(e.toString());
         }
 
+        return ResultUtil.success(flag);
+    }
+
+    @SysLog(prefix = "删除学生措施信息",value = LogType.ALL)
+    @ApiOperation("删除学生措施信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "measureManageId",value = "需要删除措施ID",required = true,paramType = "path",dataType = "String")
+    })
+    @PutMapping("/update/{measureManageId}")
+    @Transactional(rollbackFor = Exception.class)
+    public Result<Object> deleteMeasure(@PathVariable("measureManageId") String measureManageId){
+        Object savePoint = null;
+        boolean flag = false;
+        try{
+            savePoint = TransactionAspectSupport.currentTransactionStatus().createSavepoint();
+
+            log.info("measureManageId:" + measureManageId);
+            flag = measuremanageService.deleteMeasure(Integer.valueOf(measureManageId));
+        }catch (Exception e){
+            TransactionAspectSupport.currentTransactionStatus().rollbackToSavepoint(savePoint);
+            return ResultUtil.databaseError(e.toString());
+        }
         return ResultUtil.success(flag);
     }
 }

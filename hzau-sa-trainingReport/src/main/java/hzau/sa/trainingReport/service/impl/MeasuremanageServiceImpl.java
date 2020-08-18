@@ -141,4 +141,24 @@ public class MeasuremanageServiceImpl extends ServiceImpl<MeasuremanageDao, Meas
         }
         return true;
     }
+
+    @Override
+    public boolean deleteMeasure(Integer measureManageId) {
+        try{
+            List<FileVO> fileVOS = fileDao.selectList(new QueryWrapper<FileVO>()
+                    .lambda()
+                    .eq(FileVO::getConnectId,String.valueOf(measureManageId))
+                    .eq(FileVO::getFileType,FileEnum.MEASURE.name()));
+            for(FileVO fileVO : fileVOS){
+                FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+                fileDao.deleteById(fileVO.getFileId());
+            }
+
+            measuremanageDao.deleteById(measureManageId);
+        }catch (Exception e){
+            log.error(e.toString());
+            throw e;
+        }
+        return true;
+    }
 }
