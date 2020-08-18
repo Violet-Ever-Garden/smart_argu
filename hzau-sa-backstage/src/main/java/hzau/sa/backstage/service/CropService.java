@@ -1,10 +1,10 @@
 package hzau.sa.backstage.service;
 
+
 import hzau.sa.msg.entity.Result;
-import org.springframework.stereotype.Service;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import hzau.sa.backstage.dao.CropDao;
-import hzau.sa.backstage.entity.CropVO;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
  * crop 服务实现类
@@ -14,12 +14,8 @@ import hzau.sa.backstage.entity.CropVO;
 public interface CropService  {
 
 
-    /**
-     * 新增作物
-     * @param cropVO
-     * @return
-     */
-    public Result insert(CropVO cropVO);
+
+    public Result insert(String cropName , MultipartFile picture) throws IOException;
 
 
     /**

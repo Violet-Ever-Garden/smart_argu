@@ -40,6 +40,7 @@ public class LoginController {
             @ApiImplicitParam(name = "password", value = "密码", required = true, paramType = "query", dataType = "String")})
     @PostMapping(value = "/login")
     public Result login( String username,String password) {
+        log.info(username+":"+password);
         if(StrUtil.isBlank(username) || StrUtil.isBlank(password)) {
             return ResultUtil.error("用户名或密码不能为空");
         }
