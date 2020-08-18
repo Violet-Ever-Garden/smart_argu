@@ -17,14 +17,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * JWT过滤器 适用于shiro
- * 
- * @author wucaidao
- * @date 2019年3月16日 下午5:26:25
- */
+
 @Slf4j
 public class JwtFilter extends AuthenticatingFilter {
+
+	//@Override
+	//protected boolean preHandle(ServletRequest request,ServletResponse response) throws Exception {
+	//	//解决跨域问题
+	//	HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+	//	HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+	//	httpServletResponse.setHeader("Access-control-Allow-Origin", "Origin");
+	//	httpServletResponse.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS,PUT,DELETE");
+	//	httpServletResponse.setHeader("Access-Control-Allow-Headers","Access-Control-Request-Headers");
+	//	//跨域时会首先发送一个option请求，这里我们给option请求直接返回正常状态
+	//	if (httpServletRequest.getMethod().equals(RequestMethod.OPTIONS.name())) {
+	//		httpServletResponse.setStatus(HttpStatus.OK.value());
+	//		return true;
+	//	}
+	//	return super.preHandle(request,response);
+	//}
 
 	@Override
 	protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) throws Exception {
@@ -39,18 +50,7 @@ public class JwtFilter extends AuthenticatingFilter {
 	}
 
 	@Override
-	protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
-		//解决跨域问题
-		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-		httpServletResponse.setHeader("Access-control-Allow-Origin", httpServletRequest.getHeader("Origin"));
-		httpServletResponse.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS,PUT,DELETE");
-		httpServletResponse.setHeader("Access-Control-Allow-Headers", httpServletRequest.getHeader("Access-Control-Request-Headers"));
-		//跨域时会首先发送一个option请求，这里我们给option请求直接返回正常状态
-		if (httpServletRequest.getMethod().equals(RequestMethod.OPTIONS.name())) {
-			httpServletResponse.setStatus(HttpStatus.OK.value());
-			return true;
-		}
+	protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue){
 
 		return false;
 	}

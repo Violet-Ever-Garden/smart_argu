@@ -3,7 +3,7 @@ package hzau.sa.backstage.controller;
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hzau.sa.backstage.entity.CropDTO;
+import hzau.sa.backstage.entity.CropModel;
 import hzau.sa.backstage.entity.CropVO;
 import hzau.sa.backstage.service.impl.CropServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
@@ -11,18 +11,14 @@ import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.enums.LogType;
 import hzau.sa.msg.util.ResultUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-
-import static cn.hutool.core.io.file.FileMode.r;
+import java.util.List;
 
 @Slf4j
 @RequestMapping("/crop")
@@ -35,10 +31,13 @@ public class CropController extends BaseController {
 
     @SysLog(prefix = "新增作物", value = LogType.ALL)
     @ApiOperation(value = "新增作物", notes = "新增作物")
-    @ApiImplicitParam(name = "cropDTO", value = "作物实体", paramType = "body", dataType = "CropDTO")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "cropName", value = "作物名", required = true, paramType = "form", dataType = "String"),
+            //@ApiImplicitParam(name = "picture", value = "图片" , paramType = "form", dataType = "MultipartFile")
+           })
     @PostMapping("/save")
-    public Result save(@RequestBody CropDTO cropDTO){
-        return cropService.insert(cropDTO);
+    public Result save(String cropName ,@ApiParam MultipartFile picture){
+        return cropService.insert(cropName,picture);
     }
 
 
@@ -55,8 +54,8 @@ public class CropController extends BaseController {
     @ApiOperation(value = "批量删除作物", notes = "批量删除作物")
     @ApiImplicitParam(name = "ids[]", value = "作物id数组", paramType = "query", allowMultiple = true, dataType = "String")
     @PostMapping("/deleteList")
-    public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
-        boolean b = cropService.removeByIds(Arrays.asList(ids));
+    public Result deleteList(@RequestParam(value = "ids[]") Integer[] ids){
+        boolean b = cropService.removeByIdsAndPicture(Arrays.asList(ids));
         if(false==b){
             return ResultUtil.databaseError();
         }else{
@@ -65,7 +64,7 @@ public class CropController extends BaseController {
     }
 
 
-    @ApiOperation(value = "条件分页查询", notes = "条件分页查询")
+    @ApiOperation(value = "无图片条件分页查询", notes = "条件分页查询")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
@@ -84,16 +83,24 @@ public class CropController extends BaseController {
         return ResultUtil.success(cropService.page(page,queryWrapper));
     }
 
+    @ApiOperation(value = "有图片无分页查询", notes = "有图片无分页查询")
+    @GetMapping("/listWithUrl")
+    public Result listWithUrl(){
+        List<CropModel> cropModels = cropService.listWithUrl();
+        return ResultUtil.success(cropModels);
+    }
+
+
+
     @SysLog(prefix = "更新作物", value = LogType.ALL)
     @ApiOperation(value = "更新作物", notes = "更新作物")
-    @ApiImplicitParam(name = "cropVO", value = "关键字", paramType = "query", dataType = "CropVO")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "cropId", value = "作物id", required = true, paramType = "form", dataType = "String"),
+            @ApiImplicitParam(name = "cropName", value = "作物名", required = true, paramType = "form", dataType = "String"),
+            //@ApiImplicitParam(name = "picture", value = "图片" , paramType = "form", dataType = "MultipartFile")
+    })
     @PostMapping("/update")
-    public Result update(@RequestBody CropVO cropVO){
-        boolean b = cropService.updateById(cropVO);
-        if(false == b){
-            return ResultUtil.databaseError();
-        }else {
-            return ResultUtil.success();
-        }
+    public Result update(int cropId,String cropName ,@ApiParam MultipartFile picture){
+        return cropService.updateCrop(cropId,cropName,picture);
     }
 }

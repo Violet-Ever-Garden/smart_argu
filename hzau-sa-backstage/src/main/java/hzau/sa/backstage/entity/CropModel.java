@@ -15,4 +15,5 @@ public class CropModel {
     private int cropId;
     private String url;
     private String cropName;
+
 }

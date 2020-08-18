@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author LvHao
- * @Description :
+ * @Description : File类型
  * @date 2020-08-14 15:41
  */
 @Getter
