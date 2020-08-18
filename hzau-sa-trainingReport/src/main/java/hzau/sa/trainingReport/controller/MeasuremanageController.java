@@ -75,8 +75,8 @@ public class MeasuremanageController {
 
     @ApiOperation("学生措施管理查询")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "studentId",value = "学号",paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "crop",value = "作物名称",paramType = "query",dataType = "String")
+            @ApiImplicitParam(name = "studentId",value = "学号",paramType = "query",required = true,dataType = "String"),
+            @ApiImplicitParam(name = "crop",value = "作物名称",paramType = "query",required = true,dataType = "String")
     })
     @GetMapping("/query")
     public Result<Object> queryMeasure(String studentId,String crop){
@@ -87,5 +87,43 @@ public class MeasuremanageController {
             return ResultUtil.databaseError(e.toString());
         }
         return ResultUtil.success(measureManageResponseList);
+    }
+
+    @SysLog(prefix = "修改措施信息",value = LogType.ALL)
+    @ApiOperation("修改措施信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "measureManageId",value = "措施ID",required = true,paramType = "form",dataType = "String"),
+            @ApiImplicitParam(name = "measure",value = "措施名称",required = true,paramType = "form",dataType = "String"),
+            @ApiImplicitParam(name = "measureContent",value = "措施内容",required = true,paramType = "form",dataType = "String"),
+            @ApiImplicitParam(name = "createTime",value = "创建时间",required = true,paramType = "form",dataType = "String"),
+            @ApiImplicitParam(name = "ids",value = "需要删除图片ID数组",required = true,paramType = "form",allowMultiple = true,dataType = "String")
+    })
+    @PutMapping("/update")
+    @Transactional(rollbackFor = Exception.class)
+    public Result<Object> updateMeasure(String measureManageId,
+                                        String measure,
+                                        String measureContent,
+                                        String createTime,
+                                        @RequestParam("ids") String[] ids,
+                                        @ApiParam(name = "files",value = "图片数组",required = true) MultipartFile[] files){
+        Object savePoint = null;
+        boolean flag = false;
+        try{
+            savePoint = TransactionAspectSupport.currentTransactionStatus().createSavepoint();
+
+            MeasureManageRequest measureManageRequest = new MeasureManageRequest();
+            measureManageRequest.setMeasure(measure);
+            measureManageRequest.setMeasureContent(measureContent);
+            measureManageRequest.setCreateTime(LocalDateTime.parse(createTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+            measureManageRequest.setMultipartFiles(files);
+
+            log.info("measureManageRequest:" + measureManageRequest.toString());
+            flag = measuremanageService.updateMeasure(measureManageRequest, Integer.valueOf(measureManageId),ids);
+        }catch (Exception e){
+            TransactionAspectSupport.currentTransactionStatus().rollbackToSavepoint(savePoint);
+            return ResultUtil.databaseError(e.toString());
+        }
+
+        return ResultUtil.success(flag);
     }
 }

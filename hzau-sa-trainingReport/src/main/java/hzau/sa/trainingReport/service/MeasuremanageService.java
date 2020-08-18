@@ -30,4 +30,14 @@ public interface MeasuremanageService  extends IService<MeasuremanageVO> {
      * @return
      */
     public List<MeasureManageResponse> queryMeasure(String studentId,String cropName);
+
+    /**
+     * 更新一条措施信息
+     * @param measureManageRequest
+     * @param measureManageId
+     * @param ids
+     * @return
+     * @throws IOException
+     */
+    public boolean updateMeasure(MeasureManageRequest measureManageRequest,Integer measureManageId,String[] ids) throws IOException;
 }

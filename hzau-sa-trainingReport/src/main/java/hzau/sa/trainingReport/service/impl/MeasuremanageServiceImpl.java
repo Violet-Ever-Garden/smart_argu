@@ -106,4 +106,39 @@ public class MeasuremanageServiceImpl extends ServiceImpl<MeasuremanageDao, Meas
 
         return measureManageResponses;
     }
+
+    @Override
+    public boolean updateMeasure(MeasureManageRequest measureManageRequest,Integer measureManageId, String[] ids) throws IOException {
+        try{
+            MeasuremanageVO measuremanageVO = new MeasuremanageVO();
+            measuremanageVO.setMeasuremanageId(measureManageId);
+            measuremanageVO.setMeasureId(measuremanageDao.queryMeasureIdByMeasureName(measureManageRequest.getMeasure()));
+            measuremanageVO.setMeasureContent(measureManageRequest.getMeasureContent());
+            measuremanageVO.setCreateTime(measureManageRequest.getCreateTime());
+            measuremanageDao.updateById(measuremanageVO);
+
+            for(String id : ids){
+                FileUtil.deleteFile(fileDao.selectById(Integer.valueOf(id)).getFileAbsolutePath());
+                fileDao.deleteById(id);
+            }
+
+            FileEnum fileEnum = FileEnum.MEASURE;
+            measuremanageVO = measuremanageDao.selectById(measureManageId);
+            String fileMsg = measuremanageVO.getStudentId() + measuremanageDao.queryCropNameByCropId(measuremanageVO.getCropId()) + measuremanageDao.queryMeasureNameById(measuremanageVO.getMeasureId());
+            List<String> files = FileUtil.uploadFiles(fileEnum,fileMsg,measureManageRequest.getMultipartFiles());
+
+            for(String file : files){
+                FileVO fileVO = new FileVO();
+                fileVO.setFileType(fileEnum.name());
+                fileVO.setConnectId(String.valueOf(measureManageId));
+                fileVO.setFileAbsolutePath(file);
+                fileVO.setUrl(FileUtil.getFileUrl(file));
+                fileDao.insert(fileVO);
+            }
+        }catch (Exception e){
+            log.error(e.toString());
+            throw e;
+        }
+        return true;
+    }
 }

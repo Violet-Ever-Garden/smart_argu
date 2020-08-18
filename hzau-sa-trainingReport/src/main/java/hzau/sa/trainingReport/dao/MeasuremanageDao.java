@@ -33,4 +33,11 @@ public interface MeasuremanageDao extends BaseMapper<MeasuremanageVO> {
      */
     public Integer queryCropIdByCropName(String cropName);
 
+    /**
+     * 根据作物id查询作物名称
+     * @param id
+     * @return
+     */
+    public String queryCropNameByCropId(Integer id);
+
 }

@@ -14,4 +14,8 @@
         SELECT measureName FROM measure
         WHERE measureId = #{measureId}
     </select>
+    <select id="queryCropNameByCropId" resultType="java.lang.String">
+        SELECT cropName FROM crop
+        WHERE cropId = #{id}
+    </select>
 </mapper>
