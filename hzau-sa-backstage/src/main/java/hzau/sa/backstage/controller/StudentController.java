@@ -24,6 +24,7 @@ import hzau.sa.backstage.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiImplicitParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -176,8 +177,8 @@ public class StudentController extends BaseController {
     @ApiOperation("更新学生")
     @ApiImplicitParam(name = "student",value = "要更新的学生",dataType = "StudentWrapper")
     @PostMapping("/updateStudent")
-    public Result updateStudent(@RequestBody StudentWrapper student){
-        return studentService.updateStudent(student);
+    public Result updateStudent(@RequestBody StudentWrapper student,@RequestParam(value = "file") MultipartFile file){
+        return studentService.updateStudent(student,file);
     }
 
     /**
@@ -196,7 +197,7 @@ public class StudentController extends BaseController {
     @SysLog(prefix = "从模板中添加学生")
     @ApiOperation("从模板中添加学生")
     @PostMapping("/addByFile")
-    public Result addByFile(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
-        return studentService.addStudentByTemplate(httpServletRequest,httpServletResponse);
+    public Result addByFile(@RequestParam(value = "file",required = true)MultipartFile file){
+        return studentService.addStudentByTemplate(file,studentService);
     }
 }

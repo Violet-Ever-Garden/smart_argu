@@ -19,7 +19,22 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="add FileWebConfig" />
+=======
+    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="add FileWebConfig">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/hzau-sa-backstage.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/listener/StudentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/listener/StudentListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/TeacherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/StudentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/TeacherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/TeacherServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/util/ExcelUtil.java" beforeDir="false" />
+    </list>
+>>>>>>> origin/wuyihu-dev
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,9 +64,9 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="localRepository" value="D:\Maven\repository" />
-        <option name="mavenHome" value="D:/Maven/apache-maven-3.6.3" />
-        <option name="userSettingsFile" value="D:\Maven\apache-maven-3.6.3\conf\settings.xml" />
+        <option name="localRepository" value="F:\maven_repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../apache-maven-3.6.3-bin/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="F:\apache-maven-3.6.3-bin\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -87,11 +102,11 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
@@ -145,7 +160,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.TrainingReportApplication">
+  <component name="RunManager" selected="Spring Boot.BackStageApplication">
     <configuration name="GeneratorService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GeneratorService" />
       <module name="hzau-sa-generator" />
@@ -308,8 +323,14 @@
       <updated>1596859745758</updated>
       <workItem from="1596859748341" duration="28740000" />
       <workItem from="1596891276574" duration="43423000" />
+<<<<<<< HEAD
       <workItem from="1597748685203" duration="6891000" />
       <workItem from="1597756644019" duration="3259000" />
+=======
+      <workItem from="1597761819361" duration="721000" />
+      <workItem from="1597762565783" duration="127000" />
+      <workItem from="1597762707869" duration="189000" />
+>>>>>>> origin/wuyihu-dev
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>
@@ -551,10 +572,11 @@
     <state x="371" y="107" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597226262943" />
     <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1597204832322" />
     <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597204832322" />
-    <state x="421" y="115" key="FileChooserDialogImpl" timestamp="1597718928707">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state x="505" y="132" key="FileChooserDialogImpl" timestamp="1597761899311">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597718928707" />
+<<<<<<< HEAD
     <state width="1188" height="512" key="GridCell.Tab.0.bottom" timestamp="1597759078402">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -608,6 +630,55 @@
     </state>
     <state x="142" y="5" key="SettingsEditor/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597325870483" />
     <state x="233" y="94" key="Vcs.Push.Dialog.v2" timestamp="1597762834508">
+=======
+    <state x="505" y="132" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597761899311" />
+    <state width="1024" height="111" key="GridCell.Tab.0.bottom" timestamp="1597762898471">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1188" height="512" key="GridCell.Tab.0.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392557" />
+    <state width="1024" height="111" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597762898471" />
+    <state width="1024" height="111" key="GridCell.Tab.0.center" timestamp="1597762898471">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1188" height="512" key="GridCell.Tab.0.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392557" />
+    <state width="1024" height="111" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597762898471" />
+    <state width="1024" height="111" key="GridCell.Tab.0.left" timestamp="1597762898471">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1188" height="512" key="GridCell.Tab.0.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392557" />
+    <state width="1024" height="111" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597762898471" />
+    <state width="1024" height="111" key="GridCell.Tab.0.right" timestamp="1597762898471">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1188" height="512" key="GridCell.Tab.0.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392557" />
+    <state width="1024" height="111" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597762898471" />
+    <state width="1024" height="111" key="GridCell.Tab.1.bottom" timestamp="1597762898471">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1188" height="512" key="GridCell.Tab.1.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392558" />
+    <state width="1024" height="111" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597762898471" />
+    <state width="1024" height="111" key="GridCell.Tab.1.center" timestamp="1597762898471">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1188" height="512" key="GridCell.Tab.1.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392558" />
+    <state width="1024" height="111" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1597762898471" />
+    <state width="1024" height="111" key="GridCell.Tab.1.left" timestamp="1597762898471">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1188" height="512" key="GridCell.Tab.1.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392558" />
+    <state width="1024" height="111" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1597762898471" />
+    <state width="1024" height="111" key="GridCell.Tab.1.right" timestamp="1597762898471">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1188" height="512" key="GridCell.Tab.1.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597733392558" />
+    <state width="1024" height="111" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597762898471" />
+    <state x="170" y="0" key="SettingsEditor" timestamp="1597762121545">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="142" y="5" key="SettingsEditor/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597325870483" />
+    <state x="170" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597762121545" />
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2" timestamp="1597684622012">
+>>>>>>> origin/wuyihu-dev
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="233" y="94" key="Vcs.Push.Dialog.v2/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597762834508" />

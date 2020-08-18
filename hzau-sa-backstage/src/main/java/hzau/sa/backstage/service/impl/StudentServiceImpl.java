@@ -7,12 +7,13 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sun.xml.fastinfoset.tools.FI_DOM_Or_XML_DOM_SAX_SAXEvent;
 import hzau.sa.backstage.dao.ClassDao;
 import hzau.sa.backstage.dao.GradeDao;
+import hzau.sa.backstage.dao.TeacherDao;
 import hzau.sa.backstage.entity.*;
 import hzau.sa.backstage.dao.StudentDao;
 import hzau.sa.backstage.entity.StudentVO;
+import hzau.sa.backstage.listener.StudentListener;
 import hzau.sa.backstage.service.StudentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import hzau.sa.backstage.util.ExcelUtil;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.util.ResultUtil;
 import org.apache.commons.fileupload.FileItem;
@@ -21,6 +22,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import sun.misc.BASE64Encoder;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,6 +53,9 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     @Autowired
     private GradeDao gradeDao;
 
+    @Autowired
+    private TeacherDao teacherDao;
+
     private static final int size=10;
     /**
      * 添加学生
@@ -68,6 +73,14 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
         List<StudentVO> students = studentDao.selectList(studentQueryWrapper);
         if (!students.isEmpty()){
             return ResultUtil.error("学生id或者号码已经存在");
+        }
+
+        //判断是否在老师表里面存在
+        QueryWrapper<TeacherVO> teacherVOQueryWrapper=new QueryWrapper<>();
+        teacherVOQueryWrapper.lambda().eq(TeacherVO::getTeacherId,studentWrapper.getStudentId());
+        TeacherVO teacherVO = teacherDao.selectOne(teacherVOQueryWrapper);
+        if (teacherVO!=null){
+            return ResultUtil.error("与老师id重复");
         }
 
         //获得班级表中对应的记录
@@ -101,7 +114,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      * 这里更新的话对头像更新要弄一下，判断一下是否更新图片
      */
     @Override
-    public Result updateStudent(StudentWrapper studentWrapper){
+    public Result updateStudent(StudentWrapper studentWrapper,MultipartFile multipartFile){
 
         //判断该学生是否存在
         QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<>();
@@ -185,33 +198,19 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      * 图片还要设置一个默认的图片位置
      */
     @Override
-    public Result addStudentByTemplate(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
-        //得到uploa实体，用于解析request
-        DiskFileItemFactory diskFileItemFactory=new DiskFileItemFactory();
-        ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
-
+    public Result addStudentByTemplate(MultipartFile multipartFile,StudentServiceImpl studentService){
+        String fileName=multipartFile.getOriginalFilename();
+        String suffix=fileName.substring(fileName.lastIndexOf(".")+1);
+        if (!suffix.equals("xlsx")){
+            ResultUtil.error("文件必须为xlsx文件，文件模板请下载");
+        }
         try {
-            List<FileItem> fileItems = servletFileUpload.parseRequest(httpServletRequest);
-            for (FileItem fileItem:fileItems){
-                if (!fileItem.isFormField()){
-                    String name=fileItem.getName();
-                    String suffix=name.substring(name.lastIndexOf(".")+1);
-                    if (!suffix.equals("xlsx")){
-                        return ResultUtil.error("上传文件必须为.xlsx文件");
-                    }
-                    //用easyExcel进行处理
-                    ExcelUtil.autoWrite(fileItem.getInputStream());
-                }
-            }
-            return ResultUtil.success();
-
-        } catch (FileUploadException e) {
-            e.printStackTrace();
-            return ResultUtil.error("文件上传失败");
+            EasyExcel.read(multipartFile.getInputStream(),StudentWrapper.class,new StudentListener(studentService)).ignoreEmptyRow(true).doReadAll();
         } catch (IOException e) {
             e.printStackTrace();
-            return ResultUtil.error("文件读入数据库失败");
+            ResultUtil.error("文件导入失败");
         }
+        return ResultUtil.success();
     }
 
     /**

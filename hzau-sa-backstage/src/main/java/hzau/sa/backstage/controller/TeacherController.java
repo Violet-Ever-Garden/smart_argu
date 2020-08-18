@@ -115,7 +115,7 @@ public class TeacherController extends BaseController {
     @ApiOperation("更新老师")
     @ApiImplicitParam(name = "teacherWrapper",value = "更新的老师",paramType = "body",dataType = "TeacherWrapper")
     @PostMapping("/updateTeacher")
-    public Result updateTeacher(@RequestBody TeacherWrapper teacherWrapper){
-        return teacherService.updateTeacher(teacherWrapper);
+    public Result updateTeacher(@RequestBody TeacherWrapper teacherWrapper,@RequestParam(value = "file")MultipartFile file){
+        return teacherService.updateTeacher(teacherWrapper,file);
     }
 }

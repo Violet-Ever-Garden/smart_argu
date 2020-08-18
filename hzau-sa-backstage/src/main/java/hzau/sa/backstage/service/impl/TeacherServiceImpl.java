@@ -14,11 +14,14 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import hzau.sa.msg.dao.FileDao;
 import hzau.sa.msg.entity.FileVO;
 import hzau.sa.msg.entity.Result;
+import hzau.sa.msg.enums.FileEnum;
+import hzau.sa.msg.util.FileUtil;
 import hzau.sa.msg.util.ResultUtil;
-import org.aspectj.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -45,7 +48,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
 
     /**
      * 增加老师
-     * 这里还是要更改的，还要在图片的那个表里面插入对应这个老师id的一个图片文件的记录，这个只能是默认图片
+     * 这里直接定向到默认图片
      */
     @Override
     public Result addTeacher(TeacherWrapper teacherWrapper) {
@@ -83,7 +86,6 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
             return ResultUtil.databaseError();
         }
 
-        //还需要老师图片插入
         return ResultUtil.success("若不传入密码,则默认密码为123456");
 
     }
@@ -127,7 +129,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
      * 图片的更新需要弄一下
      */
     @Override
-    public Result updateTeacher(TeacherWrapper teacherWrapper) {
+    public Result updateTeacher(TeacherWrapper teacherWrapper, MultipartFile file) {
         //首先得到该老师
         QueryWrapper<TeacherVO> teacherQueryWrapper = new QueryWrapper<>();
         teacherQueryWrapper.lambda().eq(TeacherVO::getTeacherId,teacherWrapper.getTeacherId());
@@ -162,6 +164,15 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
             return ResultUtil.databaseError();
         }
         //判断图片更新
+        if (file!=null){
+            try {
+                //1.存储图片
+                String filePath = FileUtil.uploadFile(FileEnum.AVATAR, "teacher", file);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return ResultUtil.error("头像存储失败");
+            }
+        }
         return ResultUtil.success();
     }
 }
