@@ -44,7 +44,8 @@ mybatis-plus:
 file:
   map: "/file/**"
   upload:
-    path: "C:\\Users\\Hasee\\Desktop\\新建文件夹\\wlw"
+    path: "/root/hzau/file"
+    #path: "C:\\Users\\LvHao\\Desktop\\物联网项目\\file\\"
 server:
   port: 8080
 ip: localhost

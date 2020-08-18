@@ -45,7 +45,7 @@ import io.swagger.annotations.ApiImplicitParam;
  * @date 2020-08-13
  */
 @Slf4j
-@RestController
+//@RestController
 @RequestMapping("/asTeacherclass")
 @Api(value = "-API", tags = { "班级老师关系接口" })
 public class AsTeacherclassController extends BaseController {

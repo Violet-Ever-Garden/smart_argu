@@ -12,11 +12,7 @@ public class TrainingReportSwagger extends Swagger2Config {
     @Bean
     public Docket TrainingReportDocket(){
         return new Docket(DocumentationType.SWAGGER_2)
-<<<<<<< HEAD
                 .groupName("HZAU-Smart-Agriculture 实训报告接口")
-=======
-                .groupName("HZAU-Smart-Agriculture 实训管理接口")
->>>>>>> origin/haokai-dev
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("hzau.sa.trainingReport"))

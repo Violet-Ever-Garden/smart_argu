@@ -33,7 +33,7 @@ import java.util.Arrays;
  * @date 2020-08-12 18:12
  */
 @Slf4j
-@RestController
+//@RestController
 @RequestMapping("/class")
 @Api(value = "班级管理-API",tags = "班级管理相关接口")
 public class ClassManageController extends BaseController {

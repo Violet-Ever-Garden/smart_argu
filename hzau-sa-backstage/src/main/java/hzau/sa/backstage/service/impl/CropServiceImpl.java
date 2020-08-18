@@ -89,7 +89,7 @@ public class CropServiceImpl extends ServiceImpl<CropDao, CropVO> implements Cro
                     try{
                         //图片插入
                         //获取图片存储的绝对路径
-                        absolutePath = FileUtil.uploadFile(FileEnum.CROP, "", picture);
+                        absolutePath = FileUtil.uploadFile(FileEnum.CROP, cropName, picture);
                     }catch (IOException e){
                         e.printStackTrace();
                         return new DataBaseException().insertError(e);
