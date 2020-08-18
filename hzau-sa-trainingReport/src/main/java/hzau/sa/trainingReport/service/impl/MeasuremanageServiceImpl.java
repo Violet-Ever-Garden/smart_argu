@@ -1,14 +1,15 @@
 package hzau.sa.trainingReport.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.msg.dao.FileDao;
 import hzau.sa.msg.entity.FileVO;
 import hzau.sa.msg.enums.FileEnum;
 import hzau.sa.msg.util.FileUtil;
+import hzau.sa.trainingReport.dao.AsTeacherclassDao;
 import hzau.sa.trainingReport.dao.MeasuremanageDao;
-import hzau.sa.trainingReport.entity.MeasureManageRequest;
-import hzau.sa.trainingReport.entity.MeasureManageResponse;
-import hzau.sa.trainingReport.entity.MeasuremanageVO;
+import hzau.sa.trainingReport.entity.*;
 import hzau.sa.trainingReport.service.MeasuremanageService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +38,9 @@ public class MeasuremanageServiceImpl extends ServiceImpl<MeasuremanageDao, Meas
 
     @Resource
     private FileDao fileDao;
+
+    @Resource
+    private AsTeacherclassDao asTeacherclassDao;
 
 
     @Override
@@ -160,5 +164,41 @@ public class MeasuremanageServiceImpl extends ServiceImpl<MeasuremanageDao, Meas
             throw e;
         }
         return true;
+    }
+
+    @Override
+    public Integer queryGradeIdByName(String gradeName) {
+        return measuremanageDao.queryGradeIdByName(gradeName);
+    }
+
+    @Override
+    public Integer queryClassIdByName(String className) {
+        return measuremanageDao.queryClassIdByName(className);
+    }
+
+    @Override
+    public Map queryClassByTeacherId(Page page, QueryWrapper queryWrapper) {
+
+        Map resultMap = new HashMap<>();
+
+        IPage pageInfo = asTeacherclassDao.selectPage(page,queryWrapper);
+
+        List<ClassOfTeacher> classOfTeacherList = new ArrayList<>();
+
+        List<AsTeacherclassVO> asTeacherclassVOList = pageInfo.getRecords();
+
+        for(AsTeacherclassVO asTeacherclassVO : asTeacherclassVOList){
+            ClassOfTeacher classOfTeacher = new ClassOfTeacher();
+            classOfTeacher.setClassId(asTeacherclassVO.getClassId());
+            classOfTeacher.setClassName(measuremanageDao.queryClassNameById(asTeacherclassVO.getClassId()));
+            classOfTeacher.setClassGrade(measuremanageDao.queryGradeNameById(asTeacherclassVO.getGradeId()));
+            classOfTeacher.setClassField(measuremanageDao.queryClassFieldByClassId(asTeacherclassVO.getClassId()));
+            classOfTeacherList.add(classOfTeacher);
+        }
+
+        resultMap.put("total",pageInfo.getTotal());
+        resultMap.put("rows",classOfTeacherList);
+
+        return resultMap;
     }
 }

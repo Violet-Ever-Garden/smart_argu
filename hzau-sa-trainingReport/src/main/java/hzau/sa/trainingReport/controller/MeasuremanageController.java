@@ -1,9 +1,14 @@
 package hzau.sa.trainingReport.controller;
 
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.msg.annotation.SysLog;
+import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.enums.LogType;
 import hzau.sa.msg.util.ResultUtil;
+import hzau.sa.trainingReport.entity.AsTeacherclassVO;
 import hzau.sa.trainingReport.entity.MeasureManageRequest;
 import hzau.sa.trainingReport.entity.MeasureManageResponse;
 import hzau.sa.trainingReport.service.MeasuremanageService;
@@ -28,7 +33,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/measuremanage")
 @Api(value = "措施管理-API接口",tags = "措施管理相关接口")
-public class MeasuremanageController {
+public class MeasuremanageController extends BaseController {
 
     @Resource
     private MeasuremanageService measuremanageService;
@@ -132,7 +137,7 @@ public class MeasuremanageController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "measureManageId",value = "需要删除措施ID",required = true,paramType = "path",dataType = "String")
     })
-    @DeleteMapping("/update/{measureManageId}")
+    @DeleteMapping("/delete/{measureManageId}")
     @Transactional(rollbackFor = Exception.class)
     public Result<Object> deleteMeasure(@PathVariable("measureManageId") String measureManageId){
         Object savePoint = null;
@@ -147,5 +152,29 @@ public class MeasuremanageController {
             return ResultUtil.databaseError(e.toString());
         }
         return ResultUtil.success(flag);
+    }
+
+    @ApiOperation("老师管理班级查询")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "grade",value = "年级",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "name",value = "名称",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "teacherId",value = "老师工号",required = true,paramType = "query",dataType = "String")
+    })
+    @GetMapping("/queryClassOfTeacher")
+    public Result<Object> queryClassOfTeacher(String teacherId,String grade,String name){
+        Page page = getPage();
+
+        QueryWrapper<AsTeacherclassVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(AsTeacherclassVO::getTeacherId,teacherId);
+        if(StrUtil.isNotBlank(name)){
+            queryWrapper.lambda().like(AsTeacherclassVO::getClassId,measuremanageService.queryClassIdByName(name));
+        }
+        if(StrUtil.isNotBlank(grade)){
+            queryWrapper.lambda().eq(AsTeacherclassVO::getGradeId,measuremanageService.queryGradeIdByName(grade));
+        }
+
+        return ResultUtil.success(measuremanageService.queryClassByTeacherId(page,queryWrapper));
     }
 }

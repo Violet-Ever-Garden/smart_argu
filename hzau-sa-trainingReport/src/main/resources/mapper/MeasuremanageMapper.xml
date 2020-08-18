@@ -18,4 +18,28 @@
         SELECT cropName FROM crop
         WHERE cropId = #{id}
     </select>
+    <select id="queryGradeIdByName" resultType="java.lang.Integer">
+        SELECT gradeId FROM grade
+        WHERE gradeName = #{gradeName}
+    </select>
+    <select id="queryGradeNameById" resultType="java.lang.String">
+        SELECT gradeName FROM grade
+        WHERE gradeId = #{gradeId}
+    </select>
+    <select id="queryClassIdByName" resultType="java.lang.Integer">
+        SELECT classId FROM class
+        WHERE className = #{className}
+    </select>
+    <select id="queryClassNameById" resultType="java.lang.String">
+        SELECT className FROM class
+        WHERE classId = #{classId}
+    </select>
+    <select id="queryClassFieldByClassId" resultType="java.lang.String">
+        SELECT DISTINCT field1.fieldName FROM field field1
+        LEFT JOIN as_classfield field2 ON field1.fieldId = field2.fieldId
+        WHERE field2.fieldId = ANY (
+            SELECT fieldId FROM as_classfield
+            WHERE classId = #{classId}
+        )
+    </select>
 </mapper>
