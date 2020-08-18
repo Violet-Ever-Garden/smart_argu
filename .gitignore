@@ -1,1 +1,4 @@
-/.idea/
+# Idea
+.idea
+*.iml
+target
