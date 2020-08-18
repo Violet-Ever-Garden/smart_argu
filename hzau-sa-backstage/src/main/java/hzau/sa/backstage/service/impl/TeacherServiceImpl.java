@@ -3,6 +3,7 @@ package hzau.sa.backstage.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hzau.sa.backstage.dao.StudentDao;
 import hzau.sa.backstage.entity.StudentVO;
 import hzau.sa.backstage.entity.TeacherVO;
 import hzau.sa.backstage.dao.TeacherDao;
@@ -10,8 +11,11 @@ import hzau.sa.backstage.entity.TeacherVO;
 import hzau.sa.backstage.entity.TeacherWrapper;
 import hzau.sa.backstage.service.TeacherService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import hzau.sa.msg.dao.FileDao;
+import hzau.sa.msg.entity.FileVO;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.util.ResultUtil;
+import org.aspectj.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +37,11 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
     @Autowired
     private TeacherDao teacherDao;
 
+    @Autowired
+    private StudentDao studentDao;
+    
+    @Autowired
+    private FileDao fileDao;
 
     /**
      * 增加老师
@@ -54,6 +63,14 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
             return ResultUtil.paramError("已存在该老师id或手机号码");
         }
 
+        //判断是否在学生里面存在
+        QueryWrapper<StudentVO> studentVOQueryWrapper = new QueryWrapper<>();
+        studentVOQueryWrapper.lambda().eq(StudentVO::getStudentId,teacherWrapper.getTeacherId());
+        StudentVO studentVO = studentDao.selectOne(studentVOQueryWrapper);
+        if (studentVO!=null){
+            return ResultUtil.error("与学生id重复");
+        }
+
         //解包装得到老师对象
         TeacherVO teacherVO=new TeacherVO(teacherWrapper);
 
@@ -66,7 +83,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
             return ResultUtil.databaseError();
         }
 
-        //还需要老师图片插入判断与插入
+        //还需要老师图片插入
         return ResultUtil.success("若不传入密码,则默认密码为123456");
 
     }

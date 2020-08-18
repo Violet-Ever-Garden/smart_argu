@@ -40,6 +40,4 @@ public class TeacherWrapper {
 
     private String password;
 
-    private MultipartFile multipartFile;
-
 }
