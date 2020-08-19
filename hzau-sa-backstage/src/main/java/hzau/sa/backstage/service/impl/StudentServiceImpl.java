@@ -164,11 +164,11 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
         if (multipartFile!=null){
             try {
                 //1.存储图片
-                String absolutePath= FileUtil.uploadFile(FileEnum.STUDENT,"student",multipartFile);
+                String absolutePath= FileUtil.uploadFile(FileEnum.AVATAR,"student",multipartFile);
 
                 //查看图片路径
                 QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
-                fileVOQueryWrapper.lambda().eq(FileVO::getFileType,FileEnum.STUDENT).eq(FileVO::getConnectId,studentVO.getStudentId());
+                fileVOQueryWrapper.lambda().eq(FileVO::getFileType,FileEnum.AVATAR).eq(FileVO::getConnectId,studentVO.getStudentId());
                 FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
 
                 if (fileVO!=null){
@@ -188,7 +188,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
                     FileVO fileVOInsert=new FileVO();
                     fileVOInsert.setFileAbsolutePath(absolutePath);
                     fileVOInsert.setUrl(FileUtil.getFileUrl(absolutePath));
-                    fileVOInsert.setFileType(String.valueOf(FileEnum.STUDENT));
+                    fileVOInsert.setFileType(String.valueOf(FileEnum.AVATAR));
                     fileVOInsert.setConnectId(studentVO.getStudentId());
                     fileVOInsert.setCreateUser(fileVO.getCurrentUserName());
                     fileVOInsert.setLastModifiedUser(fileVO.getCurrentUserName());

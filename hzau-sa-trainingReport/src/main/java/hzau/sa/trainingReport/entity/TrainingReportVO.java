@@ -24,83 +24,15 @@ public class TrainingReportVO extends BaseVO{
 
 	private static final long serialVersionUID = 1L;
 
-
-	/**
-	 * 
-	 */
 	@TableId(type=IdType.UUID)
 	private Integer trainingReportId;
-
-
-	/**
-	 * 
-	 */
 	private String studentId;
-
-
-	/**
-	 * 
-	 */
 	private Integer cropId;
-
-
-	/**
-	 * 
-	 */
 	private String trainingReportName;
-
-
-	/**
-	 * 
-	 */
 	private Integer score;
-
-
-	/**
-	 * 
-	 */
 	private String reviewStatus;
-
-
-	/**
-	 * 
-	 */
 	private String teacherId;
-
-
-	/**
-	 * 
-	 */
 	private Integer batch;
-
-
-	/**
-	 * 
-	 */
 	private String comments;
-
-
-	/**
-	 * 
-	 */
-	private String createUser;
-
-
-	/**
-	 * 
-	 */
-	private LocalDateTime createtime;
-
-
-	/**
-	 * 
-	 */
-	private String lastModifiedUser;
-
-
-	/**
-	 * 
-	 */
-	private LocalDateTime lastModifiedTime;
 
 }

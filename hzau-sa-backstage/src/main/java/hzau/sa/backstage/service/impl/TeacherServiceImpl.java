@@ -171,11 +171,11 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
         if (file!=null){
             try {
                 //存储新文件,并获得绝对路径
-                String absolutePath = FileUtil.uploadFile(FileEnum.TEACHER, "teacher", file);
+                String absolutePath = FileUtil.uploadFile(FileEnum.AVATAR, "teacher", file);
 
                 //查看原来的file路径
                 QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
-                fileVOQueryWrapper.lambda().eq(FileVO::getConnectId,teacherW.getTeacherId()).eq(FileVO::getFileType,FileEnum.TEACHER);
+                fileVOQueryWrapper.lambda().eq(FileVO::getConnectId,teacherW.getTeacherId()).eq(FileVO::getFileType,FileEnum.AVATAR);
                 FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
 
                 //如果存在，就先删除原来的图片，然后更新
@@ -198,7 +198,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
                     fileVOInsert.setFileAbsolutePath(absolutePath);
                     fileVOInsert.setUrl(FileUtil.getFileUrl(absolutePath));
                     fileVOInsert.setConnectId(teacherW.getTeacherId());
-                    fileVOInsert.setFileType(String.valueOf(FileEnum.TEACHER));
+                    fileVOInsert.setFileType(String.valueOf(FileEnum.AVATAR));
                     fileVOInsert.setCreateUser(fileVO.getCurrentUserName());
                     fileVOInsert.setLastModifiedUser(fileVO.getCurrentUserName());
 

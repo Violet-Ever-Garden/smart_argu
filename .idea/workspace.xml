@@ -20,28 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c06cea8e-fc68-402a-a86b-3782266e07d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hzau-sa-generator/src/main/resources/entity.java.vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/controller/TrainingReportController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/dao/AsTeacherclassDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/dao/StudentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/dao/TrainingReportDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/AsTeacherclassVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/ClassOfTeacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/StudentOfClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/StudentVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/TrainingReportVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/TrainingReportService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/impl/TrainingReportServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/resources/mapper/TrainingReportMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/util/FileUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/controller/MeasuremanageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/controller/MeasuremanageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/dao/MeasuremanageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/dao/MeasuremanageDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/MeasureManageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/MeasureManageResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/MeasuremanageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/MeasuremanageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/impl/MeasuremanageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/impl/MeasuremanageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/resources/mapper/MeasuremanageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/resources/mapper/MeasuremanageMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/StudentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/TeacherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/TeacherServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/enums/FileEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/enums/FileEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/TrainingReportVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/TrainingReportVO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,7 +317,7 @@
       <workItem from="1596891276574" duration="43423000" />
       <workItem from="1597748685203" duration="6891000" />
       <workItem from="1597756644019" duration="3259000" />
-      <workItem from="1597823866538" duration="7241000" />
+      <workItem from="1597823866538" duration="8431000" />
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>
@@ -580,26 +564,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597718928707" />
-    <state width="1493" height="91" key="GridCell.Tab.0.bottom" timestamp="1597841012996">
+    <state width="1493" height="134" key="GridCell.Tab.0.bottom" timestamp="1597842882327">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1188" height="512" key="GridCell.Tab.0.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597759078402" />
-    <state width="1493" height="91" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597841012996" />
-    <state width="1493" height="91" key="GridCell.Tab.0.center" timestamp="1597841012996">
+    <state width="1493" height="134" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597842882327" />
+    <state width="1493" height="134" key="GridCell.Tab.0.center" timestamp="1597842882327">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1188" height="512" key="GridCell.Tab.0.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597759078402" />
-    <state width="1493" height="91" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597841012996" />
-    <state width="1493" height="91" key="GridCell.Tab.0.left" timestamp="1597841012996">
+    <state width="1493" height="134" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597842882327" />
+    <state width="1493" height="134" key="GridCell.Tab.0.left" timestamp="1597842882327">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1188" height="512" key="GridCell.Tab.0.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597759078402" />
-    <state width="1493" height="91" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597841012996" />
-    <state width="1493" height="91" key="GridCell.Tab.0.right" timestamp="1597841012996">
+    <state width="1493" height="134" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597842882327" />
+    <state width="1493" height="134" key="GridCell.Tab.0.right" timestamp="1597842882327">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1188" height="512" key="GridCell.Tab.0.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597759078402" />
-    <state width="1493" height="91" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597841012996" />
+    <state width="1493" height="134" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597842882327" />
     <state width="1188" height="512" key="GridCell.Tab.1.bottom" timestamp="1597759078402">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
