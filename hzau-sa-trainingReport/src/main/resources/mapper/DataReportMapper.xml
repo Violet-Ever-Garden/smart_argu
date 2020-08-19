@@ -31,31 +31,31 @@
         </foreach>
     </select>
 
-    <resultMap id="studentDataReport" type="hzau.sa.trainingReport.entity.StudentDataReport">
-        <result property="studentName" column="studentName"/>
-    </resultMap>
+<!--    <resultMap id="studentDataReport" type="hzau.sa.trainingReport.entity.StudentDataReport">-->
+<!--        <result property="studentName" column="studentName"/>-->
+<!--    </resultMap>-->
 
-    <resultMap id="classDataReport" type="hzau.sa.trainingReport.entity.ClassDataReport">
-        <result property="className" column="className"/>
-        <collection property="" resultMap="studentDataReport" select=""/>
-    </resultMap>
-
-
-    <resultMap id="gradeDataReport" type="hzau.sa.trainingReport.entity.GradeDataReport">
-        <result property="gradeName" column="gradeName"/>
-        <collection property="" resultMap="classDataReport" select=""/>
-    </resultMap>
+<!--    <resultMap id="classDataReport" type="hzau.sa.trainingReport.entity.ClassDataReport">-->
+<!--        <result property="className" column="className"/>-->
+<!--        <collection property="" resultMap="studentDataReport" select=""/>-->
+<!--    </resultMap>-->
 
 
-    <resultMap id="cropDataReport" type="hzau.sa.trainingReport.entity.CropDataReport">
-        <result property="cropName" column="cropName"/>
-        <collection property="gradeDataReports"
-                    javaType="ArrayList"
+<!--    <resultMap id="gradeDataReport" type="hzau.sa.trainingReport.entity.GradeDataReport">-->
+<!--        <result property="gradeName" column="gradeName"/>-->
+<!--        <collection property="" resultMap="classDataReport" select=""/>-->
+<!--    </resultMap>-->
 
-                    ofType="hzau.sa.trainingReport.entity.CropDataReport"
-                    select="">
 
-        </collection>
-    </resultMap>
+<!--    <resultMap id="cropDataReport" type="hzau.sa.trainingReport.entity.CropDataReport">-->
+<!--        <result property="cropName" column="cropName"/>-->
+<!--        <collection property="gradeDataReports"-->
+<!--                    javaType="ArrayList"-->
+
+<!--                    ofType="hzau.sa.trainingReport.entity.CropDataReport"-->
+<!--                    select="">-->
+
+<!--        </collection>-->
+<!--    </resultMap>-->
 
 </mapper>
