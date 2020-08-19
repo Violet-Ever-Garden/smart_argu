@@ -64,7 +64,14 @@ public interface MeasuremanageService  extends IService<MeasuremanageVO> {
      * @param className
      * @return
      */
-    public Integer queryClassIdByName(String className);
+    public List<Integer> queryClassIdByName(String className);
+
+    /**
+     * 根据学生姓名查询学生Id
+     * @param studentName
+     * @return
+     */
+    public List<String> queryStudentIdByName(String studentName);
 
     /**
      * 查询老师所管理的班级
@@ -73,4 +80,12 @@ public interface MeasuremanageService  extends IService<MeasuremanageVO> {
      * @return
      */
     public Map queryClassByTeacherId(Page page, QueryWrapper queryWrapper);
+
+    /**
+     * 根据班级ID 查询学生
+     * @param page
+     * @param queryWrapper
+     * @return
+     */
+    public Map queryStudentByClassId(Page page,QueryWrapper queryWrapper);
 }

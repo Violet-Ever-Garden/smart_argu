@@ -28,7 +28,7 @@
     </select>
     <select id="queryClassIdByName" resultType="java.lang.Integer">
         SELECT classId FROM class
-        WHERE className = #{className}
+        WHERE className LIKE "%"#{className}"%"
     </select>
     <select id="queryClassNameById" resultType="java.lang.String">
         SELECT className FROM class
@@ -41,5 +41,20 @@
             SELECT fieldId FROM as_classfield
             WHERE classId = #{classId}
         )
+    </select>
+    <select id="queryStudentByStudentId" resultType="hzau.sa.trainingReport.entity.StudentOfClass">
+        SELECT DISTINCT studentId,phoneNumber,studentName,gradeName,className FROM student
+        LEFT JOIN class ON class.classId = student.classId
+        LEFT JOIN grade ON grade.gradeId = student.gradeId
+        <if test="studentIds != null">
+            WHERE student.studentId IN
+            <foreach collection="studentIds" item="studentId" index="index" open="(" separator="," close=")">
+                #{studentId}
+            </foreach>
+        </if>
+    </select>
+    <select id="queryStudentIdByName" resultType="java.lang.String">
+        SELECT studentId FROM student
+        WHERE studentName LIKE "%"#{studentName}"%"
     </select>
 </mapper>

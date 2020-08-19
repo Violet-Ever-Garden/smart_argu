@@ -1,8 +1,11 @@
 package hzau.sa.trainingReport.dao;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hzau.sa.trainingReport.entity.StudentOfClass;
 import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import hzau.sa.trainingReport.entity.MeasuremanageVO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -61,7 +64,7 @@ public interface MeasuremanageDao extends BaseMapper<MeasuremanageVO> {
      * @param className
      * @return
      */
-    public Integer queryClassIdByName(String className);
+    public List<Integer> queryClassIdByName(String className);
 
     /**
      * 根据班级ID查询名称
@@ -76,5 +79,19 @@ public interface MeasuremanageDao extends BaseMapper<MeasuremanageVO> {
      * @return
      */
     public List<String> queryClassFieldByClassId(Integer classId);
+
+    /**
+     *根据学生姓名查ID
+     * @param studentName
+     * @return
+     */
+    public List<String> queryStudentIdByName(String studentName);
+
+    /**
+     * 根据学生ID 查询
+     * @param studentIds
+     * @return
+     */
+    public List<StudentOfClass> queryStudentByStudentId(@Param("studentIds") List<String> studentIds);
 
 }
