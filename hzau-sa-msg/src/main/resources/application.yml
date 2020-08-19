@@ -49,4 +49,5 @@ file:
 server:
   port: 8080
 #ip: sourceshare.kaistudy.top
-ip: localhost
+#ip: localhost
+ip: hzau.vipgz1.idcfengye.com
