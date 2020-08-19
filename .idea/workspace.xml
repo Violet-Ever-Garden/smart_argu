@@ -19,18 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="add FileWebConfig">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/hzau-sa-backstage.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/StudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/TeacherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/listener/StudentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/listener/StudentListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/StudentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/TeacherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/StudentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/TeacherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/TeacherServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/util/ExcelUtil.java" beforeDir="false" />
-    </list>
+    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="add FileWebConfig" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -319,6 +308,7 @@
       <workItem from="1597761819361" duration="721000" />
       <workItem from="1597762565783" duration="127000" />
       <workItem from="1597762707869" duration="189000" />
+      <workItem from="1597763117271" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>
