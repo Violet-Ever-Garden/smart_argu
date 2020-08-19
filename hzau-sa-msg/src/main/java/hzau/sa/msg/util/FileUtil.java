@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
+import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.UnknownHostException;
@@ -173,7 +174,8 @@ public class FileUtil {
         }
 
         try{
-            String address = getIpAddress().getHostAddress();
+            //String address = getIpAddress().getHostAddress();
+            String address = IP;
             if(null != address){
                 return "http://" + address + ":" + SERVER_PORT + FILE_MAP.replace("**","") + fileLocalPath;
             }else{
