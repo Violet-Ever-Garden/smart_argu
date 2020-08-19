@@ -2,11 +2,14 @@ package hzau.sa.trainingReport.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hzau.sa.trainingReport.entity.AnalysisModel;
+import hzau.sa.trainingReport.entity.CropIdName;
 import hzau.sa.trainingReport.entity.DataReportModel;
 import hzau.sa.trainingReport.entity.DataReportVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,4 +22,7 @@ public interface DataReportDao extends BaseMapper<DataReportVO> {
 
     List<DataReportModel> selectDataReportModelPage(Page<DataReportModel> page, @Param("cropId") int cropId, @Param("studentId") String studentId);
 
+    List<AnalysisModel> selectAnalysisModel(@Param("cropId") int cropId);
+
+    List<CropIdName> selectCropIdNameList(ArrayList<Integer> ids);
 }

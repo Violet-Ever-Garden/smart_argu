@@ -5,13 +5,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import hzau.sa.msg.exception.DataBaseException;
 import hzau.sa.trainingReport.dao.DataReportDao;
 import hzau.sa.trainingReport.dao.DataReportRepository;
-import hzau.sa.trainingReport.entity.DataReport;
-import hzau.sa.trainingReport.entity.DataReportModel;
-import hzau.sa.trainingReport.entity.DataReportVO;
+import hzau.sa.trainingReport.entity.*;
 import hzau.sa.trainingReport.service.DataReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +28,7 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
     DataReportDao dataReportDao;
     @Autowired
     DataReportRepository dataReportRepository;
+
 
     public boolean insert(DataReport dataReport) {
         DataReportVO dataReportVO = new DataReportVO();
@@ -69,5 +69,17 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
             return false;
         }
         return true;
+    }
+
+    public List<AnalysisModel> getStatisticalAnalysis(ArrayList<Integer> ids) {
+        List<CropIdName> cropIdNames = dataReportDao.selectCropIdNameList(ids);
+        List<DataReport> dataReports = dataReportRepository.findByCropIdIn(ids);
+        for(CropIdName crop: cropIdNames){
+            int cropId = crop.getCropId();
+            String cropName = crop.getCropName();
+            List<AnalysisModel> analysisModels = dataReportDao.selectAnalysisModel(cropId);
+            //for()
+        }
+        return null;
     }
 }

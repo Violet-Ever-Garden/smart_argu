@@ -5,6 +5,7 @@ import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.util.ResultUtil;
 import hzau.sa.trainingReport.dao.DataReportRepository;
+import hzau.sa.trainingReport.entity.AnalysisModel;
 import hzau.sa.trainingReport.entity.DataReport;
 import hzau.sa.trainingReport.entity.DataReportModel;
 import hzau.sa.trainingReport.service.impl.DataReportServiceImpl;
@@ -12,10 +13,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -89,5 +92,16 @@ public class DataReportController extends BaseController {
     public Result<Object> delete(@PathVariable  int dataReportId){
         dataReportService.deleteByDataReportId(dataReportId);
         return ResultUtil.success();
+    }
+
+
+
+
+    @ApiOperation(value = "统计分析", notes = "统计分析")
+    @ApiImplicitParam(name = "ids[]", value = "作物id数组", paramType = "query", allowMultiple = true, dataType = "String")
+    @GetMapping("/statisticalAnalysis")
+    public Result statisticalAnalysis(@RequestParam(value = "ids[]") ArrayList<Integer> ids){
+        List<AnalysisModel> analysisModels = dataReportService.getStatisticalAnalysis(ids);
+        return ResultUtil.success(analysisModels);
     }
 }
