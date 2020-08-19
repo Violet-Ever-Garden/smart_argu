@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author LvHao
- * @Description :
+ * @Description : 班级所属学生返回实体
  * @date 2020-08-19 11:08
  */
 @Data

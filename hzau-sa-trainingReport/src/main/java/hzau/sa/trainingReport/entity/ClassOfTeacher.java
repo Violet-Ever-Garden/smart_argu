@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @author LvHao
- * @Description :
+ * @Description : 老师管理班级的返回实体
  * @date 2020-08-19 0:38
  */
 @Data
