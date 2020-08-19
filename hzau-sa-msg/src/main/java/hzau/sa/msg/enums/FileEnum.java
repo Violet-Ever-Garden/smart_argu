@@ -17,7 +17,9 @@ public enum FileEnum {
 
     REPORT,
 
-    AVATAR,
+    STUDENT,
+
+    TEACHER,
 
     MEASURE;
 }
