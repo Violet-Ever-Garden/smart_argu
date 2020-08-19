@@ -1,5 +1,6 @@
 package hzau.sa.file.controller;
 
+import hzau.sa.msg.util.ZipUtil;
 import hzau.sa.msg.enums.FileEnum;
 import hzau.sa.msg.util.FileUtil;
 import hzau.sa.msg.entity.Result;
@@ -11,6 +12,12 @@ import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author LvHao
@@ -24,6 +31,7 @@ public class FileTestController {
 
     private String path = "C:\\Users\\LvHao\\Desktop\\物联网项目\\file\\";
     private String DIR = "test\\";
+    private String FILE_DIR = "C:\\Users\\LvHao\\Desktop\\物联网项目\\zip";
 
 
     @ApiOperation("上传文件")
@@ -76,6 +84,24 @@ public class FileTestController {
             return ResultUtil.success(FileUtil.getFileUrl(filePath));
         }catch (Exception e){
             return ResultUtil.error();
+        }
+    }
+
+    @ApiOperation("获取zip压缩包")
+    @GetMapping("/zip")
+    public void getZip(HttpServletResponse httpServletResponse) throws UnsupportedEncodingException {
+        String fileDir = FILE_DIR;
+
+        if(new File(FILE_DIR).exists()){
+
+            httpServletResponse.setContentType("application/octet-stream");
+            httpServletResponse.setHeader("Content-Disposition", "attachment; filename=" + new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()) + "-report" + ".zip");
+
+            try{
+                ZipUtil.zipCompress(fileDir,httpServletResponse.getOutputStream());
+            }catch (Exception e){
+                log.error(e.toString());
+            }
         }
     }
 }
