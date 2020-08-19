@@ -95,7 +95,7 @@ public class FileTestController {
         if(new File(FILE_DIR).exists()){
 
             httpServletResponse.setContentType("application/octet-stream");
-            httpServletResponse.setHeader("Content-Disposition", "attachment; filename=" + new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()) + "-report" + ".zip");
+            httpServletResponse.setHeader("Content-Disposition", "attachment; filename=" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + "-report" + ".zip");
 
             try{
                 ZipUtil.zipCompress(fileDir,httpServletResponse.getOutputStream());
