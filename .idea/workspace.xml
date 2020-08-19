@@ -19,14 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c06cea8e-fc68-402a-a86b-3782266e07d8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/StudentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/TeacherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/TeacherServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/enums/FileEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/enums/FileEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/TrainingReportVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/entity/TrainingReportVO.java" afterDir="false" />
-    </list>
+    <list default="true" id="c06cea8e-fc68-402a-a86b-3782266e07d8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -317,7 +310,7 @@
       <workItem from="1596891276574" duration="43423000" />
       <workItem from="1597748685203" duration="6891000" />
       <workItem from="1597756644019" duration="3259000" />
-      <workItem from="1597823866538" duration="8431000" />
+      <workItem from="1597823866538" duration="8637000" />
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>
