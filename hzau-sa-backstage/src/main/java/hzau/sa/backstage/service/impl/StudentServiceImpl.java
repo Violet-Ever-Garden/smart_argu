@@ -14,7 +14,11 @@ import hzau.sa.backstage.entity.StudentVO;
 import hzau.sa.backstage.listener.StudentListener;
 import hzau.sa.backstage.service.StudentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import hzau.sa.msg.dao.FileDao;
+import hzau.sa.msg.entity.FileVO;
 import hzau.sa.msg.entity.Result;
+import hzau.sa.msg.enums.FileEnum;
+import hzau.sa.msg.util.FileUtil;
 import hzau.sa.msg.util.ResultUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -56,7 +60,10 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     @Autowired
     private TeacherDao teacherDao;
 
-    private static final int size=10;
+    @Autowired
+    private FileDao fileDao;
+
+    private static final String TEMPLATE_EXCEL_PATH="/root/hzau/file/excelTemplate/template.xlsx";
     /**
      * 添加学生
      * 这里也需要修改，在file表里面增加一个默认图片的record
@@ -153,7 +160,47 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
             return ResultUtil.error("更新失败");
         }
 
-        //插入默认图片
+        //判断图片操作
+        if (multipartFile!=null){
+            try {
+                //1.存储图片
+                String absolutePath= FileUtil.uploadFile(FileEnum.STUDENT,"student",multipartFile);
+
+                //查看图片路径
+                QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+                fileVOQueryWrapper.lambda().eq(FileVO::getFileType,FileEnum.STUDENT).eq(FileVO::getConnectId,studentVO.getStudentId());
+                FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+
+                if (fileVO!=null){
+                    //删除
+                    FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+
+                    //更新属性
+                    fileVO.setFileAbsolutePath(absolutePath);
+                    fileVO.setUrl(FileUtil.getFileUrl(absolutePath));
+                    fileVO.setLastModifiedUser(fileVO.getCurrentUserName());
+
+                    //更新操作
+                    if (fileDao.update(fileVO,fileVOQueryWrapper)==0){
+                        return ResultUtil.error("图片更新失败");
+                    }
+                }else {
+                    FileVO fileVOInsert=new FileVO();
+                    fileVOInsert.setFileAbsolutePath(absolutePath);
+                    fileVOInsert.setUrl(FileUtil.getFileUrl(absolutePath));
+                    fileVOInsert.setFileType(String.valueOf(FileEnum.STUDENT));
+                    fileVOInsert.setConnectId(studentVO.getStudentId());
+                    fileVOInsert.setCreateUser(fileVO.getCurrentUserName());
+                    fileVOInsert.setLastModifiedUser(fileVO.getCurrentUserName());
+                    if(fileDao.insert(fileVOInsert)==0){
+                        return ResultUtil.error("图片更新失败");
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return ResultUtil.error("头像存储失败");
+            }
+        }
         return ResultUtil.success();
 
     }
@@ -221,8 +268,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     public Result downloadTemplate(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
 
         //得到对应的文件对象
-        String realPath=System.getProperty("user.dir") +
-                "\\hzau-sa-backstage\\src\\main\\resources\\download\\template.xlsx";
+        String realPath=StudentServiceImpl.TEMPLATE_EXCEL_PATH;
         File file = new File(realPath);
 
         if (file.exists()) {

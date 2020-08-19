@@ -103,4 +103,5 @@ public class CropController extends BaseController {
     public Result update(int cropId,String cropName ,@ApiParam MultipartFile picture){
         return cropService.updateCrop(cropId,cropName,picture);
     }
+
 }

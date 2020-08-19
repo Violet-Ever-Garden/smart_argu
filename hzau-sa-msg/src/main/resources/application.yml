@@ -45,7 +45,7 @@ file:
   map: "/file/**"
   upload:
     #path: "/root/hzau/file"
-    path: "C:\\Users\\LvHao\\Desktop\\物联网项目\\file\\"
+    path: "D:\\file\\"
 server:
   port: 8080
 ip: localhost

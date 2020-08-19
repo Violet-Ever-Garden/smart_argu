@@ -17,11 +17,15 @@ import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.enums.FileEnum;
 import hzau.sa.msg.util.FileUtil;
 import hzau.sa.msg.util.ResultUtil;
+import org.apache.poi.ss.formula.functions.LinearRegressionFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -87,7 +91,6 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
         }
 
         return ResultUtil.success("若不传入密码,则默认密码为123456");
-
     }
 
     /**
@@ -163,11 +166,48 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
         if (teacherDao.update(teacherW,teacherQueryWrapper)==0){
             return ResultUtil.databaseError();
         }
+
         //判断图片更新
         if (file!=null){
             try {
-                //1.存储图片
-                String filePath = FileUtil.uploadFile(FileEnum.AVATAR, "teacher", file);
+                //存储新文件,并获得绝对路径
+                String absolutePath = FileUtil.uploadFile(FileEnum.TEACHER, "teacher", file);
+
+                //查看原来的file路径
+                QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+                fileVOQueryWrapper.lambda().eq(FileVO::getConnectId,teacherW.getTeacherId()).eq(FileVO::getFileType,FileEnum.TEACHER);
+                FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+
+                //如果存在，就先删除原来的图片，然后更新
+                //不存在就直接插入记录
+                if (fileVO!=null){
+                    //删除
+                    FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+
+                    //更新属性
+                    fileVO.setFileAbsolutePath(absolutePath);
+                    fileVO.setUrl(FileUtil.getFileUrl(absolutePath));
+                    fileVO.setLastModifiedUser(fileVO.getCurrentUserName());
+
+                    //更新操作
+                    if(fileDao.update(fileVO,fileVOQueryWrapper)==0) {
+                        return ResultUtil.error("图片更新失败");
+                    }
+                }else {
+                    FileVO fileVOInsert=new FileVO();
+                    fileVOInsert.setFileAbsolutePath(absolutePath);
+                    fileVOInsert.setUrl(FileUtil.getFileUrl(absolutePath));
+                    fileVOInsert.setConnectId(teacherW.getTeacherId());
+                    fileVOInsert.setFileType(String.valueOf(FileEnum.TEACHER));
+                    fileVOInsert.setCreateUser(fileVO.getCurrentUserName());
+                    fileVOInsert.setLastModifiedUser(fileVO.getCurrentUserName());
+
+                    if(fileDao.insert(fileVOInsert)==0){
+                       return ResultUtil.error("图片更新失败");
+                    }
+                }
+
+                return ResultUtil.success();
             } catch (IOException e) {
                 e.printStackTrace();
                 return ResultUtil.error("头像存储失败");

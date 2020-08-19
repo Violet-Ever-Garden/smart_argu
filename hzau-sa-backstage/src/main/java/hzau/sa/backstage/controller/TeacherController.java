@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import cn.hutool.core.convert.Convert;
+import hzau.sa.backstage.entity.CropModel;
 import hzau.sa.backstage.entity.MeasureVO;
 import hzau.sa.backstage.entity.TeacherWrapper;
 import hzau.sa.backstage.service.impl.TeacherServiceImpl;
@@ -53,7 +54,7 @@ public class TeacherController extends BaseController {
     private TeacherServiceImpl teacherService;
 
 
-    @ApiOperation(value = "按名字分页模糊查询", notes = "按名字分页模糊查询")
+    @ApiOperation(value = "按名字分页模糊查询无图片", notes = "按名字分页模糊查询无图片")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
@@ -69,6 +70,7 @@ public class TeacherController extends BaseController {
         QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<TeacherVO>();
         queryWrapper.like("teacherName",keyword)
                 .orderByAsc("createTime");
+
         return ResultUtil.success(teacherService.page(page,queryWrapper));
     }
 
