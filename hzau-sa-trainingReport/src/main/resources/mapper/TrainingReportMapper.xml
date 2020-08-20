@@ -17,4 +17,17 @@
             WHERE classId = #{classId}
         )
     </select>
+    <select id="queryCropNameById" resultType="java.lang.String">
+        SELECT cropName FROM crop
+        WHERE cropId = #{cropId}
+    </select>
+    <select id="queryClassNameById" resultType="java.lang.String">
+        SELECT className FROM class
+        WHERE classId = #{classId}
+    </select>
+    <select id="queryGradeNameByClassId" resultType="java.lang.String">
+        SELECT gradeName FROM class
+        LEFT JOIN grade ON grade.gradeId = class.gradeId
+        WHERE classId = #{classId}
+    </select>
 </mapper>
