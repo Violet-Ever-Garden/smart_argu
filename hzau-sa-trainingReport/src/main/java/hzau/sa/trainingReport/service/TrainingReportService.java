@@ -8,11 +8,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * trainingReport 服务实现类
- * @author wuyihu
+ * @author lvhao
  * @date 2020-08-19
  */
 public interface TrainingReportService {
 
+    /**
+     * 生成excel文件 返回excel文件所在的目录
+     * @param cropId
+     * @param classIds
+     * @param teacherId
+     * @return
+     */
     public String excelDir(String cropId, String[] classIds, String teacherId);
 
 }

@@ -2,6 +2,7 @@ package hzau.sa.msg.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import hzau.sa.msg.util.JwtUtils;
 import lombok.Data;
@@ -46,6 +47,7 @@ public class BaseVO implements Serializable {
 	 * 创建时间
 	 */
 	@TableField(fill = FieldFill.INSERT)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime createTime;
 	/**
 	 * 修改人
@@ -56,5 +58,6 @@ public class BaseVO implements Serializable {
 	 * 修改时间
 	 */
 	@TableField(fill = FieldFill.INSERT_UPDATE)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime lastModifiedTime;
 }

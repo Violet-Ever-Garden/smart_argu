@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * @author LvHao
- * @Description :
+ * @Description : LocalDateTime 配置easyexcel对LocalDateTime的识别
  * @date 2020-08-20 14:07
  */
 public class LocalDateTimeConverter implements Converter<LocalDateTime> {

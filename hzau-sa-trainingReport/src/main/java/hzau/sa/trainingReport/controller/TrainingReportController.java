@@ -20,7 +20,7 @@ import java.util.Date;
 
 /**
  * @author LvHao
- * @Description :
+ * @Description : 实训报告操作的控制器
  * @date 2020-08-20 15:32
  */
 @Slf4j
