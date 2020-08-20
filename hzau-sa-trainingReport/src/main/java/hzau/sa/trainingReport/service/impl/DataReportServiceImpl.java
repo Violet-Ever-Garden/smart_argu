@@ -1,5 +1,6 @@
 package hzau.sa.trainingReport.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import hzau.sa.msg.exception.DataBaseException;
@@ -46,7 +47,7 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
         return true;
     }
 
-    public List<DataReportModel> selectDataReportModelPage(Page<DataReportModel> page, int cropId, String studentId) {
+    public IPage<DataReportModel> selectDataReportModelPage(Page<DataReportModel> page, int cropId, String studentId) {
         return dataReportDao.selectDataReportModelPage(page,cropId,studentId);
     }
 
@@ -71,15 +72,46 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
         return true;
     }
 
-    public List<AnalysisModel> getStatisticalAnalysis(ArrayList<Integer> ids) {
-        List<CropIdName> cropIdNames = dataReportDao.selectCropIdNameList(ids);
+    /**
+     * 通过班级id和作物id
+     */
+    public IPage<StudentReportModel> selectStudentByClassAndCrop(Page<StudentReportModel> page, int classId,  int cropId, String studentName){
+        IPage<StudentReportModel> studentReportModels = dataReportDao.selectStudentByClassAndCrop(page,classId,cropId,"%"+studentName+"%");
+        return studentReportModels;
+    }
+
+
+    /**
+     *导出调查报告文件
+     */
+
+
+
+    public List<CropDataReport> getStatisticalAnalysis(ArrayList<Integer> ids) {
         List<DataReport> dataReports = dataReportRepository.findByCropIdIn(ids);
-        for(CropIdName crop: cropIdNames){
-            int cropId = crop.getCropId();
-            String cropName = crop.getCropName();
-            List<AnalysisModel> analysisModels = dataReportDao.selectAnalysisModel(cropId);
-            //for()
+        List<CropDataReport> cropDataReports = dataReportDao.selectCropDataReportList(ids);
+        //对作物进行遍历
+        for (CropDataReport cropDataReport : cropDataReports) {
+            int cropId = cropDataReport.getCropId();
+            //对年级进行遍历
+            for ( GradeDataReport gradeDataReport : cropDataReport.getGradeDataReports()){
+                //对班级进行遍历
+                for( ClassDataReport classDataReport : gradeDataReport.getClassDataReports()){
+                    //对学生进行遍历
+                    for( StudentDataReport studentDataReport : classDataReport.getStudentDataReports()){
+                        String studentId = studentDataReport.getStudentId();
+                        for(int i=0;i<dataReports.size();i++){
+                            DataReport dataReport = dataReports.get(i);
+                            if(dataReport.getStudentId().equals(studentId) && dataReport.getCropId()==cropId){
+                                studentDataReport.setCropDataList(dataReport.getCropDatas());
+                                dataReports.remove(i);
+                                i--;
+                            }
+                        }
+                    }
+                }
+            }
         }
-        return null;
+        return cropDataReports;
     }
 }

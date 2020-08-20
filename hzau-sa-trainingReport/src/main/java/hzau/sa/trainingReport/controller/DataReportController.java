@@ -1,19 +1,21 @@
 package hzau.sa.trainingReport.controller;
 
+import cn.hutool.core.convert.Convert;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.util.ResultUtil;
 import hzau.sa.trainingReport.dao.DataReportRepository;
-import hzau.sa.trainingReport.entity.AnalysisModel;
+import hzau.sa.trainingReport.entity.CropDataReport;
 import hzau.sa.trainingReport.entity.DataReport;
 import hzau.sa.trainingReport.entity.DataReportModel;
+import hzau.sa.trainingReport.entity.StudentReportModel;
 import hzau.sa.trainingReport.service.impl.DataReportServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.auth.In;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +49,7 @@ public class DataReportController extends BaseController {
     public Result page(int cropId , String studentId){
         Page<DataReportModel> page = getPage();
 
-        List<DataReportModel> dataReportModels = dataReportService.selectDataReportModelPage(page, cropId, studentId);
+        IPage<DataReportModel> dataReportModels = dataReportService.selectDataReportModelPage(page, cropId, studentId);
         return ResultUtil.success(dataReportModels);
     }
 
@@ -101,7 +103,24 @@ public class DataReportController extends BaseController {
     @ApiImplicitParam(name = "ids[]", value = "作物id数组", paramType = "query", allowMultiple = true, dataType = "String")
     @GetMapping("/statisticalAnalysis")
     public Result statisticalAnalysis(@RequestParam(value = "ids[]") ArrayList<Integer> ids){
-        List<AnalysisModel> analysisModels = dataReportService.getStatisticalAnalysis(ids);
-        return ResultUtil.success(analysisModels);
+        List<CropDataReport> statisticalAnalysis = dataReportService.getStatisticalAnalysis(ids);
+        return ResultUtil.success(statisticalAnalysis);
+    }
+
+
+    @ApiOperation(value = "按班级id与作物id搜索存在调查报告的同学模板", notes = "最新提交时间是调查数据的最新时间")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "cropId",value = "作物id",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "classId",value = "班级id",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "studentName",value = "学生名称",paramType = "query",dataType = "String")
+    })
+    @GetMapping("/getStudentByCropAndClass")
+    public Result getStudentByCropAndClass(int classId,int cropId,String studentName){
+        studentName = Convert.toStr(studentName,"");
+        Page<StudentReportModel> page= getPage();
+        IPage<StudentReportModel> studentReportModelIPage = dataReportService.selectStudentByClassAndCrop(page,classId,cropId,studentName);
+        return ResultUtil.success(studentReportModelIPage);
     }
 }

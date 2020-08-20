@@ -11,14 +11,16 @@
         order by dataReport.lastModifiedTime desc
     </select>
 
-    <select id="selectAnalysisModel" resultType="hzau.sa.trainingReport.entity.AnalysisModel">
-        select cropName,gradeName,className,studentName,dataReport.studentId
+    <select id="selectCropDataReportList" resultMap="cropDataReport">
+        select dataReport.cropId,cropName,gradeName,className,studentName,dataReport.studentId
         from dataReport left join student on dataReport.studentId = student.studentId
             left join class on class.classId = student.classId
             left join grade on grade.gradeId = student.gradeId
             left join crop on dataReport.cropId = crop.cropId
-        where cropId  =  #{cropId}
-
+        where dataReport.cropId  in
+        <foreach item="item" index="index" collection="list" open="("  close=")" separator=",">
+            #{item}
+        </foreach>
 
     </select>
 
@@ -31,31 +33,38 @@
         </foreach>
     </select>
 
-<!--    <resultMap id="studentDataReport" type="hzau.sa.trainingReport.entity.StudentDataReport">-->
-<!--        <result property="studentName" column="studentName"/>-->
-<!--    </resultMap>-->
+    <resultMap id="studentDataReport" type="hzau.sa.trainingReport.entity.StudentDataReport">
+        <id property="studentId" column="studentId"/>
+        <result property="studentName" column="studentName"/>
+    </resultMap>
 
-<!--    <resultMap id="classDataReport" type="hzau.sa.trainingReport.entity.ClassDataReport">-->
-<!--        <result property="className" column="className"/>-->
-<!--        <collection property="" resultMap="studentDataReport" select=""/>-->
-<!--    </resultMap>-->
+    <resultMap id="classDataReport" type="hzau.sa.trainingReport.entity.ClassDataReport">
+        <id property="className" column="className"/>
+        <collection property="studentDataReports" resultMap="studentDataReport"/>
+    </resultMap>
+
+    <resultMap id="gradeDataReport" type="hzau.sa.trainingReport.entity.GradeDataReport">
+        <id property="gradeName" column="gradeName"/>
+        <collection property="classDataReports" resultMap="classDataReport" />
+    </resultMap>
+
+    <resultMap id="cropDataReport" type="hzau.sa.trainingReport.entity.CropDataReport">
+        <id property="cropName" column="cropName"/>
+        <id property="cropId" column="cropId"/>
+        <collection property="gradeDataReports" resultMap="gradeDataReport"/>
+    </resultMap>
 
 
-<!--    <resultMap id="gradeDataReport" type="hzau.sa.trainingReport.entity.GradeDataReport">-->
-<!--        <result property="gradeName" column="gradeName"/>-->
-<!--        <collection property="" resultMap="classDataReport" select=""/>-->
-<!--    </resultMap>-->
 
-
-<!--    <resultMap id="cropDataReport" type="hzau.sa.trainingReport.entity.CropDataReport">-->
-<!--        <result property="cropName" column="cropName"/>-->
-<!--        <collection property="gradeDataReports"-->
-<!--                    javaType="ArrayList"-->
-
-<!--                    ofType="hzau.sa.trainingReport.entity.CropDataReport"-->
-<!--                    select="">-->
-
-<!--        </collection>-->
-<!--    </resultMap>-->
-
+    <select id="selectStudentByClassAndCrop" resultType="hzau.sa.trainingReport.entity.StudentReportModel">
+        select dataReport.studentId,studentName,className,gradeName,cropId,dataReport.lastModifiedTime
+        from (  select studentId,max(lastModifiedTime) lastModifiedTime,cropId
+                from dataReport
+                where dataReport.cropId = #{cropId}
+                group by studentId ) as dataReport
+        left join student on student.studentId = dataReport.studentId
+        left join class on class.classId = student.classId
+        left join grade on grade.gradeId = student.gradeId
+        where student.classId = #{classId} and studentName like #{studentName}
+    </select>
 </mapper>

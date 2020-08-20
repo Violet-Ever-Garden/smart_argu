@@ -13,5 +13,6 @@ import java.util.List;
 @ToString
 public class StudentDataReport {
     private String studentName;
+    private String studentId;
     private List<CropData> cropDataList;
 }
