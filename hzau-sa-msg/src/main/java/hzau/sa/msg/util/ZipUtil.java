@@ -21,8 +21,8 @@ public class ZipUtil {
 
     /**
      * 压缩文件下的所有文件
-     * @param fileDir
-     * @param outputStream
+     * @param fileDir 文件目录  压缩完成后把该文件夹下的所有文件删除 该文件夹也一并删除
+     * @param outputStream 返回给前端的流  压缩文件传完之后 关闭流
      * @return
      * @throws IOException
      */

@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @author LvHao
- * @Description :
+ * @Description : 生成excel文件的工具类
  * @date 2020-08-20 14:48
  */
 @Slf4j
@@ -34,6 +34,13 @@ public class MyExcelUtil {
         return cellStyle;
     }
 
+    /**
+     * 生成excel文件
+     * @param fileDir excel文件存放的目录
+     * @param fileName 文件的名字 去后缀
+     * @param dataClass 要生成excel文件的实体类
+     * @param data excel文件的数据
+     */
     public static void generateExcel(String fileDir, String fileName, Class dataClass, List data){
         try{
             String filePath = fileDir + File.separator + fileName + ".xls";
