@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.util.ResultUtil;
+import hzau.sa.msg.util.ZipUtil;
 import hzau.sa.trainingReport.dao.DataReportRepository;
 import hzau.sa.trainingReport.entity.CropDataReport;
 import hzau.sa.trainingReport.entity.DataReport;
@@ -20,7 +21,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -122,5 +127,31 @@ public class DataReportController extends BaseController {
         Page<StudentReportModel> page= getPage();
         IPage<StudentReportModel> studentReportModelIPage = dataReportService.selectStudentByClassAndCrop(page,classId,cropId,studentName);
         return ResultUtil.success(studentReportModelIPage);
+    }
+
+    @ApiOperation("导出调查数据")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "cropId",value = "作物Id",required = true,paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "classIds[]",value = "班级Id数组",required = true,paramType = "query",allowMultiple = true,dataType = "String"),
+            @ApiImplicitParam(name = "teacherId",value = "老师工号",required = true,paramType = "query",dataType = "String")
+    })
+    @GetMapping("/exportReport")
+    public void exportReport(HttpServletResponse httpServletResponse,
+                             String cropId, @RequestParam("classIds[]") String[] classIds, String teacherId){
+
+        String fileDir = null;
+        try{
+            //fileDir = trainingReportService.excelDir(cropId,classIds,teacherId);
+
+            if(new File(fileDir).exists()){
+
+                httpServletResponse.setContentType("application/octet-stream");
+                httpServletResponse.setHeader("Content-Disposition", "attachment; filename=" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + "_" + teacherId + "report" + ".zip");
+
+                ZipUtil.zipCompress(fileDir,httpServletResponse.getOutputStream());
+            }
+        }catch (Exception e){
+            log.error(e.toString());
+        }
     }
 }

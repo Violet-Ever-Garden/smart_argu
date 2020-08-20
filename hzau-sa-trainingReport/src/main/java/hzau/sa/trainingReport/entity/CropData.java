@@ -29,6 +29,6 @@ public class CropData {
 
     HashMap<String,String> extraParam;
     List<Double> data;
-
+    double average;
 
 }

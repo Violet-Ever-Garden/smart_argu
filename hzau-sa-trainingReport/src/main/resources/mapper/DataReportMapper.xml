@@ -67,4 +67,21 @@
         left join grade on grade.gradeId = student.gradeId
         where student.classId = #{classId} and studentName like #{studentName}
     </select>
+
+
+
+    <select id="selectStudentByClass" resultMap="classDataReport">
+        select className,studentName,dataReport.studentId
+        from dataReport left join student on dataReport.studentId = student.studentId
+        left join class on class.classId = student.classId
+        where dataReport.cropId = #{cropId} and class.classId  in
+        <foreach item="item" index="index" collection="list" open="("  close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="selectParametersByCropId" parameterType="int" resultType="String">
+        select parameterName from cropParameter where cropId = #{cropId}
+        and parameterName not in ("属性","检测时间","生育期","处理")
+    </select>
 </mapper>

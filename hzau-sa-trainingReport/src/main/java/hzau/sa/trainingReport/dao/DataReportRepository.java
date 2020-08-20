@@ -13,4 +13,5 @@ public interface DataReportRepository extends MongoRepository<DataReport,String>
     DataReport findByDataReportId(int dataReportId);
     DataReport deleteByDataReportId(int dataReportId);
     List<DataReport> findByCropIdIn(List<Integer> ids);
+    List<DataReport> findByCropId(int cropId);
 }
