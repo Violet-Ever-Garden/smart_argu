@@ -1,5 +1,6 @@
 package hzau.sa.trainingReport.controller;
 
+import hzau.sa.msg.util.ZipUtil;
 import hzau.sa.trainingReport.service.TrainingReportService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author LvHao
@@ -38,14 +42,21 @@ public class TrainingReportController {
     @GetMapping("/exportReport")
     public void exportReport(HttpServletResponse httpServletResponse,
                              String cropId, @RequestParam("classIds[]") String[] classIds, String teacherId){
-        log.info(cropId+ " " + teacherId);
-        for(String id : classIds){
-            log.info(id);
+
+        String fileDir = null;
+        try{
+            fileDir = trainingReportService.excelDir(cropId,classIds,teacherId);
+
+            if(new File(fileDir).exists()){
+
+                httpServletResponse.setContentType("application/octet-stream");
+                httpServletResponse.setHeader("Content-Disposition", "attachment; filename=" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + "_" + teacherId + "report" + ".zip");
+
+                ZipUtil.zipCompress(fileDir,httpServletResponse.getOutputStream());
+            }
+        }catch (Exception e){
+            log.error(e.toString());
         }
-
-        String fileDir = trainingReportService.excelDir(cropId,classIds,teacherId);
-
-        System.out.println(fileDir);
     }
 
 }

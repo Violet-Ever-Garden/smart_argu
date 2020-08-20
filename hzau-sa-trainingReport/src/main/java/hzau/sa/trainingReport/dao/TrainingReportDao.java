@@ -30,4 +30,25 @@ public interface TrainingReportDao extends BaseMapper<TrainingReportVO> {
                                                          @Param("classId") Integer classId,
                                                          @Param("teacherId") String teacherId);
 
+    /**
+     * 根据作物Id查询作物名
+     * @param cropId
+     * @return
+     */
+    public String queryCropNameById(Integer cropId);
+
+    /**
+     * 根据班级id查询班级名称
+     * @param classId
+     * @return
+     */
+    public String queryClassNameById(Integer classId);
+
+    /**
+     * 根据班级id 查询年级名称
+     * @param classId
+     * @return
+     */
+    public String queryGradeNameByClassId(Integer classId);
+
 }
