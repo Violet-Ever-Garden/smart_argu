@@ -43,11 +43,12 @@ mybatis-plus:
 
 file:
   map: "/file/**"
+  excel: "C:\\Users\\LvHao\\Desktop\\物联网项目\\excel"
   upload:
     #path: "/root/hzau/file"
     path: "D:\\file\\"
 server:
-  port: 8080
+  port: 8082
 #ip: sourceshare.kaistudy.top
 ip: localhost
 #ip: hzau.vipgz1.idcfengye.com

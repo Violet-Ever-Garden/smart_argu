@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  * @date 2020-08-14 16:56
  */
 @Configuration
-public class WebConfig extends WebMvcConfigurationSupport {
+public class TestWebConfig extends WebMvcConfigurationSupport {
 
     @Value("${file.map}")
     private String FILE_MAP;

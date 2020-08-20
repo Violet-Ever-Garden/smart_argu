@@ -2,4 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="hzau.sa.trainingReport.dao.TrainingReportDao">
 
+    <select id="queryExportReportByCropClassTeacherIds"
+            resultType="hzau.sa.trainingReport.entity.ExportReport">
+        SELECT DISTINCT trainingReportName,studentName,gradeName,className,score,batch,trainingReport.lastModifiedTime
+        FROM trainingReport
+        LEFT JOIN student ON student.studentId = trainingReport.studentId
+        LEFT JOIN grade ON grade.gradeId = student.gradeId
+        LEFT JOIN class ON class.classId = student.classId
+        WHERE trainingReport.cropId = #{cropId}
+        AND trainingReport.teacherId = #{teacherId}
+        AND trainingReport.reviewStatus = '已评阅'
+        AND trainingReport.studentId = ANY (
+            SELECT DISTINCT studentId FROM student
+            WHERE classId = #{classId}
+        )
+    </select>
 </mapper>

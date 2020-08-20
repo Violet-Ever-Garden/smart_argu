@@ -40,6 +40,7 @@
         <jedis.version>3.2.0</jedis.version>
         <shiro.version>1.4.1</shiro.version>
         <java-jwt.version>3.8.2</java-jwt.version>
+        <easyexcel.version>2.1.6</easyexcel.version>
     </properties>
 
     <!-- 子模块继承之后，提供作用：锁定子版本+子moudle不用写groupId和version -->
@@ -142,6 +143,11 @@
                 <groupId>com.auth0</groupId>
                 <artifactId>java-jwt</artifactId>
                 <version>${java-jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
