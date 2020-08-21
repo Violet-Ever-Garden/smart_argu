@@ -10,8 +10,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"hzau.sa.*"})
 @MapperScan(basePackages = {"hzau.sa.*.dao"})
-@SpringBootApplication
 @EnableSwagger2
+@SpringBootApplication
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class,args);

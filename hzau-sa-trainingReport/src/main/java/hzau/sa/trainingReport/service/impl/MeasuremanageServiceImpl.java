@@ -7,9 +7,9 @@ import hzau.sa.msg.dao.FileDao;
 import hzau.sa.msg.entity.FileVO;
 import hzau.sa.msg.enums.FileEnum;
 import hzau.sa.msg.util.FileUtil;
-import hzau.sa.trainingReport.dao.AsTeacherclassDao;
+import hzau.sa.trainingReport.dao.TrainingReportAsTeacherclassDao;
 import hzau.sa.trainingReport.dao.MeasuremanageDao;
-import hzau.sa.trainingReport.dao.StudentDao;
+import hzau.sa.trainingReport.dao.TrainingReportStudentDao;
 import hzau.sa.trainingReport.entity.*;
 import hzau.sa.trainingReport.service.MeasuremanageService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -38,10 +38,10 @@ public class MeasuremanageServiceImpl extends ServiceImpl<MeasuremanageDao, Meas
     private FileDao fileDao;
 
     @Resource
-    private AsTeacherclassDao asTeacherclassDao;
+    private TrainingReportAsTeacherclassDao trainingReportAsTeacherclassDao;
 
     @Resource
-    private StudentDao studentDao;
+    private TrainingReportStudentDao trainingReportStudentDao;
 
 
     @Override
@@ -187,7 +187,7 @@ public class MeasuremanageServiceImpl extends ServiceImpl<MeasuremanageDao, Meas
 
         Map resultMap = new HashMap<>();
 
-        IPage pageInfo = asTeacherclassDao.selectPage(page,queryWrapper);
+        IPage pageInfo = trainingReportAsTeacherclassDao.selectPage(page,queryWrapper);
 
         List<ClassOfTeacher> classOfTeacherList = new ArrayList<>();
 
@@ -213,7 +213,7 @@ public class MeasuremanageServiceImpl extends ServiceImpl<MeasuremanageDao, Meas
 
         Map resultMap = new HashMap();
 
-        IPage pageInfo = studentDao.selectPage(page,queryWrapper);
+        IPage pageInfo = trainingReportStudentDao.selectPage(page,queryWrapper);
 
         List<StudentVO> studentVOList = pageInfo.getRecords();
 
