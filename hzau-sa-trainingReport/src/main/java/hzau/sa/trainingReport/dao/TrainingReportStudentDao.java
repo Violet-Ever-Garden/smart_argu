@@ -1,15 +1,15 @@
 package hzau.sa.trainingReport.dao;
 
-import hzau.sa.trainingReport.entity.AsTeacherclassVO;
 import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import hzau.sa.trainingReport.entity.StudentVO;
 
 /**
- * AsTeacherclass Mapper 接口
+ * Student Mapper 接口
  * @author lvhao
  * @date 2020-08-19
  */
 @Mapper
-public interface AsTeacherclassDao extends BaseMapper<AsTeacherclassVO> {
+public interface TrainingReportStudentDao extends BaseMapper<StudentVO> {
 
 }
