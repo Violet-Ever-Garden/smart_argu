@@ -8,6 +8,7 @@ import hzau.sa.trainingReport.dao.DataReportDao;
 import hzau.sa.trainingReport.dao.DataReportRepository;
 import hzau.sa.trainingReport.entity.*;
 import hzau.sa.trainingReport.service.DataReportService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -16,6 +17,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,6 +35,7 @@ import java.util.List;
  * @author lvhao
  * @since 2020-08-14
  */
+@Slf4j
 @Service
 public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReportVO> implements DataReportService {
 
@@ -44,16 +47,20 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
     String path = "C:\\Users\\Hasee\\Desktop\\新建文件夹\\wlw\\";
     //String path = "/home/hk/";
 
+    @Transactional(rollbackFor = Exception.class)
     public boolean insert(DataReport dataReport) {
         DataReportVO dataReportVO = new DataReportVO();
         dataReportVO.setCropId(dataReport.getCropId());
         dataReportVO.setStudentId(dataReport.getStudentId());
-        int insert= dataReportDao.insert(dataReportVO);
+        int insert=
+                dataReportDao.insert(dataReportVO);
         if(0==insert){
             return false;
         }
         dataReport.setDataReportId(dataReportVO.getDataReportId());
-        DataReport save = dataReportRepository.save(dataReport);
+        log.info(dataReport.toString());
+        DataReport save =
+                dataReportRepository.save(dataReport);
         if(null == save){
             return false;
         }
@@ -64,6 +71,7 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
         return dataReportDao.selectDataReportModelPage(page,cropId,studentId);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public boolean updateDataReport(DataReport dataReport) {
         DataReport save = dataReportRepository.save(dataReport);
         if(save.getId()!=dataReport.getId()){
@@ -73,6 +81,7 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
         }
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public boolean deleteByDataReportId(int dataReportId) {
         int i = dataReportDao.deleteById(dataReportId);
         if(0==i){

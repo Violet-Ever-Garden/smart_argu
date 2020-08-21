@@ -2,6 +2,7 @@ package hzau.sa.trainingReport.dao;
 
 import hzau.sa.trainingReport.entity.DataReport;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

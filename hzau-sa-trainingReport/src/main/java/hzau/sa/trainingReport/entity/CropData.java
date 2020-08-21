@@ -25,7 +25,7 @@ public class CropData {
 
     String cropProperty;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss")
     LocalDateTime detectionTime;
     String growthPeriod;
     String process;
