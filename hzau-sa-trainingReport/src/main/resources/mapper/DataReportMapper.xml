@@ -74,7 +74,10 @@
         select className,studentName,dataReport.studentId
         from dataReport left join student on dataReport.studentId = student.studentId
         left join class on class.classId = student.classId
-        where dataReport.cropId = #{cropId} and class.classId  in
+        left join as_teacherclass on as_teacherclass.classId = class.classId
+        where dataReport.cropId = #{cropId}
+                and as_teacherclass.teacherId = #{teacherId}
+                and class.classId  in
         <foreach item="item" index="index" collection="list" open="("  close=")" separator=",">
             #{item}
         </foreach>

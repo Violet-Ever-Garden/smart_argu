@@ -2,6 +2,7 @@ package hzau.sa.trainingReport.entity;
 
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,8 @@ import java.util.List;
 public class CropData {
 
     String cropProperty;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     LocalDateTime detectionTime;
     String growthPeriod;
     String process;

@@ -13,9 +13,14 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +41,8 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
     @Autowired
     DataReportRepository dataReportRepository;
 
+    String path = "C:\\Users\\Hasee\\Desktop\\新建文件夹\\wlw\\";
+    //String path = "/home/hk/";
 
     public boolean insert(DataReport dataReport) {
         DataReportVO dataReportVO = new DataReportVO();
@@ -90,12 +97,11 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
     /**
      *导出调查报告文件
      */
-    public String excelDir(ArrayList<Integer> ids,int cropId){
+    public String excelDir(ArrayList<Integer> ids,int cropId,String teacherId) throws IOException {
+
         //获取作物的额外参数
         List<String> extraParameters = dataReportDao.selectParametersByCropId(cropId);
-
-
-        List<ClassDataReport> classDataReports = dataReportDao.selectStudentByClass(cropId, ids);
+        List<ClassDataReport> classDataReports = dataReportDao.selectStudentByClass(cropId, ids,teacherId);
         List<DataReport> dataReports = dataReportRepository.findByCropId(cropId);
         //将mongodb中的数据和mysql中数据联系起来
         for(ClassDataReport classDataReport : classDataReports){
@@ -105,15 +111,23 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
             String className = classDataReport.getClassName();
             for(StudentDataReport studentDataReport : classDataReport.getStudentDataReports()){
                 //创建工作簿
-                Workbook workbook = new HSSFWorkbook();
+                Workbook workbook = new XSSFWorkbook();
                 Sheet sheet = workbook.createSheet("调查报告");
                 //设置title
                 setFirstRow(sheet,extraParameters);
                 //填充后置数据
                 setFollowRow(sheet,extraParameters,studentDataReport.getCropDataList());
+                //写入地址
+                File file = new File(path);
+                if(file.exists()==false){
+                    file.mkdirs();
+                }
+                FileOutputStream fileOut = new FileOutputStream(new File(file,className+"_"+studentDataReport.getStudentName()+"_"+ System.currentTimeMillis() + ".xlsx"));
+                workbook.write(fileOut);
+                workbook.close();
             }
         }
-        return null;
+        return path;
     }
 
     public void setFirstRow(Sheet sheet,List<String> extraParameters){

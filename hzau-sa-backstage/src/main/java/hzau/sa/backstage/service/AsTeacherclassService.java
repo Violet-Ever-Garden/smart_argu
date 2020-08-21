@@ -1,5 +1,6 @@
 package hzau.sa.backstage.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.backstage.entity.ClassGradeModel;
 import hzau.sa.backstage.entity.TeacherClassModel;
@@ -24,15 +25,15 @@ public interface AsTeacherclassService  {
      * @param gradeName
      * @return
      */
-    public List<TeacherClassModel> listByTeacherId(Page<TeacherClassModel> page, String teacherId, String keyword, String gradeName);
+    public IPage<TeacherClassModel> listByTeacherId(Page<TeacherClassModel> page, String teacherId, String keyword, String gradeName);
 
     /**
-     * 分页查询无老师管理班级
+     * 分页查询非该老师管理班级
      * @param keyword
      * @param gradeName
      * @return
      */
-    public List<ClassGradeModel> listClassWithoutTeacher(String keyword, String gradeName);
+    public IPage<ClassGradeModel> listClassWithoutTeacher(Page<ClassGradeModel> page,String keyword, String gradeName,String teacherId);
 
     /**
      * 增加多个老师班级关系

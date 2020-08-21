@@ -1,5 +1,6 @@
 package hzau.sa.backstage.dao;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.backstage.entity.ClassGradeModel;
 import hzau.sa.backstage.entity.TeacherClassModel;
@@ -20,10 +21,10 @@ import java.util.List;
 @Mapper
 public interface AsTeacherclassDao extends BaseMapper<AsTeacherclassVO> {
 
-    List<TeacherClassModel> listByTeacherId(
+    IPage<TeacherClassModel> listByTeacherId(
             Page<TeacherClassModel> page, @Param("teacherId") String teacherId,
             @Param("keyword")String keyword,@Param("gradeName") String gradeName);
 
 
-    List<ClassGradeModel> listClassWithoutTeacher(@Param("keyword")String keyword,@Param("gradeName")String gradName);
+    IPage<ClassGradeModel> listClassWithoutTeacher(Page<ClassGradeModel> page,@Param("keyword")String keyword,@Param("gradeName")String gradName,@Param("teacherId")String teacherId);
 }

@@ -137,11 +137,11 @@ public class DataReportController extends BaseController {
     })
     @GetMapping("/exportReport")
     public void exportReport(HttpServletResponse httpServletResponse,
-                             String cropId, @RequestParam("classIds[]") String[] classIds, String teacherId){
+                             int cropId, @RequestParam("classIds[]") ArrayList<Integer> classIds, String teacherId){
 
         String fileDir = null;
         try{
-            //fileDir = trainingReportService.excelDir(cropId,classIds,teacherId);
+            fileDir = dataReportService.excelDir(classIds,cropId,teacherId);
 
             if(new File(fileDir).exists()){
 

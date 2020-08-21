@@ -45,7 +45,7 @@ import io.swagger.annotations.ApiImplicitParam;
  * @date 2020-08-13
  */
 @Slf4j
-//@RestController
+@RestController
 @RequestMapping("/asTeacherclass")
 @Api(value = "-API", tags = { "班级老师关系接口" })
 public class AsTeacherclassController extends BaseController {
@@ -107,24 +107,25 @@ public class AsTeacherclassController extends BaseController {
     public Result listByTeacherId(String teacherId,String keyword,String gradeName){
         keyword = Convert.toStr(keyword,"");
         Page<TeacherClassModel> page = getPage();
-        List<TeacherClassModel> list = asTeacherclassService.listByTeacherId(page,teacherId,keyword,gradeName);
+        IPage<TeacherClassModel> list = asTeacherclassService.listByTeacherId(page,teacherId,keyword,gradeName);
 
         return ResultUtil.success(list);
     }
 
 
-    @ApiOperation(value = "分页查询无老师班级", notes = "查询无老师班级")
+    @ApiOperation(value = "分页查询非该老师管理的班级班级", notes = "分页查询非该老师管理的班级班级")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "班级名称关键字", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "gradeName", value = "年级名称", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "teacherId",value = "老师id",paramType = "query",dataType = "String")
     })
     @GetMapping("/listClassWithoutTeacher")
-    public Result listClassWithoutTeacher(String keyword,String gradeName){
+    public Result listClassWithoutTeacher(String keyword,String gradeName,String teacherId){
         keyword = Convert.toStr(keyword,"");
         Page<ClassGradeModel> page = getPage();
-        List<ClassGradeModel> list = asTeacherclassService.listClassWithoutTeacher(keyword,gradeName);
+        IPage<ClassGradeModel> list = asTeacherclassService.listClassWithoutTeacher(page,keyword,gradeName,teacherId);
         return ResultUtil.success(list);
     }
 

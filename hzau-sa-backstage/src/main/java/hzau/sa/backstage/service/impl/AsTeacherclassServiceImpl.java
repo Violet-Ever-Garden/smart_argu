@@ -1,6 +1,7 @@
 package hzau.sa.backstage.service.impl;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.backstage.dao.AsTeacherclassDao;
 import hzau.sa.backstage.entity.AsTeacherclassVO;
@@ -28,13 +29,13 @@ public class AsTeacherclassServiceImpl extends ServiceImpl<AsTeacherclassDao, As
     AsTeacherclassDao asTeacherclassDao;
 
     @Override
-    public List<TeacherClassModel> listByTeacherId(Page<TeacherClassModel> page, String teacherId,String keyword,String gradeName) {
-        List<TeacherClassModel> list = asTeacherclassDao.listByTeacherId(page,teacherId,"%"+keyword+"%",gradeName);
+    public IPage<TeacherClassModel> listByTeacherId(Page<TeacherClassModel> page, String teacherId, String keyword, String gradeName) {
+        IPage<TeacherClassModel> list = asTeacherclassDao.listByTeacherId(page,teacherId,"%"+keyword+"%",gradeName);
         return list;
     }
     @Override
-    public List<ClassGradeModel> listClassWithoutTeacher(String keyword,String gradeName) {
-        List<ClassGradeModel> list = asTeacherclassDao.listClassWithoutTeacher("%"+keyword+"%",gradeName);
+    public IPage<ClassGradeModel> listClassWithoutTeacher(Page<ClassGradeModel> page,String keyword,String gradeName,String teacherId) {
+        IPage<ClassGradeModel> list = asTeacherclassDao.listClassWithoutTeacher(page,"%"+keyword+"%",gradeName,teacherId);
         return list;
     }
     @Override

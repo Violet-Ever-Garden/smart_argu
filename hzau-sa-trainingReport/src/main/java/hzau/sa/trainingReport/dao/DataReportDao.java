@@ -26,7 +26,7 @@ public interface DataReportDao extends BaseMapper<DataReportVO> {
 
     IPage<StudentReportModel> selectStudentByClassAndCrop(Page<StudentReportModel> page,@Param("classId") int classId, @Param("cropId") int cropId, @Param("studentName") String studentName);
 
-    List<ClassDataReport> selectStudentByClass(@Param("cropId") int cropId,ArrayList<Integer> ids);
+    List<ClassDataReport> selectStudentByClass(@Param("cropId") int cropId,@Param("list")ArrayList<Integer> list,@Param("teacherId") String teacherId);
 
     List<String> selectParametersByCropId(@Param("cropId")int cropId);
 
