@@ -20,9 +20,6 @@ public class DataReportTest {
 
     @Test
     void write() throws IOException {
-        ArrayList<Integer> objects = new ArrayList<>();
-        objects.add(2);
-        objects.add(3);
-        dataReportService.excelDir(objects,17,"1122334455");
+
     }
 }

@@ -83,6 +83,12 @@
         </foreach>
     </select>
 
+
+    <select id="selectStudentNameByStudentId" resultType="String">
+        select studentName from student where studentId = #{studentId}
+    </select>
+
+
     <select id="selectParametersByCropId" parameterType="int" resultType="String">
         select parameterName from cropParameter where cropId = #{cropId}
         and parameterName not in ("属性","检测时间","生育期","处理")
