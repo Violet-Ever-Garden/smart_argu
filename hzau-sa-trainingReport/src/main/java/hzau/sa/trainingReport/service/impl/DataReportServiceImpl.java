@@ -1,5 +1,6 @@
 package hzau.sa.trainingReport.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -8,15 +9,25 @@ import hzau.sa.trainingReport.dao.DataReportDao;
 import hzau.sa.trainingReport.dao.DataReportRepository;
 import hzau.sa.trainingReport.entity.*;
 import hzau.sa.trainingReport.service.DataReportService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,6 +39,7 @@ import java.util.List;
  * @author lvhao
  * @since 2020-08-14
  */
+@Slf4j
 @Service
 public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReportVO> implements DataReportService {
 
@@ -36,17 +48,23 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
     @Autowired
     DataReportRepository dataReportRepository;
 
+    String path = "C:\\Users\\Hasee\\Desktop\\新建文件夹\\wlw\\";
+    //String path = "/home/hk/";
 
+    @Transactional(rollbackFor = Exception.class)
     public boolean insert(DataReport dataReport) {
         DataReportVO dataReportVO = new DataReportVO();
         dataReportVO.setCropId(dataReport.getCropId());
         dataReportVO.setStudentId(dataReport.getStudentId());
-        int insert= dataReportDao.insert(dataReportVO);
+        int insert=
+                dataReportDao.insert(dataReportVO);
         if(0==insert){
             return false;
         }
         dataReport.setDataReportId(dataReportVO.getDataReportId());
-        DataReport save = dataReportRepository.save(dataReport);
+        log.info(dataReport.toString());
+        DataReport save =
+                dataReportRepository.save(dataReport);
         if(null == save){
             return false;
         }
@@ -57,6 +75,7 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
         return dataReportDao.selectDataReportModelPage(page,cropId,studentId);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public boolean updateDataReport(DataReport dataReport) {
         DataReport save = dataReportRepository.save(dataReport);
         if(save.getId()!=dataReport.getId()){
@@ -66,13 +85,14 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
         }
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public boolean deleteByDataReportId(int dataReportId) {
         int i = dataReportDao.deleteById(dataReportId);
         if(0==i){
             return false;
         }
-        DataReport dataReport = dataReportRepository.deleteByDataReportId(dataReportId);
-        if(null==dataReport){
+        long dataReport = dataReportRepository.deleteByDataReportId(dataReportId);
+        if(0==dataReport){
             return false;
         }
         return true;
@@ -90,12 +110,11 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
     /**
      *导出调查报告文件
      */
-    public String excelDir(ArrayList<Integer> ids,int cropId){
+    public String excelDirByTeacher(ArrayList<Integer> ids,int cropId,String teacherId)  throws IOException {
+
         //获取作物的额外参数
         List<String> extraParameters = dataReportDao.selectParametersByCropId(cropId);
-
-
-        List<ClassDataReport> classDataReports = dataReportDao.selectStudentByClass(cropId, ids);
+        List<ClassDataReport> classDataReports = dataReportDao.selectStudentByClass(cropId, ids,teacherId);
         List<DataReport> dataReports = dataReportRepository.findByCropId(cropId);
         //将mongodb中的数据和mysql中数据联系起来
         for(ClassDataReport classDataReport : classDataReports){
@@ -104,17 +123,64 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
         for (ClassDataReport classDataReport : classDataReports){
             String className = classDataReport.getClassName();
             for(StudentDataReport studentDataReport : classDataReport.getStudentDataReports()){
-                //创建工作簿
-                Workbook workbook = new HSSFWorkbook();
-                Sheet sheet = workbook.createSheet("调查报告");
-                //设置title
-                setFirstRow(sheet,extraParameters);
-                //填充后置数据
-                setFollowRow(sheet,extraParameters,studentDataReport.getCropDataList());
+                writeExcel(extraParameters,studentDataReport,className);
             }
         }
-        return null;
+        return path;
     }
+
+    /**
+     * 没有返回值，因为是单独的一个文件 不是压缩包，直接从流中写入
+     * @param studentId
+     * @param cropId
+     * @param httpServletResponse
+     * @return
+     * @throws IOException
+     */
+    public void  excelDirByStudent(String studentId, int cropId, HttpServletResponse httpServletResponse ) throws IOException {
+        //获取作物的额外参数
+        List<String> extraParameters = dataReportDao.selectParametersByCropId(cropId);
+        List<DataReport> dataReports = dataReportRepository.findByStudentIdAndCropId(studentId,cropId);
+        String studentName = dataReportDao.selectStudentNameByStudentId(studentId);
+        StudentDataReport studentDataReport = new StudentDataReport();
+        studentDataReport.setStudentId(studentId);
+        studentDataReport.setStudentName(studentName);
+        studentDataReport.setCropDataList(new ArrayList<CropData>());
+        for(DataReport dataReport: dataReports) {
+            studentDataReport.getCropDataList().addAll(dataReport.getCropDatas());
+        }
+        //创建工作簿
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("调查报告");
+        //设置title
+        setFirstRow(sheet,extraParameters);
+        //填充后置数据
+        setFollowRow(sheet,extraParameters,studentDataReport.getCropDataList());
+        //写入地址
+        httpServletResponse.setContentType("application/octet-stream");
+        httpServletResponse.setHeader("Content-Disposition", "attachment; filename=" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + "_" + studentName + "_report" + ".xls");
+        workbook.write(httpServletResponse.getOutputStream());
+        return;
+    }
+
+    public void writeExcel(List<String> extraParameters,StudentDataReport studentDataReport,String className) throws IOException {
+        //创建工作簿
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("调查报告");
+        //设置title
+        setFirstRow(sheet,extraParameters);
+        //填充后置数据
+        setFollowRow(sheet,extraParameters,studentDataReport.getCropDataList());
+        //写入地址
+        File file = new File(path);
+        if(file.exists()==false){
+            file.mkdirs();
+        }
+        FileOutputStream fileOut = new FileOutputStream(new File(file,className+"_"+studentDataReport.getStudentName()+"_"+ System.currentTimeMillis() + ".xlsx"));
+        workbook.write(fileOut);
+        workbook.close();
+    }
+
 
     public void setFirstRow(Sheet sheet,List<String> extraParameters){
         Row title = sheet.createRow(0);

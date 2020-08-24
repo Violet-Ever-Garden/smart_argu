@@ -18,7 +18,10 @@
     <select id="listClassWithoutTeacher" resultType="hzau.sa.backstage.entity.ClassGradeModel">
         select classId,className,class.gradeId,gradeName
             from class left join grade on class.gradeId = grade.gradeId
-            where classId not in (select classId from as_teacherclass)
+            where classId not in
+                (select classId
+                from as_teacherclass
+                where as_teacherclass.teacherId = #{teacherId})
             and className like #{keyword}
             <if test="gradeName!=null">
                 and gradeName = #{gradeName}

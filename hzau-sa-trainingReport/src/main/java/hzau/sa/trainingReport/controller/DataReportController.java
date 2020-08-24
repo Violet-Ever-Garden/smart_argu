@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -93,7 +94,7 @@ public class DataReportController extends BaseController {
     }
 
 
-    @ApiOperation(value = "更新数据表数据", notes = "更新数据表数据")
+    @ApiOperation(value = "删除数据表数据", notes = "删除数据表数据")
     @ApiImplicitParam(name = "dataReportId", value = "id", paramType = "path", dataType = "String")
     @PostMapping("/delete/{dataReportId}")
     public Result<Object> delete(@PathVariable  int dataReportId){
@@ -129,19 +130,19 @@ public class DataReportController extends BaseController {
         return ResultUtil.success(studentReportModelIPage);
     }
 
-    @ApiOperation("导出调查数据")
+    @ApiOperation("老师导出调查数据")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "cropId",value = "作物Id",required = true,paramType = "query",dataType = "String"),
             @ApiImplicitParam(name = "classIds[]",value = "班级Id数组",required = true,paramType = "query",allowMultiple = true,dataType = "String"),
             @ApiImplicitParam(name = "teacherId",value = "老师工号",required = true,paramType = "query",dataType = "String")
     })
-    @GetMapping("/exportReport")
-    public void exportReport(HttpServletResponse httpServletResponse,
-                             String cropId, @RequestParam("classIds[]") String[] classIds, String teacherId){
+    @GetMapping("/exportReportTeacher")
+    public void exportReportTeacher(HttpServletResponse httpServletResponse,
+                             int cropId, @RequestParam("classIds[]") ArrayList<Integer> classIds, String teacherId){
 
         String fileDir = null;
         try{
-            //fileDir = trainingReportService.excelDir(cropId,classIds,teacherId);
+            fileDir = dataReportService.excelDirByTeacher(classIds,cropId,teacherId);
 
             if(new File(fileDir).exists()){
 
@@ -153,5 +154,18 @@ public class DataReportController extends BaseController {
         }catch (Exception e){
             log.error(e.toString());
         }
+    }
+
+
+
+    @ApiOperation("学生导出调查数据")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "cropId",value = "作物Id",required = true,paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "studentId",value = "学生id",required = true,paramType = "query",dataType = "String")
+    })
+    @GetMapping("/exportReportStudent")
+    public void exportReportStudent(HttpServletResponse httpServletResponse,
+                                    int cropId, String studentId) throws IOException {
+        dataReportService.excelDirByStudent(studentId,cropId,httpServletResponse);
     }
 }
