@@ -75,17 +75,21 @@ public class FileUtil {
             fileUploadDIR.mkdirs();
         }
 
-        File file = null;
-        try{
-            file = new File(fileUploadPath + getNewFileName(multipartFile));
-            multipartFile.transferTo(file);
-        }catch (Exception e){
-            log.error(e.toString());
-            throw e;
-        }
+        if(multipartFile.getOriginalFilename() != null && !multipartFile.getOriginalFilename().equals("")){
+            File file = null;
+            try{
+                file = new File(fileUploadPath + getNewFileName(multipartFile));
+                multipartFile.transferTo(file);
+            }catch (Exception e){
+                log.error(e.toString());
+                throw e;
+            }
 
-        log.info(file.getAbsolutePath());
-        return file.getAbsolutePath();
+            log.info(file.getAbsolutePath());
+            return file.getAbsolutePath();
+        }else{
+            return null;
+        }
     }
 
     public static List<String> uploadFiles(FileEnum fileEnum, String fileMsg, MultipartFile[] multipartFiles) throws IOException {
@@ -99,10 +103,12 @@ public class FileUtil {
         List<String> filePaths = new ArrayList<>();
         try{
             for(MultipartFile multipartFile : multipartFiles){
-                File file = null;
-                file = new File(fileUploadPath + getNewFileName(multipartFile));
-                multipartFile.transferTo(file);
-                filePaths.add(file.getAbsolutePath());
+                if(multipartFile.getOriginalFilename() != null && !multipartFile.getOriginalFilename().equals("")){
+                    File file = null;
+                    file = new File(fileUploadPath + getNewFileName(multipartFile));
+                    multipartFile.transferTo(file);
+                    filePaths.add(file.getAbsolutePath());
+                }
             }
         }catch (Exception e){
             log.error(e.toString());
