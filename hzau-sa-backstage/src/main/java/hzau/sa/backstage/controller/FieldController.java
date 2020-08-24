@@ -1,11 +1,9 @@
 package hzau.sa.backstage.controller;
 
-import java.util.Arrays;
-import java.util.List;
-import javax.validation.Valid;
-
 import cn.hutool.core.convert.Convert;
-import hzau.sa.backstage.entity.CropVO;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hzau.sa.backstage.entity.FieldModel;
 import hzau.sa.backstage.entity.FieldWrapper;
 import hzau.sa.backstage.service.impl.FieldServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
@@ -13,29 +11,13 @@ import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.enums.LogType;
 import hzau.sa.msg.util.ResultUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hzau.sa.backstage.entity.FieldVO;
-import hzau.sa.backstage.service.FieldService;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiImplicitParam;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -87,26 +69,21 @@ public class FieldController extends BaseController {
 
 
     /**
-     * 这个地方需要修改一下返回的不能是regionId，但是返回的要按照具体的需求，这个还不是很明确
-     * @param keyword
+     * @param fieldName
      * @return
      */
     @ApiOperation(value = "按名字分页模糊查询", notes = "按名字分页模糊查询")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "fieldName", value = "关键字", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
             @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String"),
 
     })
     @GetMapping("/page")
-    public Result page(String keyword){
-        keyword = Convert.toStr(keyword,"");
-        Page<FieldVO> page = getPage();
-        log.info(keyword);
-        log.info(page.toString());
-        QueryWrapper<FieldVO> queryWrapper = new QueryWrapper<FieldVO>();
-        queryWrapper.like("fieldName",keyword)
-                .orderByAsc("createTime");
-        return ResultUtil.success(fieldService.page(page,queryWrapper));
+    public Result page(String fieldName){
+        fieldName=Convert.toStr(fieldName,"");
+        Page<FieldModel> page = getPage();
+        IPage<FieldModel> iPage = fieldService.page(page, fieldName);
+        return ResultUtil.success(iPage);
     }
 }

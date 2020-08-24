@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hzau.sa.backstage.dao.GradeDao">
+
+    <select id="selectGradeNameById" resultType="java.lang.String">
+        SELECT gradeName FROM grade
+        WHERE gradeId = #{id}
+    </select>
+    <select id="selectGradeIdByName" resultType="java.lang.Integer">
+        SELECT gradeId FROM grade
+        WHERE gradeName = #{gradeName}
+    </select>
+</mapper>

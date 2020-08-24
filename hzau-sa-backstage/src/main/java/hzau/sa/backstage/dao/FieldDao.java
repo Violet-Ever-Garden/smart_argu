@@ -1,8 +1,12 @@
 package hzau.sa.backstage.dao;
 
-import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hzau.sa.backstage.entity.FieldModel;
 import hzau.sa.backstage.entity.FieldVO;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -13,5 +17,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface FieldDao extends BaseMapper<FieldVO> {
-
+    IPage<FieldModel> page(Page<FieldModel> page, @Param("fieldName") String fieldName);
 }
