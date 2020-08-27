@@ -17,7 +17,7 @@ import java.util.List;
 @Mapper
 public interface DeviceTypeDao extends BaseMapper<DeviceTypeVO> {
 
-    List<DeviceTypeIdAndName> selectDeviceTypeModel();
+    List<DeviceTypeIdAndName> selectDeviceTypeModel(@Param("moduleType") String moduleType);
 
     List<EarlyWarningModel> selectEarlyWarningByDeviceTypeId(@Param(("deviceTypeId")) int deviceTypeId);
 }

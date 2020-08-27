@@ -37,7 +37,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/earlyWarning")
 @Api(value = "-API", tags = { "预警管理" })
-public class EarlyWarningController extends BaseController {
+public class  EarlyWarningController extends BaseController {
 
     @Autowired
     private EarlyWarningServiceImpl earlyWarningService;

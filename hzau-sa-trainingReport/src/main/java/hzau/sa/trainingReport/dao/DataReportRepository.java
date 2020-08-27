@@ -13,6 +13,7 @@ import java.util.List;
 public interface DataReportRepository extends MongoRepository<DataReport,String> {
     DataReport findByDataReportId(int dataReportId);
     long deleteByDataReportId(int dataReportId);
+    long deleteDataReportsByDataReportIdIn(List<Integer> ids);
     List<DataReport> findByCropIdIn(List<Integer> ids);
     List<DataReport> findByCropId(int cropId);
     List<DataReport> findByStudentIdAndCropId(String studentId,int cropId);

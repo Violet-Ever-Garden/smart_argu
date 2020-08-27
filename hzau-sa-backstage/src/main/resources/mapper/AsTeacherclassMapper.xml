@@ -10,7 +10,7 @@
             left join grade on class.gradeId = grade.gradeId
             where as_teacherclass.teacherId = #{teacherId}
             and className like #{keyword}
-            <if test="gradeName!=null">
+            <if test="gradeName!=null ">
                 and gradeName = #{gradeName}
             </if>
     </select>
@@ -27,4 +27,34 @@
                 and gradeName = #{gradeName}
             </if>
     </select>
+
+
+    <select id="selectClassManageByTeacherId" resultMap="classManage">
+        select as_teacherclass.classId,className,gradeName,fieldName,videoMonitorDeviceName
+        from as_teacherclass left join class on as_teacherclass.classId = class.classId
+                             left join grade on grade.gradeId = class.gradeId
+                             left join as_classfield on as_teacherclass.classId = as_classfield.classId
+                             left join field on as_classfield.fieldId = field.fieldId
+                             left join as_classvideomonitor on as_teacherclass.classId = as_classvideomonitor.classId
+                             left join videoMonitor on as_classvideomonitor.videoMonitorId = videoMonitor.videoMonitorId
+        where teacherId = #{teacherId}
+    </select>
+
+    <resultMap id="classManage" type="hzau.sa.backstage.entity.ClassManage">
+        <id property="classId" column="classId"/>
+        <result property="className" column="className"/>
+        <result property="classGrade" column="gradeName"/>
+
+        <collection property="classFields" ofType="string" javaType="list">
+            <result  column="fieldName"/>
+        </collection>
+
+        <collection property="classMonitor" ofType="string" javaType="list">
+            <result  column="videoMonitorDeviceName"/>
+        </collection>
+    </resultMap>
+
+
+
+
 </mapper>

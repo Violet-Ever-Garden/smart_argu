@@ -29,8 +29,8 @@ public class DeviceTypeServiceImpl extends ServiceImpl<DeviceTypeDao, DeviceType
     @Autowired
     AsDevicetypeearlywarningServiceImpl asDevicetypeearlywarningService;
 
-    public List<DeviceTypeIdAndName> selectDeviceTypeModel() {
-        return deviceTypeDao.selectDeviceTypeModel();
+    public List<DeviceTypeIdAndName> selectDeviceTypeModel(String moduleType) {
+        return deviceTypeDao.selectDeviceTypeModel(moduleType);
     }
 
     public boolean insertDeviceType(DeviceTypeModel deviceTypeModel) {
