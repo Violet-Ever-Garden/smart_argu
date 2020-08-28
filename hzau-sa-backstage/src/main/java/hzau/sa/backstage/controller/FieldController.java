@@ -72,6 +72,7 @@ public class FieldController extends BaseController {
      * @param fieldName
      * @return
      */
+    @SysLog(prefix = "按名字分页模糊查询")
     @ApiOperation(value = "按名字分页模糊查询", notes = "按名字分页模糊查询")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "fieldName", value = "关键字", paramType = "query", dataType = "String"),

@@ -2,7 +2,7 @@
 <configuration>
 
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
-    <property name="log.path" value="D://log" />
+    <property name="log.path" value="/root/hzau/log" />
 
     <!--输出到控制台 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">

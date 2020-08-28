@@ -58,7 +58,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     @Autowired
     private FileDao fileDao;
 
-    private static final String TEMPLATE_EXCEL_PATH="D:/root/hzau/file/excelTemplate/template.xlsx";
+    private static final String TEMPLATE_EXCEL_PATH="D:/root/hzau/file/excelTemplate/studentTemplate.xlsx";
     /**
      * 添加学生
      * 这里也需要修改，在file表里面增加一个默认图片的record
@@ -199,42 +199,40 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
 
         //头像更新
         if (file!=null){
+            String absolutePath=null;
             try {
                 //1.存储图片
-                String absolutePath= FileUtil.uploadFile(FileEnum.AVATAR,"student",file);
-                String url=FileUtil.getFileUrl(absolutePath);
-
-                //查看图片路径
-                QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
-                fileVOQueryWrapper.lambda().eq(FileVO::getFileType,FileEnum.AVATAR).eq(FileVO::getConnectId,studentId);
-                FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
-
-                if (fileVO!=null){
-                    //删除
-                    FileUtil.deleteFile(fileVO.getFileAbsolutePath());
-
-                    //更新属性
-                    fileVO.setFileAbsolutePath(absolutePath);
-                    fileVO.setUrl(url);
-
-                    //更新操作
-                    if (fileDao.updateById(fileVO)==0){
-                        return ResultUtil.error("图片更新失败");
-                    }
-                }else {
-                    FileVO fileVOInsert=new FileVO();
-                    fileVOInsert.setFileAbsolutePath(absolutePath);
-                    fileVOInsert.setUrl(url);
-                    fileVOInsert.setFileType(String.valueOf(FileEnum.AVATAR));
-                    fileVOInsert.setConnectId(studentId);
-
-                    if(fileDao.insert(fileVOInsert)==0){
-                        return ResultUtil.error("图片更新失败");
-                    }
-                }
+                absolutePath= FileUtil.uploadFile(FileEnum.AVATAR,"student",file);
             } catch (IOException e) {
                 e.printStackTrace();
                 return ResultUtil.error("头像存储失败");
+            }
+
+            String url=FileUtil.getFileUrl(absolutePath);
+            //查看图片路径
+            QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+            fileVOQueryWrapper.lambda().eq(FileVO::getFileType,FileEnum.AVATAR).eq(FileVO::getConnectId,studentId);
+            FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+
+            if (fileVO!=null){
+                //删除
+                FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+                //更新属性
+                fileVO.setFileAbsolutePath(absolutePath);
+                fileVO.setUrl(url);
+                //更新操作
+                if (fileDao.updateById(fileVO)==0){
+                    return ResultUtil.error("图片更新失败");
+                }
+            }else {
+                FileVO fileVOInsert=new FileVO();
+                fileVOInsert.setFileAbsolutePath(absolutePath);
+                fileVOInsert.setUrl(url);
+                fileVOInsert.setFileType(String.valueOf(FileEnum.AVATAR));
+                fileVOInsert.setConnectId(studentId);
+                if(fileDao.insert(fileVOInsert)==0){
+                    return ResultUtil.error("图片更新失败");
+                }
             }
         }
         return ResultUtil.success();

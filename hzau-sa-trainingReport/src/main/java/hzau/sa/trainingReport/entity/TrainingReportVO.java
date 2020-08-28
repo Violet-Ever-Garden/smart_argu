@@ -24,7 +24,7 @@ public class TrainingReportVO extends BaseVO{
 
 	private static final long serialVersionUID = 1L;
 
-	@TableId(type=IdType.UUID)
+	@TableId(type=IdType.AUTO)
 	private Integer trainingReportId;
 	private String studentId;
 	private Integer cropId;
@@ -35,4 +35,13 @@ public class TrainingReportVO extends BaseVO{
 	private Integer batch;
 	private String comments;
 
+	public TrainingReportVO(Integer cropId,String studentId,Integer batch,String trainingReportName,String teacherId){
+		this.cropId=cropId;
+		this.studentId=studentId;
+		this.batch=batch;
+		this.trainingReportName=trainingReportName;
+		this.teacherId=teacherId;
+		this.comments="";
+		this.reviewStatus="待评语";
+	}
 }

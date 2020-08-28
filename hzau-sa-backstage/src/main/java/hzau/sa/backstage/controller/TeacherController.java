@@ -34,7 +34,7 @@ public class TeacherController extends BaseController {
     @Autowired
     private TeacherServiceImpl teacherService;
 
-
+    @SysLog(prefix = "按名字分页模糊查询无图片")
     @ApiOperation(value = "按名字分页模糊查询无图片", notes = "按名字分页模糊查询无图片")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
@@ -49,8 +49,8 @@ public class TeacherController extends BaseController {
         log.info(keyword);
         log.info(page.toString());
         QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<TeacherVO>();
-        queryWrapper.like("teacherName",keyword)
-                .orderByAsc("createTime");
+        queryWrapper.lambda().like(TeacherVO::getTeacherName,keyword)
+                .orderByAsc(TeacherVO::getCreateTime);
 
         return ResultUtil.success(teacherService.page(page,queryWrapper));
     }

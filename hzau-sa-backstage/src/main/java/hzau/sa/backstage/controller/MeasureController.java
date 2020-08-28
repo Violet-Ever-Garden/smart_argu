@@ -68,6 +68,7 @@ public class MeasureController extends BaseController {
         return measureService.updateMesure(measure);
     }
 
+    @SysLog(prefix = "按名字分页模糊查询")
     @ApiOperation(value = "按名字分页模糊查询", notes = "按名字分页模糊查询")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
@@ -82,8 +83,8 @@ public class MeasureController extends BaseController {
         log.info(keyword);
         log.info(page.toString());
         QueryWrapper<MeasureVO> queryWrapper = new QueryWrapper<MeasureVO>();
-        queryWrapper.like("measureName",keyword)
-                .orderByAsc("createTime");
+        queryWrapper.lambda().like(MeasureVO::getMeasureName,keyword)
+                .orderByDesc(MeasureVO::getCreateTime);
         return ResultUtil.success(measureService.page(page,queryWrapper));
     }
 }

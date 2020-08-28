@@ -39,6 +39,15 @@ public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> imple
             return ResultUtil.paramError("措施名不能为空");
         }
 
+        //判断名字重复性
+        QueryWrapper<MeasureVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(MeasureVO::getMeasureName,measureVO.getMeasureName());
+        MeasureVO measureVOSelect = measureDao.selectOne(queryWrapper);
+        if (measureVOSelect!=null){
+            return ResultUtil.error("措施名字已存在");
+        }
+
+        //插入
         if (measureDao.insert(measureVO)==0){
             return ResultUtil.error("插入失败");
         }
@@ -92,6 +101,15 @@ public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> imple
             return ResultUtil.paramError("措施名不能为空");
         }
 
+        //判断名字重复性
+        QueryWrapper<MeasureVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(MeasureVO::getMeasureName,measureVO.getMeasureName());
+        MeasureVO measureVOSelect = measureDao.selectOne(queryWrapper);
+        if (measureVOSelect!=null){
+            return ResultUtil.error("措施名字已存在");
+        }
+
+        //更新
         if (measureDao.updateById(measureVO)==0){
             return ResultUtil.error("更新失败");
         }
