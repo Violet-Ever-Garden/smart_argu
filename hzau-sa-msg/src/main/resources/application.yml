@@ -27,6 +27,8 @@ spring:
       host: 101.200.215.126
       port: 27017
       database: hzau
+  profiles:
+    active: test
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
@@ -41,14 +43,3 @@ mybatis-plus:
     jdbc-type-for-null: 'null'
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-file:
-  map: "/file/**"
-  excel: "C:\\Users\\LvHao\\Desktop\\物联网项目\\excel"
-  upload:
-    #path: "/root/hzau/file"
-    path: "D:\\file\\"
-server:
-  port: 8082
-#ip: sourceshare.kaistudy.top
-ip: localhost
-#ip: hzau.vipgz1.idcfengye.com

@@ -183,8 +183,7 @@ public class FileUtil {
             //String address = getIpAddress().getHostAddress();
             String address = IP;
             if(null != address){
-                return "http://" + address + ":" + SERVER_PORT + FILE_MAP.replace("**","") + fileLocalPath;
-                //return "http://" + address + FILE_MAP.replace("**","") + fileLocalPath;
+                return address + FILE_MAP.replace("**","") + fileLocalPath;
             }else{
                 return null;
             }
