@@ -2,7 +2,6 @@ package hzau.sa.backstage.dao;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hzau.sa.backstage.entity.SenesorModel;
 import hzau.sa.backstage.entity.WeatherStationModel;
 import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

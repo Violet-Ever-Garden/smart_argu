@@ -90,5 +90,9 @@ public class WeatherStationVO extends BaseVO{
 	private Integer regionId;
 
 
-
+	public WeatherStationVO(SensorWrapper sensorWrapper){
+		this.sensorName = sensorWrapper.getSensorName();
+		this.setRemoteStatus("禁用");
+		this.setHomeShow("隐藏");
+	}
 }

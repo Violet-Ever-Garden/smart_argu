@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class SenesorModel {
+public class SensorModel {
     private Integer sensorId;
 
 

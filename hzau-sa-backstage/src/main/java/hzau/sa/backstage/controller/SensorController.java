@@ -1,28 +1,24 @@
 package hzau.sa.backstage.controller;
 
 
-import hzau.sa.backstage.entity.SenesorModel;
+import hzau.sa.backstage.entity.SensorModel;
 import hzau.sa.backstage.service.impl.SensorServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.enums.LogType;
 import hzau.sa.msg.util.ResultUtil;
-import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.backstage.entity.SensorVO;
-import hzau.sa.backstage.service.SensorService;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiImplicitParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 
@@ -104,7 +100,15 @@ public class SensorController extends BaseController {
     })
     @GetMapping("/page")
     public Result page(String sensorName,String baseName){
-        Page<SenesorModel> senesorModelPage = getPage();
+        Page<SensorModel> senesorModelPage = getPage();
         return ResultUtil.success(sensorService.selectSensorModel(senesorModelPage,baseName,sensorName));
+    }
+
+
+    @ApiOperation(value = "文件导入", notes = "文件导入")
+    @PostMapping("/uploadFile")
+    public Result uploadFile(@ApiParam MultipartFile file) throws IOException {
+        sensorService.insertByFile(file);
+        return ResultUtil.success();
     }
 }

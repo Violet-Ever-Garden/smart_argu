@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="hzau.sa.backstage.dao.SensorDao">
-    <select id="selectSensorModel" resultType="hzau.sa.backstage.entity.SenesorModel">
+    <select id="selectSensorModel" resultType="hzau.sa.backstage.entity.SensorModel">
         select sensorId,
             sensorName,
             sensorNumber,
@@ -28,5 +28,17 @@
             </if>
         </where>
         order by sensor.lastModifiedTime desc
+    </select>
+
+    <select id="getDeviceTypeIdByName" resultType="Integer" parameterType="String">
+        select deviceTypeId from deviceType where deviceTypeName = #{deviceTypeName}
+    </select>
+
+    <select id="getBaseIdByName" resultType="Integer" parameterType="String">
+        select baseId from base where baseName = #{baseName}
+    </select>
+
+    <select id="getRegionIdByName" resultType="Integer" parameterType="String">
+        select regionId from region where regionName = #{regionName}
     </select>
 </mapper>
