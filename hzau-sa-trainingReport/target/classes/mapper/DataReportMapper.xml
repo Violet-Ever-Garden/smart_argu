@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hzau.sa.trainingReport.dao.DataReportDao">
+    <select id="selectDataReportModelPage" resultType="hzau.sa.trainingReport.entity.DataReportModel">
+        select dataReportId,cropId,dataReport.studentId,studentName,className,gradeName,dataReport.lastModifiedTime
+        from dataReport left join student on dataReport.studentId = student.studentId
+            left join class on student.classId = class.classId
+            left join grade on student.gradeId = grade.gradeId
+        where dataReport.cropId = #{cropId}
+            and dataReport.studentId = #{studentId}
+        order by dataReport.lastModifiedTime desc
+    </select>
+
+    <select id="selectCropDataReportList" resultMap="cropDataReport">
+        select dataReport.cropId,cropName,gradeName,className,studentName,dataReport.studentId
+        from dataReport left join student on dataReport.studentId = student.studentId
+            left join class on class.classId = student.classId
+            left join grade on grade.gradeId = student.gradeId
+            left join crop on dataReport.cropId = crop.cropId
+        where dataReport.cropId  in
+        <foreach item="item" index="index" collection="list" open="("  close=")" separator=",">
+            #{item}
+        </foreach>
+
+    </select>
+
+    <select id="selectCropIdNameList" resultType="hzau.sa.trainingReport.entity.CropIdName">
+        select cropId,cropName
+        from crop
+        where cropId in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <resultMap id="studentDataReport" type="hzau.sa.trainingReport.entity.StudentDataReport">
+        <id property="studentId" column="studentId"/>
+        <result property="studentName" column="studentName"/>
+    </resultMap>
+
+    <resultMap id="classDataReport" type="hzau.sa.trainingReport.entity.ClassDataReport">
+        <id property="className" column="className"/>
+        <collection property="studentDataReports" resultMap="studentDataReport"/>
+    </resultMap>
+
+    <resultMap id="gradeDataReport" type="hzau.sa.trainingReport.entity.GradeDataReport">
+        <id property="gradeName" column="gradeName"/>
+        <collection property="classDataReports" resultMap="classDataReport" />
+    </resultMap>
+
+    <resultMap id="cropDataReport" type="hzau.sa.trainingReport.entity.CropDataReport">
+        <id property="cropName" column="cropName"/>
+        <id property="cropId" column="cropId"/>
+        <collection property="gradeDataReports" resultMap="gradeDataReport"/>
+    </resultMap>
+
+
+
+    <select id="selectStudentByClassAndCrop" resultType="hzau.sa.trainingReport.entity.StudentReportModel">
+        select dataReport.studentId,studentName,className,gradeName,cropId,dataReport.lastModifiedTime
+        from (  select studentId,max(lastModifiedTime) lastModifiedTime,cropId
+                from dataReport
+                where dataReport.cropId = #{cropId}
+                group by studentId ) as dataReport
+        left join student on student.studentId = dataReport.studentId
+        left join class on class.classId = student.classId
+        left join grade on grade.gradeId = student.gradeId
+        where student.classId = #{classId} and studentName like #{studentName}
+    </select>
+
+
+
+    <select id="selectStudentByClass" resultMap="classDataReport">
+        select className,studentName,dataReport.studentId
+        from dataReport left join student on dataReport.studentId = student.studentId
+        left join class on class.classId = student.classId
+        left join as_teacherclass on as_teacherclass.classId = class.classId
+        where dataReport.cropId = #{cropId}
+                and as_teacherclass.teacherId = #{teacherId}
+                and class.classId  in
+        <foreach item="item" index="index" collection="list" open="("  close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+
+    <select id="selectStudentNameByStudentId" resultType="String">
+        select studentName from student where studentId = #{studentId}
+    </select>
+
+
+    <select id="selectParametersByCropId" parameterType="int" resultType="String">
+        select parameterName from cropParameter where cropId = #{cropId}
+        and parameterName not in ("属性","检测时间","生育期","处理")
+    </select>
+</mapper>

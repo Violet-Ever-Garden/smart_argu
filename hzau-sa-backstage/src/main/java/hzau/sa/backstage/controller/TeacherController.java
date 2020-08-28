@@ -1,41 +1,22 @@
 package hzau.sa.backstage.controller;
 
-import java.util.Arrays;
-import java.util.List;
-import javax.validation.Valid;
-
 import cn.hutool.core.convert.Convert;
-import hzau.sa.backstage.entity.CropModel;
-import hzau.sa.backstage.entity.MeasureVO;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hzau.sa.backstage.entity.TeacherVO;
 import hzau.sa.backstage.entity.TeacherWrapper;
 import hzau.sa.backstage.service.impl.TeacherServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.util.ResultUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hzau.sa.backstage.entity.TeacherVO;
-import hzau.sa.backstage.service.TeacherService;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiImplicitParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -53,7 +34,7 @@ public class TeacherController extends BaseController {
     @Autowired
     private TeacherServiceImpl teacherService;
 
-
+    @SysLog(prefix = "按名字分页模糊查询无图片")
     @ApiOperation(value = "按名字分页模糊查询无图片", notes = "按名字分页模糊查询无图片")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "关键字", paramType = "query", dataType = "String"),
@@ -68,8 +49,8 @@ public class TeacherController extends BaseController {
         log.info(keyword);
         log.info(page.toString());
         QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<TeacherVO>();
-        queryWrapper.like("teacherName",keyword)
-                .orderByAsc("createTime");
+        queryWrapper.lambda().like(TeacherVO::getTeacherName,keyword)
+                .orderByAsc(TeacherVO::getCreateTime);
 
         return ResultUtil.success(teacherService.page(page,queryWrapper));
     }
@@ -111,13 +92,34 @@ public class TeacherController extends BaseController {
 
 
     /**
-     * 更新老师
+     * 后台系统更新老师
      */
-    @SysLog(prefix = "更新老师")
-    @ApiOperation("更新老师")
+    @SysLog(prefix = "后台系统更新老师")
+    @ApiOperation("后台系统更新老师")
     @ApiImplicitParam(name = "teacherWrapper",value = "更新的老师",paramType = "body",dataType = "TeacherWrapper")
-    @PostMapping("/updateTeacher")
-    public Result updateTeacher(@RequestBody TeacherWrapper teacherWrapper,@RequestParam(value = "file")MultipartFile file){
-        return teacherService.updateTeacher(teacherWrapper,file);
+    @PostMapping("/updateTeacherBackstage")
+    public Result updateTeacherBackstage(@RequestBody TeacherWrapper teacherWrapper){
+        return teacherService.updateTeacherBackstage(teacherWrapper);
+    }
+
+    /**
+     * 账号系统更新学生
+     */
+    @SysLog(prefix = "账号系统更新老师")
+    @ApiOperation("账号系统更新老师")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "teacherId",value = "要更新的老师",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "teacherName",value = "更新后老师的名字",paramType = "query",dataType ="String"),
+            @ApiImplicitParam(name = "oldPassword",value = "旧密码",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "newPassword",value = "新密码",paramType = "query",dataType = "String")
+    })
+
+    @PostMapping("/updateTeacherAccount")
+    public Result updateTeacherAccount(@RequestParam(value = "teacherId",required = true) String teacherId,
+                                       @RequestParam(value = "teacherName",required = true) String teacherName,
+                                       @RequestParam(value = "oldPassword") String oldPassword,
+                                       @RequestParam(value = "newPassword") String newPassword,
+                                       @RequestParam(value = "file") MultipartFile file){
+        return teacherService.updateTeacherAccount(teacherId,teacherName,oldPassword,newPassword,file);
     }
 }

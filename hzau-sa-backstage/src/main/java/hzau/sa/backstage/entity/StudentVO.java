@@ -1,9 +1,6 @@
 package hzau.sa.backstage.entity;
 
-import com.alibaba.excel.annotation.ExcelIgnore;
-import com.alibaba.excel.annotation.ExcelProperty;
-import com.baomidou.mybatisplus.annotation.*;
-
+import com.baomidou.mybatisplus.annotation.TableName;
 import hzau.sa.msg.entity.BaseVO;
 import hzau.sa.msg.util.ShiroKit;
 import lombok.Data;
@@ -21,34 +18,34 @@ import lombok.NoArgsConstructor;
 @TableName("student")
 public class StudentVO extends BaseVO {
 
-	@ExcelIgnore
+
 	private static final long serialVersionUID = 1L;
 
-	@ExcelIgnore
+
 	private static final String DEFAULT_PASSWORD="123456";
 
-	@ExcelProperty(value = "学号",index = 0)
+
 	private String studentId;
 
-	@ExcelIgnore
+
 	private String password;
 
-	@ExcelProperty(value = "手机号",index = 4)
+
 	private String phoneNumber;
 
-	@ExcelProperty(value = "姓名",index = 1)
+
 	private String studentName;
 
-	@ExcelProperty(value = "年级",index = 2)
+
 	private Integer gradeId;
 
-	@ExcelProperty(value = "班级",index = 3)
+
 	private Integer classId;
 
-	@ExcelProperty
+
 	private Integer isOperatemonitor;
 
-	@ExcelProperty
+
 	private Integer isOperatewfm;
 
 	public StudentVO(StudentWrapper studentWrapper){

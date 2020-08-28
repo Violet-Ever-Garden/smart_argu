@@ -1,13 +1,7 @@
 package hzau.sa.backstage.service;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import hzau.sa.backstage.entity.TeacherWrapper;
 import hzau.sa.msg.entity.Result;
-import org.apache.poi.ss.formula.functions.T;
-import org.springframework.stereotype.Service;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import hzau.sa.backstage.dao.TeacherDao;
-import hzau.sa.backstage.entity.TeacherVO;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -19,5 +13,6 @@ public interface TeacherService  {
     public Result addTeacher(TeacherWrapper teacherWrapper);
     public Result deleteTeacher(String teacherId);
     public Result deleteTeachers(String[] teacherIds);
-    public Result updateTeacher(TeacherWrapper teacherWrapper, MultipartFile file);
+    public Result updateTeacherBackstage(TeacherWrapper teacherWrapper);
+    public Result updateTeacherAccount(String teacherId,String teacherName,String oldPassword,String newPassword,MultipartFile file);
 }

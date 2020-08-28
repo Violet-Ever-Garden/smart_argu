@@ -1,15 +1,11 @@
 package hzau.sa.backstage.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
-
-import hzau.sa.msg.entity.BaseVO;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 /**
  *  措施实体类
