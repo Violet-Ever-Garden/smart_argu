@@ -28,4 +28,13 @@ public class SchoolVO extends BaseVO{
 	private String legalRepresentative;
 	private String contactPerson;
 	private String phoneNumber;
+
+	public SchoolVO(SchoolModel schoolModel){
+		this.schoolName=schoolModel.getSchoolName();
+		this.address=schoolModel.getAddress();
+		this.legalRepresentative=schoolModel.getLegalRepresentative();
+		this.contactPerson=schoolModel.getContactPerson();
+		this.phoneNumber=schoolModel.getPhoneNumber();
+		this.schoolId=schoolModel.getSchoolId();
+	}
 }

@@ -13,25 +13,25 @@ import lombok.NoArgsConstructor;
 
 /**
  *  VO
- * @author wuyihu
- * @date 2020-08-25
+ * @author wyh
+ * @date 2020-08-26
  */
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class SchoolModel{
+public class BaseModel{
 
     private static final long serialVersionUID = 1L;
     @ExcelIgnore
-    private Integer schoolId;
-    @ExcelProperty("学校名称")
-    private String schoolName;
-    @ExcelProperty("学校地址")
+    private Integer baseId;
+    @ExcelProperty("基地名称")
+    private String baseName;
+    @ExcelProperty("基地地址")
     private String address;
-    @ExcelProperty("法人代表")
-    private String legalRepresentative;
     @ExcelProperty("联系人")
     private String contactPerson;
     @ExcelProperty("联系电话")
     private String phoneNumber;
+    @ExcelProperty("所属学校")
+    private String schoolName;
 }

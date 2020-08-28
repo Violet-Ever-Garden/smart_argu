@@ -58,7 +58,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     @Autowired
     private FileDao fileDao;
 
-    private static final String TEMPLATE_EXCEL_PATH="D:/root/hzau/file/excelTemplate/studentTemplate.xlsx";
+    private static final String TEMPLATE_EXCEL_PATH="/root/hzau/file/excelTemplate/studentTemplate.xlsx";
     /**
      * 添加学生
      * 这里也需要修改，在file表里面增加一个默认图片的record
