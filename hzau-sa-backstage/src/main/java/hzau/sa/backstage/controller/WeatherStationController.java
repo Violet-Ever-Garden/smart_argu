@@ -18,6 +18,7 @@ import hzau.sa.backstage.entity.WeatherStationVO;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -79,8 +80,8 @@ public class WeatherStationController extends BaseController {
     @ApiImplicitParam(name = "ids[]", value = "气象站id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
-    public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
-        boolean b = weatherStationService.removeByIds(Arrays.asList(ids));
+    public Result deleteList(@RequestParam(value = "ids[]") ArrayList<Integer> ids){
+        boolean b = weatherStationService.removeByIds(ids);
         if(false==b){
             return ResultUtil.databaseError("删除失败");
         }else{

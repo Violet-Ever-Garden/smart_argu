@@ -19,6 +19,7 @@ import hzau.sa.backstage.entity.SensorVO;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -80,8 +81,8 @@ public class SensorController extends BaseController {
     @ApiImplicitParam(name = "ids[]", value = "传感器id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
-    public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
-        boolean b = sensorService.removeByIds(Arrays.asList(ids));
+    public Result deleteList(@RequestParam(value = "ids[]") ArrayList<Integer> ids){
+        boolean b = sensorService.removeByIds(ids);
         if(false==b){
             return ResultUtil.databaseError("删除失败");
         }else{

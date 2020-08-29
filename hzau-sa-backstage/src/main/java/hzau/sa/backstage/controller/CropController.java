@@ -84,9 +84,10 @@ public class CropController extends BaseController {
     }
 
     @ApiOperation(value = "有图片无分页查询", notes = "有图片无分页查询")
+    @ApiImplicitParam(name = "cropName", value = "作物名称关键字", paramType = "query" ,dataType = "String")
     @GetMapping("/listWithUrl")
-    public Result listWithUrl(){
-        List<CropModel> cropModels = cropService.listWithUrl();
+    public Result listWithUrl(String cropName){
+        List<CropModel> cropModels = cropService.listWithUrl(cropName);
         return ResultUtil.success(cropModels);
     }
 
