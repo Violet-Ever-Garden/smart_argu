@@ -21,14 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="add FileWebConfig">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/ExpertSystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/ExpertSystemApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/controller/KnowledgeCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/controller/KnowledgeCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-stater/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-stater/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/controller/TrainingReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/controller/TrainingReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/dao/TrainingReportDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/dao/TrainingReportDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/TrainingReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/TrainingReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/impl/TrainingReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/impl/TrainingReportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/resources/mapper/TrainingReportMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/resources/mapper/TrainingReportMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/service/impl/KnowledgeCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/service/impl/KnowledgeCategoryServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -344,7 +338,7 @@
       <workItem from="1598576973275" duration="26947000" />
       <workItem from="1598618701589" duration="3189000" />
       <workItem from="1598664086623" duration="9078000" />
-      <workItem from="1598684787542" duration="8717000" />
+      <workItem from="1598684787542" duration="9544000" />
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>

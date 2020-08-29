@@ -51,7 +51,9 @@ public class KnowledgeCategoryServiceImpl extends ServiceImpl<KnowledgeCategoryD
         if(categoryIds.length==0){
             return ResultUtil.error("至少选择一项");
         }
-        if (knowledgeCategoryDao.deleteBatchIds(Arrays.asList(categoryIds))==0){
+        QueryWrapper<KnowledgeCategoryVO> knowledgeCategoryVOQueryWrapper = new QueryWrapper<>();
+        knowledgeCategoryVOQueryWrapper.lambda().in(KnowledgeCategoryVO::getKnowledgeCategoryId,Arrays.asList(categoryIds));
+        if (knowledgeCategoryDao.delete(knowledgeCategoryVOQueryWrapper)==0){
             return ResultUtil.error();
         }
         return ResultUtil.success();

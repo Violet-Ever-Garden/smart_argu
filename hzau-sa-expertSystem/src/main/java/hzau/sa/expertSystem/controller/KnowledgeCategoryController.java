@@ -83,9 +83,9 @@ public class KnowledgeCategoryController extends BaseController {
      */
     @SysLog(prefix = "批量删除分类")
     @ApiOperation("批量删除分类")
-    @ApiImplicitParam(name = "categoryIds",value = "批量删除分类的id",paramType = "query",allowMultiple = true,dataType = "Integer")
+    @ApiImplicitParam(name = "categoryIds",value = "分类的id",paramType = "query",allowMultiple = true,dataType = "String")
     @PostMapping("/deleteCategories")
-    public Result deleteCategories(Integer[] categoryIds){
+    public Result deleteCategories(@RequestParam("categoryIds")Integer[] categoryIds){
         return knowledgeCategoryService.deleteCategories(categoryIds);
     }
 
