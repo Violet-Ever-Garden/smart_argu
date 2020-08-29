@@ -141,16 +141,8 @@ public class TrainingReportController extends BaseController {
     @GetMapping("/page")
     public Result page(String cropId,String studentId,String startTime,String endTime,String reviewStatus,String trainingReportName){
         trainingReportName=Convert.toStr(trainingReportName,"");
-        LocalDateTime parseStart=null;
-        LocalDateTime parseEnd=null;
-        if(startTime!=null){
-            parseStart = LocalDateTime.parse(startTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        }
-        if(endTime!=null){
-            parseEnd = LocalDateTime.parse(endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        }
         Page<TrainingReportPageWithoutFile> page = getPage();
-        IPage<TrainingReportPageWithoutFile> iPage = trainingReportService.page(page, Integer.valueOf(cropId), studentId, parseStart, parseEnd, reviewStatus, trainingReportName);
+        IPage<TrainingReportPageWithoutFile> iPage = trainingReportService.page(page, Integer.valueOf(cropId), studentId, startTime, endTime, reviewStatus, trainingReportName);
         return ResultUtil.success(iPage);
     }
 

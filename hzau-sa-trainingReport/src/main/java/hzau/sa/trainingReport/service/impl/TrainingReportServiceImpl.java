@@ -266,8 +266,8 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
     public IPage<TrainingReportPageWithoutFile> page(Page<TrainingReportPageWithoutFile> page,
                                                      Integer corpId,
                                                      String studentId,
-                                                     LocalDateTime startTime,
-                                                     LocalDateTime endTime,
+                                                     String startTime,
+                                                     String endTime,
                                                      String reviewStatus,
                                                      String trainingReportName){
         IPage<TrainingReportPageWithoutFile> iPage = trainingReportDao.page(page, corpId, studentId, startTime, endTime, reviewStatus,"%"+trainingReportName+"%");

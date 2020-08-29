@@ -66,10 +66,10 @@
             trainingReport.cropId = #{cropId}
             and trainingReport.studentId = #{studentId}
             <if test="startTime!=null">
-                <![CDATA[and DATE_FORMAT(trainingReport.createTime,'%Y-%m-%d %T')  >= DATE_FORMAT(#{startTime}, '%Y-%m-%d %T')]]>
+                and trainingReport.createTime <![CDATA[>=]]> #{startTime}
             </if>
             <if test="endTime!=null">
-                <![CDATA[and DATE_FORMAT(trainingReport.createTime,'%Y-%m-%d %T')  <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %T')]]>
+                and trainingReport.createTime <![CDATA[<=]]> #{endTime}
             </if>
             <if test="reviewStatus!=null">
                 and reviewStatus=#{reviewStatus}

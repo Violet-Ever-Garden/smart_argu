@@ -37,8 +37,8 @@ public interface TrainingReportService {
     public IPage<TrainingReportPageWithoutFile> page(Page<TrainingReportPageWithoutFile> page,
                                                      Integer corpId,
                                                      String studentId,
-                                                     LocalDateTime startTime,
-                                                     LocalDateTime endTime,
+                                                     String startTime,
+                                                     String endTime,
                                                      String reviewStatus,
                                                      String trainingReportName);
     public Result studentView(Integer trainingReportId,String fileType);

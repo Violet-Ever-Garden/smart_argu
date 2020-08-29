@@ -83,9 +83,9 @@ public class KnowledgeCategoryController extends BaseController {
      */
     @SysLog(prefix = "批量删除分类")
     @ApiOperation("批量删除分类")
-    @ApiImplicitParam(name = "categoryIds", value = "分类ids", paramType = "query",allowMultiple = true, dataType = "Integer")
-    @PostMapping("/deleteCatagories")
-    public Result deleteCatagories(Integer[] categoryIds){
+    @ApiImplicitParam(name = "categoryIds",value = "批量删除分类的id",paramType = "query",allowMultiple = true,dataType = "Integer")
+    @PostMapping("/deleteCategories")
+    public Result deleteCategories(Integer[] categoryIds){
         return knowledgeCategoryService.deleteCategories(categoryIds);
     }
 
@@ -93,7 +93,7 @@ public class KnowledgeCategoryController extends BaseController {
     @SysLog(prefix = "按名字分页")
     @ApiOperation("按名字分页")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "keyword", value = "关键字，默认为空时返回全部", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "name", value = "关键字，默认为空时返回全部", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
             @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String"),
     })
