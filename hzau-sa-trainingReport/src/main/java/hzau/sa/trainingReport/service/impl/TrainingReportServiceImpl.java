@@ -149,6 +149,7 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
             absolutePath = FileUtil.uploadFile(FileEnum.TRAININGREPORT, "trainingReport", file);
         } catch (IOException e) {
             e.printStackTrace();
+            log.warn("文件增加失败1");
             return ResultUtil.error("文件增加失败");
         }
         String fileUrl = FileUtil.getFileUrl(absolutePath);
@@ -159,6 +160,7 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
         fileVO.setFileType(String.valueOf(FileEnum.TRAININGREPORT));
 
         if (fileDao.insert(fileVO)==0){
+            log.warn("文件增加失败2");
             return ResultUtil.error("文件增加失败");
         }
         return ResultUtil.success();

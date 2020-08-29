@@ -18,6 +18,7 @@ public class TrainingReportTeacherView {
 
     private static final long serialVersionUID = 1L;
     private String StudentName;
+    private String teacherName;
     private String className;
     private String gradeName;
     private String trainingReportName;

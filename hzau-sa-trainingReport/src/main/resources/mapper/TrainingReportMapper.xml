@@ -65,13 +65,13 @@
         <where>
             trainingReport.cropId = #{cropId}
             and trainingReport.studentId = #{studentId}
-            <if test="startTime!=null">
+            <if test="startTime!=null and startTime!='' ">
                 and trainingReport.createTime <![CDATA[>=]]> #{startTime}
             </if>
-            <if test="endTime!=null">
+            <if test="endTime!=null and endTime!='' ">
                 and trainingReport.createTime <![CDATA[<=]]> #{endTime}
             </if>
-            <if test="reviewStatus!=null">
+            <if test="reviewStatus!=null and reviewStatus!='' ">
                 and reviewStatus=#{reviewStatus}
             </if>
             <if test="trainingReportName!=null">
@@ -90,11 +90,13 @@
     </select>
 
     <select id="teacherView" resultType="hzau.sa.trainingReport.entity.TrainingReportTeacherView">
-        select studentName,className,gradeName,trainingReportName,batch,url,comments,score,cropName
+        select studentName,teacherName,className,gradeName,trainingReportName,batch,url,comments,score,cropName
         from trainingReport
         left join student on student.studentId=trainingReport.studentId
         left join class on class.classId=student.classId
         left join grade on grade.gradeId=student.gradeId
+        left join as_teacherclass on as_teacherclass.classId=student.classId
+        left join teacher on teacher.teacherId=as_teacherclass.teacherId
         left join file on file.connectId=trainingReportId
         left join crop on crop.cropId=trainingReport.cropId
         where trainingReportId=#{trainingReportId} and fileType=#{fileType}
