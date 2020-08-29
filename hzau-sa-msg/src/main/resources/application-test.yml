@@ -4,6 +4,6 @@ file:
   upload:
     path: "C:\\Users\\LvHao\\Desktop\\物联网项目\\file\\"
 server:
-  port: 8080
-ip: http://localhost:8080
+  port: 8085
+ip: http://localhost:8085
 #ip: http://hzau.vipgz1.idcfengye.com

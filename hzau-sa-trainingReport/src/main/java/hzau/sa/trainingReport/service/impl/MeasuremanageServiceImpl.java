@@ -89,7 +89,7 @@ public class MeasuremanageServiceImpl extends ServiceImpl<MeasuremanageDao, Meas
                 measureManageResponse.setMeasureManageId(measuremanageVO.getMeasuremanageId());
                 measureManageResponse.setMeasureContent(measuremanageVO.getMeasureContent());
                 measureManageResponse.setMeasureName(measuremanageDao.queryMeasureNameById(measuremanageVO.getMeasureId()));
-                measureManageResponse.setMeasureTime(String.valueOf(measuremanageVO.getCreateTime()));
+                measureManageResponse.setMeasureTime(measuremanageVO.getCreateTime());
                 List<Map> pictureUrls = new ArrayList<>();
                 for(FileVO fileVO : fileDao.selectList(new QueryWrapper<FileVO>()
                         .lambda()
