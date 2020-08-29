@@ -46,7 +46,17 @@
         where cropId=#{cropId} and studentId=#{studentId} and batch=#{batch}
     </select>
     <select id="page" resultType="hzau.sa.trainingReport.entity.TrainingReportPageWithoutFile">
-        select cropName,trainingReport.cropId,trainingReportId,trainingReportName,trainingReport.studentId,studentName,className,gradeName,score,reviewStatus,batch,trainingReport.createTime
+        select crop.cropName,
+        trainingReport.cropId,
+        trainingReportId,trainingReportName,
+        trainingReport.studentId,
+        studentName,
+        className,
+        gradeName,
+        score,
+        reviewStatus,
+        batch,
+        trainingReport.createTime
         from trainingReport
         left join crop on crop.cropId=trainingReport.cropId
         left join student on student.studentId=trainingReport.studentId

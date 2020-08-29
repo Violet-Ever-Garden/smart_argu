@@ -1,6 +1,9 @@
 package hzau.sa.trainingReport.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -9,6 +12,9 @@ import java.time.LocalDateTime;
  * @version 1.0
  * @date 2020/8/21 13:53
  */
+@Data
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class TrainingReportPageWithoutFile {
     private String cropName;
     private String cropId;
