@@ -21,5 +21,7 @@ public enum FileEnum {
 
     MEASURE,
 
-    TRAININGREPORT;
+    TRAININGREPORT,
+
+    KNOWLEDGE;
 }

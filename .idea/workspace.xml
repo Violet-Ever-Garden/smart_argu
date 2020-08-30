@@ -20,10 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="add FileWebConfig">
+      <change afterPath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/controller/KnowledgeManagementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/dao/KnowledgeManagementDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/entity/KnowledgeManagementModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/entity/KnowledgeManagementVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/entity/KnowledgeManagementView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/service/KnowledgeManagementService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/java/hzau/sa/expertSystem/service/impl/KnowledgeManagementServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hzau-sa-expertSystem/src/main/resources/mapper/KnowledgeManagementMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/StudentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/TeacherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/TeacherServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/impl/TrainingReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-trainingReport/src/main/java/hzau/sa/trainingReport/service/impl/TrainingReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/BaseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/FieldServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/FieldServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/MeasureServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/MeasureServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/RegionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/RegionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/entity/BaseVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/entity/BaseVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/enums/FileEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-msg/src/main/java/hzau/sa/msg/enums/FileEnum.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,16 +120,6 @@
       <recent name="hzau.sa.msg.util" />
       <recent name="hzau.sa.backstage.service" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-msg\src\main\resources" />
-      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\test2\src\main\resources" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="hzau.sa.trainingReport.entity" />
-      <recent name="hzau.sa.backstage.dao" />
-      <recent name="hzau.sa.backstage.entity" />
-      <recent name="hzau.sa.backstage.listener" />
-    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -128,6 +129,16 @@
       <recent name="F:\hzau\hzau_smart\hzau-sa-backstage\src\main\java\hzau\sa\backstage\service\impl" />
       <recent name="F:\hzau\hzau_smart\hzau-sa-backstage\src\main\java\hzau\sa\backstage\service" />
       <recent name="F:\hzau\hzau_smart\hzau-sa-backstage\src\main\java\hzau\sa\backstage\controller" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="hzau.sa.trainingReport.entity" />
+      <recent name="hzau.sa.backstage.dao" />
+      <recent name="hzau.sa.backstage.entity" />
+      <recent name="hzau.sa.backstage.listener" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-msg\src\main\resources" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\test2\src\main\resources" />
     </key>
   </component>
   <component name="RestServicesNavigator">
@@ -341,7 +352,7 @@
       <workItem from="1598664086623" duration="9078000" />
       <workItem from="1598684787542" duration="16730000" />
       <workItem from="1598704600944" duration="111000" />
-      <workItem from="1598752477352" duration="5784000" />
+      <workItem from="1598752477352" duration="20481000" />
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>
@@ -620,11 +631,12 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="277" y="0" width="741" height="720" key="#Main/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597233941341" />
-    <state x="121" y="0" key="#Project_Structure" timestamp="1597748907292">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state x="145" y="0" key="#Project_Structure" timestamp="1598776031406">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="121" y="0" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597748907292" />
     <state x="291" y="-900" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@140.-900.1600.900" timestamp="1597204832322" />
+    <state x="145" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1598776031406" />
     <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597204832322" />
     <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597204832322" />
     <state x="535" y="71" key="#com.intellij.ide.util.MemberChooser" timestamp="1598601456075">
@@ -636,10 +648,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="120" y="284" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597680838950" />
-    <state x="513" y="279" width="509" height="313" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1598599073729">
+    <state x="513" y="279" width="509" height="313" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1598776487380">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="513" y="279" width="509" height="313" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1598599073729" />
+    <state x="513" y="279" width="509" height="313" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1598776487380" />
     <state x="230" y="11" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597687071338">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -656,46 +668,46 @@
     </state>
     <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597770279274" />
     <state x="505" y="132" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1598690168438" />
-    <state width="1445" height="173" key="GridCell.Tab.0.bottom" timestamp="1598762330377">
+    <state width="1445" height="89" key="GridCell.Tab.0.bottom" timestamp="1598786298413">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1176" height="512" key="GridCell.Tab.0.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597844190372" />
-    <state width="1445" height="173" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598762330377" />
-    <state width="1445" height="173" key="GridCell.Tab.0.center" timestamp="1598762330377">
+    <state width="1445" height="89" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598786298413" />
+    <state width="1445" height="89" key="GridCell.Tab.0.center" timestamp="1598786298413">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1176" height="512" key="GridCell.Tab.0.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597844190372" />
-    <state width="1445" height="173" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598762330377" />
-    <state width="1445" height="173" key="GridCell.Tab.0.left" timestamp="1598762330376">
+    <state width="1445" height="89" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598786298413" />
+    <state width="1445" height="89" key="GridCell.Tab.0.left" timestamp="1598786298413">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1176" height="512" key="GridCell.Tab.0.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597844190372" />
-    <state width="1445" height="173" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598762330376" />
-    <state width="1445" height="173" key="GridCell.Tab.0.right" timestamp="1598762330377">
+    <state width="1445" height="89" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598786298413" />
+    <state width="1445" height="89" key="GridCell.Tab.0.right" timestamp="1598786298413">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1176" height="512" key="GridCell.Tab.0.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597844190372" />
-    <state width="1445" height="173" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598762330377" />
-    <state width="1445" height="173" key="GridCell.Tab.1.bottom" timestamp="1598762330377">
+    <state width="1445" height="89" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598786298413" />
+    <state width="1445" height="89" key="GridCell.Tab.1.bottom" timestamp="1598786298414">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1176" height="512" key="GridCell.Tab.1.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597844190372" />
-    <state width="1445" height="173" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598762330377" />
-    <state width="1445" height="173" key="GridCell.Tab.1.center" timestamp="1598762330377">
+    <state width="1445" height="89" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598786298414" />
+    <state width="1445" height="89" key="GridCell.Tab.1.center" timestamp="1598786298414">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1176" height="512" key="GridCell.Tab.1.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597844190372" />
-    <state width="1445" height="173" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1598762330377" />
-    <state width="1445" height="173" key="GridCell.Tab.1.left" timestamp="1598762330377">
+    <state width="1445" height="89" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1598786298414" />
+    <state width="1445" height="89" key="GridCell.Tab.1.left" timestamp="1598786298414">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1176" height="512" key="GridCell.Tab.1.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597844190372" />
-    <state width="1445" height="173" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1598762330377" />
-    <state width="1445" height="173" key="GridCell.Tab.1.right" timestamp="1598762330377">
+    <state width="1445" height="89" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1598786298414" />
+    <state width="1445" height="89" key="GridCell.Tab.1.right" timestamp="1598786298414">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1176" height="512" key="GridCell.Tab.1.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597844190372" />
-    <state width="1445" height="173" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1598762330377" />
+    <state width="1445" height="89" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1598786298414" />
     <state width="1188" height="512" key="GridCell.Tab.2.bottom" timestamp="1597753288877">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

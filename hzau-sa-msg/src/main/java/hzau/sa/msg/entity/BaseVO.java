@@ -22,7 +22,8 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class BaseVO implements Serializable {
+public class
+BaseVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@JsonIgnore

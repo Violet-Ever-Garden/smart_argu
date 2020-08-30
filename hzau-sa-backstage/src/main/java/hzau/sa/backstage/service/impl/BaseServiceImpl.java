@@ -102,8 +102,13 @@ public class BaseServiceImpl extends ServiceImpl<BaseDao, Base> implements BaseS
      */
     @Override
     public Result updateBase(BaseModel baseModel){
+        //判断与之前的重复性
+        QueryWrapper<Base> baseQueryWrapper = new QueryWrapper<>();
+        baseQueryWrapper.lambda().eq(Base::getBaseId,baseModel.getBaseId());
+        Base baseSelect = baseDao.selectOne(baseQueryWrapper);
+
         //判断重复性
-        if(isBaseExist(baseModel.getBaseName())){
+        if(isBaseExist(baseModel.getBaseName()) && (!baseModel.getBaseName().equals(baseSelect.getBaseName()))){
             return ResultUtil.error("基地名已存在");
         }
         Base base = new Base(baseModel);
@@ -119,7 +124,7 @@ public class BaseServiceImpl extends ServiceImpl<BaseDao, Base> implements BaseS
 
         //添加基地
         if(baseDao.updateById(base)==0){
-            return ResultUtil.error("更新基地失败");
+            return ResultUtil.error("更新失败");
         }
 
         return ResultUtil.success();

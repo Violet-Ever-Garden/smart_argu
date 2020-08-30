@@ -103,9 +103,9 @@ public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> imple
 
         //判断名字重复性
         QueryWrapper<MeasureVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(MeasureVO::getMeasureName,measureVO.getMeasureName());
+        queryWrapper.lambda().eq(MeasureVO::getMeasureId,measureVO.getMeasureId());
         MeasureVO measureVOSelect = measureDao.selectOne(queryWrapper);
-        if (measureVOSelect!=null){
+        if (isMeasureExist(measureVO.getMeasureName()) && (!measureVO.getMeasureName().equals(measureVOSelect.getMeasureName()))){
             return ResultUtil.error("措施名字已存在");
         }
 
@@ -116,4 +116,15 @@ public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> imple
         return ResultUtil.success();
 
     }
+
+    public boolean isMeasureExist(String measureName){
+        QueryWrapper<MeasureVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(MeasureVO::getMeasureName,measureName);
+        MeasureVO measureVO = measureDao.selectOne(queryWrapper);
+        if (measureVO==null){
+            return false;
+        }
+        return true;
+    }
+
 }

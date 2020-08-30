@@ -88,8 +88,12 @@ public class RegionServiceImpl extends ServiceImpl<RegionDao, RegionVO> implemen
      */
     @Override
     public Result updateRegion(RegionModel regionModel){
+        QueryWrapper<RegionVO> regionVOQueryWrapper = new QueryWrapper<>();
+        regionVOQueryWrapper.lambda().eq(RegionVO::getRegionId,regionModel.getRegionId());
+        RegionVO regionVOSelect = regionDao.selectOne(regionVOQueryWrapper);
+
         //判断区域名是否存在
-        if (isRegionExist(regionModel.getRegionName())){
+        if (isRegionExist(regionModel.getRegionName()) && (!regionModel.getRegionName().equals(regionVOSelect.getRegionName()))){
             return ResultUtil.error("区域名已存在");
         }
 

@@ -144,10 +144,10 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
 
         //判断地块姓名重复性
         QueryWrapper<FieldVO> queryWrapper=new QueryWrapper<>();
-        queryWrapper.lambda().eq(FieldVO::getFieldName,fieldWrapper.getFieldName());
+        queryWrapper.lambda().eq(FieldVO::getFieldId,fieldVO.getFieldId());
+        FieldVO fieldSelect = fieldDao.selectOne(queryWrapper);
 
-        FieldVO field = fieldDao.selectOne(queryWrapper);
-        if (field!=null){
+        if (isFieldExist(fieldVO.getFieldName()) && (!fieldVO.getFieldName().equals(fieldSelect.getFieldName()))){
             return ResultUtil.error("地块名已存在，请重新输入");
         }
 
@@ -162,5 +162,16 @@ public class FieldServiceImpl extends ServiceImpl<FieldDao, FieldVO> implements 
     public IPage<FieldModel> page(Page<FieldModel> page, String fieldName){
         IPage<FieldModel> iPage =fieldDao.page(page,"%"+fieldName+"%");
         return iPage;
+    }
+
+    public boolean isFieldExist(String fieldName){
+        QueryWrapper<FieldVO> queryWrapper=new QueryWrapper<>();
+        queryWrapper.lambda().eq(FieldVO::getFieldId,fieldName);
+        FieldVO fieldVOSelect = fieldDao.selectOne(queryWrapper);
+
+        if (fieldVOSelect==null){
+            return false;
+        }
+        return true;
     }
 }
