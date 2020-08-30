@@ -1,9 +1,0 @@
-file:
-  map: "/file/**"
-  excel: "C:\\Users\\LvHao\\Desktop\\物联网项目\\excel"
-  upload:
-    path: "D:\\file\\"
-server:
-  port: 8085
-ip: http://localhost:8085
-#ip: http://hzau.vipgz1.idcfengye.com
