@@ -25,4 +25,5 @@ public interface SensorDao extends BaseMapper<SensorVO> {
 
     Integer getRegionIdByName(@Param("regionName")String  regionName);
 
+    List<String> selectSensorByBase(@Param("baseName") String baseName);
 }

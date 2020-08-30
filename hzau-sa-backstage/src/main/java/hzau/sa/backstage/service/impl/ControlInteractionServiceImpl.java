@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * <p>
@@ -42,5 +43,9 @@ public class ControlInteractionServiceImpl extends ServiceImpl<ControlInteractio
         ControlInteractionListener controlInteractionListener = new ControlInteractionListener(this,sensorDao);
         EasyExcel.read(file.getInputStream(), ControlInteractionWrapper.class,controlInteractionListener).sheet().doRead();
 
+    }
+
+    public List<String> selectWaterFertilizerMachineByBase(String baseName) {
+        return controlInteractionDao.selectWaterFertilizerMachineByBase(baseName);
     }
 }

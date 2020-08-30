@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import hzau.sa.backstage.entity.ControlInteractionVO;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * (修改为自己的说明) Mapper 接口
  * @author haokai
@@ -17,4 +19,6 @@ import org.apache.ibatis.annotations.Param;
 public interface ControlInteractionDao extends BaseMapper<ControlInteractionVO> {
 
     IPage<ControlInteractionModel> selectControlInteractionModel(Page<ControlInteractionModel> page, @Param("baseName") String baseName,@Param("remoteControlDeviceName") String remoteControlDeviceName);
+
+    List<String> selectWaterFertilizerMachineByBase(@Param("baseName") String baseName);
 }

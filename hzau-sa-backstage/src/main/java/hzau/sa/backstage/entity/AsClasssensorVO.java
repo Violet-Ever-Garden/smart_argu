@@ -11,14 +11,14 @@ import lombok.NoArgsConstructor;
 
 /**
  *  VO
- * @author haokai
+ * @author lvhao
  * @date 2020-08-29
  */
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@TableName("as_classfield")
-public class AsClassfieldVO extends BaseVO{
+@TableName("as_classsensor")
+public class AsClasssensorVO extends BaseVO{
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +27,7 @@ public class AsClassfieldVO extends BaseVO{
 	 * 
 	 */
 	@TableId(type=IdType.AUTO)
-	private Integer asClassfieldId;
+	private Integer asClasssensorId;
 
 
 	/**
@@ -39,6 +39,8 @@ public class AsClassfieldVO extends BaseVO{
 	/**
 	 * 
 	 */
-	private Integer fieldId;
+	private Integer sensorId;
+
+
 
 }

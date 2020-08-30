@@ -41,4 +41,10 @@
     <select id="getRegionIdByName" resultType="Integer" parameterType="String">
         select regionId from region where regionName = #{regionName}
     </select>
+
+
+    <select id="selectSensorByBase" parameterType="String" resultType="String">
+         select sensorName from sensor left join base on base.baseId = sensor.baseId
+         where baseName = #{baseName}
+    </select>
 </mapper>

@@ -10,8 +10,5 @@
             WHERE classId = #{classId}
         )
     </select>
-    <select id="queryMonitorIdByName" resultType="java.lang.Integer">
-        SELECT monitorId FROM monitor
-        WHERE monitorName = #{monitorName}
-    </select>
+
 </mapper>

@@ -88,37 +88,37 @@ public class ClassManageController extends BaseController {
         return ResultUtil.success(classService.queryAllClass());
     }
 
-    /**
-     * 班级所属地块查询
-     * @param classId
-     * @return
-     */
-    @ApiOperation("班级所属地块查询")
-    @ApiImplicitParam(name = "classId",value = "班级ID",required = true,paramType = "query",dataType = "String")
-    @GetMapping("/fields")
-    public Result<Object> queryClassFields(Integer classId){
-        if(null != classId){
-            return ResultUtil.success(classService.classFields(classId));
-        }else{
-            return ResultUtil.paramError();
-        }
-    }
-
-    /**
-     * 班级所属视频监控查询
-     * @param classId
-     * @return
-     */
-    @ApiOperation("班级所属视频监控查询")
-    @ApiImplicitParam(name = "classId",value = "班级ID",required = true,paramType = "query",dataType = "String")
-    @GetMapping("/monitors")
-    public Result<Object> queryClassMonitors(Integer classId){
-        if(null != classId){
-            return ResultUtil.success(classService.classMonitors(classId));
-        }else{
-            return ResultUtil.paramError();
-        }
-    }
+    ///**
+    // * 班级所属地块查询
+    // * @param classId
+    // * @return
+    // */
+    //@ApiOperation("班级所属地块查询")
+    //@ApiImplicitParam(name = "classId",value = "班级ID",required = true,paramType = "query",dataType = "String")
+    //@GetMapping("/fields")
+    //public Result<Object> queryClassFields(Integer classId){
+    //    if(null != classId){
+    //        return ResultUtil.success(classService.classFields(classId));
+    //    }else{
+    //        return ResultUtil.paramError();
+    //    }
+    //}
+//
+    ///**
+    // * 班级所属视频监控查询
+    // * @param classId
+    // * @return
+    // */
+    //@ApiOperation("班级所属视频监控查询")
+    //@ApiImplicitParam(name = "classId",value = "班级ID",required = true,paramType = "query",dataType = "String")
+    //@GetMapping("/monitors")
+    //public Result<Object> queryClassMonitors(Integer classId){
+    //    if(null != classId){
+    //        return ResultUtil.success(classService.classMonitors(classId));
+    //    }else{
+    //        return ResultUtil.paramError();
+    //    }
+    //}
 
     /**
      * 修改班级信息
@@ -139,12 +139,13 @@ public class ClassManageController extends BaseController {
             ClassManage classManageResult = null;
             try{
                 savePoint = TransactionAspectSupport.currentTransactionStatus().createSavepoint();
-                classManageResult = classService.updateClassMessage(classManage);
+                classService.updateClassMessage(classManage);
             }catch (Exception e){
+                e.printStackTrace();
                 TransactionAspectSupport.currentTransactionStatus().rollbackToSavepoint(savePoint);
                 return ResultUtil.databaseError("修改失败");
             }
-            return ResultUtil.success(classManageResult);
+            return ResultUtil.success();
         }
     }
 
@@ -169,6 +170,7 @@ public class ClassManageController extends BaseController {
                 savePoint = TransactionAspectSupport.currentTransactionStatus().createSavepoint();
                 classManageResult = classService.insertClassMessage(classManage);
             }catch (Exception e){
+                e.printStackTrace();
                 TransactionAspectSupport.currentTransactionStatus().rollbackToSavepoint(savePoint);
                 return ResultUtil.databaseError("插入失败");
             }

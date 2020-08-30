@@ -29,4 +29,12 @@
         </where>
         order by controlInteraction.lastModifiedTime desc
     </select>
+
+
+    <select id="selectWaterFertilizerMachineByBase" resultType="String" parameterType="String">
+        select remoteControlDeviceName from controlInteraction
+        left join base on base.baseId = controlInteraction.baseId
+        left join deviceType on deviceType.deviceTypeId = controlInteraction.deviceTypeId
+        where baseName = #{baseName} and deviceTypeName = '水肥机'
+    </select>
 </mapper>

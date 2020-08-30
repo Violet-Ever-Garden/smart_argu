@@ -17,8 +17,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@TableName("as_classfield")
-public class AsClassfieldVO extends BaseVO{
+@TableName("as_classcrop")
+public class AsClasscropVO extends BaseVO{
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +27,7 @@ public class AsClassfieldVO extends BaseVO{
 	 * 
 	 */
 	@TableId(type=IdType.AUTO)
-	private Integer asClassfieldId;
+	private Integer asClasscropId;
 
 
 	/**
@@ -39,6 +39,9 @@ public class AsClassfieldVO extends BaseVO{
 	/**
 	 * 
 	 */
-	private Integer fieldId;
+	private Integer cropId;
+
+
+
 
 }

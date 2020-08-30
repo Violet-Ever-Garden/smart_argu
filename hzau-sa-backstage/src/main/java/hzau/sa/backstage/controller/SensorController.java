@@ -105,6 +105,12 @@ public class SensorController extends BaseController {
         return ResultUtil.success(sensorService.selectSensorModel(senesorModelPage,baseName,sensorName));
     }
 
+    @ApiOperation(value = "查询该基地下的传感器名称", notes = "查询该基地下的传感器名称")
+    @ApiImplicitParam(name = "baseName" , value = "基地名称" , paramType = "path" , dataType = "String")
+    @GetMapping("/selectSensorByBase/{baseName}")
+    public Result selectSensorByBase(@PathVariable("baseName")String baseName){
+        return ResultUtil.success(sensorService.selectSensorByBase(baseName));
+    }
 
     @ApiOperation(value = "文件导入", notes = "文件导入")
     @PostMapping("/uploadFile")

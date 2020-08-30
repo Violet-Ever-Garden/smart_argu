@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * <p>
@@ -36,5 +37,9 @@ public class SensorServiceImpl extends ServiceImpl<SensorDao, SensorVO> implemen
     public void insertByFile(MultipartFile file) throws IOException {
         SensorListener sensorListener = new SensorListener(sensorDao,this);
         EasyExcel.read(file.getInputStream(),SensorWrapper.class,sensorListener).sheet().doRead();
+    }
+
+    public List<String> selectSensorByBase(String baseName) {
+        return sensorDao.selectSensorByBase(baseName);
     }
 }

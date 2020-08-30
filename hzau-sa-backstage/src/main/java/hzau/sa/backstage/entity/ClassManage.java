@@ -31,6 +31,7 @@ public class ClassManage {
      */
     private String classGrade;
 
+
     /**
      * 班级地块
      */
@@ -40,4 +41,19 @@ public class ClassManage {
      * 班级监视器
      */
     private List<String> classMonitor;
+
+    /**
+     * 班级水肥机
+     */
+    private List<String> classWaterFertilizerMachine;
+
+    /**
+     * 班级作作物
+     */
+    private List<String> classCrop;
+
+    /**
+     * 班级传感器
+     */
+    private List<String> classSensor;
 }

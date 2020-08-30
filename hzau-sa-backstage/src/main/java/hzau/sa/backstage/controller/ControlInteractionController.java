@@ -115,4 +115,14 @@ public class ControlInteractionController extends BaseController {
         controlInteractionService.insertByFile(file);
         return ResultUtil.success();
     }
+
+
+
+    @ApiOperation(value = "查询该基地下类型为水肥机的远程控制设备名称", notes = "查询该基地下类型为水肥机的远程控制设备名称")
+    @ApiImplicitParam(name = "baseName" , value = "基地名称" , paramType = "path" , dataType = "String")
+    @GetMapping("/selectWaterFertilizerMachineByBase/{baseName}")
+    public Result selectWaterFertilizerMachineByBase(@PathVariable("baseName") String baseName){
+        return ResultUtil.success(controlInteractionService.selectWaterFertilizerMachineByBase(baseName));
+    }
+
 }

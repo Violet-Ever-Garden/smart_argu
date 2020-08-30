@@ -29,7 +29,7 @@ public class AsDevicetypeearlywarningVO extends BaseVO{
 	 * 
 	 */
 	@TableId(type=IdType.AUTO)
-	private Integer asDevicetypeearlywarningid;
+	private Integer asDevicetypeearlywarningId;
 
 
 	/**
