@@ -243,17 +243,23 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
     @Override
     public Result deleteStudent(String studentId){
-        QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(StudentVO::getStudentId,studentId);
+        //删除学生
+        QueryWrapper<StudentVO> studentVOQueryWrapper = new QueryWrapper<>();
+        studentVOQueryWrapper.lambda().eq(StudentVO::getStudentId,studentId);
 
-        StudentVO studentVO = studentDao.selectOne(queryWrapper);
-        if (studentVO==null){
-            return ResultUtil.paramError("不存在该学生id");
+        if (studentDao.delete(studentVOQueryWrapper)==0){
+            return ResultUtil.error("学生删除失败");
         }
 
-        if (studentDao.delete(queryWrapper)==0){
-            return ResultUtil.databaseError();
+        //删除文件
+        QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+        fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.AVATAR))
+                .eq(FileVO::getConnectId,studentId);
+        if (fileDao.delete(fileVOQueryWrapper)==0){
+            return ResultUtil.error("头像删除失败");
         }
+
+
         return ResultUtil.success();
     }
 
@@ -263,12 +269,24 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
     @Override
     public Result deleteStudents(String[] studentIds){
+
+        //删除学生
         QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().in(StudentVO::getStudentId,Arrays.asList(studentIds));
 
         if (studentDao.delete(queryWrapper)==0){
             return ResultUtil.error("批量删除失败");
         }
+
+        //删除文件
+        QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+        fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.AVATAR))
+                .in(FileVO::getConnectId,studentIds);
+
+        if (fileDao.delete(fileVOQueryWrapper)==0){
+            return ResultUtil.error("文件删除失败");
+        }
+
         return ResultUtil.success();
     }
 

@@ -91,17 +91,20 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
      */
     @Override
     public Result deleteTeacher(String teacherId) {
-        QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(TeacherVO::getTeacherId,teacherId);
-
-        TeacherVO teacher = teacherDao.selectOne(queryWrapper);
-
-        if (teacher==null){
-            return ResultUtil.paramError("想要删除的老师的id不存在");
+        //删除老师
+        QueryWrapper<TeacherVO> teacherVOQueryWrapper = new QueryWrapper<>();
+        teacherVOQueryWrapper.lambda().eq(TeacherVO::getTeacherId,teacherId);
+        if (teacherDao.delete(teacherVOQueryWrapper)==0){
+            return ResultUtil.error("老师删除失败");
         }
 
-        if (teacherDao.delete(queryWrapper)==0){
-            return ResultUtil.databaseError();
+        //删除头像
+        QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+        fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.AVATAR))
+                .eq(FileVO::getConnectId,teacherId);
+
+        if (fileDao.delete(fileVOQueryWrapper)==0){
+            return ResultUtil.error("文件删除失败");
         }
         return ResultUtil.success();
     }
@@ -111,13 +114,22 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
      */
     @Override
     public Result deleteTeachers(String[] teacherIds) {
+        //删除老师
         QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().in(TeacherVO::getTeacherId,Arrays.asList(teacherIds));
 
-        if (teacherDao.delete(queryWrapper)!=0){
-            return ResultUtil.success();
+        if (teacherDao.delete(queryWrapper)==0){
+            return ResultUtil.error("老师删除失败");
         }
-        return ResultUtil.error("批量删除失败");
+
+        //删除文件
+        QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+        fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.AVATAR))
+                .in(FileVO::getConnectId,teacherIds);
+        if (fileDao.delete(fileVOQueryWrapper)==0){
+            return ResultUtil.error("头像删除失败");
+        }
+        return ResultUtil.success();
     }
 
     /**

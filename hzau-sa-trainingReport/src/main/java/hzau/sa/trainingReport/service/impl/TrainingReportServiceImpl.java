@@ -79,8 +79,18 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
      */
     @Override
     public Result deleteTrainingReport(Integer trainingReportId){
+        //删除实训报告记录
         if (trainingReportDao.deleteById(trainingReportId)==0){
-            return ResultUtil.databaseError("删除失败");
+            return ResultUtil.databaseError("实训删除失败");
+        }
+
+
+        //删除文件记录
+        QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+        fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.TRAININGREPORT))
+                .eq(FileVO::getConnectId,trainingReportId);
+        if (fileDao.delete(fileVOQueryWrapper)==0){
+            return ResultUtil.error("文件删除失败");
         }
         return ResultUtil.success();
     }
@@ -92,11 +102,22 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
      */
     @Override
     public Result deleteTrainingReports(Integer[] trainingReportIds){
+        //删除实训报告
         QueryWrapper<TrainingReportVO> trainingReportVOQueryWrapper = new QueryWrapper<>();
         trainingReportVOQueryWrapper.lambda().in(TrainingReportVO::getTrainingReportId, Arrays.asList(trainingReportIds));
 
         if (trainingReportDao.delete(trainingReportVOQueryWrapper)==0){
             return ResultUtil.error("批量删除失败");
+        }
+
+        //删除文件记录
+        QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+        fileVOQueryWrapper.lambda()
+                .eq(FileVO::getFileType,String.valueOf(FileEnum.TRAININGREPORT))
+                .in(FileVO::getConnectId,trainingReportIds);
+
+        if (fileDao.delete(fileVOQueryWrapper)==0){
+            return ResultUtil.error("批量删除文件失败");
         }
         return ResultUtil.success();
     }
