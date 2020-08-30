@@ -227,4 +227,17 @@ public class ClassManageController extends BaseController {
             return ResultUtil.error("班级不存在");
         }
     }
+
+    @ApiOperation("班级管理查询(纯SQL)")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "grade",value = "年级",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "name",value = "名称",paramType = "query",dataType = "String")
+    })
+    @GetMapping("/selectClassManage")
+    public Result selectClassManage(String grade,String name){
+        Page<ClassManage> page = getPage();
+        return ResultUtil.success(classService.selectClassManage(page,name,grade));
+    }
 }

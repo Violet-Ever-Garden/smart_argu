@@ -314,4 +314,10 @@ public class ClassServiceImpl extends ServiceImpl<ClassDao, ClassVO> implements 
 
         return allClass;
     }
+
+
+    public IPage<ClassManage> selectClassManage(Page<ClassManage> page,String className,String gradeName){
+        IPage<ClassManage> classManageIPage = classDao.selectClassManage(page, className, gradeName);
+        return classManageIPage;
+    }
 }
