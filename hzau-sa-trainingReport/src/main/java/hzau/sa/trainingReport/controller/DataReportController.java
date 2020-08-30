@@ -95,7 +95,7 @@ public class DataReportController extends BaseController {
 
 
     @ApiOperation(value = "删除数据表数据", notes = "删除数据表数据")
-    @ApiImplicitParam(name = "dataReportId", value = "id", paramType = "path", dataType = "String")
+    @ApiImplicitParam(name = "dataReportId", value = "调查数据id", paramType = "path", dataType = "String")
     @PostMapping("/delete/{dataReportId}")
     public Result<Object> delete(@PathVariable  int dataReportId){
         dataReportService.deleteByDataReportId(dataReportId);
@@ -104,11 +104,20 @@ public class DataReportController extends BaseController {
 
 
 
+    @ApiOperation(value = "批量删除数据表数据", notes = "批量删除数据表数据")
+    @ApiImplicitParam(name = "ids", value = "调查数据id", paramType = "query", allowMultiple = true, dataType = "String")
+    @GetMapping("/deleteByIds")
+    public Result deleteByIds(@RequestParam(value = "ids") ArrayList<Integer> ids){
+        log.info(ids.toString());
+        return dataReportService.deleteDataReportsByDataReportIdIn(ids);
+    }
+
 
     @ApiOperation(value = "统计分析", notes = "统计分析")
-    @ApiImplicitParam(name = "ids[]", value = "作物id数组", paramType = "query", allowMultiple = true, dataType = "String")
+    @ApiImplicitParam(name = "ids", value = "作物id数组", paramType = "query", allowMultiple = true, dataType = "String")
     @GetMapping("/statisticalAnalysis")
-    public Result statisticalAnalysis(@RequestParam(value = "ids[]") ArrayList<Integer> ids){
+    public Result statisticalAnalysis(@RequestParam(value = "ids") ArrayList<Integer> ids){
+        log.info(ids.toString());
         List<CropDataReport> statisticalAnalysis = dataReportService.getStatisticalAnalysis(ids);
         return ResultUtil.success(statisticalAnalysis);
     }
@@ -133,12 +142,12 @@ public class DataReportController extends BaseController {
     @ApiOperation("老师导出调查数据")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "cropId",value = "作物Id",required = true,paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "classIds[]",value = "班级Id数组",required = true,paramType = "query",allowMultiple = true,dataType = "String"),
+            @ApiImplicitParam(name = "classIds",value = "班级Id数组",required = true,paramType = "query",allowMultiple = true,dataType = "String"),
             @ApiImplicitParam(name = "teacherId",value = "老师工号",required = true,paramType = "query",dataType = "String")
     })
     @GetMapping("/exportReportTeacher")
     public void exportReportTeacher(HttpServletResponse httpServletResponse,
-                             int cropId, @RequestParam("classIds[]") ArrayList<Integer> classIds, String teacherId){
+                             int cropId, @RequestParam("classIds") ArrayList<Integer> classIds, String teacherId){
 
         String fileDir = null;
         try{

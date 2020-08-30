@@ -21,15 +21,15 @@ class AsClassfieldDaoTest {
     private AsClassfieldDao asClassfieldDao;
 
 
-    @Test
-    void queryFieldIdsByClassId() {
-        int id = 1;
-        List<String> integerList = asClassfieldDao.queryFieldIdsByClassId(id);
-
-        for(String ids : integerList){
-            System.out.println(ids);
-        }
-    }
+    //@Test
+    //void queryFieldIdsByClassId() {
+    //    int id = 1;
+    //    List<String> integerList = asClassfieldDao.queryFieldIdsByClassId(id);
+//
+    //    for(String ids : integerList){
+    //        System.out.println(ids);
+    //    }
+    //}
 
     @Test
     void queryFieldIdByName() {

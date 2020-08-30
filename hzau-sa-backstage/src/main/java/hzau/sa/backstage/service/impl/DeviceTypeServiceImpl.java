@@ -29,8 +29,8 @@ public class DeviceTypeServiceImpl extends ServiceImpl<DeviceTypeDao, DeviceType
     @Autowired
     AsDevicetypeearlywarningServiceImpl asDevicetypeearlywarningService;
 
-    public List<DeviceTypeIdAndName> selectDeviceTypeModel() {
-        return deviceTypeDao.selectDeviceTypeModel();
+    public List<DeviceTypeIdAndName> selectDeviceTypeModel(String moduleType) {
+        return deviceTypeDao.selectDeviceTypeModel(moduleType);
     }
 
     public boolean insertDeviceType(DeviceTypeModel deviceTypeModel) {
@@ -62,7 +62,7 @@ public class DeviceTypeServiceImpl extends ServiceImpl<DeviceTypeDao, DeviceType
         wrapper.lambda().eq(AsDevicetypeearlywarningVO::getDeviceTypeId,deviceTypeId);
         List<AsDevicetypeearlywarningVO> list = asDevicetypeearlywarningService.list(wrapper);
         //需要删除的关系的id，此id为asDevicetypeearlywarningid
-        List<Integer> delete = new ArrayList<>();
+        List<Integer> deleteList = new ArrayList<>();
         //需要增加关系的id，此id为earlyWarningId
         List<Integer> insert = new ArrayList<>();
         //搜索需要新增的数据
@@ -88,11 +88,14 @@ public class DeviceTypeServiceImpl extends ServiceImpl<DeviceTypeDao, DeviceType
                 }
             }
             if(w==0){
-                delete.add(asDevicetypeearlywarningVO.getAsDevicetypeearlywarningid());
+                deleteList.add(asDevicetypeearlywarningVO.getAsDevicetypeearlywarningId());
             }
         }
         //删除设备与预警的关系
-        asDevicetypeearlywarningService.removeByIds(delete);
+        for (int id :deleteList){
+            asDevicetypeearlywarningService.removeById(id);
+        }
+        //asDevicetypeearlywarningService.removeByIds(deleteList);
 
         ArrayList<AsDevicetypeearlywarningVO> asDevicetypeearlywarningVOS= new ArrayList<>();
         for(int id : insert){

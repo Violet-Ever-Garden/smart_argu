@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hzau.sa.backstage.dao.BaseDao">
+    <select id="page" resultType="hzau.sa.backstage.entity.BaseModel">
+        select baseId,baseName,base.address,base.contactPerson,base.phoneNumber,schoolName
+        from base
+        left outer join school on base.schoolId=school.schoolId
+        where base.baseName like #{baseName}
+        order by base.createTime desc
+    </select>
+    <select id="querySchoolIdBySchoolName" resultType="java.lang.Integer">
+        select schoolId
+        from school
+        where schoolName=#{schoolName}
+    </select>
+</mapper>

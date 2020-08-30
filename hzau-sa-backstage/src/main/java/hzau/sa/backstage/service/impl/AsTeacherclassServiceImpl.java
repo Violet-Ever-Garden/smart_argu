@@ -4,12 +4,10 @@ package hzau.sa.backstage.service.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.backstage.dao.AsTeacherclassDao;
-import hzau.sa.backstage.entity.AsTeacherclassVO;
-import hzau.sa.backstage.entity.ClassGradeModel;
-import hzau.sa.backstage.entity.CropParameterModel;
-import hzau.sa.backstage.entity.TeacherClassModel;
+import hzau.sa.backstage.entity.*;
 import hzau.sa.backstage.service.AsTeacherclassService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +39,10 @@ public class AsTeacherclassServiceImpl extends ServiceImpl<AsTeacherclassDao, As
     @Override
     public boolean saveList(List<AsTeacherclassVO> asTeacherclassVOs) {
         return saveBatch(asTeacherclassVOs);
+    }
+
+
+    public IPage<ClassManage> selectClassManageByTeacherId(Page<ClassManage> page,String teacherId){
+        return asTeacherclassDao.selectClassManageByTeacherId(page,teacherId);
     }
 }

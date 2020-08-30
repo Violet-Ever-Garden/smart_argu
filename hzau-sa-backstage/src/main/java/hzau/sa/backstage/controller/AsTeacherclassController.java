@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import cn.hutool.core.convert.Convert;
 import hzau.sa.backstage.entity.ClassGradeModel;
+import hzau.sa.backstage.entity.ClassManage;
 import hzau.sa.backstage.entity.TeacherClassModel;
 import hzau.sa.backstage.service.impl.AsTeacherclassServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
@@ -113,7 +114,7 @@ public class AsTeacherclassController extends BaseController {
     }
 
 
-    @ApiOperation(value = "分页查询非该老师管理的班级班级", notes = "分页查询非该老师管理的班级班级")
+    @ApiOperation(value = "分页查询非该老师管理的班级", notes = "分页查询非该老师管理的班级")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keyword", value = "班级名称关键字", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "gradeName", value = "年级名称", paramType = "query", dataType = "String"),
@@ -129,5 +130,17 @@ public class AsTeacherclassController extends BaseController {
         return ResultUtil.success(list);
     }
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "teacherId", value = "老师id", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
+    })
+    @ApiOperation(value = "分页查询该老师管理的班级 包含地块及监视器", notes = "分页查询该老师管理的班级 包含地块及监视器")
+    @GetMapping("/selectClassManageByTeacherId")
+    public Result selectClassManageByTeacherId( String teacherId){
+        Page<ClassManage> page = getPage();
+        return ResultUtil.success(asTeacherclassService.selectClassManageByTeacherId(page,teacherId));
+
+    }
     //TODO.....
 }

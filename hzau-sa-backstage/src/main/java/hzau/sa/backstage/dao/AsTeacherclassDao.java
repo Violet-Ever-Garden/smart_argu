@@ -3,6 +3,7 @@ package hzau.sa.backstage.dao;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.backstage.entity.ClassGradeModel;
+import hzau.sa.backstage.entity.ClassManage;
 import hzau.sa.backstage.entity.TeacherClassModel;
 import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -27,4 +28,7 @@ public interface AsTeacherclassDao extends BaseMapper<AsTeacherclassVO> {
 
 
     IPage<ClassGradeModel> listClassWithoutTeacher(Page<ClassGradeModel> page,@Param("keyword")String keyword,@Param("gradeName")String gradName,@Param("teacherId")String teacherId);
+
+    IPage<ClassManage> selectClassManageByTeacherId(Page<ClassManage> page,@Param("teacherId") String teacherId);
+
 }
