@@ -1,6 +1,7 @@
 package hzau.sa.backstage.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import hzau.sa.backstage.entity.ClassManage;
@@ -35,21 +36,21 @@ public interface ClassService extends IService<ClassVO>{
      * @param classId
      * @return
      */
-    List<String> classFields(Integer classId);
+    List<Integer> classFields(Integer classId);
 
     /**
      * 班级视频监控的查找
      * @param classId
      * @return
      */
-    List<String> classMonitors(Integer classId);
+    List<Integer> classMonitors(Integer classId);
 
     /**
      * 更新班级的相关信息
      * @param classManage
      * @return
      */
-    ClassManage updateClassMessage(ClassManage classManage);
+    boolean updateClassMessage(ClassManage classManage);
 
     /**
      * 新增班级信息
@@ -63,4 +64,6 @@ public interface ClassService extends IService<ClassVO>{
      * @return
      */
     List<String> queryAllClass();
+
+    public IPage<ClassManage> selectClassManage(Page<ClassManage> page, String className, String gradeName);
 }

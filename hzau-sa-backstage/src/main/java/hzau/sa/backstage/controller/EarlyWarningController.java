@@ -25,6 +25,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiImplicitParam;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +38,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/earlyWarning")
 @Api(value = "-API", tags = { "预警管理" })
-public class EarlyWarningController extends BaseController {
+public class  EarlyWarningController extends BaseController {
 
     @Autowired
     private EarlyWarningServiceImpl earlyWarningService;
@@ -91,7 +92,7 @@ public class EarlyWarningController extends BaseController {
     @ApiImplicitParam(name = "ids[]", value = "预警id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
-    public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
+    public Result deleteList(@RequestParam(value = "ids[]") ArrayList<Integer> ids){
         boolean b = earlyWarningService.removeByIds(Arrays.asList(ids));
         if(false==b){
             return ResultUtil.databaseError();

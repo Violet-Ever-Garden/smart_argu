@@ -177,10 +177,14 @@ public class CropServiceImpl extends ServiceImpl<CropDao, CropVO> implements Cro
         return ResultUtil.success();
     }
 
-    public List<CropModel> listWithUrl() {
+    public List<CropModel> listWithUrl(String cropName) {
         List<CropModel> models = new ArrayList<>();
         QueryWrapper<CropVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().orderByDesc(CropVO::getLastModifiedTime);
+        if(cropName!="" && cropName!=null){
+            queryWrapper.lambda().like(CropVO::getCropName,cropName).orderByDesc(CropVO::getLastModifiedTime);
+        }else {
+            queryWrapper.lambda().orderByDesc(CropVO::getLastModifiedTime);
+        }
         List<CropVO> cropVOS = cropDao.selectList(queryWrapper);
         for (CropVO crop : cropVOS) {
             QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();

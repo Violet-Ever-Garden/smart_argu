@@ -1,26 +1,17 @@
 package hzau.sa.backstage.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hzau.sa.backstage.entity.MeasureVO;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import hzau.sa.backstage.dao.MeasureDao;
 import hzau.sa.backstage.entity.MeasureVO;
 import hzau.sa.backstage.entity.MeasureWrapper;
 import hzau.sa.backstage.service.MeasureService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.util.ResultUtil;
-import org.apache.ibatis.session.defaults.DefaultSqlSession;
-import org.apache.poi.hssf.record.DVALRecord;
-import org.apache.xmlbeans.impl.jam.visitor.MVisitor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * <p>
@@ -44,9 +35,19 @@ public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> imple
     @Override
     public Result addMeasure(MeasureWrapper measureWrapper){
         MeasureVO measureVO = new MeasureVO(measureWrapper);
-        measureVO.setCreateUser(measureVO.getCurrentUserName());
-        measureVO.setLastModifiedUser(measureVO.getCreateUser());
+        if (measureVO.getMeasureName()==null){
+            return ResultUtil.paramError("措施名不能为空");
+        }
 
+        //判断名字重复性
+        QueryWrapper<MeasureVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(MeasureVO::getMeasureName,measureVO.getMeasureName());
+        MeasureVO measureVOSelect = measureDao.selectOne(queryWrapper);
+        if (measureVOSelect!=null){
+            return ResultUtil.error("措施名字已存在");
+        }
+
+        //插入
         if (measureDao.insert(measureVO)==0){
             return ResultUtil.error("插入失败");
         }
@@ -96,17 +97,23 @@ public class MeasureServiceImpl extends ServiceImpl<MeasureDao, MeasureVO> imple
     @Override
     public Result updateMesure(MeasureWrapper measureWrapper){
         MeasureVO measureVO = new MeasureVO(measureWrapper);
-        measureVO.setLastModifiedUser(measureVO.getCurrentUserName());
+        if (measureWrapper.getMeasureName()==null){
+            return ResultUtil.paramError("措施名不能为空");
+        }
 
-//        QueryWrapper<MeasureVO> queryWrapper = new QueryWrapper<>();
-//        queryWrapper.eq("measureId",measureVO.getMeasureId());
-//        measureVO.setCreateUser(measureDao.selectOne(queryWrapper).getCreateUser());
+        //判断名字重复性
+        QueryWrapper<MeasureVO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(MeasureVO::getMeasureName,measureVO.getMeasureName());
+        MeasureVO measureVOSelect = measureDao.selectOne(queryWrapper);
+        if (measureVOSelect!=null){
+            return ResultUtil.error("措施名字已存在");
+        }
 
+        //更新
         if (measureDao.updateById(measureVO)==0){
             return ResultUtil.error("更新失败");
         }
         return ResultUtil.success();
 
     }
-
 }

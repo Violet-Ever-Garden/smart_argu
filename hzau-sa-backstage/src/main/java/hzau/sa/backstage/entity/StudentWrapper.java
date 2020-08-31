@@ -2,15 +2,9 @@ package hzau.sa.backstage.entity;
 
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
-import com.alibaba.excel.annotation.write.style.ColumnWidth;
-import com.baomidou.mybatisplus.annotation.*;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  *  学生实体类
@@ -50,6 +44,21 @@ public class StudentWrapper {
     @ExcelIgnore
     private String password;
 
-    @ExcelIgnore
-    private MultipartFile multipartFile;
+    public StudentWrapper(StudentVO studentVO){
+        this.studentId=studentVO.getStudentId();
+        this.studentName=studentVO.getStudentName();
+        this.phoneNumber=studentVO.getPhoneNumber();
+
+        if (studentVO.getIsOperatemonitor()==0){
+            this.isOperatemonitor="否";
+        }else {
+            this.isOperatemonitor="是";
+        }
+
+        if (studentVO.getIsOperatewfm()==0){
+            this.isOperatewfm="否";
+        }else {
+            this.isOperatewfm="是";
+        }
+    }
 }

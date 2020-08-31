@@ -33,7 +33,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/deviceType")
-@Api(value = "-API", tags = { "设备管理" })
+@Api(value = "-API", tags = { "设备类型管理" })
 public class DeviceTypeController extends BaseController {
 
     @Autowired
@@ -110,9 +110,10 @@ public class DeviceTypeController extends BaseController {
     }
 
     @ApiOperation("设备id,name查询")
-    @GetMapping("/getIdAndName")
-    public Result getIdAndName(){
-        List<DeviceTypeIdAndName> deviceTypeIdAndNames = deviceTypeService.selectDeviceTypeModel();
+    @ApiImplicitParam(name = "moduleType",value = "模块类型名",paramType = "path",dataType = "String")
+    @GetMapping("/getIdAndName/{moduleType}")
+    public Result getIdAndName(@PathVariable String moduleType){
+        List<DeviceTypeIdAndName> deviceTypeIdAndNames = deviceTypeService.selectDeviceTypeModel(moduleType);
         return ResultUtil.success(deviceTypeIdAndNames);
     }
 
@@ -122,4 +123,7 @@ public class DeviceTypeController extends BaseController {
     public Result getEarlyWarningByDeviceTypeId(@PathVariable int deviceTypeId){
         return ResultUtil.success(deviceTypeService.selectEarlyWarningByDeviceTypeId(deviceTypeId));
     }
+
+
+
 }

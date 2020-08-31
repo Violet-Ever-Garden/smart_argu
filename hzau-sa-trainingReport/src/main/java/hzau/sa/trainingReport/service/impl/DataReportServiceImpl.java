@@ -4,7 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.exception.DataBaseException;
+import hzau.sa.msg.util.ResultUtil;
 import hzau.sa.trainingReport.dao.DataReportDao;
 import hzau.sa.trainingReport.dao.DataReportRepository;
 import hzau.sa.trainingReport.entity.*;
@@ -243,5 +245,12 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
                 }
             }
         }
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public Result deleteDataReportsByDataReportIdIn(ArrayList<Integer> ids) {
+        int i = dataReportDao.deleteBatchIds(ids);
+        long l = dataReportRepository.deleteDataReportsByDataReportIdIn(ids);
+        return ResultUtil.success("删除成功");
     }
 }

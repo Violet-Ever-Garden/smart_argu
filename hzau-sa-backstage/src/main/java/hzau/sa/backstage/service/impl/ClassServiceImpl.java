@@ -3,14 +3,8 @@ package hzau.sa.backstage.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hzau.sa.backstage.dao.AsClassfieldDao;
-import hzau.sa.backstage.dao.AsClassmonitorDao;
-import hzau.sa.backstage.dao.GradeDao;
-import hzau.sa.backstage.entity.AsClassfieldVO;
-import hzau.sa.backstage.entity.AsClassmonitorVO;
-import hzau.sa.backstage.entity.ClassManage;
-import hzau.sa.backstage.entity.ClassVO;
-import hzau.sa.backstage.dao.ClassDao;
+import hzau.sa.backstage.dao.*;
+import hzau.sa.backstage.entity.*;
 import hzau.sa.backstage.service.ClassService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +36,16 @@ public class ClassServiceImpl extends ServiceImpl<ClassDao, ClassVO> implements 
     private AsClassfieldDao asClassfieldDao;
 
     @Resource
-    private AsClassmonitorDao asClassmonitorDao;
+    private AsClassvideomonitorDao asClassvideomonitorDao;
+
+    @Resource
+    private AsClasscropDao asClasscropDao;
+
+    @Resource
+    private AsClasscontrolinteractionDao asClasscontrolinteractionDao;
+
+    @Resource
+    private AsClasssensorDao asClasssensorDao;
 
     @Resource
     private ClassDao classDao;
@@ -63,8 +66,11 @@ public class ClassServiceImpl extends ServiceImpl<ClassDao, ClassVO> implements 
             classManage.setClassId(classVO.getClassId());
             classManage.setClassName(classVO.getClassName());
             classManage.setClassGrade(gradeDao.selectGradeNameById(classVO.getGradeId()));
-            classManage.setClassFields(asClassfieldDao.queryFieldIdsByClassId(classVO.getClassId()));
-            classManage.setClassMonitor(asClassmonitorDao.queryMonitorIdsByClassId(classVO.getClassId()));
+            classManage.setClassFields(asClassfieldDao.queryFieldNamesByClassId(classVO.getClassId()));
+            classManage.setClassMonitor(asClassvideomonitorDao.queryMonitorNamesByClassId(classVO.getClassId()));
+            classManage.setClassWaterFertilizerMachine(asClasscontrolinteractionDao.queryNamesByClassId(classVO.getClassId()));
+            classManage.setClassSensor(asClasssensorDao.queryNameById(classVO.getClassId()));
+            classManage.setClassCrop(asClasscropDao.queryNameById(classVO.getClassId()));
             classManageList.add(classManage);
         }
 
@@ -75,97 +81,144 @@ public class ClassServiceImpl extends ServiceImpl<ClassDao, ClassVO> implements 
     }
 
     @Override
-    public List<String> classFields(Integer classId) {
+    public List<Integer> classFields(Integer classId) {
         return asClassfieldDao.queryFieldIdsByClassId(classId);
     }
 
     @Override
-    public List<String> classMonitors(Integer classId) {
-        return asClassmonitorDao.queryMonitorIdsByClassId(classId);
+    public List<Integer> classMonitors(Integer classId) {
+        return asClassvideomonitorDao.queryMonitorIdsByClassId(classId);
     }
 
-    @Override
-    public ClassManage updateClassMessage(ClassManage classManage) {
 
-        ClassManage classManageResult = new ClassManage();
+
+    @Override
+    public boolean updateClassMessage(ClassManage classManage) {
+
 
         try{
             ClassVO classVO = classDao.selectById(classManage.getClassId());
             classVO.setClassName(classManage.getClassName());
             classVO.setGradeId(gradeDao.selectGradeIdByName(classManage.getClassGrade()));
             classDao.updateById(classVO);
-
-            List<String> fieldsBefore = asClassfieldDao.queryFieldIdsByClassId(classVO.getClassId());
-            List<String> fieldsNow = classManage.getClassFields();
-            List<String> subtraction = null;
-
-            if(fieldsNow.size() > fieldsBefore.size()){
-                subtraction = fieldsNow.stream().filter(item -> !fieldsBefore.contains(item)).collect(Collectors.toList());
-                for(String fieldName : subtraction){
+            int classId = classVO.getClassId();
+            //地块差异
+            List<Integer> fieldsBefore = asClassfieldDao.queryFieldIdsByClassId(classVO.getClassId());
+            List<Integer> fieldsNow = asClassfieldDao.queryFieldIdsByNames(classManage.getClassFields());
+            List<Integer> fieldAdd = getDifferenceSet(fieldsNow,fieldsBefore);
+            List<Integer> fieldDelete = getDifferenceSet(fieldsBefore,fieldsNow);
+            if(fieldAdd.size()>0){
+                for(int fieldId:fieldAdd ){
                     AsClassfieldVO asClassfieldVO = new AsClassfieldVO();
-                    asClassfieldVO.setClassId(classVO.getClassId());
-                    asClassfieldVO.setFieldId(asClassfieldDao.queryFieldIdByName(fieldName));
+                    asClassfieldVO.setClassId(classId);
+                    asClassfieldVO.setFieldId(fieldId);
                     asClassfieldDao.insert(asClassfieldVO);
                 }
             }
-            if(fieldsNow.size() < fieldsBefore.size()){
-                subtraction = fieldsBefore.stream().filter(item -> !fieldsNow.contains(item)).collect(Collectors.toList());
-                for(String fieldName : subtraction){
-                    Integer fieldId = asClassfieldDao.queryFieldIdByName(fieldName);
-                    asClassfieldDao.delete(new QueryWrapper<AsClassfieldVO>()
-                            .lambda()
-                            .eq(AsClassfieldVO::getClassId,classVO.getClassId())
-                            .eq(AsClassfieldVO::getFieldId,fieldId));
+            if(fieldDelete.size()>0){
+                for(int fieldId:fieldDelete){
+                    QueryWrapper<AsClassfieldVO> queryWrapper = new QueryWrapper<>();
+                    queryWrapper.lambda().eq(AsClassfieldVO::getClassId,classId)
+                            .eq(AsClassfieldVO::getFieldId,fieldId);
+                    asClassfieldDao.delete(queryWrapper);
                 }
             }
-
-            List<String> monitorBefore = asClassmonitorDao.queryMonitorIdsByClassId(classVO.getClassId());
-            List<String> monitorNow = classManage.getClassMonitor();
-            List<String> updateMonitor = null;
-
-            if(monitorNow.size() > monitorBefore.size()){
-                updateMonitor = monitorNow.stream().filter(item -> !monitorBefore.contains(item)).collect(Collectors.toList());
-                for(String monitor : updateMonitor){
-                    AsClassmonitorVO asClassmonitorVO = new AsClassmonitorVO();
-                    asClassmonitorVO.setClassId(classVO.getClassId());
-                    asClassmonitorVO.setMonitorId(asClassmonitorDao.queryMonitorIdByName(monitor));
-                    asClassmonitorDao.insert(asClassmonitorVO);
+            //视频差异
+            List<Integer> monitorBefore = asClassvideomonitorDao.queryMonitorIdsByClassId(classId);
+            List<Integer> monitorNow = asClassvideomonitorDao.queryVidioMonitorIdsByNames(classManage.getClassMonitor());
+            List<Integer> monitorAdd = getDifferenceSet(monitorNow,monitorBefore);
+            List<Integer> monitorDelete = getDifferenceSet(monitorBefore,monitorNow);
+            if(monitorAdd.size()>0){
+                for(int monitorId:monitorAdd ){
+                    AsClassvideomonitorVO asClassvideomonitorVO = new AsClassvideomonitorVO();
+                    asClassvideomonitorVO.setClassId(classId);
+                    asClassvideomonitorVO.setVideoMonitorId(monitorId);
+                    asClassvideomonitorDao.insert(asClassvideomonitorVO);
                 }
             }
-            if(monitorNow.size() < monitorBefore.size()){
-                updateMonitor = monitorBefore.stream().filter(item -> !monitorNow.contains(item)).collect(Collectors.toList());
-                for(String monitor : updateMonitor){
-                    Integer monitorId = asClassmonitorDao.queryMonitorIdByName(monitor);
-                    log.info("monitorId:" + monitorId);
-                    log.info("classId:" + classVO.getClassId());
-                    asClassmonitorDao.delete(new QueryWrapper<AsClassmonitorVO>()
-                            .lambda()
-                            .eq(AsClassmonitorVO::getClassId,classVO.getClassId())
-                            .eq(AsClassmonitorVO::getMonitorId,monitorId));
+            if(monitorDelete.size()>0){
+                for(int monitorId:monitorDelete){
+                    QueryWrapper<AsClassvideomonitorVO> queryWrapper = new QueryWrapper<>();
+                    queryWrapper.lambda().eq(AsClassvideomonitorVO::getClassId,classId)
+                            .eq(AsClassvideomonitorVO::getVideoMonitorId,monitorId);
+                    asClassvideomonitorDao.delete(queryWrapper);
                 }
             }
-
-            classManageResult.setClassId(classVO.getClassId());
-            classManageResult.setClassName(classVO.getClassName());
-            classManageResult.setClassGrade(gradeDao.selectGradeNameById(classVO.getGradeId()));
-            classManageResult.setClassFields(asClassfieldDao.queryFieldIdsByClassId(classVO.getClassId()));
-            classManageResult.setClassMonitor(asClassmonitorDao.queryMonitorIdsByClassId(classVO.getClassId()));
-
+            //作物差异
+            List<Integer> cropsBefore = asClasscropDao.queryCropIdsByClassId(classVO.getClassId());
+            List<Integer> cropsNow = asClasscropDao.queryFieldIdsByNames(classManage.getClassCrop());
+            List<Integer> cropAdd = getDifferenceSet(cropsNow,cropsBefore);
+            List<Integer> cropDelete = getDifferenceSet(cropsBefore,cropsNow);
+            if(cropAdd.size()>0){
+                for(int cropId:cropAdd ){
+                    AsClasscropVO asClasscropVO = new AsClasscropVO();
+                    asClasscropVO.setClassId(classId);
+                    asClasscropVO.setCropId(cropId);
+                    asClasscropDao.insert(asClasscropVO);
+                }
+            }
+            if(cropDelete.size()>0){
+                for(int cropId:cropDelete){
+                    QueryWrapper<AsClasscropVO> queryWrapper = new QueryWrapper<>();
+                    queryWrapper.lambda().eq(AsClasscropVO::getClassId,classId)
+                            .eq(AsClasscropVO::getCropId,cropId);
+                    asClasscropDao.delete(queryWrapper);
+                }
+            }
+            //水肥机差异
+            List<Integer> controlinteractionsBefore = asClasscontrolinteractionDao.queryControlinteractionIdsByClassId(classVO.getClassId());
+            List<Integer> controlinteractionsNow = asClasscontrolinteractionDao.queryControlinteractionIdsByNames(classManage.getClassWaterFertilizerMachine());
+            List<Integer> controlinteractionAdd = getDifferenceSet(controlinteractionsNow,controlinteractionsBefore);
+            List<Integer> controlinteractionDelete = getDifferenceSet(controlinteractionsBefore,controlinteractionsNow);
+            if(controlinteractionAdd.size()>0){
+                for(int id:controlinteractionAdd ){
+                    AsClasscontrolinteractionVO asClasscontrolinteractionVO = new AsClasscontrolinteractionVO();
+                    asClasscontrolinteractionVO.setClassId(classId);
+                    asClasscontrolinteractionVO.setControlInteractionId(id);
+                    asClasscontrolinteractionDao.insert(asClasscontrolinteractionVO);
+                }
+            }
+            if(controlinteractionDelete.size()>0){
+                for(int id:controlinteractionDelete){
+                    QueryWrapper<AsClasscontrolinteractionVO> queryWrapper = new QueryWrapper<>();
+                    queryWrapper.lambda().eq(AsClasscontrolinteractionVO::getClassId,classId)
+                            .eq(AsClasscontrolinteractionVO::getControlInteractionId,id);
+                    asClasscontrolinteractionDao.delete(queryWrapper);
+                }
+            }
+            //传感器差异
+            List<Integer> sensorsBefore = asClasssensorDao.querySensorIdsByClassId(classVO.getClassId());
+            List<Integer> sensorsNow = asClasssensorDao.querySensorIdsByNames(classManage.getClassSensor());
+            List<Integer> sensorsAdd = getDifferenceSet(sensorsNow,sensorsBefore);
+            List<Integer> sensorsDelete = getDifferenceSet(sensorsBefore,sensorsNow);
+            if(sensorsAdd.size()>0){
+                for(int id:sensorsAdd ){
+                    AsClasssensorVO asClasssensorVO = new AsClasssensorVO();
+                    asClasssensorVO.setClassId(classId);
+                    asClasssensorVO.setSensorId(id);
+                    asClasssensorDao.insert(asClasssensorVO);
+                }
+            }
+            if(sensorsDelete.size()>0){
+                for(int id:sensorsDelete){
+                    QueryWrapper<AsClasssensorVO> queryWrapper = new QueryWrapper<>();
+                    queryWrapper.lambda().eq(AsClasssensorVO::getClassId,classId)
+                            .eq(AsClasssensorVO::getSensorId,id);
+                    asClasssensorDao.delete(queryWrapper);
+                }
+            }
         }catch (Exception e){
             log.error(e.toString());
             throw e;
         }
 
-        return classManageResult;
+        return true;
     }
 
     @Override
     public ClassManage insertClassMessage(ClassManage classManage) {
         try{
-            ClassVO classVO = new ClassVO();
-            classVO.setClassName(classManage.getClassName());
-            classVO.setGradeId(gradeDao.selectGradeIdByName(classManage.getClassGrade()));
-            classDao.insert(classVO);
+            ClassVO classVO = insertClassVO(classManage);
 
             Integer classId = classDao.selectOne(new QueryWrapper<ClassVO>()
                     .lambda()
@@ -175,25 +228,78 @@ public class ClassServiceImpl extends ServiceImpl<ClassDao, ClassVO> implements 
 
             List<String> classFields = classManage.getClassFields();
             for(String fields : classFields){
-                AsClassfieldVO asClassfieldVO = new AsClassfieldVO();
-                asClassfieldVO.setClassId(classId);
-                asClassfieldVO.setFieldId(asClassfieldDao.queryFieldIdByName(fields));
-                asClassfieldDao.insert(asClassfieldVO);
+                insertAsField(classId,fields);
             }
 
             List<String> classMonitors = classManage.getClassMonitor();
             for(String monitors : classMonitors){
-                AsClassmonitorVO asClassmonitorVO = new AsClassmonitorVO();
-                asClassmonitorVO.setClassId(classId);
-                asClassmonitorVO.setMonitorId(asClassmonitorDao.queryMonitorIdByName(monitors));
-                asClassmonitorDao.insert(asClassmonitorVO);
+                insertAsMonitor(classId,monitors);
             }
 
+            List<String> classCrop = classManage.getClassCrop();
+            for(String cropName : classCrop){
+                insertAsCrop(classId,cropName);
+            }
+
+            List<String> classWaterFertilizerMachine = classManage.getClassWaterFertilizerMachine();
+            for (String waterFertilizerMachine:classWaterFertilizerMachine){
+                insertASControlInteraction(classId,waterFertilizerMachine);
+            }
+
+            List<String> classSensor = classManage.getClassSensor();
+            for(String sensorName : classSensor){
+                insertAsSensor(classId,sensorName);
+            }
         }catch (Exception e){
             log.error(e.toString());
             throw e;
         }
         return classManage;
+    }
+
+    public ClassVO insertClassVO(ClassManage classManage){
+        ClassVO classVO = new ClassVO();
+        classVO.setClassName(classManage.getClassName());
+        classVO.setGradeId(gradeDao.selectGradeIdByName(classManage.getClassGrade()));
+        classDao.insert(classVO);
+        return classVO;
+    }
+
+    public void insertAsSensor(int classId,String sensorName){
+        AsClasssensorVO asClasssensorVO = new AsClasssensorVO();
+        asClasssensorVO.setClassId(classId);
+        asClasssensorVO.setSensorId(asClasssensorDao.querySensorIdByName(sensorName));
+        asClasssensorDao.insert(asClasssensorVO);
+    }
+    public void insertASControlInteraction(int classId , String waterFertilizerMachine){
+        AsClasscontrolinteractionVO asClasscontrolinteractionVO = new AsClasscontrolinteractionVO();
+        asClasscontrolinteractionVO.setClassId(classId);
+        asClasscontrolinteractionVO.setControlInteractionId(asClasscontrolinteractionDao.queryControlInteractionIdByName(waterFertilizerMachine));
+        asClasscontrolinteractionDao.insert(asClasscontrolinteractionVO);
+    }
+    public void insertAsCrop(int classId,String cropName){
+        AsClasscropVO asClasscropVO = new AsClasscropVO();
+        asClasscropVO.setClassId(classId);
+        asClasscropVO.setCropId(asClasscropDao.queryCropIdByName(cropName));
+        asClasscropDao.insert(asClasscropVO);
+    }
+    public void insertAsMonitor(int classId,String monitor){
+        AsClassvideomonitorVO asClassvideomonitorVO = new AsClassvideomonitorVO();
+        asClassvideomonitorVO.setClassId(classId);
+        asClassvideomonitorVO.setVideoMonitorId(asClassvideomonitorDao.queryMonitorIdByName(monitor));
+        asClassvideomonitorDao.insert(asClassvideomonitorVO);
+    }
+    public void insertAsField(int classId,String fields){
+        AsClassfieldVO asClassfieldVO = new AsClassfieldVO();
+        asClassfieldVO.setClassId(classId);
+        asClassfieldVO.setFieldId(asClassfieldDao.queryFieldIdByName(fields));
+        asClassfieldDao.insert(asClassfieldVO);
+    }
+
+    public List<Integer> getDifferenceSet(List<Integer> before,List<Integer> now){
+        ArrayList<Integer> integers = new ArrayList<>(before);
+        integers.removeAll(now);
+        return integers;
     }
 
     @Override
@@ -207,5 +313,11 @@ public class ClassServiceImpl extends ServiceImpl<ClassDao, ClassVO> implements 
         }
 
         return allClass;
+    }
+
+
+    public IPage<ClassManage> selectClassManage(Page<ClassManage> page,String className,String gradeName){
+        IPage<ClassManage> classManageIPage = classDao.selectClassManage(page, className, gradeName);
+        return classManageIPage;
     }
 }

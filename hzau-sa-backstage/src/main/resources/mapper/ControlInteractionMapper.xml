@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hzau.sa.backstage.dao.ControlInteractionDao">
+    <select id="selectControlInteractionModel" resultType="hzau.sa.backstage.entity.ControlInteractionModel">
+        select controlInteractionId,
+        remoteControlDeviceName,
+        deviceNumber,
+        belongNode,
+        deviceAddress,
+        remoteStatus,
+        connectStatus,
+        homeShow,
+        controlInteraction.deviceTypeId,
+        deviceTypeName,
+        controlInteraction.baseId,
+        baseName,
+        controlInteraction.regionId,
+        regionName
+        from controlInteraction left join deviceType on controlInteraction.deviceTypeId = deviceType.deviceTypeId
+        left join base on controlInteraction.baseId = base.baseId
+        left join region on controlInteraction.regionId = region.regionId
+        <where>
+            <if test="baseName != null and baseName != '' ">
+                and baseName = #{baseName}
+            </if>
+            <if test="remoteControlDeviceName != null and remoteControlDeviceName != ''" >
+                and remoteControlDeviceName like  concat('%',#{remoteControlDeviceName},'%')
+            </if>
+        </where>
+        order by controlInteraction.lastModifiedTime desc
+    </select>
+
+
+    <select id="selectWaterFertilizerMachineByBase" resultType="String" parameterType="String">
+        select remoteControlDeviceName from controlInteraction
+        left join base on base.baseId = controlInteraction.baseId
+        left join deviceType on deviceType.deviceTypeId = controlInteraction.deviceTypeId
+        where baseName = #{baseName} and deviceTypeName = '水肥机'
+    </select>
+</mapper>

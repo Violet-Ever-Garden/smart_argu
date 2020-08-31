@@ -1,33 +1,26 @@
 package hzau.sa.backstage.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import hzau.sa.backstage.dao.StudentDao;
-import hzau.sa.backstage.entity.StudentVO;
-import hzau.sa.backstage.entity.TeacherVO;
 import hzau.sa.backstage.dao.TeacherDao;
+import hzau.sa.backstage.entity.StudentVO;
 import hzau.sa.backstage.entity.TeacherVO;
 import hzau.sa.backstage.entity.TeacherWrapper;
 import hzau.sa.backstage.service.TeacherService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import hzau.sa.msg.dao.FileDao;
 import hzau.sa.msg.entity.FileVO;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.enums.FileEnum;
 import hzau.sa.msg.util.FileUtil;
 import hzau.sa.msg.util.ResultUtil;
-import org.apache.poi.ss.formula.functions.LinearRegressionFunction;
+import hzau.sa.msg.util.ShiroKit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -128,11 +121,10 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
     }
 
     /**
-     * 更新老师
-     * 图片的更新需要弄一下
+     * 后台更新老师
      */
     @Override
-    public Result updateTeacher(TeacherWrapper teacherWrapper, MultipartFile file) {
+    public Result updateTeacherBackstage(TeacherWrapper teacherWrapper) {
         //首先得到该老师
         QueryWrapper<TeacherVO> teacherQueryWrapper = new QueryWrapper<>();
         teacherQueryWrapper.lambda().eq(TeacherVO::getTeacherId,teacherWrapper.getTeacherId());
@@ -167,47 +159,114 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
             return ResultUtil.databaseError();
         }
 
-        //判断图片更新
+//        //判断图片更新
+//        if (file!=null){
+//            try {
+//                //存储新文件,并获得绝对路径
+//                String absolutePath = FileUtil.uploadFile(FileEnum.AVATAR, "teacher", file);
+//
+//                //查看原来的file路径
+//                QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+//                fileVOQueryWrapper.lambda().eq(FileVO::getConnectId,teacherW.getTeacherId()).eq(FileVO::getFileType,FileEnum.AVATAR);
+//                FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+//
+//                //如果存在，就先删除原来的图片，然后更新
+//                //不存在就直接插入记录
+//                if (fileVO!=null){
+//                    //删除
+//                    FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+//
+//                    //更新属性
+//                    fileVO.setFileAbsolutePath(absolutePath);
+//                    fileVO.setUrl(FileUtil.getFileUrl(absolutePath));
+//                    fileVO.setLastModifiedUser(fileVO.getCurrentUserName());
+//
+//                    //更新操作
+//                    if(fileDao.update(fileVO,fileVOQueryWrapper)==0) {
+//                        return ResultUtil.error("图片更新失败");
+//                    }
+//                }else {
+//                    FileVO fileVOInsert=new FileVO();
+//                    fileVOInsert.setFileAbsolutePath(absolutePath);
+//                    fileVOInsert.setUrl(FileUtil.getFileUrl(absolutePath));
+//                    fileVOInsert.setConnectId(teacherW.getTeacherId());
+//                    fileVOInsert.setFileType(String.valueOf(FileEnum.AVATAR));
+//                    fileVOInsert.setCreateUser(fileVO.getCurrentUserName());
+//                    fileVOInsert.setLastModifiedUser(fileVO.getCurrentUserName());
+//
+//                    if(fileDao.insert(fileVOInsert)==0){
+//                       return ResultUtil.error("图片更新失败");
+//                    }
+//                }
+//
+//                return ResultUtil.success();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                return ResultUtil.error("头像存储失败");
+//            }
+//        }
+        return ResultUtil.success();
+    }
+    @Override
+    public Result updateTeacherAccount(String teacherId, String teacherName, String oldPassword, String newPassword, MultipartFile file){
+        //老师更新
+        QueryWrapper<TeacherVO> teacherVOQueryWrapper = new QueryWrapper<>();
+        teacherVOQueryWrapper.lambda().eq(TeacherVO::getTeacherId,teacherId);
+        TeacherVO teacherVOSelect = teacherDao.selectOne(teacherVOQueryWrapper);
+        if (teacherVOSelect==null){
+            return ResultUtil.error("老师id错误");
+        }
+
+        teacherVOSelect.setTeacherName(teacherName);
+        if (oldPassword!=null){
+            if (teacherVOSelect.getPassword().equals(ShiroKit.md5(oldPassword))){
+                if (newPassword==null){
+                    return ResultUtil.error("新密码不能为空");
+                }else {
+                    teacherVOSelect.setPassword(ShiroKit.md5(newPassword));
+                }
+            }else {
+                return ResultUtil.error("旧密码错误");
+            }
+        }
+
+        teacherVOSelect.setLastModifiedUser(teacherVOSelect.getCurrentUserName());
+        teacherDao.update(teacherVOSelect,teacherVOQueryWrapper);
+
+        //头像更新
         if (file!=null){
             try {
-                //存储新文件,并获得绝对路径
-                String absolutePath = FileUtil.uploadFile(FileEnum.AVATAR, "teacher", file);
-
-                //查看原来的file路径
+                //1.存储图片
+                String absolutePath= FileUtil.uploadFile(FileEnum.AVATAR,"student",file);
+                String url=FileUtil.getFileUrl(absolutePath);
+                //查看图片路径
                 QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
-                fileVOQueryWrapper.lambda().eq(FileVO::getConnectId,teacherW.getTeacherId()).eq(FileVO::getFileType,FileEnum.AVATAR);
+                fileVOQueryWrapper.lambda().eq(FileVO::getFileType,FileEnum.AVATAR).eq(FileVO::getConnectId,teacherId);
                 FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
 
-                //如果存在，就先删除原来的图片，然后更新
-                //不存在就直接插入记录
                 if (fileVO!=null){
                     //删除
                     FileUtil.deleteFile(fileVO.getFileAbsolutePath());
 
                     //更新属性
                     fileVO.setFileAbsolutePath(absolutePath);
-                    fileVO.setUrl(FileUtil.getFileUrl(absolutePath));
-                    fileVO.setLastModifiedUser(fileVO.getCurrentUserName());
+                    fileVO.setUrl(url);
 
                     //更新操作
-                    if(fileDao.update(fileVO,fileVOQueryWrapper)==0) {
+                    if (fileDao.updateById(fileVO)==0){
                         return ResultUtil.error("图片更新失败");
                     }
                 }else {
                     FileVO fileVOInsert=new FileVO();
                     fileVOInsert.setFileAbsolutePath(absolutePath);
-                    fileVOInsert.setUrl(FileUtil.getFileUrl(absolutePath));
-                    fileVOInsert.setConnectId(teacherW.getTeacherId());
+                    fileVOInsert.setUrl(url);
                     fileVOInsert.setFileType(String.valueOf(FileEnum.AVATAR));
-                    fileVOInsert.setCreateUser(fileVO.getCurrentUserName());
-                    fileVOInsert.setLastModifiedUser(fileVO.getCurrentUserName());
+                    fileVOInsert.setConnectId(teacherId);
 
                     if(fileDao.insert(fileVOInsert)==0){
-                       return ResultUtil.error("图片更新失败");
+                        return ResultUtil.error("图片更新失败");
                     }
                 }
-
-                return ResultUtil.success();
             } catch (IOException e) {
                 e.printStackTrace();
                 return ResultUtil.error("头像存储失败");
@@ -215,4 +274,5 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
         }
         return ResultUtil.success();
     }
+
 }
