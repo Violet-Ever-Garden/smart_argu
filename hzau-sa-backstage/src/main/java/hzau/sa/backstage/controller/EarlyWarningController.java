@@ -92,7 +92,7 @@ public class  EarlyWarningController extends BaseController {
     @ApiImplicitParam(name = "ids[]", value = "预警id数组", paramType = "query", allowMultiple = true,dataType = "String")
     @PostMapping("/deleteList")
     @Transactional(rollbackFor = Exception.class)
-    public Result deleteList(@RequestParam(value = "ids[]") ArrayList<Integer> ids){
+    public Result deleteList(@RequestParam(value = "ids[]") Integer[] ids){
         boolean b = earlyWarningService.removeByIds(Arrays.asList(ids));
         if(false==b){
             return ResultUtil.databaseError();
