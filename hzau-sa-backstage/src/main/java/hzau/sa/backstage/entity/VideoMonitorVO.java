@@ -1,5 +1,6 @@
 package hzau.sa.backstage.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -87,6 +88,7 @@ public class VideoMonitorVO extends BaseVO{
 	/**
 	 * 是否荧云石
 	 */
+	@TableField(value = "is_yingshiyun")
 	private Integer isYingshiyun;
 
 
@@ -106,12 +108,6 @@ public class VideoMonitorVO extends BaseVO{
 	 * Rtmp 播放地址
 	 */
 	private String rtmpPlayAddress;
-
-
-	/**
-	 * 类型
-	 */
-	private Integer deviceTypeId;
 
 
 	/**
