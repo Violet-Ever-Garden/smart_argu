@@ -15,6 +15,11 @@ import lombok.NoArgsConstructor;
 public class VideoMonitorModel {
 
     /**
+     * 主键
+     */
+    private Integer videoMonitorId;
+
+    /**
      * 视频监控设备名称
      */
     private String videoMonitorDeviceName;
@@ -32,12 +37,12 @@ public class VideoMonitorModel {
     /**
      * 基地名称
      */
-    private Integer baseName;
+    private String baseName;
 
     /**
      * 区域名称
      */
-    private Integer regionName;
+    private String regionName;
 
     /**
      * 基地IP、端口

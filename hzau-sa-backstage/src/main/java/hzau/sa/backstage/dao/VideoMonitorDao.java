@@ -17,10 +17,31 @@ import java.util.List;
 @Mapper
 public interface VideoMonitorDao extends BaseMapper<VideoMonitorVO> {
 
+    /**
+     * 分页查询所有的视频监控设置
+     * @param page 分页
+     * @param keyword 关键字
+     * @param baseName 基地名称
+     * @param regionName 区域名称
+     * @return
+     */
     List<VideoMonitorModel> queryAllVideoMonitor(Page<VideoMonitorModel> page,
-                                                 @Param("videoMonitorDeviceName") String videoMonitorDeviceName,
-                                                 @Param("deviceNumber") String deviceNumber,
+                                                 @Param("keyword") String keyword,
                                                  @Param("baseName") String baseName,
                                                  @Param("regionName") String regionName);
+
+    /**
+     * 根据基地名称查询主键
+     * @param baseName 基地名称
+     * @return
+     */
+    Integer queryBaseIdByName(String baseName);
+
+    /**
+     * 根据区域名称查询主键
+     * @param regionName 区域名称
+     * @return
+     */
+    Integer queryRegionIdByName(String regionName);
 
 }
