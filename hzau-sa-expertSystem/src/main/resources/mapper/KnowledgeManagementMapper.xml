@@ -11,19 +11,20 @@
         from knowledgeManagement
         left join knowledgeCategory on knowledgeCategory.knowledgeCategoryId=knowledgeManagement.knowledgeCategoryId
         <where>
-            <if test="name!=null">
+            <if test="name!=null and name!=''">
                 knowledgeManageName like #{name}
             </if>
-            <if test="category!=null">
+            <if test="category!=null and category!=''">
                 and knowledgeCategory.knowledgeCategoryName=#{category}
             </if>
         </where>
     </select>
 
     <select id="queryKnowledgeById" resultType="hzau.sa.expertSystem.entity.KnowledgeManagementView">
-        select knowledgeManageId,
-        knowledgeManageName,
+        select
+        knowledgeManageId,
         url,
+        knowledgeManageName,
         knowledgeCategoryName,
         knowledgeIntroduction,
         knowledgeContent,
@@ -31,7 +32,14 @@
         knowledgeManagement.createUser
         from knowledgeManagement
         left join file on file.connectId=knowledgeManagement.knowledgeManageId
-        where knowledgeManagement.knowledgeManageId=#{knowledgeManageId}
-        and file.fileType=#{fileType}
+        left join knowledgeCategory on knowledgeCategory.knowledgeCategoryId=knowledgeManagement.knowledgeCategoryId
+        where knowledgeManageId=#{knowledgeManageId}
+        and fileType=#{fileType}
+    </select>
+
+    <select id="queryCategoryIdByName" resultType="java.lang.Integer">
+        select knowledgeCategoryId
+        from knowledgeCategory
+        where knowledgeCategoryName=#{name}
     </select>
 </mapper>

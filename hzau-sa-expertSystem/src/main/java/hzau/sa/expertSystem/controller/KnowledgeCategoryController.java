@@ -43,7 +43,7 @@ import io.swagger.annotations.ApiImplicitParam;
 @Slf4j
 @RestController
 @RequestMapping("/knowledgeCategory")
-@Api(value = "-API", tags = { "相关接口" })
+@Api(value = "-API", tags = { "知识库分类" })
 public class KnowledgeCategoryController extends BaseController {
 
     @Autowired

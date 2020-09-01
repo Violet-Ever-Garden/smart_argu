@@ -18,12 +18,12 @@ import java.time.LocalDateTime;
 public class KnowledgeManagementView{
     private static final long serialVersionUID = 1L;
     private Integer knowledgeManageId;
-    private String knowledgeManageName;
     private String url;
+    private String knowledgeManageName;
     private String knowledgeCategoryName;
     private String knowledgeIntroduction;
     private String knowledgeContent;
+    private String createUser;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
-    private String createUser;
 }

@@ -33,7 +33,7 @@ public class SchoolServiceImpl extends ServiceImpl<SchoolDao, SchoolVO> implemen
     @Autowired
     private SchoolDao schoolDao;
 
-    private static final String TEMPLATE_PATH="/root/hzau/file/excelTemplate/schoolTemplate.xlsx";
+    private static final String TEMPLATE_PATH="D:/root/hzau/file/excelTemplate/schoolTemplate.xlsx";
 
     /**
      * 增加学校

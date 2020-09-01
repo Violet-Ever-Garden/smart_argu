@@ -65,8 +65,12 @@ public class KnowledgeCategoryServiceImpl extends ServiceImpl<KnowledgeCategoryD
      */
     @Override
     public Result updateCategory(KnowledgeCategoryVO knowledgeCategoryVO){
+        QueryWrapper<KnowledgeCategoryVO> knowledgeCategoryVOQueryWrapper = new QueryWrapper<>();
+        knowledgeCategoryVOQueryWrapper.lambda().eq(KnowledgeCategoryVO::getKnowledgeCategoryId,knowledgeCategoryVO.getKnowledgeCategoryId());
+        KnowledgeCategoryVO knowledgeCategoryVOSelect = knowledgeCategoryDao.selectOne(knowledgeCategoryVOQueryWrapper);
+
         //判断重名
-        if (isCategoryExist(knowledgeCategoryVO.getKnowledgeCategoryName())){
+        if (isCategoryExist(knowledgeCategoryVO.getKnowledgeCategoryName()) && (!knowledgeCategoryVOSelect.getKnowledgeCategoryName().equals(knowledgeCategoryVO.getKnowledgeCategoryName()))){
             return ResultUtil.error("分类名重复");
         }
         //插入
