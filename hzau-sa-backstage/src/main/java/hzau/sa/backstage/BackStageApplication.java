@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-//@EnableTransactionManagement
-//@ComponentScan(basePackages = {"hzau.sa.*"})
-//@MapperScan(basePackages = {"hzau.sa.*.dao"})
-//@SpringBootApplication
+@EnableTransactionManagement
+@ComponentScan(basePackages = {"hzau.sa.*"})
+@MapperScan(basePackages = {"hzau.sa.*.dao"})
+@SpringBootApplication
 public class BackStageApplication {
     public static void main(String[] args) {
         SpringApplication.run(BackStageApplication.class,args);

@@ -3,6 +3,39 @@
 <mapper namespace="hzau.sa.backstage.dao.VideoMonitorDao">
 
     <select id="queryAllVideoMonitor" resultType="hzau.sa.backstage.entity.VideoMonitorModel">
-
+        SELECT videoMonitorId,videoMonitorDeviceName,deviceNumber,videoApplication,baseName,regionName,
+                CONCAT_WS(':',deviceIp,devicePort) AS ipAndPort,homeShow
+        FROM videoMonitor
+        LEFT JOIN base ON base.baseId = videoMonitor.baseId
+        LEFT JOIN region ON region.regionId = videoMonitor.regionId
+        <where>
+            <if test="keyword != null and keyword != '' ">
+                (videoMonitorDeviceName LIKE "%"#{keyword}"%")
+                or
+                (deviceNumber LIKE "%"#{keyword}"%")
+            </if>
+            <if test="baseName != null and baseName != '' ">
+                and videoMonitor.baseId = ANY (
+                    SELECT DISTINCT baseId
+                    FROM base
+                    WHERE baseName = #{baseName}
+                )
+            </if>
+            <if test="regionName != null and regionName != '' ">
+                and videoMonitor.regionId = ANY(
+                    SELECT DISTINCT regionId
+                    FROM region
+                    WHERE regionName = #{regionName}
+                )
+            </if>
+        </where>
+    </select>
+    <select id="queryBaseIdByName" resultType="java.lang.Integer">
+        SELECT baseId FROM base
+        WHERE baseName = #{baseName}
+    </select>
+    <select id="queryRegionIdByName" resultType="java.lang.Integer">
+        SELECT regionId FROM region
+        WHERE regionName = #{regionName}
     </select>
 </mapper>

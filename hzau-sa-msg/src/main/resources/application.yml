@@ -42,4 +42,3 @@ mybatis-plus:
     cache-enabled: false
     jdbc-type-for-null: 'null'
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-

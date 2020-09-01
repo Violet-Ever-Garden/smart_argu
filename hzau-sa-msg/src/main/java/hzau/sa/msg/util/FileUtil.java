@@ -138,6 +138,22 @@ public class FileUtil {
         return flag;
     }
 
+    public static boolean deleteFile(File file){
+        if(!file.exists()){
+            return false;
+        }
+
+        if(file.isFile()){
+            return file.delete();
+        }else{
+            for(File fileInFile : file.listFiles()){
+                deleteFile(fileInFile);
+            }
+        }
+
+        return file.delete();
+    }
+
     /**
      * 修改文件  先删除 后添加
      * @param filePath  要修改文件的路径

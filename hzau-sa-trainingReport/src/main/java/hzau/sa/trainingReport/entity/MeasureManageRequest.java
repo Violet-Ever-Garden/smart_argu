@@ -1,5 +1,4 @@
 package hzau.sa.trainingReport.entity;
-
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
