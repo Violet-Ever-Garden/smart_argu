@@ -82,7 +82,7 @@ public class VideoMonitorController extends BaseController {
 
     @SysLog(prefix = "修改视频监控",value = LogType.ALL)
     @ApiOperation("修改视频监控")
-    @ApiImplicitParam(name = "videoMonitorDTO",value = "新增视频监控实体（需要给出主键）",paramType = "body",dataType = "VideoMonitorDTO")
+    @ApiImplicitParam(name = "videoMonitorDTO",value = "修改视频监控实体（需要给出主键）",paramType = "body",dataType = "VideoMonitorDTO")
     @PutMapping("/update")
     @Transactional(rollbackFor = Exception.class)
     public Result<Object> updateVideoMonitor(@Valid @RequestBody VideoMonitorDTO videoMonitorDTO, BindingResult result){
