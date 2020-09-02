@@ -129,7 +129,7 @@ public class WikiCropTypeController extends BaseController {
         if(flag == true){
             return ResultUtil.success(flag);
         }else{
-            return ResultUtil.error("百科分类不存在");
+            return ResultUtil.error("百科植物类型不存在");
         }
     }
 
