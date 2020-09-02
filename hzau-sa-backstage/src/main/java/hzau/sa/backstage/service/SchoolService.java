@@ -9,6 +9,9 @@ import hzau.sa.backstage.dao.SchoolDao;
 import hzau.sa.backstage.entity.SchoolVO;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * school 服务实现类
  * @author wyh
@@ -19,6 +22,6 @@ public interface SchoolService  {
     public Result deleteSchool(Integer schoolId);
     public Result deleteSchools(Integer[] schoolIds);
     public Result updateSchool(SchoolModel schoolModel);
-    public Result templateDownload();
+    public Result templateDownload(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse);
     public Result addSchoolByTemplate(MultipartFile multipartFile, SchoolServiceImpl schoolService);
 }

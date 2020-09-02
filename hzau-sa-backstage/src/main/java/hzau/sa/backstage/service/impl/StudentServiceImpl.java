@@ -19,6 +19,7 @@ import hzau.sa.msg.enums.FileEnum;
 import hzau.sa.msg.util.FileUtil;
 import hzau.sa.msg.util.ResultUtil;
 import hzau.sa.msg.util.ShiroKit;
+import org.apache.poi.ss.formula.functions.LinearRegressionFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -58,7 +59,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     @Autowired
     private FileDao fileDao;
 
-    private static final String TEMPLATE_EXCEL_PATH="/root/hzau/file/excelTemplate/studentTemplate.xlsx";
+    private static final String TEMPLATE_EXCEL_PATH="D:/root/hzau/file/excelTemplate/studentTemplate.xlsx";
     /**
      * 添加学生
      * 这里也需要修改，在file表里面增加一个默认图片的record
@@ -255,11 +256,13 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
         QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
         fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.AVATAR))
                 .eq(FileVO::getConnectId,studentId);
+        FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+        //删除文件本身
+        FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+        //删除记录
         if (fileDao.delete(fileVOQueryWrapper)==0){
             return ResultUtil.error("头像删除失败");
         }
-
-
         return ResultUtil.success();
     }
 
@@ -279,14 +282,18 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
         }
 
         //删除文件
-        QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
-        fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.AVATAR))
-                .in(FileVO::getConnectId,studentIds);
-
-        if (fileDao.delete(fileVOQueryWrapper)==0){
-            return ResultUtil.error("文件删除失败");
+        for (String id:studentIds){
+            QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+            fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.AVATAR))
+                    .eq(FileVO::getConnectId,id);
+            FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+            //删除文件本身
+            FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+            //删除文件记录
+            if (fileDao.delete(fileVOQueryWrapper)==0){
+                return ResultUtil.error();
+            }
         }
-
         return ResultUtil.success();
     }
 
@@ -330,7 +337,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
 
                 //永远是下载 设置以附件的形式进行打开下载
                 httpServletResponse.setHeader("content-disposition", "attachment;filename="
-                        + "template.xlsx");
+                        + "studentTemplate.xlsx");
 
                 //得到输出流
                 OutputStream os = httpServletResponse.getOutputStream();

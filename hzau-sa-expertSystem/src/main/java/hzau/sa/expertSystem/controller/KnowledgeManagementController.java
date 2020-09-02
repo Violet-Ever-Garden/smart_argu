@@ -136,7 +136,8 @@ public class KnowledgeManagementController extends BaseController {
     @ApiImplicitParam(name = "knowledgeManageId",value = "知识库id",required = true,paramType = "query",dataType = "String")
     @PostMapping("/queryKnowledgeById")
     public Result queryKnowledgeById(String knowledgeManageId){
-        KnowledgeManagementView knowledgeManagementView = knowledgeManagementService.queryKnowledgeById(Integer.valueOf(knowledgeManageId), String.valueOf(FileEnum.KNOWLEDGE));
-        return ResultUtil.success(knowledgeManageId);
+        KnowledgeManagementView knowledgeManagementView = knowledgeManagementService.queryKnowledgeById(Integer.valueOf(knowledgeManageId));
+        log.debug(knowledgeManagementView.toString());
+        return ResultUtil.success(knowledgeManagementView);
     }
 }

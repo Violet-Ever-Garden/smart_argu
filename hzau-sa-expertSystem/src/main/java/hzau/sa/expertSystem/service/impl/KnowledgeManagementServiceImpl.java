@@ -235,12 +235,13 @@ public class KnowledgeManagementServiceImpl extends ServiceImpl<KnowledgeManagem
     /**
      * 按id进入知识库界面
      * @param knowledgeManageId
-     * @param fileType
      * @return
      */
     @Override
-    public KnowledgeManagementView queryKnowledgeById(Integer knowledgeManageId, String fileType){
-        return knowledgeManagementDao.queryKnowledgeById(knowledgeManageId,String.valueOf(FileEnum.KNOWLEDGE));
+    public KnowledgeManagementView queryKnowledgeById(Integer knowledgeManageId){
+        KnowledgeManagementView knowledgeManagementView = knowledgeManagementDao.queryKnowledgeById(knowledgeManageId, String.valueOf(FileEnum.KNOWLEDGE));
+        return knowledgeManagementView;
+
     }
 
     /**

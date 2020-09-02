@@ -23,5 +23,5 @@ public interface KnowledgeManagementService  {
     public Result deleteKnowledges(String[] knowledgeManagementIds);
     public Result updateKnowledge(Integer knowledgeManageId,String knowledgeManageName, String knowledgeCategoryName, String knowledgeIntroduction, String knowledgeContentHtml,MultipartFile file);
     public IPage<KnowledgeManagementModel> page(Page<KnowledgeManagementModel> page,String name,String category);
-    public KnowledgeManagementView queryKnowledgeById(Integer knowledgeManageId,String fileType);
+    public KnowledgeManagementView queryKnowledgeById(Integer knowledgeManageId);
 }

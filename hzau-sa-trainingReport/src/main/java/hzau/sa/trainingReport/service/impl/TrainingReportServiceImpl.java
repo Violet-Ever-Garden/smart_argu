@@ -16,6 +16,7 @@ import hzau.sa.trainingReport.dao.TrainingReportDao;
 import hzau.sa.trainingReport.entity.TrainingReportVO;
 import hzau.sa.trainingReport.service.TrainingReportService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.apache.poi.ss.formula.functions.LinearRegressionFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -85,10 +86,14 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
         }
 
 
-        //删除文件记录
+        //删除文件
         QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
         fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.TRAININGREPORT))
                 .eq(FileVO::getConnectId,trainingReportId);
+        FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+        //删除文件本身
+        FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+        //删除文件记录
         if (fileDao.delete(fileVOQueryWrapper)==0){
             return ResultUtil.error("文件删除失败");
         }
@@ -111,13 +116,18 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
         }
 
         //删除文件记录
-        QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
-        fileVOQueryWrapper.lambda()
-                .eq(FileVO::getFileType,String.valueOf(FileEnum.TRAININGREPORT))
-                .in(FileVO::getConnectId,trainingReportIds);
-
-        if (fileDao.delete(fileVOQueryWrapper)==0){
-            return ResultUtil.error("批量删除文件失败");
+        for (Integer id:trainingReportIds){
+            QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+            fileVOQueryWrapper.lambda()
+                    .eq(FileVO::getFileType,String.valueOf(FileEnum.TRAININGREPORT))
+                    .eq(FileVO::getConnectId,id);
+            FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+            //删除文件本身
+            FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+            //删除文件记录
+            if (fileDao.delete(fileVOQueryWrapper)==0){
+                return ResultUtil.error("批量删除文件失败");
+            }
         }
         return ResultUtil.success();
     }

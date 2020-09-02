@@ -22,6 +22,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiImplicitParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 /**
  *  控制器
@@ -87,8 +90,8 @@ public class BaseVOController extends BaseController {
     @SysLog(prefix = "基地模板下载")
     @ApiOperation("基地模板下载")
     @PostMapping("/templateDownload")
-    public Result templateDownload(){
-        return baseService.templateDownload();
+    public Result templateDownload(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        return baseService.templateDownload(httpServletRequest,httpServletResponse);
     }
 
     @SysLog(prefix = "从模板增加基地")

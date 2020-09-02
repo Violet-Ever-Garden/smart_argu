@@ -2,6 +2,8 @@ package hzau.sa.backstage.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import cn.hutool.core.convert.Convert;
@@ -106,8 +108,8 @@ public class SchoolController extends BaseController {
     @SysLog(prefix = "学校模板下载")
     @ApiOperation(value = "学校模板下载",notes = "学校模板下载")
     @GetMapping("/templateDownload")
-    public Result templateDownload(){
-        return schoolService.templateDownload();
+    public Result templateDownload(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        return schoolService.templateDownload(httpServletRequest,httpServletResponse);
     }
 
     @SysLog(prefix = "从模板增加学校")

@@ -7,6 +7,9 @@ import hzau.sa.backstage.entity.BaseModel;
 import hzau.sa.msg.entity.Result;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * base 服务实现类
  * @author wyh
@@ -18,7 +21,7 @@ public interface BaseService  {
     public Result deleteBases(Integer[] baseIds);
     public Result updateBase(BaseModel baseModel);
     public IPage<BaseModel> page(Page<BaseModel> page, String baseName);
-    public Result templateDownload();
+    public Result templateDownload(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse);
     public Result addBaseByTemplate(MultipartFile multipartFile,BaseService baseService);
     public boolean isBaseExist(String baseName);
 }

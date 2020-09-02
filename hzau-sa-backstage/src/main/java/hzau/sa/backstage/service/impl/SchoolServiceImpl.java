@@ -17,7 +17,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Arrays;
 
 /**
@@ -124,9 +129,38 @@ public class SchoolServiceImpl extends ServiceImpl<SchoolDao, SchoolVO> implemen
      * @return
      */
     @Override
-    public Result templateDownload(){
-        String fileUrl = FileUtil.getFileUrl(SchoolServiceImpl.TEMPLATE_PATH);
-        return ResultUtil.success(fileUrl);
+    public Result templateDownload(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        //得到对应的文件对象
+        String realPath=SchoolServiceImpl.TEMPLATE_PATH;
+        File file = new File(realPath);
+
+        if (file.exists()) {
+            // 文件存在，完成下载
+            try{
+                //得到文件输入流
+                FileInputStream fis = new FileInputStream(file);
+
+                //永远是下载 设置以附件的形式进行打开下载
+                httpServletResponse.setHeader("content-disposition", "attachment;filename="
+                        + "schoolTemplate.xlsx");
+
+                //得到输出流
+                OutputStream os = httpServletResponse.getOutputStream();
+                int len = -1;
+                byte[] b = new byte[1024 * 100];
+                while ((len = fis.read(b)) != -1) {
+                    os.write(b, 0, len);
+                    os.flush();
+                }
+                os.close();
+                fis.close();
+                return ResultUtil.success();
+            }catch (IOException e) {
+                e.printStackTrace();
+                return ResultUtil.error("文件下载失败");
+            }
+        }
+        return ResultUtil.error("请求文件不存在");
     }
 
     /**
