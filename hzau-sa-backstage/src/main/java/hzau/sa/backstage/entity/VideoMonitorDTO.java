@@ -97,6 +97,11 @@ public class VideoMonitorDTO {
      */
     private String rtmpPlayAddress;
 
+    /**
+     * 设备类型名称
+     */
+    private String deviceTypeName;
+
 
     /**
      * 基地编号

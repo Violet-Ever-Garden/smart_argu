@@ -20,13 +20,16 @@ public class VideoMonitorTemplate {
     @ExcelProperty(value = "视频监控设备名称",index = 1)
     private String videoMonitorDeviceName;
 
-    @ExcelProperty(value = "视频监控设备编号",index = 2)
+    @ExcelProperty(value = "设备编号",index = 2)
     private String deviceNumber;
 
-    @ExcelProperty(value = "基地名称",index = 3)
+    @ExcelProperty(value = "类型",index = 3)
+    private String deviceTypeName;
+
+    @ExcelProperty(value = "基地名称",index = 4)
     private String baseName;
 
-    @ExcelProperty(value = "区域名称",index = 4)
+    @ExcelProperty(value = "区域名称",index = 5)
     private String regionName;
 
 }

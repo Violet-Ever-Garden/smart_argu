@@ -111,6 +111,12 @@ public class VideoMonitorVO extends BaseVO{
 
 
 	/**
+	 * 设备类型Id
+	 */
+	private Integer deviceTypeId;
+
+
+	/**
 	 * 基地编号
 	 */
 	private Integer baseId;

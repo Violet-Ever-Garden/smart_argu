@@ -1,5 +1,6 @@
 package hzau.sa.backstage.controller;
 
+import cn.hutool.core.io.resource.ClassPathResource;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.backstage.entity.VideoMonitorDTO;
 import hzau.sa.backstage.entity.VideoMonitorModel;
@@ -152,7 +153,7 @@ public class VideoMonitorController extends BaseController {
 
             String filePath = videoMonitorService.exportTemplateExcel();
 
-            FileInputStream fileInputStream = new FileInputStream(new File(filePath));
+            FileInputStream fileInputStream = new FileInputStream(new ClassPathResource("templates/视频监控类导入模板.xls").getFile());
             int len;
             while((len = fileInputStream.read(bytes)) != -1){
                 httpServletResponse.getOutputStream().write(bytes,0,len);
