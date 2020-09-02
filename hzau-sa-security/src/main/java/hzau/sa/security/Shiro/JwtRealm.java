@@ -2,7 +2,7 @@ package hzau.sa.security.Shiro;
 
 import cn.hutool.db.nosql.redis.RedisDS;
 import hzau.sa.msg.util.JwtUtils;
-import javafx.beans.binding.ObjectExpression;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
