@@ -100,7 +100,7 @@ public class WikiCropTypeController extends BaseController {
     public Result<Object> deleteById(@PathVariable("id") String id){
         boolean flag = true;
         try{
-            log.info("wikiCropType:" + id);
+            log.info("wikiCropTypeId:" + id);
             flag = wikiCropTypeService.removeById(id);
         }catch (Exception e){
             log.error(e.toString());

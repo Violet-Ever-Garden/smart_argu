@@ -35,6 +35,11 @@ public interface WikiCropTypeService  extends IService<WikiCropTypeVO> {
      */
     public List<WikiCropTypeDTO> queryAllWikiCropType(Page page, String keyword,Integer wikiCategoryId);
 
+    /**
+     * 根据主键更新百科植物分类
+     * @param wikiCropTypeDTO
+     * @return
+     */
     public boolean updateWikiCropType(WikiCropTypeDTO wikiCropTypeDTO);
 
 }
