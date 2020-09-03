@@ -131,7 +131,7 @@ public class GatewayController extends BaseController {
     public Result<Object> delete(@RequestParam("ids[]") String[] ids){
         boolean flag = true;
         try{
-            log.info("gatewayIds.length:" + ids.length);
+            log.info("gatewayIds:" + ids);
             flag = gatewayService.removeByIds(Arrays.asList(ids));
         }catch (Exception e){
             log.error(e.toString());
