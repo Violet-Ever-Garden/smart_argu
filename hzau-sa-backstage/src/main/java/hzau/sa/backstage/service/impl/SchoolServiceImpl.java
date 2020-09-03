@@ -1,5 +1,6 @@
 package hzau.sa.backstage.service.impl;
 
+import cn.hutool.core.io.resource.ClassPathResource;
 import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import hzau.sa.backstage.dao.SchoolDao;
@@ -38,7 +39,7 @@ public class SchoolServiceImpl extends ServiceImpl<SchoolDao, SchoolVO> implemen
     @Autowired
     private SchoolDao schoolDao;
 
-    private static final String TEMPLATE_PATH="D:/root/hzau/file/excelTemplate/schoolTemplate.xlsx";
+
 
     /**
      * 增加学校
@@ -131,8 +132,7 @@ public class SchoolServiceImpl extends ServiceImpl<SchoolDao, SchoolVO> implemen
     @Override
     public Result templateDownload(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
         //得到对应的文件对象
-        String realPath=SchoolServiceImpl.TEMPLATE_PATH;
-        File file = new File(realPath);
+        File file = new ClassPathResource("templates/schoolTemplate.xlsx").getFile();
 
         if (file.exists()) {
             // 文件存在，完成下载

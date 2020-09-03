@@ -19,6 +19,7 @@
         <module>hzau-sa-trainingReport</module>
         <module>hzau-sa-fileTest</module>
         <module>hzau-sa-expertSystem</module>
+        <module>hzau-sa-sensorData</module>
     </modules>
 
     <!-- 统一管理jar包版本 -->

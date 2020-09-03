@@ -1,5 +1,6 @@
 package hzau.sa.backstage.service.impl;
 
+import cn.hutool.core.io.resource.ClassPathResource;
 import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -59,7 +60,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     @Autowired
     private FileDao fileDao;
 
-    private static final String TEMPLATE_EXCEL_PATH="D:/root/hzau/file/excelTemplate/studentTemplate.xlsx";
+
     /**
      * 添加学生
      * 这里也需要修改，在file表里面增加一个默认图片的record
@@ -326,8 +327,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     public Result downloadTemplate(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
 
         //得到对应的文件对象
-        String realPath= StudentServiceImpl.TEMPLATE_EXCEL_PATH;
-        File file = new File(realPath);
+        File file = new ClassPathResource("templates/studentTemplate.xlsx").getFile();
 
         if (file.exists()) {
             // 文件存在，完成下载

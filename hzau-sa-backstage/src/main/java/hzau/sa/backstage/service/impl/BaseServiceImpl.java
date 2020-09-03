@@ -1,5 +1,6 @@
 package hzau.sa.backstage.service.impl;
 
+import cn.hutool.core.io.resource.ClassPathResource;
 import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -41,7 +42,6 @@ import java.util.Arrays;
 public class BaseServiceImpl extends ServiceImpl<BaseDao, Base> implements BaseService {
     @Resource
     private BaseDao baseDao;
-    private static final String TEMPLATE_PATH="D:/root/hzau/file/excelTemplate/baseTemplate.xlsx";
     /**
      * 增加基地
      * @param baseModel
@@ -155,8 +155,7 @@ public class BaseServiceImpl extends ServiceImpl<BaseDao, Base> implements BaseS
     @Override
     public Result templateDownload(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
         //得到对应的文件对象
-        String realPath=BaseServiceImpl.TEMPLATE_PATH;
-        File file = new File(realPath);
+        File file = new ClassPathResource("templates/baseTemplate.xlsx").getFile();
 
         if (file.exists()) {
             // 文件存在，完成下载
