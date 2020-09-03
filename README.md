@@ -45,7 +45,7 @@
 
 ---
 
-### hzau-sa-generator 说明
+### hzau-sa-generator
 
 - mybatisPlus自动代码生成器
 - 可以自动生成项目结构下的各种组件
