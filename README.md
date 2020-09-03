@@ -4,64 +4,103 @@
 
 ### 华农智慧农业项目使用说明
 
-- 启动模块`hzau-sa-starter`
-  - 启动SpringBoot项目
-- 配置文件在`hzau-sa-msg`模块，修改主配置文件
-  - `application.yml`主配置文件
-  - `application-test.yml`测试配置文件
-  - `application-dev.yml`开发配置文件
-- 后台接口访问地址：[hzau-Smart-Agriculture接口文档](http://sourceshare.kaistudy.top:8080/swagger-ui.html)
-  - 
+#### 项目简介
+
+- 华中农业大学智慧云系统，实现智慧农业物联网功能
+- 项目配置：
+  - JDK1.8
+  - Maven依赖管理
+- 技术栈：
+  - 核心框架：springboot+springMvc+mybatisPlus
+  - 缓存：redis
+  - 鉴权：shiro+jwt 
+  - 工具集：hutool、lombook
+  - 表格：easyexcel
+  - 接口管理测试：swagger2 
+  - 数据库：mysql8.0
+
+#### 开始使用
+
+- 将项目clone到本地
+- 配置maven，导入项目所需的依赖包
+- 修改配置文件：
+  - 配置文件在`hzau-sa-msg`模块下的`resource`中
+  - 主配置文件：`application.yml`
+  - 测试配置文件：`application-test.yml`
+  - 开发配置文件：`application-dev.yml`
+  - redis配置文件：`config/redis.setting`
+  - 日志配置文件：`logback-spring.xml`
+- 本地启动项目：
+  - 启动`hzau-sa-stater`模块下的项目启动类
+  - 访问接口文档
+- 发布服务器：
+  - 打成jar包：`mvn clean package -Dmaven.test.skip=true`
+  - 将`hzau-sa-stater`模块下`target`中的`hzau-sa-stater-1.0-SNAPSHOT.jar`发布到服务器
+  - 执行`java -jar hzau-sa-stater-1.0-SNAPSHOT.jar`启动项目
+
+#### 项目演示
+
+- [后台接口文档](http://sourceshare.kaistudy.top:8080/swagger-ui.html)
 
 
 ---
 
 ### hzau-sa-generator 说明
 
-- 重构了自动代码生成器
-- version = 1
-- 后续还需完善
+- mybatisPlus自动代码生成器
+- 可以自动生成项目结构下的各种组件
+  - `controller`继承`BaseController`类
+  - `dao`
+  - `service`继承`IService<T>`接口
+  - `entity`
+  - dao层对应的`xml`
+- 项目说明：
+  - 项目各个模块的`controller`所包含的接口各不相同，所以舍弃自动生成的`controller`
+  - 根据各个Controller的具体情况手动编写控制器
 
 ---
 
 ### hzau-sa-msg
 
-- 日志和异常类模块
-- 目前重构了日志
-  - version = 1
-  - 还需结合后续的异常处理完善
-- 返回模块
-  - Result 返回的实体类
-  - CodeType 返回状态码的枚举类 包含了常用的状态码  后续可以修改
-  - ResultUtil 返回的工具类 写了基本的几种返回方法  可以自定义  后续也可以增加和修改
-- 异常处理模块待定：
-  - 在实际的业务逻辑中看可能存在哪些异常 然后统一编写  小组成员讨论
-- 继续完善日志的业务模块
-  - 写了小部分异常处理 
-    - 异常这部分涉及到数据库  可能要设置回滚  根据具体的情况看
-  - 完善了部分切面日志的模块  还需在拿到当前操作的用户  与其他模块交互
-  - 下午准备些日志的controller
-  - Swagger的学习与运用
-- 日志的controller完成 可以实现功能
-- swagger2 配置完成
-  - 模块需要继承swagger的基础配置抽象类 也可以写自己的配置
-  - 使swagger生效需要在方法上写相应的注解
-  - swagger-ui 访问地址：http://localhost:端口/swagger-ui.html
-  - 日志的安全访问  权限等  还未设置
-- 切面日志的当前用户名仍然未解决
-- 初始配置了mybatisplus的配置类
+- 包含以下几部分功能：
 
----
-
-### hzau-sa-test
-
-- 我自己的日志、异常测试类
+  - 切面日志功能：
+   - 使用切面技术自定义了`@SysLog`注解
+     - 使用在接口方法的上面，自动将记录该方法的参数、返回值等在日志中
+   - 日志接口定义在该模块中
+   - 日志的配置文件`logback-spring.xml`
+     - 配置了日志写到服务器上的文件位置
+     - 日志文件每天一份，最长保持30天
+     - 对日志的实体类做了数据库字段映射
+     - 日志文件的地址 log.path
+     - 日志默认30天有效期
+     - 最大容量100MB
+     - 同一天操作记录在当天的一份文件中
+     - 日志同时持久的在数据库中存储
+  - 自定义返回类：
+    - Result 返回的实体类
+    - CodeType 返回状态码的枚举类，包含了常用的状态码
+    - ResultUtil 返回的工具类，写了基本的几种返回方法，可以自定义
+  - Swagger的抽象配置：
+    - 模块需要继承swagger的基础配置抽象类`Swagger2Config` 也可以写自己的配置
+    - 使swagger生效需要在方法上写相应的注解
+    - swagger-ui 访问地址：http://localhost:端口/swagger-ui.html
+  - 配置：
+    - 静态资源访问
+    - MybatisPlugs配置
+    - 数据库表自动添加配置
+  - 工具类：
+    - 文件处理
+    - JWT工具类
+    - Redis工具类
+    - shiro日志权限
+    - 压缩包
 
 ---
 
 ### hzau-sa-security
 
-- token shiro 模块
+- token shiro 权限校验模块
 
 ---
 
@@ -69,53 +108,33 @@
 ### hzau-sa-backstage
 
 - 平台设置模块
-- 年级管理和班级管理功能完成
-- 日志的实体类做了修改
-  - mybatisplus 的全局驼峰有点问题  开启之后msg模块不能正常驼峰转换 其他模块可以
-  - 对日志的实体类做了数据库字段映射
-- 增加了全局日志的xml配置文件 msg模块下的logback-spring.xml
-  - 日志文件的地址 log.path
-    - 注意linux下系统文件分隔符`/` windows下系统文件分隔符`\` 在项目中要写成`\\`
-  - 日志默认30天有效期
-  - 最大容量100MB
-  - 同一天操作记录在当天的一份文件中
-  - 日志同时持久的在数据库中存储
-- 作物管理功能完成
-- 班级设置功能完成
-- 其他模块还需要修改
 
 ---
 
-### FileUtil类的使用
+### hzau-sa-expertSystem
 
-- 目前定义了几种方法：
-  - `uploadFile`: 上传单个文件 可以在swagger测试
-    - 参数`FileEnum fileEnum`：要上传文件到什么目录 上级目录
-    - 参数`String fileMsg`：对上传文件的说明  下一级目录
-    - 参数`MultipartFile multipartFile`：要上传的文件
-    - 返回值`String`：已经上传文件的绝对路径
-  - - `uploadFiles`:上传多个文件  swagger测试不了 postman可以正常测试
-    - 参数`FileEnum fileEnum`：要上传文件到什么目录 上级目录
-    - 参数`String fileMsg`：对上传文件的说明  下一级目录
-    - 参数`MultipartFile[] multipartFiles`：要上传的文件列表
-    - 返回值`List<String>`：已经上传文件的绝对路径的列表
-  - `deleteFile`：删除文件
-    - 参数`String filePath`：要删除文件的路径
-    - 返回值`boolean`：是否删除
-  - `changeFile`：修改文件
-    - 参数`String filePath`：需要修改文件的路径
-    - 参数`MultipartFile multipartFile`：新的文件
-    - 返回值`String`：修改过后文件的绝对路径
-  - `getFileUrl`：获取文件的网络映射路由
-    - 参数`String filePath`：文件路径
-    - 返回值`String`：返回给前端的文件访问路径
-  
-- 注意：
-  - 传文件要使用formData的格式上传
-  - 返回给前端的是文件的访问路由 而不是文件路径
-  - 要提前做好文件的网络路径映射工作
-  - shiro给文件访问是否需要开权限
-  - 拦截器是否会起作用等等
+- 专家系统模块
+
+---
+
+### hzau-sa-sensorData
+
+- 物联网模块
+
+---
+
+### hzau-sa-stater 
+
+- 项目启动模块
+
+---
+
+### hzau-sa-trainingRepotr
+
+- 实训报告模块
+
+---
+
 
 
 
