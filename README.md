@@ -1,4 +1,18 @@
-# hzau_smart
+# hzau-Smart-Agriculture
+
+---
+
+### 华农智慧农业项目使用说明
+
+- 启动模块`hzau-sa-starter`
+  - 启动SpringBoot项目
+- 配置文件在`hzau-sa-msg`模块，修改主配置文件
+  - `application.yml`主配置文件
+  - `application-test.yml`测试配置文件
+  - `application-dev.yml`开发配置文件
+- 后台接口访问地址：[hzau-Smart-Agriculture接口文档](http://sourceshare.kaistudy.top:8080/swagger-ui.html)
+  - 
+
 
 ---
 
