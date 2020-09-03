@@ -12,4 +12,8 @@
             </if>
         </where>
     </select>
+    <select id="queryWikiCropType" resultType="hzau.sa.backstage.entity.WikiCropTypeDTO">
+        SELECT wikiCropTypeId,wikiCropTypeName,createTime
+        FROM wikiCropType
+    </select>
 </mapper>

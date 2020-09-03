@@ -42,4 +42,10 @@ public interface WikiCropTypeService  extends IService<WikiCropTypeVO> {
      */
     public boolean updateWikiCropType(WikiCropTypeDTO wikiCropTypeDTO);
 
+    /**
+     * 查询所有已存在的百科植物分类
+     * @return
+     */
+    public List<WikiCropTypeDTO> queryWikiCropType();
+
 }

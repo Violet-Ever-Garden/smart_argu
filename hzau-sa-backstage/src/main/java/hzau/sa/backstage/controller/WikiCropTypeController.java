@@ -50,6 +50,13 @@ public class WikiCropTypeController extends BaseController {
         return ResultUtil.success(wikiCropTypeService.queryAllWikiCropType(page,keyword, Integer.valueOf(wikiCategoryId)));
     }
 
+    @ApiOperation("存在百科植物类型查询")
+    @GetMapping("/queryWikiCropTypes")
+    public Result<Object> queryWikiCropTypes(){
+
+        return ResultUtil.success(wikiCropTypeService.queryWikiCropType());
+    }
+
     @SysLog(prefix = "新增百科植物类型",value = LogType.ALL)
     @ApiOperation("新增百科植物类型")
     @ApiImplicitParams({

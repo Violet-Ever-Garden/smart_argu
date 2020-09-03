@@ -29,4 +29,10 @@ public interface WikiCropTypeDao extends BaseMapper<WikiCropTypeVO> {
                                                @Param("keyword") String keyword,
                                                @Param("wikiCategoryId") Integer wikiCategoryId);
 
+    /**
+     * 查询所有存在的植物百科分类
+     * @return
+     */
+    List<WikiCropTypeDTO> queryWikiCropType();
+
 }

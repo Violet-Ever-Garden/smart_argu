@@ -63,4 +63,9 @@ public class WikiCropTypeServiceImpl extends ServiceImpl<WikiCropTypeDao, WikiCr
         }
 
     }
+
+    @Override
+    public List<WikiCropTypeDTO> queryWikiCropType() {
+        return wikiCropTypeDao.queryWikiCropType();
+    }
 }
