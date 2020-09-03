@@ -44,4 +44,11 @@ public interface VideoMonitorDao extends BaseMapper<VideoMonitorVO> {
      */
     Integer queryRegionIdByName(String regionName);
 
+    /**
+     * 根据设备名称查询设备Id
+     * @param deviceTypeName
+     * @return
+     */
+    Integer queryDeviceTypeIdByName(String deviceTypeName);
+
 }

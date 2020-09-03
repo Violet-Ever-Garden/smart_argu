@@ -1,6 +1,7 @@
 package hzau.sa.backstage.controller;
 
 
+import cn.hutool.core.io.resource.ClassPathResource;
 import hzau.sa.backstage.entity.WeatherStationModel;
 import hzau.sa.backstage.service.impl.WeatherStationServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
@@ -9,6 +10,7 @@ import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.enums.LogType;
 import hzau.sa.msg.util.ResultUtil;
 import io.swagger.annotations.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.backstage.entity.WeatherStationVO;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,10 +31,13 @@ import java.util.Arrays;
  * @author haokai
  * @date 2020-08-26
  */
+@Slf4j
 @RestController
 @RequestMapping("/weatherStation")
 @Api(value = "-API", tags = { "气象站接口" })
 public class WeatherStationController extends BaseController {
+
+    private static final int BUFFER_SIZE = 2 * 1024;
 
     @Autowired
     private WeatherStationServiceImpl weatherStationService;
@@ -109,5 +116,26 @@ public class WeatherStationController extends BaseController {
     public Result uploadFile(@ApiParam MultipartFile file) throws IOException {
         weatherStationService.insertByFile(file);
         return ResultUtil.success();
+    }
+
+    @ApiOperation("导出气象站模板")
+    @GetMapping("/exportTemplateExcel")
+    public void exportTemplateExcel(HttpServletResponse httpServletResponse){
+        byte[] bytes = new byte[BUFFER_SIZE];
+        try{
+
+            httpServletResponse.setContentType("application/octet-stream");
+            httpServletResponse.setHeader("Content-Disposition", "attachment; filename=" + "WeatherStationTemplateExcel" + ".xls");
+
+            FileInputStream fileInputStream = new FileInputStream(new ClassPathResource("templates/气象站类导入模板.xls").getFile());
+            int len;
+            while((len = fileInputStream.read(bytes)) != -1){
+                httpServletResponse.getOutputStream().write(bytes,0,len);
+            }
+            fileInputStream.close();
+            httpServletResponse.getOutputStream().close();
+        }catch (Exception e){
+            log.error(e.toString());
+        }
     }
 }

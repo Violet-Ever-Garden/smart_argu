@@ -1,5 +1,6 @@
 package hzau.sa.backstage.controller;
 
+import cn.hutool.core.io.resource.ClassPathResource;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.backstage.entity.VideoMonitorDTO;
 import hzau.sa.backstage.entity.VideoMonitorModel;
@@ -81,7 +82,7 @@ public class VideoMonitorController extends BaseController {
 
     @SysLog(prefix = "修改视频监控",value = LogType.ALL)
     @ApiOperation("修改视频监控")
-    @ApiImplicitParam(name = "videoMonitorDTO",value = "新增视频监控实体（需要给出主键）",paramType = "body",dataType = "VideoMonitorDTO")
+    @ApiImplicitParam(name = "videoMonitorDTO",value = "修改视频监控实体（需要给出主键）",paramType = "body",dataType = "VideoMonitorDTO")
     @PutMapping("/update")
     @Transactional(rollbackFor = Exception.class)
     public Result<Object> updateVideoMonitor(@Valid @RequestBody VideoMonitorDTO videoMonitorDTO, BindingResult result){
@@ -152,7 +153,7 @@ public class VideoMonitorController extends BaseController {
 
             String filePath = videoMonitorService.exportTemplateExcel();
 
-            FileInputStream fileInputStream = new FileInputStream(new File(filePath));
+            FileInputStream fileInputStream = new FileInputStream(new ClassPathResource("templates/视频监控类导入模板.xls").getFile());
             int len;
             while((len = fileInputStream.read(bytes)) != -1){
                 httpServletResponse.getOutputStream().write(bytes,0,len);

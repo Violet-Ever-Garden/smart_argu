@@ -37,6 +37,7 @@ public class VideoMonitorListener extends AnalysisEventListener<VideoMonitorTemp
         videoMonitorVO.setDeviceNumber(data.getDeviceNumber());
         videoMonitorVO.setBaseId(videoMonitorDao.queryBaseIdByName(data.getBaseName()));
         videoMonitorVO.setRegionId(videoMonitorDao.queryRegionIdByName(data.getRegionName()));
+        videoMonitorVO.setDeviceTypeId(videoMonitorDao.queryDeviceTypeIdByName(data.getDeviceTypeName()));
         videoMonitorVO.setHomeShow("显示");
         videoMonitorVO.setIsYingshiyun(1);
         videoMonitorVOList.add(videoMonitorVO);
