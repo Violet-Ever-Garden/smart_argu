@@ -49,6 +49,7 @@ public class VideoMonitorServiceImpl extends ServiceImpl<VideoMonitorDao, VideoM
         VideoMonitorVO videoMonitorVO = new VideoMonitorVO();
         videoMonitorVO.setBaseId(videoMonitorDao.queryBaseIdByName(videoMonitorDTO.getBaseName()));
         videoMonitorVO.setRegionId(videoMonitorDao.queryRegionIdByName(videoMonitorDTO.getRegionName()));
+        videoMonitorVO.setDeviceTypeId(videoMonitorDao.queryDeviceTypeIdByName(videoMonitorDTO.getDeviceTypeName()));
         videoMonitorVO.setVideoMonitorDeviceName(videoMonitorDTO.getVideoMonitorDeviceName());
         videoMonitorVO.setDeviceNumber(videoMonitorDTO.getDeviceNumber());
         videoMonitorVO.setDeviceIp(videoMonitorDTO.getDeviceIp());
@@ -78,6 +79,7 @@ public class VideoMonitorServiceImpl extends ServiceImpl<VideoMonitorDao, VideoM
         videoMonitorVO.setVideoMonitorId(videoMonitorDTO.getVideoMonitorId());
         videoMonitorVO.setBaseId(videoMonitorDao.queryBaseIdByName(videoMonitorDTO.getBaseName()));
         videoMonitorVO.setRegionId(videoMonitorDao.queryRegionIdByName(videoMonitorDTO.getRegionName()));
+        videoMonitorVO.setDeviceTypeId(videoMonitorDao.queryDeviceTypeIdByName(videoMonitorDTO.getDeviceTypeName()));
         videoMonitorVO.setVideoMonitorDeviceName(videoMonitorDTO.getVideoMonitorDeviceName());
         videoMonitorVO.setDeviceNumber(videoMonitorDTO.getDeviceNumber());
         videoMonitorVO.setDeviceIp(videoMonitorDTO.getDeviceIp());

@@ -1,5 +1,6 @@
 package hzau.sa.backstage.service.impl;
 
+import cn.hutool.core.io.resource.ClassPathResource;
 import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -19,16 +20,14 @@ import hzau.sa.msg.enums.FileEnum;
 import hzau.sa.msg.util.FileUtil;
 import hzau.sa.msg.util.ResultUtil;
 import hzau.sa.msg.util.ShiroKit;
+import org.apache.poi.ss.formula.functions.LinearRegressionFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -58,7 +57,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     @Autowired
     private FileDao fileDao;
 
-    private static final String TEMPLATE_EXCEL_PATH="D:/root/hzau/file/excelTemplate/studentTemplate.xlsx";
+
     /**
      * 添加学生
      * 这里也需要修改，在file表里面增加一个默认图片的record
@@ -243,16 +242,24 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
     @Override
     public Result deleteStudent(String studentId){
-        QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(StudentVO::getStudentId,studentId);
+        //删除学生
+        QueryWrapper<StudentVO> studentVOQueryWrapper = new QueryWrapper<>();
+        studentVOQueryWrapper.lambda().eq(StudentVO::getStudentId,studentId);
 
-        StudentVO studentVO = studentDao.selectOne(queryWrapper);
-        if (studentVO==null){
-            return ResultUtil.paramError("不存在该学生id");
+        if (studentDao.delete(studentVOQueryWrapper)==0){
+            return ResultUtil.error("学生删除失败");
         }
 
-        if (studentDao.delete(queryWrapper)==0){
-            return ResultUtil.databaseError();
+        //删除文件
+        QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+        fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.AVATAR))
+                .eq(FileVO::getConnectId,studentId);
+        FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+        //删除文件本身
+        FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+        //删除记录
+        if (fileDao.delete(fileVOQueryWrapper)==0){
+            return ResultUtil.error("头像删除失败");
         }
         return ResultUtil.success();
     }
@@ -263,11 +270,27 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
      */
     @Override
     public Result deleteStudents(String[] studentIds){
+
+        //删除学生
         QueryWrapper<StudentVO> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().in(StudentVO::getStudentId,Arrays.asList(studentIds));
 
         if (studentDao.delete(queryWrapper)==0){
             return ResultUtil.error("批量删除失败");
+        }
+
+        //删除文件
+        for (String id:studentIds){
+            QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+            fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.AVATAR))
+                    .eq(FileVO::getConnectId,id);
+            FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+            //删除文件本身
+            FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+            //删除文件记录
+            if (fileDao.delete(fileVOQueryWrapper)==0){
+                return ResultUtil.error();
+            }
         }
         return ResultUtil.success();
     }
@@ -301,36 +324,29 @@ public class StudentServiceImpl extends ServiceImpl<StudentDao, StudentVO> imple
     public Result downloadTemplate(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
 
         //得到对应的文件对象
-        String realPath= StudentServiceImpl.TEMPLATE_EXCEL_PATH;
-        File file = new File(realPath);
+//        File file = new ClassPathResource("templates/studentTemplate.xlsx").getFile();
+        InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("templates/studentTemplate.xlsx");
 
-        if (file.exists()) {
-            // 文件存在，完成下载
-            try{
-                //得到文件输入流
-                FileInputStream fis = new FileInputStream(file);
+        try{
+            //永远是下载 设置以附件的形式进行打开下载
+            httpServletResponse.setHeader("content-disposition", "attachment;filename="
+                    + "studentTemplate.xlsx");
 
-                //永远是下载 设置以附件的形式进行打开下载
-                httpServletResponse.setHeader("content-disposition", "attachment;filename="
-                        + "template.xlsx");
-
-                //得到输出流
-                OutputStream os = httpServletResponse.getOutputStream();
-                int len = -1;
-                byte[] b = new byte[1024 * 100];
-                while ((len = fis.read(b)) != -1) {
-                    os.write(b, 0, len);
-                    os.flush();
-                }
-                os.close();
-                fis.close();
-                return ResultUtil.success();
-            }catch (IOException e) {
-                e.printStackTrace();
-                return ResultUtil.error("文件下载失败");
+            //得到输出流
+            OutputStream os = httpServletResponse.getOutputStream();
+            int len = -1;
+            byte[] b = new byte[1024 * 100];
+            while ((len = resourceAsStream.read(b)) != -1) {
+                os.write(b, 0, len);
+                os.flush();
             }
+            os.close();
+            resourceAsStream.close();
+            return ResultUtil.success();
+        }catch (IOException e) {
+            e.printStackTrace();
+            return ResultUtil.error("文件下载失败");
         }
-        return ResultUtil.error("请求文件不存在");
     }
 
     /**

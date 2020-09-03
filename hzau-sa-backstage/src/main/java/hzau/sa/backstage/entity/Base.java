@@ -21,11 +21,19 @@ import lombok.NoArgsConstructor;
 public class Base extends BaseVO{
 
 	private static final long serialVersionUID = 1L;
-	@TableId(type=IdType.UUID)
+	@TableId(type=IdType.AUTO)
 	private Integer baseId;
 	private String baseName;
 	private String address;
 	private String contactPerson;
 	private String phoneNumber;
 	private Integer schoolId;
+
+	public Base(BaseModel baseModel){
+		this.baseId=baseModel.getBaseId();
+		this.baseName=baseModel.getBaseName();
+		this.address=baseModel.getAddress();
+		this.contactPerson=baseModel.getContactPerson();
+		this.phoneNumber=baseModel.getPhoneNumber();
+	}
 }

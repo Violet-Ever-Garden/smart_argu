@@ -38,4 +38,8 @@
         SELECT regionId FROM region
         WHERE regionName = #{regionName}
     </select>
+    <select id="queryDeviceTypeIdByName" resultType="java.lang.Integer">
+        SELECT deviceTypeId FROM deviceType
+        WHERE deviceTypeName = #{deviceTypeName}
+    </select>
 </mapper>

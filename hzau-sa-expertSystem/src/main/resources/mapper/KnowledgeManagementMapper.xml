@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hzau.sa.expertSystem.dao.KnowledgeManagementDao">
+    <select id="page" resultType="hzau.sa.expertSystem.entity.KnowledgeManagementModel">
+        select knowledgeManageId,
+        knowledgeManageName,
+        knowledgeCategoryName,
+        knowledgeIntroduction,
+        knowledgeManagement.createUser,
+        knowledgeManagement.createTime
+        from knowledgeManagement
+        left join knowledgeCategory on knowledgeCategory.knowledgeCategoryId=knowledgeManagement.knowledgeCategoryId
+        <where>
+            <if test="name!=null and name!=''">
+                knowledgeManageName like #{name}
+            </if>
+            <if test="category!=null and category!=''">
+                and knowledgeCategory.knowledgeCategoryName=#{category}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryKnowledgeById" resultType="hzau.sa.expertSystem.entity.KnowledgeManagementView">
+        select
+        knowledgeManageId,
+        url,
+        knowledgeManageName,
+        knowledgeCategoryName,
+        knowledgeIntroduction,
+        knowledgeContent,
+        knowledgeManagement.createTime,
+        knowledgeManagement.createUser
+        from knowledgeManagement
+        left join file on file.connectId=knowledgeManagement.knowledgeManageId
+        left join knowledgeCategory on knowledgeCategory.knowledgeCategoryId=knowledgeManagement.knowledgeCategoryId
+        where knowledgeManageId=#{knowledgeManageId}
+        and fileType=#{fileType}
+    </select>
+
+    <select id="queryCategoryIdByName" resultType="java.lang.Integer">
+        select knowledgeCategoryId
+        from knowledgeCategory
+        where knowledgeCategoryName=#{name}
+    </select>
+</mapper>

@@ -1,6 +1,7 @@
 package hzau.sa.backstage.controller;
 
 
+import cn.hutool.core.io.resource.ClassPathResource;
 import hzau.sa.backstage.entity.SensorModel;
 import hzau.sa.backstage.service.impl.SensorServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
@@ -9,6 +10,7 @@ import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.enums.LogType;
 import hzau.sa.msg.util.ResultUtil;
 import io.swagger.annotations.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +20,10 @@ import hzau.sa.backstage.entity.SensorVO;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -28,10 +33,13 @@ import java.util.Arrays;
  * @author haokai
  * @date 2020-08-25
  */
+@Slf4j
 @RestController
 @RequestMapping("/sensor")
 @Api(value = "-API", tags = { "传感器管理接口" })
 public class SensorController extends BaseController {
+
+    private static final int BUFFER_SIZE = 2 * 1024;
 
     @Autowired
     private SensorServiceImpl sensorService;
@@ -117,5 +125,26 @@ public class SensorController extends BaseController {
     public Result uploadFile(@ApiParam MultipartFile file) throws IOException {
         sensorService.insertByFile(file);
         return ResultUtil.success();
+    }
+
+    @ApiOperation("导出传感器模板")
+    @GetMapping("/exportTemplateExcel")
+    public void exportTemplateExcel(HttpServletResponse httpServletResponse){
+        byte[] bytes = new byte[BUFFER_SIZE];
+        try{
+
+            httpServletResponse.setContentType("application/octet-stream");
+            httpServletResponse.setHeader("Content-Disposition", "attachment; filename=" + "SensorTemplateExcel" + ".xls");
+
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("templates/传感器类导入模板.xls");
+            int len;
+            while((len = inputStream.read(bytes)) != -1){
+                httpServletResponse.getOutputStream().write(bytes,0,len);
+            }
+            inputStream.close();
+            httpServletResponse.getOutputStream().close();
+        }catch (Exception e){
+            log.error(e.toString());
+        }
     }
 }

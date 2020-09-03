@@ -90,8 +90,8 @@ public interface TrainingReportDao extends BaseMapper<TrainingReportVO> {
     public IPage<TrainingReportPageWithoutFile> page(Page<TrainingReportPageWithoutFile> page,
                                                      @Param("cropId") Integer corpId,
                                                      @Param("studentId") String studentId,
-                                                     @Param("startTime") LocalDateTime startTime,
-                                                     @Param("endTime") LocalDateTime endTime,
+                                                     @Param("startTime") String startTime,
+                                                     @Param("endTime") String endTime,
                                                      @Param("reviewStatus") String reviewStatus,
                                                      @Param("trainingReportName") String trainingReportName);
 

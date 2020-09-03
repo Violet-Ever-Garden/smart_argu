@@ -1,6 +1,7 @@
 package hzau.sa.sensorData.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import hzau.sa.sensorData.common.SensorType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -29,7 +30,7 @@ public class SensorDataRecord {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
         this.dataTime = LocalDateTime.parse(map.get("data_time"),formatter) ;
         this.gatewayLogo = map.get("gateway_logo");
-        this.sensorName = map.get("sensor_name");
+        this.sensorName = SensorType.sensorType.get(map.get("channel_name"));
         this.channelName = map.get("channel_name");
         this.value = map.get("value");
     }

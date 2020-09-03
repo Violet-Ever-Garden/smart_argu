@@ -59,14 +59,10 @@ public class SensorService {
                 for(int j = 0;j < nodeList.getLength();j++){
                     Node node1 = nodeList.item(j);
                     NodeList nodeList1 = node1.getChildNodes();
-                    for(int k = 0;k < nodeList1.getLength();k++){
-                        System.out.println(nodeList1.item(k).getNodeName() + ":" + nodeList1.item(k).getTextContent());
-                    }
                     map.put(nodeList1.item(0).getTextContent(),nodeList1.item(1).getTextContent());
                 }
                 sensorDataRecords.add(new SensorDataRecord(map));
             }
-            sensorDataRecords.forEach(System.out::println);
 
         } catch (ParserConfigurationException e) {
             // TODO Auto-generated catch block
