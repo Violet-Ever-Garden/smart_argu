@@ -4,6 +4,6 @@ file:
   upload:
     path: "D:\\file\\"
 server:
-  port: 8080
+  port: 8085
 #ip: http://localhost:8085
 ip: http://hzau.vipgz1.idcfengye.com

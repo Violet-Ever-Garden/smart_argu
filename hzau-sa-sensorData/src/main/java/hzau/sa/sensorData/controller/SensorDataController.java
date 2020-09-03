@@ -23,4 +23,5 @@ public class SensorDataController {
     public Result getAll(){
         return  ResultUtil.success(sensorService.getCurAll());
     }
+
 }
