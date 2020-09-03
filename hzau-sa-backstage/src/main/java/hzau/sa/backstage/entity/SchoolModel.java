@@ -1,5 +1,6 @@
 package hzau.sa.backstage.entity;
 
+import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -21,6 +22,8 @@ import lombok.NoArgsConstructor;
 public class SchoolModel{
 
     private static final long serialVersionUID = 1L;
+    @ExcelIgnore
+    private Integer schoolId;
     @ExcelProperty("学校名称")
     private String schoolName;
     @ExcelProperty("学校地址")

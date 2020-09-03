@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hzau.sa.backstage.dao.AsClasscropDao">
+    <select id="queryNameById" parameterType="int" resultType="String">
+        select cropName from as_classcrop
+        left join crop on crop.cropId = as_classcrop.cropId
+        where classId = #{classId}
+    </select>
+
+
+    <select id="queryCropIdByName" parameterType="String" resultType="int">
+        select cropId from crop where cropName = #{cropName}
+    </select>
+
+    <select id="queryCropIdsByClassId" resultType="int" parameterType="int">
+        select cropId from as_classcrop where classId = #{classId}
+    </select>
+
+    <select id="queryFieldIdsByNames" resultType="int">
+        select cropId from crop
+        where cropName in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

@@ -15,6 +15,7 @@ import hzau.sa.msg.enums.FileEnum;
 import hzau.sa.msg.util.FileUtil;
 import hzau.sa.msg.util.ResultUtil;
 import hzau.sa.msg.util.ShiroKit;
+import org.apache.poi.ss.formula.functions.LinearRegressionFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -91,17 +92,23 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
      */
     @Override
     public Result deleteTeacher(String teacherId) {
-        QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(TeacherVO::getTeacherId,teacherId);
-
-        TeacherVO teacher = teacherDao.selectOne(queryWrapper);
-
-        if (teacher==null){
-            return ResultUtil.paramError("想要删除的老师的id不存在");
+        //删除老师
+        QueryWrapper<TeacherVO> teacherVOQueryWrapper = new QueryWrapper<>();
+        teacherVOQueryWrapper.lambda().eq(TeacherVO::getTeacherId,teacherId);
+        if (teacherDao.delete(teacherVOQueryWrapper)==0){
+            return ResultUtil.error("老师删除失败");
         }
 
-        if (teacherDao.delete(queryWrapper)==0){
-            return ResultUtil.databaseError();
+        //删除头像
+        QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+        fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.AVATAR))
+                .eq(FileVO::getConnectId,teacherId);
+        FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+        //删除头像本身
+        FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+        //删除文件记录
+        if (fileDao.delete(fileVOQueryWrapper)==0){
+            return ResultUtil.error("文件删除失败");
         }
         return ResultUtil.success();
     }
@@ -111,13 +118,29 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherVO> imple
      */
     @Override
     public Result deleteTeachers(String[] teacherIds) {
+        //删除老师
         QueryWrapper<TeacherVO> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().in(TeacherVO::getTeacherId,Arrays.asList(teacherIds));
 
-        if (teacherDao.delete(queryWrapper)!=0){
-            return ResultUtil.success();
+        if (teacherDao.delete(queryWrapper)==0){
+            return ResultUtil.error("老师删除失败");
         }
-        return ResultUtil.error("批量删除失败");
+
+
+        //删除文件
+        for (String id:teacherIds){
+            QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+            fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.AVATAR))
+                    .eq(FileVO::getConnectId,id);
+            FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+            //删除文件本身
+            FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+            //删除文件记录
+            if (fileDao.delete(fileVOQueryWrapper)==0){
+                return ResultUtil.error("头像删除失败");
+            }
+        }
+        return ResultUtil.success();
     }
 
     /**

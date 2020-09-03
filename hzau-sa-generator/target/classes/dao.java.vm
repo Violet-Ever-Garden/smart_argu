@@ -1,0 +1,15 @@
+package ${package.Mapper};
+
+import org.apache.ibatis.annotations.Mapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import ${package.Entity}.${entity}VO;
+
+/**
+ * (修改为自己的说明) Mapper 接口
+ * @author ${author}
+ * @date ${date}
+ */
+@Mapper
+public interface ${table.mapperName} extends BaseMapper<${entity}VO> {
+
+}

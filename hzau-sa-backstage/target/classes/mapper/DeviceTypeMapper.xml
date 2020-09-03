@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hzau.sa.backstage.dao.DeviceTypeDao">
+    <select id="selectDeviceTypeModel" resultType="hzau.sa.backstage.entity.DeviceTypeIdAndName">
+        select deviceTypeId,deviceTypeName
+        from deviceType
+        where moduleType = #{moduleType}
+    </select>
+
+    <select id="selectEarlyWarningByDeviceTypeId" resultType="hzau.sa.backstage.entity.EarlyWarningModel">
+        select as_devicetypeearlywarning.earlyWarningId,warningName
+        from as_devicetypeearlywarning
+        left join earlyWarning on earlyWarning.earlyWarningId = as_devicetypeearlywarning.earlyWarningId
+        where deviceTypeId = #{deviceTypeId}
+    </select>
+</mapper>

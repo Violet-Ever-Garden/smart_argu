@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hzau.sa.trainingReport.dao.TrainingReportDao">
+
+    <select id="queryExportReportByCropClassTeacherIds"
+            resultType="hzau.sa.trainingReport.entity.ExportReport">
+        SELECT DISTINCT trainingReportName,studentName,gradeName,className,score,batch,trainingReport.lastModifiedTime
+        FROM trainingReport
+        LEFT JOIN student ON student.studentId = trainingReport.studentId
+        LEFT JOIN grade ON grade.gradeId = student.gradeId
+        LEFT JOIN class ON class.classId = student.classId
+        WHERE trainingReport.cropId = #{cropId}
+        AND trainingReport.teacherId = #{teacherId}
+        AND trainingReport.reviewStatus = '已评阅'
+        AND trainingReport.studentId = ANY (
+            SELECT DISTINCT studentId FROM student
+            WHERE classId = #{classId}
+        )
+    </select>
+    <select id="queryCropNameById" resultType="java.lang.String">
+        SELECT cropName FROM crop
+        WHERE cropId = #{cropId}
+    </select>
+    <select id="queryClassNameById" resultType="java.lang.String">
+        SELECT className FROM class
+        WHERE classId = #{classId}
+    </select>
+    <select id="queryGradeNameByClassId" resultType="java.lang.String">
+        SELECT gradeName FROM class
+        LEFT JOIN grade ON grade.gradeId = class.gradeId
+        WHERE classId = #{classId}
+    </select>
+    <select id="queryClassIdByStudentId" resultType="java.lang.Integer">
+        select classId
+        from student
+        where studentId=#{studentId}
+    </select>
+    <select id="querTeacherIdByClassId" resultType="java.lang.String">
+        select teacherId
+        from as_teacherclass
+        when classId=#{classId}
+    </select>
+    <select id="queryTrainingReportIdBySomething" resultType="java.lang.Integer">
+        select trainingReportId
+        from trainingReport
+        where cropId=#{cropId} and studentId=#{studentId} and batch=#{batch}
+    </select>
+    <select id="page" resultType="hzau.sa.trainingReport.entity.TrainingReportPageWithoutFile">
+        select cropName,trainingReport.cropId,trainingReportId,trainingReportName,trainingReport.studentId,studentName,className,gradeName,score,reviewStatus,batch,trainingReport.createTime
+        from trainingReport
+        left join crop on crop.cropId=trainingReport.cropId
+        left join student on student.studentId=trainingReport.studentId
+        left join class on class.classId=student.classId
+        left join grade on grade.gradeId=student.gradeId
+        <where>
+            trainingReport.cropId = #{cropId}
+            and trainingReport.studentId = #{studentId}
+            <if test="startTime!=null">
+                <![CDATA[and DATE_FORMAT(trainingReport.createTime,'%Y-%m-%d %T')  >= DATE_FORMAT(#{startTime}, '%Y-%m-%d %T')]]>
+            </if>
+            <if test="endTime!=null">
+                <![CDATA[and DATE_FORMAT(trainingReport.createTime,'%Y-%m-%d %T')  <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %T')]]>
+            </if>
+            <if test="reviewStatus!=null">
+                and reviewStatus=#{reviewStatus}
+            </if>
+            <if test="trainingReportName!=null">
+                and trainingReportName like #{trainingReportName}
+            </if>
+        </where>
+        order by trainingReport.createTime desc
+    </select>
+
+    <select id="studentView" resultType="hzau.sa.trainingReport.entity.TrainingReportStudentView">
+        select trainingReportName,batch,url,cropName
+        from trainingReport
+        left join file on file.connectId=trainingReport.trainingReportId
+        left join crop on crop.cropId=trainingReport.cropId
+        where trainingReportId=#{trainingReportId} and fileType=#{fileType}
+    </select>
+
+    <select id="teacherView" resultType="hzau.sa.trainingReport.entity.TrainingReportTeacherView">
+        select studentName,className,gradeName,trainingReportName,batch,url,comments,score,cropName
+        from trainingReport
+        left join student on student.studentId=trainingReport.studentId
+        left join class on class.classId=student.classId
+        left join grade on grade.gradeId=student.gradeId
+        left join file on file.connectId=trainingReportId
+        left join crop on crop.cropId=trainingReport.cropId
+        where trainingReportId=#{trainingReportId} and fileType=#{fileType}
+    </select>
+
+    <select id="queryTeacherIdByStudentId" resultType="java.lang.String">
+        select as_teacherclass.teacherId
+        from student
+        left join as_teacherclass on as_teacherclass.classId=student.classId
+        where student.studentId=#{studentId}
+    </select>
+</mapper>

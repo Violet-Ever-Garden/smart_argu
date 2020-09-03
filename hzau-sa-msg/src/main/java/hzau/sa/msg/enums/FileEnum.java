@@ -23,5 +23,8 @@ public enum FileEnum {
 
     TRAININGREPORT,
 
-    DISEASEINSECT;
+    DISEASEINSECT,
+
+    KNOWLEDGE;
+
 }

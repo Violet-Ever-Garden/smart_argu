@@ -16,6 +16,7 @@ import hzau.sa.trainingReport.dao.TrainingReportDao;
 import hzau.sa.trainingReport.entity.TrainingReportVO;
 import hzau.sa.trainingReport.service.TrainingReportService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.apache.poi.ss.formula.functions.LinearRegressionFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -79,8 +80,22 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
      */
     @Override
     public Result deleteTrainingReport(Integer trainingReportId){
+        //删除实训报告记录
         if (trainingReportDao.deleteById(trainingReportId)==0){
-            return ResultUtil.databaseError("删除失败");
+            return ResultUtil.databaseError("实训删除失败");
+        }
+
+
+        //删除文件
+        QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+        fileVOQueryWrapper.lambda().eq(FileVO::getFileType,String.valueOf(FileEnum.TRAININGREPORT))
+                .eq(FileVO::getConnectId,trainingReportId);
+        FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+        //删除文件本身
+        FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+        //删除文件记录
+        if (fileDao.delete(fileVOQueryWrapper)==0){
+            return ResultUtil.error("文件删除失败");
         }
         return ResultUtil.success();
     }
@@ -92,11 +107,27 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
      */
     @Override
     public Result deleteTrainingReports(Integer[] trainingReportIds){
+        //删除实训报告
         QueryWrapper<TrainingReportVO> trainingReportVOQueryWrapper = new QueryWrapper<>();
         trainingReportVOQueryWrapper.lambda().in(TrainingReportVO::getTrainingReportId, Arrays.asList(trainingReportIds));
 
         if (trainingReportDao.delete(trainingReportVOQueryWrapper)==0){
             return ResultUtil.error("批量删除失败");
+        }
+
+        //删除文件记录
+        for (Integer id:trainingReportIds){
+            QueryWrapper<FileVO> fileVOQueryWrapper = new QueryWrapper<>();
+            fileVOQueryWrapper.lambda()
+                    .eq(FileVO::getFileType,String.valueOf(FileEnum.TRAININGREPORT))
+                    .eq(FileVO::getConnectId,id);
+            FileVO fileVO = fileDao.selectOne(fileVOQueryWrapper);
+            //删除文件本身
+            FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+            //删除文件记录
+            if (fileDao.delete(fileVOQueryWrapper)==0){
+                return ResultUtil.error("批量删除文件失败");
+            }
         }
         return ResultUtil.success();
     }
@@ -149,6 +180,7 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
             absolutePath = FileUtil.uploadFile(FileEnum.TRAININGREPORT, "trainingReport", file);
         } catch (IOException e) {
             e.printStackTrace();
+            log.warn("文件增加失败1");
             return ResultUtil.error("文件增加失败");
         }
         String fileUrl = FileUtil.getFileUrl(absolutePath);
@@ -159,6 +191,7 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
         fileVO.setFileType(String.valueOf(FileEnum.TRAININGREPORT));
 
         if (fileDao.insert(fileVO)==0){
+            log.warn("文件增加失败2");
             return ResultUtil.error("文件增加失败");
         }
         return ResultUtil.success();
@@ -266,8 +299,8 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
     public IPage<TrainingReportPageWithoutFile> page(Page<TrainingReportPageWithoutFile> page,
                                                      Integer corpId,
                                                      String studentId,
-                                                     LocalDateTime startTime,
-                                                     LocalDateTime endTime,
+                                                     String startTime,
+                                                     String endTime,
                                                      String reviewStatus,
                                                      String trainingReportName){
         IPage<TrainingReportPageWithoutFile> iPage = trainingReportDao.page(page, corpId, studentId, startTime, endTime, reviewStatus,"%"+trainingReportName+"%");

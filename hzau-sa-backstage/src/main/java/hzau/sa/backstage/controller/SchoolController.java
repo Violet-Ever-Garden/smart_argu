@@ -2,10 +2,13 @@ package hzau.sa.backstage.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import cn.hutool.core.convert.Convert;
 import hzau.sa.backstage.entity.FieldModel;
+import hzau.sa.backstage.entity.SchoolModel;
 import hzau.sa.backstage.service.impl.SchoolServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.controller.BaseController;
@@ -34,6 +37,7 @@ import hzau.sa.backstage.service.SchoolService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiImplicitParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -52,10 +56,10 @@ public class SchoolController extends BaseController {
 
     @SysLog(prefix ="增加学校" )
     @ApiOperation("增加学校")
-    @ApiImplicitParam(name = "schoolVO", value = "实体", paramType = "body", dataType = "SchoolVO")
+    @ApiImplicitParam(name = "schoolModel", value = "实体", paramType = "body", dataType = "SchoolModel")
     @PostMapping("/addSchool")
-    public Result addSchool(@RequestBody SchoolVO schoolVO){
-        return schoolService.addSchool(schoolVO);
+    public Result addSchool(@RequestBody SchoolModel schoolModel){
+        return schoolService.addSchool(schoolModel);
     }
 
     @SysLog(prefix ="删除学校" )
@@ -76,10 +80,10 @@ public class SchoolController extends BaseController {
 
     @SysLog(prefix ="修改学校" )
     @ApiOperation("修改学校")
-    @ApiImplicitParam(name = "schoolVO", value = "实体", paramType = "body", dataType = "SchoolVO")
+    @ApiImplicitParam(name = "schoolModel", value = "实体", paramType = "body", dataType = "SchoolModel")
     @PostMapping("/updateSchool")
-    public Result updateSchool(@RequestBody SchoolVO schoolVO){
-        return schoolService.updateSchool(schoolVO);
+    public Result updateSchool(@RequestBody SchoolModel schoolModel){
+        return schoolService.updateSchool(schoolModel);
     }
 
     @SysLog(prefix = "按名字分页模糊查询")
@@ -104,9 +108,14 @@ public class SchoolController extends BaseController {
     @SysLog(prefix = "学校模板下载")
     @ApiOperation(value = "学校模板下载",notes = "学校模板下载")
     @GetMapping("/templateDownload")
-    public Result templateDownload(){
-        return schoolService.templateDownload();
+    public Result templateDownload(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
+        return schoolService.templateDownload(httpServletRequest,httpServletResponse);
     }
 
-
+    @SysLog(prefix = "从模板增加学校")
+    @ApiOperation(value = "从模板增加学校",notes = "从模板增加学校")
+    @PostMapping("/addSchoolByTemplate")
+    public Result addSchoolByTemplate(@RequestParam(value = "file",required = true) MultipartFile multipartFile){
+        return schoolService.addSchoolByTemplate(multipartFile,schoolService);
+    }
 }
