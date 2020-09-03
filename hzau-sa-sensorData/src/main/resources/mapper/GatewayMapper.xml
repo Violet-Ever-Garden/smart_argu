@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hzau.sa.sensorData.dao.GatewayDao">
+
+    <select id="queryGateway" resultType="hzau.sa.sensorData.entity.GatewayDTO">
+        SELECT gatewayId,gatewayName,gatewayAddress
+        FROM gateway
+    </select>
+</mapper>
