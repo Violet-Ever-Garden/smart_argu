@@ -29,6 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -134,12 +135,12 @@ public class ControlInteractionController extends BaseController {
             httpServletResponse.setContentType("application/octet-stream");
             httpServletResponse.setHeader("Content-Disposition", "attachment; filename=" + "ControlInteractionTemplateExcel" + ".xls");
 
-            FileInputStream fileInputStream = new FileInputStream(new ClassPathResource("templates/控制交互类导入模板.xls").getFile());
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("templates/控制交互类导入模板.xls");
             int len;
-            while((len = fileInputStream.read(bytes)) != -1){
+            while((len = inputStream.read(bytes)) != -1){
                 httpServletResponse.getOutputStream().write(bytes,0,len);
             }
-            fileInputStream.close();
+            inputStream.close();
             httpServletResponse.getOutputStream().close();
         }catch (Exception e){
             log.error(e.toString());

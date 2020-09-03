@@ -1,6 +1,5 @@
 package hzau.sa.backstage.controller;
 
-import cn.hutool.core.io.resource.ClassPathResource;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import hzau.sa.backstage.entity.VideoMonitorDTO;
 import hzau.sa.backstage.entity.VideoMonitorModel;
@@ -24,7 +23,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Arrays;
 
 /**
@@ -153,12 +152,13 @@ public class VideoMonitorController extends BaseController {
 
             String filePath = videoMonitorService.exportTemplateExcel();
 
-            FileInputStream fileInputStream = new FileInputStream(new ClassPathResource("templates/视频监控类导入模板.xls").getFile());
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("templates/视频监控类导入模板.xls");
+
             int len;
-            while((len = fileInputStream.read(bytes)) != -1){
+            while((len = inputStream.read(bytes)) != -1){
                 httpServletResponse.getOutputStream().write(bytes,0,len);
             }
-            fileInputStream.close();
+            inputStream.close();
             httpServletResponse.getOutputStream().close();
             FileUtil.deleteFile(new File(new File(filePath).getParent()));
         }catch (Exception e){
