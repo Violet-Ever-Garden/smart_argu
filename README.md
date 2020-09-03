@@ -17,7 +17,7 @@
   - 工具集：hutool、lombook
   - 表格：easyexcel
   - 接口管理测试：swagger2 
-  - 数据库：mysql8.0
+  - 数据库：mysql8.0+mongodb
 
 #### 开始使用
 
