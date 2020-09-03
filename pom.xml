@@ -17,7 +17,6 @@
         <module>hzau-sa-backstage</module>
         <module>hzau-sa-stater</module>
         <module>hzau-sa-trainingReport</module>
-        <module>hzau-sa-fileTest</module>
         <module>hzau-sa-expertSystem</module>
         <module>hzau-sa-sensorData</module>
     </modules>

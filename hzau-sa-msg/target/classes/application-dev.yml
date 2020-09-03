@@ -1,8 +1,0 @@
-file:
-  map: "/file/**"
-  excel: "/root/hzau/excel"
-  upload:
-    path: "/root/hzau/file/"
-server:
-  port: 8080
-ip: http://sourceshare.kaistudy.top
