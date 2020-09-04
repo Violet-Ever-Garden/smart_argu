@@ -9,10 +9,10 @@
         where s.studentId=#{studentId}
         order by videoMonitor.createTime desc
     </select>
-    <select id="pageByTeacherId" resultType="hzau.sa.sensorData.entity.ControlInteractionModel">
+    <select id="pageByTeacherId" resultType="hzau.sa.sensorData.entity.VideoMonitorModel">
         select videoMonitor.videoMonitorId,videoMonitorDeviceName
         from videoMonitor as vM
-        left join as_classvideomonitor as aCVM on aCVM.videoMonitorId=videoMonitor.videoMonitorId
+        left join as_classvideomonitor as aCVM on aCVM.videoMonitorId=vM.videoMonitorId
         left join as_teacherclass as aTC on aTC.classId=aCVM.classId
         where aTC.teacherId=#{teacherId}
         order by vM.createTime desc
