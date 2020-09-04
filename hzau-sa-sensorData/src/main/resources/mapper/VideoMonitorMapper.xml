@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="hzau.sa.sensorData.dao.VideoMonitorDao">
+<mapper namespace="hzau.sa.sensorData.dao.VideoMonitorDaoSensorData">
     <select id="pageByStudntId" resultType="hzau.sa.sensorData.entity.VideoMonitorModel">
         select videoMonitor.videoMonitorId,videoMonitorDeviceName
         from videoMonitor

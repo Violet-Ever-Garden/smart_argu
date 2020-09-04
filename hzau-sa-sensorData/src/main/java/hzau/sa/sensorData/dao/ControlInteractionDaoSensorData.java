@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Repository
 @Mapper
-public interface ControlInteractionDao extends BaseMapper<ControlInteractionVO> {
+public interface ControlInteractionDaoSensorData extends BaseMapper<ControlInteractionVO> {
     public IPage<ControlInteractionModel> pageByClassId(Page<ControlInteractionModel> page,@Param("classId") Integer classId);
     public IPage<ControlInteractionModel> pageByTeacherId(Page<ControlInteractionModel> page,@Param("teacherId") String teacherId);
     public Integer getClassIdByStudentId(@Param("studentId") String studentId);

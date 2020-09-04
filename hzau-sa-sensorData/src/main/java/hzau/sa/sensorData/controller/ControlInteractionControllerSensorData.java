@@ -1,9 +1,5 @@
 package hzau.sa.sensorData.controller;
 
-import java.util.Arrays;
-import java.util.List;
-import javax.validation.Valid;
-
 import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
@@ -12,22 +8,14 @@ import hzau.sa.sensorData.entity.ControlInteractionModel;
 import io.swagger.annotations.ApiImplicitParams;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hzau.sa.sensorData.entity.ControlInteractionVO;
-import hzau.sa.sensorData.service.ControlInteractionService;
+import hzau.sa.sensorData.service.ControlInteractionServiceSensorData;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -43,10 +31,10 @@ import io.swagger.annotations.ApiImplicitParam;
 @RestController
 @RequestMapping("/controlInteraction")
 @Api(value = "-API", tags = { "智能灌溉相关接口" })
-public class ControlInteractionController extends BaseController {
+public class ControlInteractionControllerSensorData extends BaseController {
 
     @Autowired
-    private ControlInteractionService controlInteractionService;
+    private ControlInteractionServiceSensorData controlInteractionServiceSensorData;
 
     /**
      * 按学生id分页列表
@@ -61,7 +49,7 @@ public class ControlInteractionController extends BaseController {
     @GetMapping("/pageByStudentId")
     public Result pageByStudentId(String studentId){
         Page<ControlInteractionModel> page = getPage();
-        IPage<ControlInteractionModel> iPage = controlInteractionService.getAllControlInteractionByStudentId(page, studentId);
+        IPage<ControlInteractionModel> iPage = controlInteractionServiceSensorData.getAllControlInteractionByStudentId(page, studentId);
         return ResultUtil.success(iPage);
     }
     /**
@@ -77,7 +65,7 @@ public class ControlInteractionController extends BaseController {
     @GetMapping("/pageByTeacherId")
     public Result pageByTeacherId(String teacherId){
         Page<ControlInteractionModel> page = getPage();
-        IPage<ControlInteractionModel> iPage = controlInteractionService.getAllControlInteractionByTeacherId(page, teacherId);
+        IPage<ControlInteractionModel> iPage = controlInteractionServiceSensorData.getAllControlInteractionByTeacherId(page, teacherId);
         return ResultUtil.success(iPage);
     }
 
@@ -95,7 +83,7 @@ public class ControlInteractionController extends BaseController {
     })
     @PostMapping("/updateControlInteraction")
     public Result updateControlInteraction(String controlInteractionId,String remoteStatus){
-        return controlInteractionService.updateControlInteraction(Integer.valueOf(controlInteractionId),remoteStatus);
+        return controlInteractionServiceSensorData.updateControlInteraction(Integer.valueOf(controlInteractionId),remoteStatus);
     }
 
 }

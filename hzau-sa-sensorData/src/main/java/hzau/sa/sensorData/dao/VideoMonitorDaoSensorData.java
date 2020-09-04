@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @Mapper
-public interface VideoMonitorDao extends BaseMapper<VideoMonitorVO> {
+public interface VideoMonitorDaoSensorData extends BaseMapper<VideoMonitorVO> {
     public IPage<VideoMonitorModel> pageByStudntId(Page<VideoMonitorModel> page,@Param("studentId") String studentId);
     public IPage<VideoMonitorModel> pageByTeacherId(Page<VideoMonitorModel> page,@Param("teacherId") String teacherId);
 }
