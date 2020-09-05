@@ -11,4 +11,5 @@ public class KLHAConstant {
     public static String GET_ALL_METHOD = "CurAllData";
     public static String GATEWAY_DATA_METHOD = "GatewayData";
     public static String GATEWAY_LIST_METHOD = "GatewayList";
+    public static String GATEWAY_HISTORY_METHOD = "GatewayHistory";
 }
