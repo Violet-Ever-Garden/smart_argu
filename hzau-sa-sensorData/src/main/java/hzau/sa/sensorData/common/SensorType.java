@@ -19,5 +19,6 @@ public class SensorType {
         sensorType.put("48","风速");
         sensorType.put("49","风向");
         sensorType.put("50","雨量");
+        sensorType.put("68","土壤水分");
     }
 }
