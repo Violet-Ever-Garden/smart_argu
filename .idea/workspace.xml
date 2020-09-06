@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="add FileWebConfig" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="module" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Enum" />
+        <option value="AnnotationType" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Maven\repository" />
+        <option name="mavenHome" value="D:/Maven/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\Maven\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectId" id="1fnhQAu4GjN6dM71Re9qyNYVh92" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CH-HCNetSDKV6.1.4.42_build20200527_win64/Demo示例/4- Java 开发示例/1-ClientDemo/ClientDemo-NetBeansPro" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="hzau.sa.backstage.dao" />
+      <recent name="hzau.sa.trainingReport.dao" />
+      <recent name="hzau.sa.backstage.service" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-msg\src\main\resources" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\test2\src\main\resources" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-backstage\src\main\resources\templates" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-backstage\src\main\resources\template" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-trainingReport\src\main\java\hzau\sa\trainingReport\dao" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-generator\src\main\resources" />
+      <recent name="C:\Users\LvHao\Desktop\物联网项目\hzau-Smart-Agriculture\hzau-sa-backstage\src\main\resources" />
+    </key>
+  </component>
+  <component name="RestServicesNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="Found 8 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+        </path>
+        <path>
+          <item name="Found 8 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+          <item name="hzau-sa-test" type="c588b436:RestServiceStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="Found 8 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+          <item name="hzau-sa-msg" type="c588b436:RestServiceStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="Found 8 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+          <item name="hzau-sa-security" type="c588b436:RestServiceStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Application (2)">
+    <configuration name="GeneratorService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GeneratorService" />
+      <module name="hzau-sa-generator" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VideoMonitorDaoTest.queryAllVideoMonitor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hzau-sa-backstage" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.backstage.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hzau.sa.backstage.dao" />
+      <option name="MAIN_CLASS_NAME" value="hzau.sa.backstage.dao.VideoMonitorDaoTest" />
+      <option name="METHOD_NAME" value="queryAllVideoMonitor" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="test" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="test" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="hzausastater" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.stater.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="hzau-sa-stater" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.stater.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.stater.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="hzau-sa-configure" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.configure.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackStageApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="hzau-sa-backstage" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.backstage.BackStageApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="hzau-sa-mytest" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.mytest.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="hzau-sa-fileTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.file.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.file.TestMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TrainingReportApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="hzau-sa-trainingReport" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hzau.sa.trainingReport.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hzau.sa.trainingReport.TrainingReportApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Application (2)" />
+        <item itemvalue="Application.GeneratorService" />
+        <item itemvalue="JUnit.VideoMonitorDaoTest.queryAllVideoMonitor" />
+        <item itemvalue="Spring Boot.TrainingReportApplication" />
+        <item itemvalue="Spring Boot.TestMain" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="" />
+      <created>1596859745758</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596859745758</updated>
+      <workItem from="1596859748341" duration="28740000" />
+      <workItem from="1596891276574" duration="43423000" />
+      <workItem from="1597748685203" duration="6891000" />
+      <workItem from="1597756644019" duration="3259000" />
+      <workItem from="1597916685181" duration="34154000" />
+      <workItem from="1598771927620" duration="817000" />
+      <workItem from="1598773363283" duration="8684000" />
+      <workItem from="1598785537381" duration="28055000" />
+      <workItem from="1598956032654" duration="38730000" />
+    </task>
+    <task id="LOCAL-00015" summary="update .gitignore">
+      <created>1597683575236</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1597683575236</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add FileWebConfig">
+      <created>1597684510841</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1597684510841</updated>
+    </task>
+    <task id="LOCAL-00017" summary="add FileWebConfig">
+      <created>1597684570567</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1597684570567</updated>
+    </task>
+    <task id="LOCAL-00018" summary="add MeasuremanageController">
+      <created>1597743095697</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1597743095697</updated>
+    </task>
+    <task id="LOCAL-00019" summary="init">
+      <created>1597745522672</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1597745522672</updated>
+    </task>
+    <task id="LOCAL-00020" summary="delete unknown file">
+      <created>1597746037980</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1597746037980</updated>
+    </task>
+    <task id="LOCAL-00021" summary="update MeasuremanageController">
+      <created>1597746932144</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1597746932144</updated>
+    </task>
+    <task id="LOCAL-00022" summary="update MeasuremanageController">
+      <created>1597748785130</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1597748785130</updated>
+    </task>
+    <task id="LOCAL-00023" summary="add delete measureManage">
+      <created>1597757755464</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1597757755464</updated>
+    </task>
+    <task id="LOCAL-00024" summary="add delete measureManage">
+      <created>1597762820781</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1597762820781</updated>
+    </task>
+    <task id="LOCAL-00025" summary="find entity.java.vm">
+      <created>1597771692423</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1597771692423</updated>
+    </task>
+    <task id="LOCAL-00026" summary="update FileUtil">
+      <created>1597771840007</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1597771840007</updated>
+    </task>
+    <task id="LOCAL-00027" summary="add query ClassOfTeacher">
+      <created>1597774938854</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1597774938854</updated>
+    </task>
+    <task id="LOCAL-00028" summary="commit measuremanage">
+      <created>1597820195936</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1597820195936</updated>
+    </task>
+    <task id="LOCAL-00029" summary="commit measuremanage">
+      <created>1597820469976</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1597820469976</updated>
+    </task>
+    <task id="LOCAL-00030" summary="commit measure test">
+      <created>1597841670015</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1597841670015</updated>
+    </task>
+    <task id="LOCAL-00031" summary="merge wuyihu-dev">
+      <created>1597842921499</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1597842921499</updated>
+    </task>
+    <task id="LOCAL-00032" summary="merge wuyihu-dev">
+      <created>1597844249890</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1597844249890</updated>
+    </task>
+    <task id="LOCAL-00033" summary="merge haokai-dev">
+      <created>1597845216417</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1597845216417</updated>
+    </task>
+    <task id="LOCAL-00034" summary="merge haokai-dev">
+      <created>1597845264388</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1597845264388</updated>
+    </task>
+    <task id="LOCAL-00035" summary="commit ZipUtil">
+      <created>1597859490849</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1597859490849</updated>
+    </task>
+    <task id="LOCAL-00036" summary="update FileTestController">
+      <created>1597859601601</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1597859601601</updated>
+    </task>
+    <task id="LOCAL-00037" summary="add easyexcel">
+      <created>1597911055981</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1597911055981</updated>
+    </task>
+    <task id="LOCAL-00038" summary="commit export trainingReport">
+      <created>1597914386766</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1597914386766</updated>
+    </task>
+    <task id="LOCAL-00039" summary="add code msg">
+      <created>1597915437256</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1597915437256</updated>
+    </task>
+    <task id="LOCAL-00040" summary="fix date bugs">
+      <created>1597927278836</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1597927278836</updated>
+    </task>
+    <task id="LOCAL-00041" summary="integration baskstage and trainingReport to starter">
+      <created>1597991682501</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1597991682501</updated>
+    </task>
+    <task id="LOCAL-00042" summary="update FileUtil">
+      <created>1598090344240</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1598090344240</updated>
+    </task>
+    <task id="LOCAL-00043" summary="merge haokai-dev and update yml">
+      <created>1598279078862</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1598279078862</updated>
+    </task>
+    <task id="LOCAL-00044" summary="fix measureManage date bugs">
+      <created>1598667327567</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1598667327567</updated>
+    </task>
+    <task id="LOCAL-00045" summary="commit VideoMonitorController">
+      <created>1598848211762</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1598848211762</updated>
+    </task>
+    <task id="LOCAL-00046" summary="merge haokai-dev">
+      <created>1598873480531</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1598873480531</updated>
+    </task>
+    <task id="LOCAL-00047" summary="fix videoMonitor bugs">
+      <created>1599007167302</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1599007167302</updated>
+    </task>
+    <task id="LOCAL-00048" summary="commit wikiCategory">
+      <created>1599026821107</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1599026821107</updated>
+    </task>
+    <task id="LOCAL-00049" summary="fix wikiCropType bugs">
+      <created>1599049590878</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1599049590878</updated>
+    </task>
+    <task id="LOCAL-00050" summary="commit diseaseInsect">
+      <created>1599060608870</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1599060608871</updated>
+    </task>
+    <task id="LOCAL-00051" summary="fix diseaseInsect bugs">
+      <created>1599092382287</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1599092382287</updated>
+    </task>
+    <task id="LOCAL-00052" summary="add excelTemplates">
+      <created>1599097758161</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1599097758161</updated>
+    </task>
+    <task id="LOCAL-00053" summary="merge haokai-dev wuyihu-dev">
+      <created>1599098877476</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1599098877476</updated>
+    </task>
+    <task id="LOCAL-00054" summary="fix excelTemplates bugs">
+      <created>1599102043438</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1599102043438</updated>
+    </task>
+    <task id="LOCAL-00055" summary="update application-dev.yml">
+      <created>1599103817584</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1599103817584</updated>
+    </task>
+    <task id="LOCAL-00056" summary="update README.md">
+      <created>1599113574018</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1599113574018</updated>
+    </task>
+    <task id="LOCAL-00057" summary="commit GatewayController">
+      <created>1599143791545</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1599143791545</updated>
+    </task>
+    <task id="LOCAL-00058" summary="update README.md">
+      <created>1599146723782</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1599146723782</updated>
+    </task>
+    <task id="LOCAL-00059" summary="update README.md">
+      <created>1599147049520</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1599147049520</updated>
+    </task>
+    <task id="LOCAL-00060" summary="update README.md">
+      <created>1599176680300</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1599176680301</updated>
+    </task>
+    <task id="LOCAL-00061" summary="fix gateway bugs">
+      <created>1599177068242</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1599177068242</updated>
+    </task>
+    <task id="LOCAL-00062" summary="fix gateway bugs">
+      <created>1599272343149</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1599272343149</updated>
+    </task>
+    <task id="LOCAL-00063" summary="update application.yml">
+      <created>1599272377170</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1599272377170</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="commit ZipUtil" />
+    <MESSAGE value="update FileTestController" />
+    <MESSAGE value="add easyexcel" />
+    <MESSAGE value="commit export trainingReport" />
+    <MESSAGE value="add code msg" />
+    <MESSAGE value="fix date bugs" />
+    <MESSAGE value="integration baskstage and trainingReport to starter" />
+    <MESSAGE value="update FileUtil" />
+    <MESSAGE value="merge haokai-dev and update yml" />
+    <MESSAGE value="fix measureManage date bugs" />
+    <MESSAGE value="commit VideoMonitorController" />
+    <MESSAGE value="merge haokai-dev" />
+    <MESSAGE value="fix videoMonitor bugs" />
+    <MESSAGE value="commit wikiCategory" />
+    <MESSAGE value="fix wikiCropType bugs" />
+    <MESSAGE value="commit diseaseInsect" />
+    <MESSAGE value="fix diseaseInsect bugs" />
+    <MESSAGE value="add excelTemplates" />
+    <MESSAGE value="merge haokai-dev wuyihu-dev" />
+    <MESSAGE value="fix excelTemplates bugs" />
+    <MESSAGE value="update application-dev.yml" />
+    <MESSAGE value="commit GatewayController" />
+    <MESSAGE value="update README.md" />
+    <MESSAGE value="fix gateway bugs" />
+    <MESSAGE value="update application.yml" />
+    <option name="LAST_COMMIT_MESSAGE" value="update application.yml" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="407" y="0" key="#Auto_Import" timestamp="1598777215350">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="407" y="0" key="#Auto_Import/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1598777215350" />
+    <state x="407" y="0" key="#Auto_Import/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597226926374" />
+    <state x="277" y="0" width="741" height="720" key="#Main" timestamp="1597233941341">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="277" y="0" width="741" height="720" key="#Main/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597233941341" />
+    <state x="121" y="0" key="#Project_Structure" timestamp="1599142094444">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="121" y="0" key="#Project_Structure/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599142094444" />
+    <state x="121" y="0" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597990236967" />
+    <state x="291" y="-900" key="#Project_Structure/0.0.1280.720/140.-900.1600.900@140.-900.1600.900" timestamp="1597204832322" />
+    <state x="96" y="16" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599273499859">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="96" y="16" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599273499859" />
+    <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597204832322" />
+    <state x="375" y="161" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597204832322" />
+    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser" timestamp="1599142692762">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599142692762" />
+    <state x="446" y="62" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597910011868" />
+    <state x="120" y="284" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1597929120767">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="120" y="284" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597929120767" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597990197992">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597990197992" />
+    <state x="371" y="107" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597771612647">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="371" y="107" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597771612647" />
+    <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1597204832322" />
+    <state x="371" y="192" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597204832322" />
+    <state x="421" y="115" key="FileChooserDialogImpl" timestamp="1599273537478">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599273537478" />
+    <state x="421" y="115" key="FileChooserDialogImpl/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597770279274" />
+    <state width="1070" height="532" key="GridCell.Tab.0.bottom" timestamp="1599282538886">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1211" height="694" key="GridCell.Tab.0.bottom/0.0.1280.720/-1440.0.1440.900@-1440.0.1440.900" timestamp="1599181595958" />
+    <state width="1070" height="532" key="GridCell.Tab.0.bottom/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599282538886" />
+    <state width="1236" height="562" key="GridCell.Tab.0.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1598714985492" />
+    <state width="1070" height="532" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1599220788554" />
+    <state width="1070" height="532" key="GridCell.Tab.0.center" timestamp="1599282538885">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1211" height="694" key="GridCell.Tab.0.center/0.0.1280.720/-1440.0.1440.900@-1440.0.1440.900" timestamp="1599181595958" />
+    <state width="1070" height="532" key="GridCell.Tab.0.center/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599282538885" />
+    <state width="1236" height="562" key="GridCell.Tab.0.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1598714985492" />
+    <state width="1070" height="532" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1599220788553" />
+    <state width="1070" height="532" key="GridCell.Tab.0.left" timestamp="1599282538885">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1211" height="694" key="GridCell.Tab.0.left/0.0.1280.720/-1440.0.1440.900@-1440.0.1440.900" timestamp="1599181595958" />
+    <state width="1070" height="532" key="GridCell.Tab.0.left/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599282538885" />
+    <state width="1236" height="562" key="GridCell.Tab.0.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1598714985492" />
+    <state width="1070" height="532" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1599220788553" />
+    <state width="1070" height="532" key="GridCell.Tab.0.right" timestamp="1599282538885">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1211" height="694" key="GridCell.Tab.0.right/0.0.1280.720/-1440.0.1440.900@-1440.0.1440.900" timestamp="1599181595958" />
+    <state width="1070" height="532" key="GridCell.Tab.0.right/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599282538885" />
+    <state width="1236" height="562" key="GridCell.Tab.0.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1598714985492" />
+    <state width="1070" height="532" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1599220788553" />
+    <state width="1070" height="532" key="GridCell.Tab.1.bottom" timestamp="1599282538886">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1211" height="694" key="GridCell.Tab.1.bottom/0.0.1280.720/-1440.0.1440.900@-1440.0.1440.900" timestamp="1599181595958" />
+    <state width="1070" height="532" key="GridCell.Tab.1.bottom/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599282538886" />
+    <state width="1176" height="512" key="GridCell.Tab.1.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1598714985480" />
+    <state width="1070" height="532" key="GridCell.Tab.1.bottom/0.0.1280.720@0.0.1280.720" timestamp="1599220788554" />
+    <state width="1070" height="532" key="GridCell.Tab.1.center" timestamp="1599282538886">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1211" height="694" key="GridCell.Tab.1.center/0.0.1280.720/-1440.0.1440.900@-1440.0.1440.900" timestamp="1599181595958" />
+    <state width="1070" height="532" key="GridCell.Tab.1.center/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599282538886" />
+    <state width="1176" height="512" key="GridCell.Tab.1.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1598714985478" />
+    <state width="1070" height="532" key="GridCell.Tab.1.center/0.0.1280.720@0.0.1280.720" timestamp="1599220788554" />
+    <state width="1070" height="532" key="GridCell.Tab.1.left" timestamp="1599282538886">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1211" height="694" key="GridCell.Tab.1.left/0.0.1280.720/-1440.0.1440.900@-1440.0.1440.900" timestamp="1599181595958" />
+    <state width="1070" height="532" key="GridCell.Tab.1.left/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599282538886" />
+    <state width="1176" height="512" key="GridCell.Tab.1.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1598714985478" />
+    <state width="1070" height="532" key="GridCell.Tab.1.left/0.0.1280.720@0.0.1280.720" timestamp="1599220788554" />
+    <state width="1070" height="532" key="GridCell.Tab.1.right" timestamp="1599282538886">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1211" height="694" key="GridCell.Tab.1.right/0.0.1280.720/-1440.0.1440.900@-1440.0.1440.900" timestamp="1599181595958" />
+    <state width="1070" height="532" key="GridCell.Tab.1.right/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599282538886" />
+    <state width="1176" height="512" key="GridCell.Tab.1.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1598714985478" />
+    <state width="1070" height="532" key="GridCell.Tab.1.right/0.0.1280.720@0.0.1280.720" timestamp="1599220788554" />
+    <state width="1070" height="533" key="GridCell.Tab.2.bottom" timestamp="1599016132179">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1070" height="533" key="GridCell.Tab.2.bottom/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599016132179" />
+    <state width="1188" height="512" key="GridCell.Tab.2.bottom/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597753288877" />
+    <state width="1070" height="533" key="GridCell.Tab.2.center" timestamp="1599016132179">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1070" height="533" key="GridCell.Tab.2.center/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599016132179" />
+    <state width="1188" height="512" key="GridCell.Tab.2.center/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597753288877" />
+    <state width="1070" height="533" key="GridCell.Tab.2.left" timestamp="1599016132179">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1070" height="533" key="GridCell.Tab.2.left/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599016132179" />
+    <state width="1188" height="512" key="GridCell.Tab.2.left/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597753288876" />
+    <state width="1070" height="533" key="GridCell.Tab.2.right" timestamp="1599016132179">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1070" height="533" key="GridCell.Tab.2.right/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599016132179" />
+    <state width="1188" height="512" key="GridCell.Tab.2.right/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597753288877" />
+    <state x="171" y="16" key="Maven.ArtifactSearchDialog" timestamp="1597908383335">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="171" y="16" key="Maven.ArtifactSearchDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597908383335" />
+    <state x="304" y="62" key="RollbackChangesDialog" timestamp="1597765867663">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="304" y="62" key="RollbackChangesDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597765867663" />
+    <state x="142" y="5" key="SettingsEditor" timestamp="1597325870483">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="142" y="5" key="SettingsEditor/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597325870483" />
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2" timestamp="1599272388867">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599272388867" />
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1598667346711" />
+    <state x="412" y="180" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1598777112106">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="412" y="180" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1598777112106" />
+    <state x="412" y="180" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597897652052" />
+    <state x="3" y="39" width="1224" height="658" key="new project wizard" timestamp="1599273552287">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="3" y="39" key="new project wizard/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599273552287" />
+    <state x="3" y="39" width="1224" height="658" key="new project wizard/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597231219557" />
+    <state x="144" y="-851" key="new project wizard/0.0.1280.720/140.-900.1600.900@140.-900.1600.900" timestamp="1597204832322" />
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1599056432585">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720/-1440.0.1440.900@0.0.1280.720" timestamp="1599056432585" />
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720/140.-900.1600.900@0.0.1280.720" timestamp="1597896725147" />
+  </component>
+</project>

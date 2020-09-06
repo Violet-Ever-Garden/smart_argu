@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hzau.sa.sensorData.dao.ControlInteractionDaoSensorData">
+    <select id="pageByTeacherId" resultType="hzau.sa.sensorData.entity.ControlInteractionModel">
+        select cI.controlInteractionId,remoteControlDeviceName,remoteStatus
+        from controlInteraction as cI
+        left join as_classcontrolinteraction as aCI on cI.controlInteractionId=aCI.controlInteractionId
+        left join as_teacherclass as aTC on aTC.classId=aCI.classId
+        where aTC.teacherId=#{teacherId}
+        order by cI.createTime desc
+    </select>
+    <select id="getClassIdByStudentId" resultType="java.lang.Integer">
+        select classId
+        from student
+        where studentId=#{studentId}
+    </select>
+    <select id="pageByClassId" resultType="hzau.sa.sensorData.entity.ControlInteractionModel">
+        select cI.controlInteractionId,remoteControlDeviceName,remoteStatus
+        from controlInteraction as cI
+        left join as_classcontrolinteraction as aCI on cI.controlInteractionId=aCI.controlInteractionId
+        where aCI.classId=#{classId}
+        order by cI.createTime desc
+    </select>
+</mapper>
