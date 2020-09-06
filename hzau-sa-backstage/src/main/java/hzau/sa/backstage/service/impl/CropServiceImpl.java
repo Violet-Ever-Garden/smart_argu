@@ -140,6 +140,9 @@ public class CropServiceImpl extends ServiceImpl<CropDao, CropVO> implements Cro
 
     public boolean removeByIdsAndPicture(List<Integer> ids) {
         boolean b = removeByIds(ids);
+        if(false==b){
+            return false;
+        }
         for (int i : ids) {
             QueryWrapper<FileVO> queryWrapper = new QueryWrapper();
             queryWrapper.lambda().eq(FileVO::getConnectId,String.valueOf(i)).eq(FileVO::getFileType,FileEnum.CROP);
@@ -156,7 +159,10 @@ public class CropServiceImpl extends ServiceImpl<CropDao, CropVO> implements Cro
         CropVO cropVO = new CropVO();
         cropVO.setCropId(cropId);
         cropVO.setCropName(cropName);
-        cropDao.updateById(cropVO);
+        int i = cropDao.updateById(cropVO);
+        if(0==i){
+            return  ResultUtil.databaseError("该作物不存在");
+        }
         if(picture!=null){
             QueryWrapper<FileVO> queryWrapper = new QueryWrapper();
             queryWrapper.lambda().eq(FileVO::getConnectId,String.valueOf(cropId)).eq(FileVO::getFileType,FileEnum.CROP);
