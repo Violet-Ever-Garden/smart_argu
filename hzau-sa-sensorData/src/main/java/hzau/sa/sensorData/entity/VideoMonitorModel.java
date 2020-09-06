@@ -15,4 +15,9 @@ import lombok.NoArgsConstructor;
 public class VideoMonitorModel {
     private Integer videoMonitorId;
     private String videoMonitorDeviceName;
+    private String deviceIp;
+    private String devicePort;
+    private String deviceAccountNumber;
+    private String devicePassword;
+    private String videoChannel;
 }

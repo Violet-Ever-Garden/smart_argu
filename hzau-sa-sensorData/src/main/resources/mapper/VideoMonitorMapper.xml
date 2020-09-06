@@ -2,7 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="hzau.sa.sensorData.dao.VideoMonitorDaoSensorData">
     <select id="pageByStudntId" resultType="hzau.sa.sensorData.entity.VideoMonitorModel">
-        select videoMonitor.videoMonitorId,videoMonitorDeviceName
+        select videoMonitor.videoMonitorId,
+        videoMonitorDeviceName,
+        deviceIp,
+        devicePort,
+        deviceAccountNumber,
+        devicePassword,
+        videoChannel
         from videoMonitor
         left join as_classvideomonitor as aCVM on aCVM.videoMonitorId=videoMonitor.videoMonitorId
         left join student as s on s.classId=aCVM.classId
@@ -10,7 +16,13 @@
         order by videoMonitor.createTime desc
     </select>
     <select id="pageByTeacherId" resultType="hzau.sa.sensorData.entity.VideoMonitorModel">
-        select videoMonitor.videoMonitorId,videoMonitorDeviceName
+        select videoMonitor.videoMonitorId,
+        videoMonitorDeviceName,
+        deviceIp,
+        devicePort,
+        deviceAccountNumber,
+        devicePassword,
+        videoChannel
         from videoMonitor as vM
         left join as_classvideomonitor as aCVM on aCVM.videoMonitorId=vM.videoMonitorId
         left join as_teacherclass as aTC on aTC.classId=aCVM.classId
