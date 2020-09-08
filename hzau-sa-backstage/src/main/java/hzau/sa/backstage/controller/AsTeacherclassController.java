@@ -70,7 +70,7 @@ public class AsTeacherclassController extends BaseController {
     @SysLog(prefix = "删除班师关系",value = LogType.ALL)
     @Transactional(rollbackFor = Exception.class)
     @ApiOperation(value = "删除班师关系", notes = "删除班师关系")
-    @ApiImplicitParam(name = "cropPropertyId", value = "关系id", paramType = "path", dataType = "String")
+    @ApiImplicitParam(name = "asTeacherclassId", value = "关系id", paramType = "path", dataType = "String")
     @PostMapping("/delete/{asTeacherclassId}")
     public Result delete(@PathVariable("asTeacherclassId") String asTeacherclassId){
         log.info(String.valueOf(asTeacherclassId));
