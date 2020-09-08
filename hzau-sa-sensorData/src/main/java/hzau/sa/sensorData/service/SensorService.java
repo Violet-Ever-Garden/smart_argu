@@ -10,6 +10,10 @@ import hzau.sa.sensorData.util.ClientAxis2;
 import hzau.sa.sensorData.util.XmlPrasing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -100,4 +104,17 @@ public class SensorService {
         return sensorDataDao.selectGatewayByRegionName(regionName);
     }
 
+    public HashMap<String, List<SensorDataRecord>> getGatewayDataByHours(String gatewayAddress, Long hours) {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime before = now.minus(hours, ChronoUnit.HOURS);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd HH:mm:ss" );
+        return getOneGatewayHistoryData(gatewayAddress, before.format(formatter), now.format(formatter));
+    }
+
+    public List<SensorDataRecord> getOneSensorDataByHours(String logo,String sensorName,long hours){
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime before = now.minus(hours, ChronoUnit.HOURS);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd HH:mm:ss" );
+        return getOneSensorHistoryData(logo, before.format(formatter), now.format(formatter),sensorName );
+    }
 }

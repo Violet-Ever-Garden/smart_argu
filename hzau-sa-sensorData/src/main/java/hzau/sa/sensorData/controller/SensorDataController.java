@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 @RequestMapping("/sensorData")
 @RestController
 @Slf4j
@@ -81,5 +85,27 @@ public class SensorDataController {
     @GetMapping("/indexSensorData")
     public Result indexSensorData(){
         return ResultUtil.success(getOneNowGatewayDate("1200201909171086"));
+    }
+
+
+    @ApiOperation(value = "按小时获取网关历史数据" ,notes = "按小时获取网关历史数据")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "gatewayAddress", value = "网关地址", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "hours",value = "小时计算",paramType = "query",dataType = "String")
+    })
+    @GetMapping("/getGatewayDataByHours")
+    public Result  getGatewayDataByHours(String gatewayAddress,Long hours){
+        return ResultUtil.success(sensorService.getGatewayDataByHours(gatewayAddress,hours));
+    }
+
+    @ApiOperation(value = "按小时获取传感器历史数据" ,notes = "按小时获取传感器历史数据")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "gatewayAddress", value = "网关地址", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "hours",value = "小时计算",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "sensorName",value = "传感器名称",paramType = "query",dataType = "String")
+    })
+    @GetMapping("/getSensorDataByHours")
+    public Result  getSensorDataByHours(String gatewayAddress,Long hours,String sensorName){
+        return ResultUtil.success(sensorService.getOneSensorDataByHours(gatewayAddress,sensorName,hours));
     }
 }

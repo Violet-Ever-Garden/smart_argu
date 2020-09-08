@@ -104,7 +104,12 @@ public class ClassServiceImpl extends ServiceImpl<ClassDao, ClassVO> implements 
             int classId = classVO.getClassId();
             //地块差异
             List<Integer> fieldsBefore = asClassfieldDao.queryFieldIdsByClassId(classVO.getClassId());
-            List<Integer> fieldsNow = asClassfieldDao.queryFieldIdsByNames(classManage.getClassFields());
+            List<Integer> fieldsNow;
+            if(classManage.getClassFields().size()<1){
+                fieldsNow = new ArrayList<>();
+            }else {
+                fieldsNow = asClassfieldDao.queryFieldIdsByNames(classManage.getClassFields());
+            }
             List<Integer> fieldAdd = getDifferenceSet(fieldsNow,fieldsBefore);
             List<Integer> fieldDelete = getDifferenceSet(fieldsBefore,fieldsNow);
             if(fieldAdd.size()>0){
@@ -125,7 +130,12 @@ public class ClassServiceImpl extends ServiceImpl<ClassDao, ClassVO> implements 
             }
             //视频差异
             List<Integer> monitorBefore = asClassvideomonitorDao.queryMonitorIdsByClassId(classId);
-            List<Integer> monitorNow = asClassvideomonitorDao.queryVidioMonitorIdsByNames(classManage.getClassMonitor());
+            List<Integer> monitorNow;
+            if(classManage.getClassMonitor().size()<1){
+                monitorNow = new ArrayList<>();
+            }else {
+                monitorNow = asClassvideomonitorDao.queryVidioMonitorIdsByNames(classManage.getClassMonitor());
+            }
             List<Integer> monitorAdd = getDifferenceSet(monitorNow,monitorBefore);
             List<Integer> monitorDelete = getDifferenceSet(monitorBefore,monitorNow);
             if(monitorAdd.size()>0){
@@ -146,7 +156,12 @@ public class ClassServiceImpl extends ServiceImpl<ClassDao, ClassVO> implements 
             }
             //作物差异
             List<Integer> cropsBefore = asClasscropDao.queryCropIdsByClassId(classVO.getClassId());
-            List<Integer> cropsNow = asClasscropDao.queryFieldIdsByNames(classManage.getClassCrop());
+            List<Integer> cropsNow;
+            if(classManage.getClassCrop().size()<1){
+                cropsNow = new ArrayList<>();
+            }else {
+                cropsNow = asClasscropDao.queryFieldIdsByNames(classManage.getClassCrop());
+            }
             List<Integer> cropAdd = getDifferenceSet(cropsNow,cropsBefore);
             List<Integer> cropDelete = getDifferenceSet(cropsBefore,cropsNow);
             if(cropAdd.size()>0){
@@ -167,7 +182,12 @@ public class ClassServiceImpl extends ServiceImpl<ClassDao, ClassVO> implements 
             }
             //水肥机差异
             List<Integer> controlinteractionsBefore = asClasscontrolinteractionDao.queryControlinteractionIdsByClassId(classVO.getClassId());
-            List<Integer> controlinteractionsNow = asClasscontrolinteractionDao.queryControlinteractionIdsByNames(classManage.getClassWaterFertilizerMachine());
+            List<Integer> controlinteractionsNow;
+            if(classManage.getClassWaterFertilizerMachine().size()<1){
+                controlinteractionsNow = new ArrayList<>();
+            }else {
+                controlinteractionsNow = asClasscontrolinteractionDao.queryControlinteractionIdsByNames(classManage.getClassWaterFertilizerMachine());
+            }
             List<Integer> controlinteractionAdd = getDifferenceSet(controlinteractionsNow,controlinteractionsBefore);
             List<Integer> controlinteractionDelete = getDifferenceSet(controlinteractionsBefore,controlinteractionsNow);
             if(controlinteractionAdd.size()>0){
@@ -188,7 +208,12 @@ public class ClassServiceImpl extends ServiceImpl<ClassDao, ClassVO> implements 
             }
             //传感器差异
             List<Integer> sensorsBefore = asClasssensorDao.querySensorIdsByClassId(classVO.getClassId());
-            List<Integer> sensorsNow = asClasssensorDao.querySensorIdsByNames(classManage.getClassSensor());
+            List<Integer> sensorsNow;
+            if(classManage.getClassSensor().size()<1){
+                sensorsNow = new ArrayList<>();
+            }else {
+                sensorsNow = asClasssensorDao.querySensorIdsByNames(classManage.getClassSensor());
+            }
             List<Integer> sensorsAdd = getDifferenceSet(sensorsNow,sensorsBefore);
             List<Integer> sensorsDelete = getDifferenceSet(sensorsBefore,sensorsNow);
             if(sensorsAdd.size()>0){

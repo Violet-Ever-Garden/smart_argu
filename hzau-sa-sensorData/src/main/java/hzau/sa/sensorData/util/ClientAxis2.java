@@ -69,7 +69,6 @@ public class ClientAxis2 {
             e.printStackTrace();
         }
 
-        System.out.println(xml);
 
         return xml;
     }

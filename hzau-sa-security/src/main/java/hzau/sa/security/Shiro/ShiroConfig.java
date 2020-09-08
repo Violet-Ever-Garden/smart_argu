@@ -62,6 +62,9 @@ public class ShiroConfig {
         filterRuleMap.put("/**/*.gif", "anon");
         filterRuleMap.put("/**/*.jpg", "anon");
         filterRuleMap.put("/**/*.JPG", "anon");
+        filterRuleMap.put("/**/*.pdf", "anon");
+        filterRuleMap.put("/**/*.PDF", "anon");
+        filterRuleMap.put("/**/*.PNG", "anon");
         filterRuleMap.put("/favicon.ico", "anon");
         filterRuleMap.put("/", "anon");
         filterRuleMap.put("/**", "jwt");
