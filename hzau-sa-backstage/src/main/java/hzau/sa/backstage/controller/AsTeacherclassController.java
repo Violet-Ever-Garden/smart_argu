@@ -56,7 +56,7 @@ public class AsTeacherclassController extends BaseController {
 
     @SysLog(prefix = "新增班师关系",value = LogType.ALL)
     @ApiOperation(value = "新增班师关系", notes = "新增班师关系")
-    @ApiImplicitParam(name = "asTeacherclassVO", value = "班师关系实体", paramType = "body", allowMultiple = true,dataType = "AsTeacherclassVO")
+    @ApiImplicitParam(name = "asTeacherclassVOs", value = "班师关系实体", paramType = "body", allowMultiple = true,dataType = "AsTeacherclassVO")
     @PostMapping("/add")
     public Result add(@RequestBody List<AsTeacherclassVO> asTeacherclassVOs) {
         boolean save = asTeacherclassService.saveList(asTeacherclassVOs);
