@@ -5,9 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import cn.hutool.core.convert.Convert;
-import hzau.sa.backstage.entity.ClassGradeModel;
-import hzau.sa.backstage.entity.ClassManage;
-import hzau.sa.backstage.entity.TeacherClassModel;
+import hzau.sa.backstage.entity.*;
 import hzau.sa.backstage.service.impl.AsTeacherclassServiceImpl;
 import hzau.sa.msg.annotation.SysLog;
 import hzau.sa.msg.controller.BaseController;
@@ -32,7 +30,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import hzau.sa.backstage.entity.AsTeacherclassVO;
 import hzau.sa.backstage.service.AsTeacherclassService;
 
 import io.swagger.annotations.Api;
@@ -56,10 +53,10 @@ public class AsTeacherclassController extends BaseController {
 
     @SysLog(prefix = "新增班师关系",value = LogType.ALL)
     @ApiOperation(value = "新增班师关系", notes = "新增班师关系")
-    @ApiImplicitParam(name = "asTeacherclassVOs", value = "班师关系实体", paramType = "body", allowMultiple = true,dataType = "AsTeacherclassVO")
+    @ApiImplicitParam(name = "asTeacherclassList", value = "班师关系实体", paramType = "body",dataType = "AsTeacherClassList")
     @PostMapping("/add")
-    public Result add(@RequestBody List<AsTeacherclassVO> asTeacherclassVOs) {
-        boolean save = asTeacherclassService.saveList(asTeacherclassVOs);
+    public Result add(@RequestBody AsTeacherClassList asTeacherclassList) {
+        boolean save = asTeacherclassService.saveList(asTeacherclassList.getAsTeacherclassVOs());
         if (false == save) {
             return ResultUtil.databaseError();
         } else {
