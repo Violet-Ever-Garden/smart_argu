@@ -20,23 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25dbf026-563a-4c85-9233-8498169e2c51" name="Default Changelist" comment="add FileWebConfig">
-      <change afterPath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/dao/SensorDataDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/entity/GatewayNameAddress.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/util/XmlPrasing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/resources/mapper/SensorData.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/AsTeacherclassController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/controller/AsTeacherclassController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/ClassServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/ClassServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/CropServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-backstage/src/main/java/hzau/sa/backstage/service/impl/CropServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-security/src/main/java/hzau/sa/security/Shiro/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-security/src/main/java/hzau/sa/security/Shiro/ShiroConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/common/KLHAConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/common/KLHAConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/common/SensorType.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/common/SensorType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/controller/SensorDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/controller/SensorDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/entity/SensorDataRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/entity/SensorDataRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/service/SensorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/service/SensorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/util/ClientAxis2.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-sensorData/src/main/java/hzau/sa/sensorData/util/ClientAxis2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hzau-sa-sensorData/src/test/java/ClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-sensorData/src/test/java/ClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hzau-sa-stater/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hzau-sa-stater/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -376,6 +361,7 @@
       <workItem from="1599452539251" duration="95000" />
       <workItem from="1599805672940" duration="466000" />
       <workItem from="1599806345701" duration="147000" />
+      <workItem from="1599806620387" duration="113000" />
     </task>
     <task id="LOCAL-00001" summary="[CodeType,LogService,Result,ResultUtil] init">
       <created>1596941078842</created>
