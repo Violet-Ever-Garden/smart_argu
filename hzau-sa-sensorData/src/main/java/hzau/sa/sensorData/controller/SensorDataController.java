@@ -67,8 +67,8 @@ public class SensorDataController {
             @ApiImplicitParam(name = "gatewayAddress", value = "网关地址", paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "startTime",value = "起始时间(yyyy-mm-dd hh:MM:ss)",paramType = "query",dataType = "String"),
             @ApiImplicitParam(name = "endTime",value = "终止时间(yyyy-mm-dd hh:MM:ss)",paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",required = true,dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",required = true,dataType = "String")
 
     })
     @GetMapping("/getOneGatewayHistoryData")
@@ -102,11 +102,17 @@ public class SensorDataController {
     @ApiOperation(value = "按小时获取网关历史数据" ,notes = "按小时获取网关历史数据")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "gatewayAddress", value = "网关地址", paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "hours",value = "小时计算",paramType = "query",dataType = "String")
+            @ApiImplicitParam(name = "hours",value = "小时计算",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",required = true,dataType = "String"),
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",required = true,dataType = "String")
+
+
     })
     @GetMapping("/getGatewayDataByHours")
-    public Result  getGatewayDataByHours(String gatewayAddress,Long hours){
-        return ResultUtil.success(sensorService.getGatewayDataByHours(gatewayAddress,hours));
+    public Result  getGatewayDataByHours(String gatewayAddress,Long hours,int page,int limit){
+        page = Convert.toInt(page,1);
+        limit = Convert.toInt(limit,20);
+        return ResultUtil.success(sensorService.getGatewayDataByHoursPage(gatewayAddress,hours,page,limit));
     }
 
     @ApiOperation(value = "按小时获取传感器历史数据" ,notes = "按小时获取传感器历史数据")

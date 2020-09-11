@@ -82,6 +82,9 @@ public class CropParameterController extends BaseController {
     @PostMapping("/delete/{cropParameterId}")
     public Result delete(@PathVariable("cropParameterId") String cropParameterId){
         log.info(String.valueOf(cropParameterId));
+        if(cropParameterService.getOne(new QueryWrapper<CropParameterVO>().lambda().eq(CropParameterVO::getCropParameterId,cropParameterId)).getSortNumber()<=4){
+            return ResultUtil.error("默认参数不可删除");
+        }
         boolean b = cropParameterService.removeById(cropParameterId);
         if(false == b){
             return ResultUtil.databaseError(b);

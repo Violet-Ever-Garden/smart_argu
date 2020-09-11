@@ -132,11 +132,16 @@ public class SensorService {
         int total = 0;
         for(Map.Entry<String,List<SensorDataRecord>> entry : dataMap.entrySet()){
             total = entry.getValue().size();
+            if(entry.getValue().size()<end){ end = entry.getValue().size();}
             entry.setValue(entry.getValue().subList(skip, end));
         }
         SensorDataPage sensorDataPage = new SensorDataPage();
         sensorDataPage.setTotal(total);
-        sensorDataPage.setPages(Convert.toInt(Math.floor((double)total/(double)limit)));
+        int temp = total/limit;
+        if(total - limit * temp>0){
+            temp++;
+        }
+        sensorDataPage.setPages(Convert.toInt(temp));
         sensorDataPage.setSize(limit);
         sensorDataPage.setCurrent(page);
         sensorDataPage.setRecords(dataMap);
@@ -197,5 +202,10 @@ public class SensorService {
         }catch (Exception e){
             log.error(e.toString());
         }
+    }
+
+    public SensorDataPage getGatewayDataByHoursPage(String gatewayAddress, Long hours, int page, int limit) {
+        HashMap<String, List<SensorDataRecord>> gatewayDataByHours = getGatewayDataByHours(gatewayAddress, hours);
+        return page(gatewayDataByHours, limit, page);
     }
 }
