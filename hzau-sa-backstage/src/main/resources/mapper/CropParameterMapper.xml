@@ -5,5 +5,6 @@
     select cropParameterId,cropName,parameterName,sortNumber,crop.cropId
             from cropParameter  left join crop  on cropParameter.cropId = crop.cropId
             where crop.cropId = #{cropId} and cropParameter.parameterName like #{keyword}
+            order by sortNumber
 </select>
 </mapper>

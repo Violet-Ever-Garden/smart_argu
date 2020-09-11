@@ -56,6 +56,7 @@ public class AsTeacherclassController extends BaseController {
     @ApiImplicitParam(name = "asTeacherclassList", value = "班师关系实体", paramType = "body",dataType = "AsTeacherClassList")
     @PostMapping("/add")
     public Result add(@RequestBody AsTeacherClassList asTeacherclassList) {
+        asTeacherclassList.getAsTeacherclassVOs().forEach(System.out::println);
         boolean save = asTeacherclassService.saveList(asTeacherclassList.getAsTeacherclassVOs());
         if (false == save) {
             return ResultUtil.databaseError();
@@ -63,6 +64,20 @@ public class AsTeacherclassController extends BaseController {
             return ResultUtil.success();
         }
     }
+
+    @SysLog(prefix = "新增单个班师关系",value = LogType.ALL)
+    @ApiOperation(value = "新增单个班师关系", notes = "新增单个班师关系")
+    @ApiImplicitParam(name = "asTeacherclassVO", value = "班师关系实体", paramType = "body",dataType = "AsTeacherclassVO")
+    @PostMapping("/addOne")
+    public Result addOne(@RequestBody AsTeacherclassVO asTeacherclassVO) {
+        boolean save = asTeacherclassService.save(asTeacherclassVO);
+        if (false == save) {
+            return ResultUtil.databaseError();
+        } else {
+            return ResultUtil.success();
+        }
+    }
+
 
     @SysLog(prefix = "删除班师关系",value = LogType.ALL)
     @Transactional(rollbackFor = Exception.class)
