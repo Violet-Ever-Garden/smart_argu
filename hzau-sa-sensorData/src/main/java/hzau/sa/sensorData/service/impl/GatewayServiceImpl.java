@@ -24,7 +24,7 @@ public class GatewayServiceImpl extends ServiceImpl<GatewayDao, GatewayVO> imple
     private GatewayDao gatewayDao;
 
     @Override
-    public List<GatewayDTO> queryGateway(Page page) {
-        return gatewayDao.queryGateway(page);
+    public List<GatewayDTO> queryGateway(Page page,String keyword) {
+        return gatewayDao.queryGateway(page,keyword);
     }
 }
