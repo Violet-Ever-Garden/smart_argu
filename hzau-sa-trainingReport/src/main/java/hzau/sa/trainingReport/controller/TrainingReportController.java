@@ -46,12 +46,12 @@ public class TrainingReportController extends BaseController {
     @ApiOperation("导出实训报告")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "cropId",value = "作物Id",required = true,paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "classIds[]",value = "班级Id数组",required = true,paramType = "query",allowMultiple = true,dataType = "String"),
+            @ApiImplicitParam(name = "classIds",value = "班级Id数组",required = true,paramType = "query",allowMultiple = true,dataType = "String"),
             @ApiImplicitParam(name = "teacherId",value = "老师工号",required = true,paramType = "query",dataType = "String")
     })
     @GetMapping("/exportReport")
     public void exportReport(HttpServletResponse httpServletResponse,
-                             String cropId, @RequestParam("classIds[]") String[] classIds, String teacherId){
+                             String cropId, @RequestParam("classIds") String[] classIds, String teacherId){
 
         String fileDir = null;
         try{
