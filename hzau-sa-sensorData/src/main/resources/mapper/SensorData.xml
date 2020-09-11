@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hzau.sa.sensorData.dao.SensorDataDao">
+    <select id="selectRegionByStudentId" resultType="String" parameterType="String">
+        select distinct regionName from region
+                left join sensor on sensor.regionId = region.regionId
+                where sensorId in
+                (select sensorId from as_classsensor
+                    where classId =
+                        (select classId
+                         from student
+                         where studentId= #{studentId}))
+
+    </select>
+
+    <select id="selectRegionByTeacherId" resultType="String" parameterType="String">
+        select distinct regionName from region
+                left join sensor on sensor.regionId = region.regionId
+                where sensorId in
+                (select sensorId from as_classsensor
+                    where classId in
+                        (select classId
+                         from as_teacherclass
+                         where teacherId= #{teacherId}))
+    </select>
+
+    <select id="selectGatewayByRegionName" parameterType="String" resultType="hzau.sa.sensorData.entity.GatewayNameAddress">
+        select distinct gatewayName,gatewayaddress
+        from gateway left join sensor on sensor.sensorAddress = gateway.gatewayaddress
+                     left join region on region.regionId = sensor.regionId
+        where regionName = #{regionName}
+    </select>
+</mapper>
