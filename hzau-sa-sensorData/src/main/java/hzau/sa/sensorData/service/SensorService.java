@@ -66,6 +66,7 @@ public class SensorService {
         params.add(startTime);
         params.add(endTime);
         String xml = ClientAxis2.sendService(params,KLHAConstant.GATEWAY_HISTORY_METHOD);
+        System.out.println(xml);
         String sensorChannel  = "";
         for (Map.Entry<String,String> entry : SensorType.sensorType.entrySet()){
             if(sensorName.equals(entry.getValue())){
@@ -74,6 +75,7 @@ public class SensorService {
             }
         }
         List<SensorDataRecord> sensorDataRecords = XmlPrasing.parsingXMLBySensor(xml,sensorChannel);
+        //sensorDataRecords.forEach(System.out::println);
         return sensorDataRecords;
     }
 
@@ -123,6 +125,8 @@ public class SensorService {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime before = now.minus(hours, ChronoUnit.HOURS);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd HH:mm:ss" );
+        System.out.println(before.format(formatter));
+        System.out.println(now.format(formatter));
         return getOneSensorHistoryData(logo, before.format(formatter), now.format(formatter),sensorName );
     }
 
@@ -150,32 +154,9 @@ public class SensorService {
 
 
 
-/*
-    public void exportMinAndMax(String gatewayAddress, String startTime, String endTime, HttpServletResponse httpServletResponse) {
-        QueryWrapper<GatewayVO> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(GatewayVO::getGatewayAddress,gatewayAddress);
-        GatewayVO gatewayVO = gatewayDao.selectOne(queryWrapper);
 
-        ArrayList<String> params = new ArrayList<>();
-        params.add(gatewayAddress);
-        params.add(startTime);
-        params.add(endTime);
-        String xml = ClientAxis2.sendService(params,KLHAConstant.GATEWAY_HISTORY_METHOD);
-        ArrayList<ExportSensorDataModel> exportSensorDataModels = XmlPrasing.getMaxAndMin(xml);
 
-        String fileName = gatewayVO.getGatewayName()+ "_"+System.currentTimeMillis()+ ".xls";
 
-        try{
-
-            httpServletResponse.setContentType("application/octet-stream");
-            httpServletResponse.setHeader("Content-Disposition", "attachment; filename=" + fileName);
-
-            EasyExcel.write(httpServletResponse.getOutputStream(), ExportSensorDataModel.class).sheet().doWrite(exportSensorDataModels);
-        }catch (Exception e){
-            log.error(e.toString());
-        }
-    }
-*/
 
     public SensorDataPage getOneGatewayHistoryDataPage(String gatewayAddress, String startTime, String endTime, int page, int limit) {
         HashMap<String, List<SensorDataRecord>> oneGatewayHistoryData = getOneGatewayHistoryData(gatewayAddress, startTime, endTime);
@@ -184,8 +165,15 @@ public class SensorService {
 
     public void exportGatewayDataByHours(String gatewayAddress, Long hours,HttpServletResponse httpServletResponse) {
         HashMap<String, List<SensorDataRecord>> gatewayDataByHours = getGatewayDataByHours(gatewayAddress, hours);
+        export(gatewayDataByHours,gatewayAddress,httpServletResponse);
+    }
+    public void exportGatewayData(String gatewayAddress, String startTime, String endTime, HttpServletResponse httpServletResponse) {
+        HashMap<String, List<SensorDataRecord>> oneGatewayHistoryData = getOneGatewayHistoryData(gatewayAddress, startTime, endTime);
+        export(oneGatewayHistoryData,gatewayAddress,httpServletResponse);
+    }
+    public void export(HashMap<String, List<SensorDataRecord>> data,String gatewayAddress,HttpServletResponse httpServletResponse){
         ArrayList<SensorDataRecord> list = new ArrayList<>();
-        for (Map.Entry<String ,List<SensorDataRecord>> entry : gatewayDataByHours.entrySet()){
+        for (Map.Entry<String ,List<SensorDataRecord>> entry : data.entrySet()){
             list.addAll(entry.getValue());
         }
         list.forEach(System.out::println);
@@ -203,6 +191,7 @@ public class SensorService {
             log.error(e.toString());
         }
     }
+
 
     public SensorDataPage getGatewayDataByHoursPage(String gatewayAddress, Long hours, int page, int limit) {
         HashMap<String, List<SensorDataRecord>> gatewayDataByHours = getGatewayDataByHours(gatewayAddress, hours);

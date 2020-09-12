@@ -126,8 +126,7 @@ public class SensorDataController {
         return ResultUtil.success(sensorService.getOneSensorDataByHours(gatewayAddress,sensorName,hours));
     }
 
-/*
-    该方法废弃
+
     @ApiOperation(value = "导出某网关历史数据", notes = "导出某网关历史数据")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "gatewayAddress", value = "网关地址", paramType = "query", dataType = "String"),
@@ -137,12 +136,12 @@ public class SensorDataController {
     @GetMapping("/exportSensorData")
     public void exportSensorData(String gatewayAddress, String startTime, String endTime, HttpServletResponse httpServletResponse){
         try{
-            sensorService.exportMinAndMax(gatewayAddress,startTime,endTime,httpServletResponse);
+            sensorService.exportGatewayData(gatewayAddress,startTime,endTime,httpServletResponse);
         }catch (Exception e){
             log.error(e.toString());
         }
     }
-*/
+
 
     @ApiOperation(value = "按小时导出网关历史数据" ,notes = "按小时导出网关历史数据")
     @ApiImplicitParams({
