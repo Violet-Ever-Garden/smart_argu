@@ -95,7 +95,7 @@ public class SensorDataController {
     @ApiOperation(value = "获取首页传感器数据", notes = "获取首页传感器数据")
     @GetMapping("/indexSensorData")
     public Result indexSensorData(){
-        return ResultUtil.success(getOneNowGatewayDate("1200201909171086"));
+        return getOneNowGatewayDate("1200201909171086");
     }
 
 
