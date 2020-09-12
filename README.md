@@ -101,7 +101,18 @@
 ### hzau-sa-security
 
 - token shiro 权限校验模块
-
+   - 模块中的用户分别来自student表与teacher表 使用角色来进行权限管理
+   - Role : teacher,admin,student (RoleConstant)
+       - token 存入缓存： key:username , value:token
+       - role存入缓存： key:usernamerole , value:role
+   - JwtFilter 过滤掉不带token的非法请求
+   - JwtRealm 自定义授权与认证方式
+   - ShiroConfig 注入shiro配置
+   - JwtToken 定义token的获取方法
+   - JwtUtils（msg） 定义token的生成方法
+   - ShiroKit（msg） 定义密码的加密方式
+   - RedisUtil 包装Redis的缓存接口
+   - 
 ---
 
 
