@@ -28,7 +28,7 @@ spring:
       port: 27017
       database: hzau
   profiles:
-    active: dev
+    active: test
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml

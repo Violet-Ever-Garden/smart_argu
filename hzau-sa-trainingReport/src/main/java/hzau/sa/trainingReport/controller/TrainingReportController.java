@@ -154,8 +154,8 @@ public class TrainingReportController extends BaseController {
         return trainingReportService.studentView(Integer.valueOf(trainingReportId), String.valueOf(FileEnum.TRAININGREPORT));
     }
 
-    @SysLog(prefix = "老师视角下的按实训报告id返回实训报告模型")
-    @ApiOperation("老师视角下的按实训报告id返回实训报告模型")
+    @SysLog(prefix = "按实训报告id返回实训报告模型")
+    @ApiOperation("按实训报告id返回实训报告模型")
     @ApiImplicitParam(name = "trainingReportId",value = "实训报告id",paramType = "query",dataType ="String",required = true)
     @GetMapping("/teachertView")
     public Result teacherView(String trainingReportId){
