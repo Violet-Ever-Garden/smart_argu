@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URLEncoder;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -60,12 +61,7 @@ public class SensorService {
      *
      */
     public List<SensorDataRecord> getOneSensorHistoryData(String logo,String startTime ,String endTime ,String sensorName){
-        ArrayList<String> params = new ArrayList<>();
-        params.add(logo);
-        params.add(startTime);
-        params.add(endTime);
-        String xml = ClientAxis2.sendService(params,KLHAConstant.GATEWAY_HISTORY_METHOD);
-        System.out.println(xml);
+
         String sensorChannel  = "";
         for (Map.Entry<String,String> entry : SensorType.sensorType.entrySet()){
             if(sensorName.equals(entry.getValue())){
@@ -73,7 +69,35 @@ public class SensorService {
                 break;
             }
         }
-        return XmlPrasing.parsingXMLBySensor(xml,sensorChannel);
+        List<SensorDataRecord> sensorDataRecords = new ArrayList<>();
+        //因为获取历史数据的额接口目前只能一次获取一天的数据 我们按天分次获取；
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime start = LocalDateTime.parse(startTime,formatter);
+        LocalDateTime end = LocalDateTime.parse(endTime,formatter);
+        Duration duration = Duration.between(start,end);
+        long l = duration.toHours();
+        //小于24小时时只有一种状况
+        if(l<24){
+            ArrayList<String> params = new ArrayList<>();
+            params.add(logo);
+            params.add(startTime);
+            params.add(endTime);
+            String xml = ClientAxis2.sendService(params,KLHAConstant.GATEWAY_HISTORY_METHOD);
+            return XmlPrasing.parsingXMLBySensor(sensorDataRecords,xml,sensorChannel);
+        }
+        long days = l/24;
+        LocalDateTime temp = start.plusSeconds(-1);
+        String xml;
+        for(int i = 0;i<days;i++){
+            ArrayList<String> params = new ArrayList<>();
+            params.add(logo);
+            params.add(temp.plusSeconds(1).format(formatter));
+            // 86399 = 24 *60*60 -1
+            params.add(temp.plusSeconds(86399).format(formatter));
+            xml = ClientAxis2.sendService(params,KLHAConstant.GATEWAY_HISTORY_METHOD);
+            XmlPrasing.parsingXMLBySensor(sensorDataRecords,xml,sensorChannel);
+        }
+        return sensorDataRecords;
     }
 
     /**
@@ -81,12 +105,40 @@ public class SensorService {
      * @return
      */
     public HashMap<String, List<SensorDataRecord>> getOneGatewayHistoryData(String logo,String startTime ,String endTime){
-        ArrayList<String> params = new ArrayList<>();
-        params.add(logo);
-        params.add(startTime);
-        params.add(endTime);
-        String xml = ClientAxis2.sendService(params,KLHAConstant.GATEWAY_HISTORY_METHOD);
-        return XmlPrasing.parsingXMLByHistory(xml);
+        HashMap<String,List<SensorDataRecord>> sensorDataRecords = new HashMap<>();
+        HashMap<String, String> sensorType = SensorType.sensorType;
+        for(Map.Entry<String, String> entry : sensorType.entrySet()){
+            sensorDataRecords.put(entry.getValue(), new ArrayList<>());
+        }
+
+        //因为获取历史数据的额接口目前只能一次获取一天的数据 我们按天分次获取；
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime start = LocalDateTime.parse(startTime,formatter);
+        LocalDateTime end = LocalDateTime.parse(endTime,formatter);
+        Duration duration = Duration.between(start,end);
+        long l = duration.toHours();
+        //小于24小时时只有一种状况
+        if(l<24){
+            ArrayList<String> params = new ArrayList<>();
+            params.add(logo);
+            params.add(startTime);
+            params.add(endTime);
+            String xml = ClientAxis2.sendService(params,KLHAConstant.GATEWAY_HISTORY_METHOD);
+            return XmlPrasing.parsingXMLByHistory(sensorDataRecords,xml);
+        }
+        long days = l/24;
+        LocalDateTime temp = start.plusSeconds(-1);
+        String xml;
+        for(int i = 0;i<days;i++){
+            ArrayList<String> params = new ArrayList<>();
+            params.add(logo);
+            params.add(temp.plusSeconds(1).format(formatter));
+            // 86399 = 24 *60*60 -1
+            params.add(temp.plusSeconds(86399).format(formatter));
+            xml = ClientAxis2.sendService(params,KLHAConstant.GATEWAY_HISTORY_METHOD);
+            XmlPrasing.parsingXMLByHistory(sensorDataRecords,xml);
+        }
+        return sensorDataRecords;
     }
 
     public List<SensorDataRecord> getCurAll(){

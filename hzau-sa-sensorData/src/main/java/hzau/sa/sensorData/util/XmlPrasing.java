@@ -68,12 +68,7 @@ public class XmlPrasing {
     }
 
 
-    public static HashMap<String,List<SensorDataRecord>> parsingXMLByHistory(String xml){
-        HashMap<String,List<SensorDataRecord>> sensorDataRecords = new HashMap<>();
-        HashMap<String, String> sensorType = SensorType.sensorType;
-        for(Map.Entry<String, String> entry : sensorType.entrySet()){
-            sensorDataRecords.put(entry.getValue(), new ArrayList<>());
-        }
+    public static HashMap<String,List<SensorDataRecord>> parsingXMLByHistory(HashMap<String,List<SensorDataRecord>> sensorDataRecords,String xml){
         try {
             //创建DocumentBuilderFactory实例,指定DocumentBuilder
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -117,8 +112,7 @@ public class XmlPrasing {
         return sensorDataRecords;
     }
 
-    public static List<SensorDataRecord> parsingXMLBySensor(String xml, String sensorChannel) {
-        List<SensorDataRecord> sensorDataRecords = new ArrayList<>();
+    public static List<SensorDataRecord> parsingXMLBySensor(List<SensorDataRecord> sensorDataRecords,String xml, String sensorChannel) {
         try {
             //创建DocumentBuilderFactory实例,指定DocumentBuilder
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
