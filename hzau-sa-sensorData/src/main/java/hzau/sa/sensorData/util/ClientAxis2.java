@@ -37,6 +37,7 @@ public class ClientAxis2 {
         }
 
         //可以再该对象中设置服务端的验证信息
+        assert serviceClient != null;
         Options options = serviceClient.getOptions();
         EndpointReference targetEPR = new EndpointReference(KLHAConstant.URL);
         options.setTo(targetEPR);

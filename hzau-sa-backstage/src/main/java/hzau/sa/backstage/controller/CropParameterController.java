@@ -67,8 +67,11 @@ public class CropParameterController extends BaseController {
     @ApiImplicitParam(name = "cropParameterVO", value = "参数实体", paramType = "body", dataType = "CropParameterVO")
     @PostMapping("/add")
     public Result add(@RequestBody CropParameterVO cropParameterVO) {
+        if(cropParameterVO.getSortNumber()<4) {
+            return ResultUtil.error("新增序号不可小于4");
+        }
         boolean save = cropParameterService.save(cropParameterVO);
-        if (false == save) {
+        if (!save) {
             return ResultUtil.databaseError();
         } else {
             return ResultUtil.success();
@@ -86,7 +89,7 @@ public class CropParameterController extends BaseController {
             return ResultUtil.error("默认参数不可删除");
         }
         boolean b = cropParameterService.removeById(cropParameterId);
-        if(false == b){
+        if(!b){
             return ResultUtil.databaseError(b);
         }else {
             return ResultUtil.success("成功删除");
@@ -100,7 +103,7 @@ public class CropParameterController extends BaseController {
     @Transactional(rollbackFor = Exception.class)
     public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
         boolean b = cropParameterService.removeByIds(Arrays.asList(ids));
-        if(false==b){
+        if(!b){
             return ResultUtil.databaseError();
         }else{
             return ResultUtil.success();
@@ -112,7 +115,7 @@ public class CropParameterController extends BaseController {
     @PostMapping("/update")
     public Result update(@RequestBody CropParameterVO cropParameterVO){
         boolean b = cropParameterService.updateById(cropParameterVO);
-        if(false == b){
+        if(!b){
             return ResultUtil.databaseError();
         }else {
             return ResultUtil.success();

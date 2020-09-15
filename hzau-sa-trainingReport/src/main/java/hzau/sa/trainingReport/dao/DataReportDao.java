@@ -47,7 +47,7 @@ public interface DataReportDao extends BaseMapper<DataReportVO> {
      * @param classId 班级id
      * @param cropId 作物id
      * @param studentName 学生姓名
-     * @return
+     * @return 学生的调查数据模板
      */
     IPage<StudentReportModel> selectStudentByClassAndCrop(Page<StudentReportModel> page,@Param("classId") int classId, @Param("cropId") int cropId, @Param("studentName") String studentName);
 

@@ -56,7 +56,7 @@ public class CropPropertyController extends BaseController {
     @PostMapping("/add")
     public Result add(@RequestBody CropPropertyVO cropPropertyVO) {
         boolean save = cropPropertyService.save(cropPropertyVO);
-        if (false == save) {
+        if (!save) {
             return ResultUtil.databaseError();
         } else {
             return ResultUtil.success();
@@ -71,7 +71,7 @@ public class CropPropertyController extends BaseController {
     public Result delete(@PathVariable("cropPropertyId") String cropPropertyId){
         log.info(String.valueOf(cropPropertyId));
         boolean b = cropPropertyService.removeById(cropPropertyId);
-        if(false == b){
+        if(!b){
             return ResultUtil.databaseError(b);
         }else {
             return ResultUtil.success("成功删除");
@@ -86,7 +86,7 @@ public class CropPropertyController extends BaseController {
     @Transactional(rollbackFor = Exception.class)
     public Result deleteList(@RequestParam(value = "ids[]") String[] ids){
         boolean b = cropPropertyService.removeByIds(Arrays.asList(ids));
-        if(false==b){
+        if(!b){
             return ResultUtil.databaseError();
         }else{
             return ResultUtil.success();
@@ -111,7 +111,7 @@ public class CropPropertyController extends BaseController {
     @PostMapping("/update")
     public Result update(@RequestBody CropPropertyVO cropPropertyVO){
         boolean b = cropPropertyService.updateById(cropPropertyVO);
-        if(false == b){
+        if(!b){
             return ResultUtil.databaseError();
         }else {
             return ResultUtil.success();

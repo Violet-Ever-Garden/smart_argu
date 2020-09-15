@@ -51,8 +51,7 @@ public class SensorService {
         ArrayList<String> params = new ArrayList<>();
         params.add(logo);
         String xml = ClientAxis2.sendService(params,KLHAConstant.GATEWAY_DATA_METHOD);
-        List<SensorDataRecord> sensorDataRecords = XmlPrasing.parsingXMLByCurAll(xml);
-        return sensorDataRecords;
+        return XmlPrasing.parsingXMLByCurAll(xml);
     }
 
     /**
@@ -74,9 +73,7 @@ public class SensorService {
                 break;
             }
         }
-        List<SensorDataRecord> sensorDataRecords = XmlPrasing.parsingXMLBySensor(xml,sensorChannel);
-        //sensorDataRecords.forEach(System.out::println);
-        return sensorDataRecords;
+        return XmlPrasing.parsingXMLBySensor(xml,sensorChannel);
     }
 
     /**
@@ -89,14 +86,12 @@ public class SensorService {
         params.add(startTime);
         params.add(endTime);
         String xml = ClientAxis2.sendService(params,KLHAConstant.GATEWAY_HISTORY_METHOD);
-        HashMap<String, List<SensorDataRecord>> stringListHashMap = XmlPrasing.parsingXMLByHistory(xml);
-        return stringListHashMap;
+        return XmlPrasing.parsingXMLByHistory(xml);
     }
 
     public List<SensorDataRecord> getCurAll(){
         String xml = ClientAxis2.sendService(new ArrayList<>(), KLHAConstant.GET_ALL_METHOD);
-        List<SensorDataRecord> sensorDataRecords = XmlPrasing.parsingXMLByCurAll(xml);
-        return sensorDataRecords;
+        return XmlPrasing.parsingXMLByCurAll(xml);
     }
 
 

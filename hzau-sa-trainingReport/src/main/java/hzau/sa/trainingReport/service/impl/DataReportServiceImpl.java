@@ -162,7 +162,6 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
         httpServletResponse.setContentType("application/octet-stream");
         httpServletResponse.setHeader("Content-Disposition", "attachment; filename=" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + "_" + studentName + "_report" + ".xls");
         workbook.write(httpServletResponse.getOutputStream());
-        return;
     }
 
     public void writeExcel(List<String> extraParameters,StudentDataReport studentDataReport,String className) throws IOException {
@@ -175,7 +174,7 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
         setFollowRow(sheet,extraParameters,studentDataReport.getCropDataList());
         //写入地址
         File file = new File(path);
-        if(file.exists()==false){
+        if(!file.exists()){
             file.mkdirs();
         }
         FileOutputStream fileOut = new FileOutputStream(new File(file,className+"_"+studentDataReport.getStudentName()+"_"+ System.currentTimeMillis() + ".xlsx"));

@@ -19,7 +19,6 @@ public class CropTest {
     void deleteList(){
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(3);
-        cropService.removeByIds(arrayList);
     }
 
 }
