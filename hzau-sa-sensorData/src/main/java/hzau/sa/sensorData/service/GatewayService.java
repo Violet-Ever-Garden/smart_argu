@@ -20,8 +20,9 @@ public interface GatewayService  extends IService<GatewayVO> {
     /**
      * 查询所有的网关
      * @param page
+     * @param keyword
      * @return
      */
-    List<GatewayDTO> queryGateway(Page page);
+    List<GatewayDTO> queryGateway(Page page,String keyword);
 
 }

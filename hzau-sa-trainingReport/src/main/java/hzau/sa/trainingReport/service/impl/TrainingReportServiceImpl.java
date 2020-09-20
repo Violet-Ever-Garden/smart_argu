@@ -16,6 +16,7 @@ import hzau.sa.trainingReport.dao.TrainingReportDao;
 import hzau.sa.trainingReport.entity.TrainingReportVO;
 import hzau.sa.trainingReport.service.TrainingReportService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.formula.functions.LinearRegressionFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,6 +39,7 @@ import java.util.List;
  * @author lvhao
  * @since 2020-08-19
  */
+@Slf4j
 @Service
 public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, TrainingReportVO> implements TrainingReportService {
 

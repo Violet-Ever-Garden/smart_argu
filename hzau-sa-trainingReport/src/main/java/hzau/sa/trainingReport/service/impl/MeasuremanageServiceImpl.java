@@ -82,7 +82,8 @@ public class MeasuremanageServiceImpl extends ServiceImpl<MeasuremanageDao, Meas
             List<MeasuremanageVO> measuremanageVOList = measuremanageDao.selectList(new QueryWrapper<MeasuremanageVO>()
                     .lambda()
                     .eq(MeasuremanageVO::getStudentId,studentId)
-                    .eq(MeasuremanageVO::getCropId,measuremanageDao.queryCropIdByCropName(cropName)));
+                    .eq(MeasuremanageVO::getCropId,measuremanageDao.queryCropIdByCropName(cropName))
+                    .orderByAsc(MeasuremanageVO::getCreateTime));
 
             for(MeasuremanageVO measuremanageVO : measuremanageVOList){
                 MeasureManageResponse measureManageResponse = new MeasureManageResponse();

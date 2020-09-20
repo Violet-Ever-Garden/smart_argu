@@ -40,13 +40,14 @@ public class GatewayController extends BaseController {
     @ApiOperation("网关设置查询")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page",value = "页数（默认1 可为null）",paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String")
+            @ApiImplicitParam(name = "limit",value = "容量（默认20 可为null）",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "keyword",value = "关键字",paramType = "query",dataType = "String")
     })
     @GetMapping("/query")
-    public Result<Object> queryAllVideoGateway(){
+    public Result<Object> queryAllVideoGateway(String keyword){
         Page<GatewayDTO> page =  getPage();
 
-        return ResultUtil.success(gatewayService.queryGateway(page));
+        return ResultUtil.success(gatewayService.queryGateway(page,keyword));
     }
 
     @SysLog(prefix = "新增网关设置",value = LogType.ALL)

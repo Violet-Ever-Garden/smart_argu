@@ -5,5 +5,10 @@
     <select id="queryGateway" resultType="hzau.sa.sensorData.entity.GatewayDTO">
         SELECT gatewayId,gatewayName,gatewayAddress
         FROM gateway
+        <where>
+            <if test="keyword != null and keyword != '' ">
+                gatewayName LIKE "%"#{keyword}"%"
+            </if>
+        </where>
     </select>
 </mapper>
