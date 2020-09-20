@@ -20,7 +20,7 @@ import static com.google.common.collect.Lists.newArrayList;
 @Configuration
 public class UserSwaggerConfig extends Swagger2Config {
     @Bean
-    public Docket testDocket(){
+    public Docket shiroDocket(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("HZAU-Smart-Agriculture Shiro 接口")
                 .apiInfo(apiInfo())

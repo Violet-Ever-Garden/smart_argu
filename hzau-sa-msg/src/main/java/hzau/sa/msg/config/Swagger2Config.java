@@ -32,7 +32,7 @@ public abstract class Swagger2Config {
     @Bean
     public Docket docket(){
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("HZAU-Smart-Agriculture日志信息接口")
+                .groupName("HZAU-Smart-Agriculture-log")
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("hzau.sa.msg"))
