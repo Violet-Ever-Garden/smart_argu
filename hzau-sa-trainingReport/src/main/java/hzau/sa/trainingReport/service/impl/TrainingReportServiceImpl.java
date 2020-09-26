@@ -280,6 +280,7 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
         trainingReportVO.setTrainingReportId(trainingReportId);
         trainingReportVO.setComments(comments);
         trainingReportVO.setScore(score);
+        trainingReportVO.setReviewStatus("已评阅");
 
         if (trainingReportDao.updateById(trainingReportVO)==0){
             return ResultUtil.error("实训报告更新失败");
