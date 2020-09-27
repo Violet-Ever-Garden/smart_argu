@@ -20,4 +20,5 @@ public class TrainingReportStudentView {
     private Integer batch;
     private String url;
     private String cropName;
+    private String fileName;
 }

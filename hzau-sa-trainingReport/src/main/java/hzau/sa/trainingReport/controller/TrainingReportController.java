@@ -109,7 +109,7 @@ public class TrainingReportController extends BaseController {
             @ApiImplicitParam(name = "batch",value = "批次",paramType = "query",dataType = "String")
     })
     @PostMapping("/changeReportByStudent")
-    public Result changeReportByStudent(String trainingReportId,String cropId,String studentId,String trainingReportName,String batch,@RequestParam(value = "file",required = true) MultipartFile file){
+    public Result changeReportByStudent(String trainingReportId,String cropId,String studentId,String trainingReportName,String batch,@RequestParam(value = "file",required = false) MultipartFile file){
        return trainingReportService.updateTrainingReportByStudent(Integer.valueOf(trainingReportId), Integer.valueOf(cropId),studentId,trainingReportName, Integer.valueOf(batch),file);
     }
 
@@ -118,11 +118,12 @@ public class TrainingReportController extends BaseController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "trainingReportId",value = "实训报告id",paramType = "query",dataType = "String"),
             @ApiImplicitParam(name = "comments",value = "评语",paramType = "query",dataType = "String"),
-            @ApiImplicitParam(name = "score",value = "得分",paramType = "query",dataType = "String")
+            @ApiImplicitParam(name = "score",value = "得分",paramType = "query",dataType = "String"),
+            @ApiImplicitParam(name = "teacherId",value = "老师id",paramType = "query",dataType = "String")
     })
     @PostMapping("/changeReportByTeacher")
-    public Result changeReportByTeacher(String trainingReportId,String comments,String score){
-        return trainingReportService.updateTrainingReportByTeacher(Integer.valueOf(trainingReportId),comments,Integer.valueOf(score));
+    public Result changeReportByTeacher(String trainingReportId,String comments,String score,String teacherId){
+        return trainingReportService.updateTrainingReportByTeacher(Integer.valueOf(trainingReportId),comments,Integer.valueOf(score),teacherId);
     }
 
     @SysLog(prefix = "实训报告分页查询")

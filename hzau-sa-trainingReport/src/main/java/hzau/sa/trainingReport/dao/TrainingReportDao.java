@@ -61,12 +61,6 @@ public interface TrainingReportDao extends BaseMapper<TrainingReportVO> {
      */
     public Integer queryClassIdByStudentId(@Param("studentId") String studentId);
 
-    /**
-     * 根据班级id查询老师id
-     * @param classId
-     * @return
-     */
-    public String querTeacherIdByClassId(@Param("classId") Integer classId);
 
     /**
      * 根据学生id和批次查询实训报告id
@@ -111,12 +105,7 @@ public interface TrainingReportDao extends BaseMapper<TrainingReportVO> {
      */
     public TrainingReportTeacherView teacherView(@Param("trainingReportId") Integer trainingReportId,@Param("fileType") String fileType);
 
-    /**
-     * 根据学生id得到老师id
-     * @param studentId
-     * @return
-     */
-    public String queryTeacherIdByStudentId(@Param("studentId") String studentId);
+
 
 
 }

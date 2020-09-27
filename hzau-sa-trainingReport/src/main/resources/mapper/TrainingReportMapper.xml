@@ -101,10 +101,4 @@
         where trainingReportId=#{trainingReportId} and fileType=#{fileType}
     </select>
 
-    <select id="queryTeacherIdByStudentId" resultType="java.lang.String">
-        select as_teacherclass.teacherId
-        from student
-        left join as_teacherclass on as_teacherclass.classId=student.classId
-        where student.studentId=#{studentId}
-    </select>
 </mapper>

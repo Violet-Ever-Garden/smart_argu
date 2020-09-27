@@ -148,11 +148,9 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
     public Result addTrainingReport(String studentId, Integer cropId, String trainingReportName, Integer batch, MultipartFile file){
         //增加实训报告表
 
-        //得到老师id
-        String teacherId=null;
-        if((teacherId=trainingReportDao.queryTeacherIdByStudentId(studentId))==null){
-            return ResultUtil.error("老师id查询失败");
-        }
+        //得到选择默认id
+        String teacherId="admin";
+
 
         TrainingReportVO trainingReportVO = new TrainingReportVO(cropId,studentId,batch,trainingReportName,teacherId);
 
@@ -275,12 +273,13 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
      * @return
      */
     @Override
-    public Result updateTrainingReportByTeacher(Integer trainingReportId,String comments, Integer score){
+    public Result updateTrainingReportByTeacher(Integer trainingReportId,String comments, Integer score,String teacherId){
         TrainingReportVO trainingReportVO = new TrainingReportVO();
         trainingReportVO.setTrainingReportId(trainingReportId);
         trainingReportVO.setComments(comments);
         trainingReportVO.setScore(score);
         trainingReportVO.setReviewStatus("已评阅");
+        trainingReportVO.setTeacherId(teacherId);
 
         if (trainingReportDao.updateById(trainingReportVO)==0){
             return ResultUtil.error("实训报告更新失败");
@@ -319,6 +318,9 @@ public class TrainingReportServiceImpl extends ServiceImpl<TrainingReportDao, Tr
     @Override
     public Result studentView(Integer trainingReportId, String fileType){
         TrainingReportStudentView trainingReportStudentView = trainingReportDao.studentView(trainingReportId,fileType);
+        String url=trainingReportStudentView.getUrl();
+        String fileName=url.substring(url.lastIndexOf('/')+1);
+        trainingReportStudentView.setFileName(fileName);
         return ResultUtil.success(trainingReportStudentView);
     }
 
