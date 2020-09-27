@@ -167,15 +167,25 @@ public class CropServiceImpl extends ServiceImpl<CropDao, CropVO> implements Cro
             QueryWrapper<FileVO> queryWrapper = new QueryWrapper();
             queryWrapper.lambda().eq(FileVO::getConnectId,String.valueOf(cropId)).eq(FileVO::getFileType,FileEnum.CROP);
             FileVO fileVO = fileDao.selectOne(queryWrapper);
-            if(fileVO!=null){
-                FileUtil.deleteFile(fileVO.getFileAbsolutePath());
-            }
+
             try{
                 String  absolutePath= FileUtil.uploadFile(FileEnum.CROP, cropName, picture);
+                assert absolutePath != null;
                 String  url = FileUtil.getFileUrl(absolutePath);
-                fileVO.setFileAbsolutePath(absolutePath);
-                fileVO.setUrl(url);
-                fileDao.updateById(fileVO);
+                if(fileVO!=null){
+                    FileUtil.deleteFile(fileVO.getFileAbsolutePath());
+                    fileVO.setFileAbsolutePath(absolutePath);
+                    fileVO.setUrl(url);
+                    fileDao.updateById(fileVO);
+                }else {
+                    fileVO= new FileVO();
+                    fileVO.setFileAbsolutePath(absolutePath);
+                    fileVO.setUrl(url);
+                    fileVO.setFileType(String.valueOf(FileEnum.CROP));
+                    fileVO.setConnectId(String.valueOf(cropId));
+                    fileDao.insert(fileVO);
+                }
+
             }catch (IOException e){
                 e.printStackTrace();
                 return new DataBaseException().insertError(e);

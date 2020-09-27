@@ -3,6 +3,7 @@ file:
   excel: "/root/hzau/excel"
   upload:
     path: "/root/hzau/file/"
+    #path: "C:\\Users\\Hasee\\Desktop\\新建文件夹\\wlwCROP"
 server:
   port: 8080
 ip: http://sourceshare.kaistudy.top:8080

@@ -32,7 +32,7 @@ public class FileWebConfig extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/csrf/**")
                 .addResourceLocations("classpath:/META-INF/resources/csrf/");
         registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/**");
+                .addResourceLocations("classpath:/dist/");
 
 
         super.addResourceHandlers(registry);
