@@ -33,7 +33,7 @@ public interface TrainingReportService {
     public Result deleteTrainingReports(Integer[] trainingReportIds);
     public Result addTrainingReport(String studentId,Integer cropId,String trainingReportName, Integer batch, MultipartFile file);
     public Result updateTrainingReportByStudent(Integer trainingReportId,Integer cropId,String studentId,String trainingReportName,Integer batch,MultipartFile file);
-    public Result updateTrainingReportByTeacher(Integer trainingReportId,String comments,Integer score);
+    public Result updateTrainingReportByTeacher(Integer trainingReportId,String comments,Integer score,String teacherId);
     public IPage<TrainingReportPageWithoutFile> page(Page<TrainingReportPageWithoutFile> page,
                                                      Integer corpId,
                                                      String studentId,
