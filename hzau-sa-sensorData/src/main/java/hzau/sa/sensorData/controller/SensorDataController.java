@@ -1,10 +1,13 @@
 package hzau.sa.sensorData.controller;
 
 import cn.hutool.core.convert.Convert;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import hzau.sa.msg.controller.BaseController;
 import hzau.sa.msg.entity.Result;
 import hzau.sa.msg.util.ResultUtil;
-import hzau.sa.msg.util.ZipUtil;
-import hzau.sa.sensorData.service.SensorService;
+import hzau.sa.sensorData.entity.SensorDataRecord;
+import hzau.sa.sensorData.service.impl.SensorService;
+import hzau.sa.sensorData.service.impl.SensorDataRecordServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -17,19 +20,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
+
+import static hzau.sa.sensorData.common.KLHAConstant.INDEX_GATEWAY;
 
 @RequestMapping("/sensorData")
 @RestController
 @Slf4j
 @Api(value = "传感器数据-API",tags = "传感器数据相关接口")
-public class SensorDataController {
+public class SensorDataController extends BaseController {
     @Autowired
     SensorService sensorService;
+    @Autowired
+    SensorDataRecordServiceImpl sensorDataRecordService;
 
     @ApiOperation(value = "根据用户id查区域", notes = "根据用户id查区域")
     @ApiImplicitParams({
@@ -38,7 +41,7 @@ public class SensorDataController {
     })
     @GetMapping("/getRegionById")
     public Result getRegionById(String role,String id){
-        return ResultUtil.success(sensorService.getRegionById(role,id));
+        return ResultUtil.success(sensorDataRecordService.getRegionById(role,id));
     }
 
 
@@ -52,7 +55,7 @@ public class SensorDataController {
     @ApiImplicitParam(name = "gatewayAddress", value = "网关地址", paramType = "path", dataType = "String")
     @GetMapping("/getOneNowGatewayDate/{gatewayAddress}")
     public Result getOneNowGatewayDate(@PathVariable("gatewayAddress") String gatewayAddress){
-        return ResultUtil.success(sensorService.getNowSensorData(gatewayAddress));
+        return ResultUtil.success(sensorDataRecordService.getNowSensorData(gatewayAddress));
     }
 
 
@@ -60,7 +63,7 @@ public class SensorDataController {
     @ApiImplicitParam(name = "regionName", value = "区域名称", paramType = "path", dataType = "String")
     @GetMapping("/getGatewayByRegion/{regionName}")
     public Result getGatewayByRegion(@PathVariable("regionName") String regionName){
-        return ResultUtil.success(sensorService.getGatewayByRegion(regionName));
+        return ResultUtil.success(sensorDataRecordService.getGatewayByRegion(regionName));
     }
     @ApiOperation(value = "查询某网关历史数据", notes = "查询某网关历史数据")
     @ApiImplicitParams({
@@ -75,7 +78,7 @@ public class SensorDataController {
     public Result getOneGatewayHistoryData(String gatewayAddress,String startTime ,String endTime,int page,int limit ){
         page = Convert.toInt(page,1);
         limit = Convert.toInt(limit,20);
-        return  ResultUtil.success(sensorService.getOneGatewayHistoryDataPage(gatewayAddress,startTime,endTime,page,limit));
+        return  ResultUtil.success(sensorDataRecordService.getOneGatewayHistoryDataPage(gatewayAddress,startTime,endTime,limit,page));
     }
 
 
@@ -88,14 +91,14 @@ public class SensorDataController {
     })
     @GetMapping("/getOneSensorHistoryData")
     public Result getOneSensorHistoryData(String gatewayAddress,String startTime ,String endTime ,String sensorName){
-        return  ResultUtil.success(sensorService.getOneSensorHistoryData(gatewayAddress,startTime,endTime,sensorName));
+        return  ResultUtil.success(sensorDataRecordService.getOneSensorHistoryData(gatewayAddress,startTime,endTime,sensorName));
     }
 
 
     @ApiOperation(value = "获取首页传感器数据", notes = "获取首页传感器数据")
     @GetMapping("/indexSensorData")
     public Result indexSensorData(){
-        return getOneNowGatewayDate("1200201909171086");
+        return getOneNowGatewayDate(INDEX_GATEWAY);
     }
 
 
@@ -112,7 +115,7 @@ public class SensorDataController {
     public Result  getGatewayDataByHours(String gatewayAddress,Long hours,int page,int limit){
         page = Convert.toInt(page,1);
         limit = Convert.toInt(limit,20);
-        return ResultUtil.success(sensorService.getGatewayDataByHoursPage(gatewayAddress,hours,page,limit));
+        return ResultUtil.success(sensorDataRecordService.getGatewayDataByHoursPage(gatewayAddress,hours,page,limit));
     }
 
     @ApiOperation(value = "按小时获取传感器历史数据" ,notes = "按小时获取传感器历史数据")
@@ -123,7 +126,7 @@ public class SensorDataController {
     })
     @GetMapping("/getSensorDataByHours")
     public Result  getSensorDataByHours(String gatewayAddress,Long hours,String sensorName){
-        return ResultUtil.success(sensorService.getOneSensorDataByHours(gatewayAddress,sensorName,hours));
+        return ResultUtil.success(sensorDataRecordService.getOneSensorDataByHours(gatewayAddress,sensorName,hours));
     }
 
 
@@ -136,7 +139,7 @@ public class SensorDataController {
     @GetMapping("/exportSensorData")
     public void exportSensorData(String gatewayAddress, String startTime, String endTime, HttpServletResponse httpServletResponse){
         try{
-            sensorService.exportGatewayData(gatewayAddress,startTime,endTime,httpServletResponse);
+            sensorDataRecordService.exportGatewayData(gatewayAddress,startTime,endTime,httpServletResponse);
         }catch (Exception e){
             log.error(e.toString());
         }
@@ -150,8 +153,18 @@ public class SensorDataController {
     })
     @GetMapping("/exportGatewayDataByHours")
     public void  exportGatewayDataByHours(String gatewayAddress,Long hours,HttpServletResponse httpServletResponse){
-        sensorService.exportGatewayDataByHours(gatewayAddress,hours,httpServletResponse);
+        sensorDataRecordService.exportGatewayDataByHours(gatewayAddress,hours,httpServletResponse);
     }
-
-
+    @ApiOperation(value = "按小时导出网关历史数据" ,notes = "按小时导出网关历史数据")
+    @GetMapping("/asdasd")
+    public String asdasdasd(){
+            SensorDataRecord sensorDataRecord = new SensorDataRecord();
+            sensorDataRecord.setChannelName("11");
+            sensorDataRecord.setDataTime(LocalDateTime.now());
+            sensorDataRecord.setValue("1000");
+            sensorDataRecord.setGatewayLogo("123123123");
+            sensorDataRecord.setSensorName("asdasd");
+            sensorDataRecordService.save(sensorDataRecord);
+            return "asdasd";
+    }
 }

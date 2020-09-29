@@ -25,4 +25,9 @@ public interface GatewayDao extends BaseMapper<GatewayVO> {
      */
     List<GatewayDTO> queryGateway(Page<GatewayDTO> page, @Param("keyword")String keyword);
 
+    /**
+     * 查询所有网关号
+     * @return 网关号列表
+     */
+    List<String> queryAll();
 }

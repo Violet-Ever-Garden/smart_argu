@@ -19,7 +19,6 @@ import java.util.List;
 public class ClientAxis2 {
     /**
      * @Param param     参数列表
-     * @param url       url访问地址
      * @param method    服务器端发布的方法
      * @return
      */

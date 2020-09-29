@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="hzau.sa.sensorData.dao.SensorDataDao">
+<mapper namespace="hzau.sa.sensorData.dao.SensorDataRecordDao">
     <select id="selectRegionByStudentId" resultType="String" parameterType="String">
         select distinct regionName from region
                 left join sensor on sensor.regionId = region.regionId
@@ -30,4 +30,24 @@
                      left join region on region.regionId = sensor.regionId
         where regionName = #{regionName}
     </select>
+
+
+    <select id="getNowSensorData" parameterType="String" resultType="hzau.sa.sensorData.entity.SensorDataRecord">
+        select max(dataTime) as dataTime,gatewayLogo,sensorName,channelName,value from sensorDataRecord
+        group by sensorName
+    </select>
+
+    <select id="getOneGatewayHistoryData" resultType="hzau.sa.sensorData.entity.SensorDataRecord">
+        select * from sensorDataRecord where gatewayLogo = #{logo}
+        and dataTime >= #{startTime} and dataTime &lt; #{endTime}
+        order by dataTime desc
+    </select>
+
+    <select id="getOneGatewayHistoryDataPage" resultType="hzau.sa.sensorData.entity.SensorDataRecord">
+        select * from sensorDataRecord where gatewayLogo = #{logo}
+        and dataTime >= #{startTime} and dataTime &lt;= #{endTime}
+        order by dataTime desc
+    </select>
+
+
 </mapper>

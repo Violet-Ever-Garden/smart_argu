@@ -2,6 +2,9 @@ package hzau.sa.sensorData.entity;
 
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import hzau.sa.msg.excel.LocalDateTimeConverter;
 import hzau.sa.sensorData.common.SensorType;
@@ -22,7 +25,14 @@ import java.util.HashMap;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @ToString
+@TableName("sensorDataRecord")
 public class SensorDataRecord {
+
+    private static final long serialVersionUID = 1L;
+
+    @ExcelIgnore
+    @TableId(type= IdType.AUTO)
+    private Integer sensorDataRecordId;
 
     @ExcelProperty(value = "时间",index = 2,converter = LocalDateTimeConverter.class)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

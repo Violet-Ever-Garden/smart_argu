@@ -11,4 +11,8 @@
             </if>
         </where>
     </select>
+
+    <select id="queryAll" resultType="String">
+        select gatewayAddress from gateway
+    </select>
 </mapper>

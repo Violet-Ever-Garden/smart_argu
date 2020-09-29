@@ -12,4 +12,5 @@ public class KLHAConstant {
     public static String GATEWAY_DATA_METHOD = "GatewayData";
     public static String GATEWAY_LIST_METHOD = "GatewayList";
     public static String GATEWAY_HISTORY_METHOD = "GatewayHistory";
+    public static String INDEX_GATEWAY = "1200201909171086";
 }
