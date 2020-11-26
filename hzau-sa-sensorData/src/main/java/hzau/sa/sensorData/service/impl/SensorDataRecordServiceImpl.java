@@ -95,6 +95,8 @@ public class SensorDataRecordServiceImpl extends ServiceImpl<SensorDataRecordDao
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime before = now.minus(hours, ChronoUnit.HOURS);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd HH:mm:ss" );
+        System.out.println(before.format(formatter));
+        System.out.println(now.format(formatter));
         return getOneSensorHistoryData(logo,before.format(formatter), now.format(formatter),sensorName );
     }
 

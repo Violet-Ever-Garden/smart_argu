@@ -46,7 +46,7 @@ public class LoginController {
         }
         HashMap<String, Object> result = loginService.login(username, password);
         if(result == null) {
-            return new DataBaseException().insertError("登陆失败，账号或密码不正确");
+            return ResultUtil.error("登陆失败，账号或密码不正确");
         }
         return ResultUtil.success(result);
     }

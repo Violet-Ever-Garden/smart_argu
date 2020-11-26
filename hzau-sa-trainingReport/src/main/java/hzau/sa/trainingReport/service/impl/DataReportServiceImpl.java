@@ -200,6 +200,7 @@ public class DataReportServiceImpl extends ServiceImpl<DataReportDao, DataReport
         int n = cropDataList.size();
         for(int i = 0 ; i < n ; i++){
             CropData cropData = cropDataList.get(i);
+            System.out.println(cropData.toString());
             Row row = sheet.createRow(i + 1);
             row.createCell(0).setCellValue(cropData.getCropProperty());
             row.createCell(1).setCellValue(cropData.getDetectionTime().toString());
